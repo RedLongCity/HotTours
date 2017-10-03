@@ -31,7 +31,6 @@ public class Request {
     
     private Meal_Type meal_Type;
     
-
     private Set<Tour> tourSet = new HashSet<Tour>();
     
     private Long requestDelay;
