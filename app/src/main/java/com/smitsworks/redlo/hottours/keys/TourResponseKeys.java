@@ -5,7 +5,7 @@ package com.smitsworks.redlo.hottours.keys;
  * class for storaging keys for JSON deserialization
  */
 
-public class ResponseKeys {
+public class TourResponseKeys {
 
     public static final String KEY_COMEBACK_DELAY="comeBackDelay";
     public static final String KEY_TOUR_LIST="tourList";

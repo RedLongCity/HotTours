@@ -3,12 +3,12 @@ package com.smitsworks.redlo.hottours.parsers;
 import android.util.Log;
 
 import com.smitsworks.redlo.hottours.keys.FilterResponseKeys;
-import com.smitsworks.redlo.hottours.models.Country;
-import com.smitsworks.redlo.hottours.models.Currency;
-import com.smitsworks.redlo.hottours.models.FiltersResponse;
-import com.smitsworks.redlo.hottours.models.From_Cities;
-import com.smitsworks.redlo.hottours.models.Hotel_Rating;
-import com.smitsworks.redlo.hottours.models.Meal_Type;
+import com.smitsworks.redlo.hottours.data.models.Country;
+import com.smitsworks.redlo.hottours.data.models.Currency;
+import com.smitsworks.redlo.hottours.data.models.FiltersResponse;
+import com.smitsworks.redlo.hottours.data.models.From_Cities;
+import com.smitsworks.redlo.hottours.data.models.Hotel_Rating;
+import com.smitsworks.redlo.hottours.data.models.Meal_Type;
 
 import org.json.JSONArray;
 import org.json.JSONException;

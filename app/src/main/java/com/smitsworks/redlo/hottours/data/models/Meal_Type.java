@@ -1,4 +1,4 @@
-package com.smitsworks.redlo.hottours.models;
+package com.smitsworks.redlo.hottours.data.models;
 
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -9,18 +9,18 @@ import java.util.Set;
 /**
  *
  * @author redlongcity
+ * model of meal_type storage
  */
-
-public class From_Cities {
+public class Meal_Type {
     
     private String id;
     
     private String name;
     
-    private Set<Country> countrySet = new HashSet<Country>();
+    private String name_full;
     
     private Set<Tour> tours = new HashSet<Tour>();
-    
+
     private Set<Request> requests = new HashSet<Request>();
     
     public String getId() {
@@ -39,12 +39,12 @@ public class From_Cities {
         this.name = name;
     }
 
-    public Set<Country> getCountrySet() {
-        return countrySet;
+    public String getName_full() {
+        return name_full;
     }
 
-    public void setCountrySet(Set<Country> countrySet) {
-        this.countrySet = countrySet;
+    public void setName_full(String name_full) {
+        this.name_full = name_full;
     }
 
     public Set<Tour> getTours() {
@@ -69,8 +69,9 @@ public class From_Cities {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 71 * hash + Objects.hashCode(this.id);
-        hash = 71 * hash + Objects.hashCode(this.name);
+        hash = 97 * hash + Objects.hashCode(this.id);
+        hash = 97 * hash + Objects.hashCode(this.name);
+        hash = 97 * hash + Objects.hashCode(this.name_full);
         return hash;
     }
 
@@ -86,11 +87,14 @@ public class From_Cities {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final From_Cities other = (From_Cities) obj;
+        final Meal_Type other = (Meal_Type) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.name_full, other.name_full)) {
             return false;
         }
         return true;
@@ -98,7 +102,7 @@ public class From_Cities {
 
     @Override
     public String toString() {
-        return "From_Cities{" + "id=" + id + ", name=" + name + ", countrySet=" + countrySet + ", tours=" + tours + ", requests=" + requests + '}';
+        return "Meal_Type{" + "id=" + id + ", name=" + name + ", name_full=" + name_full + ", tours=" + tours + ", requests=" + requests + '}';
     }
 
 }

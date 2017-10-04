@@ -1,4 +1,4 @@
-package com.smitsworks.redlo.hottours.models;
+package com.smitsworks.redlo.hottours.data.models;
 
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -6,23 +6,18 @@ import android.support.annotation.RequiresApi;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-
 /**
- * Created by redlongcity on 02.10.2017.
- * Country model
+ *
+ * @author redlongcity
  */
 
-public class Country {
-
+public class Hotel_Rating {
+    
     private String id;
-
+    
     private String name;
-
-    private Set<From_Cities> from_CitiesSet = new HashSet<From_Cities>();
-
+    
     private Set<Tour> tours = new HashSet<Tour>();
-
-    private Set<Request> requests = new HashSet<Request>();
 
     public String getId() {
         return id;
@@ -40,14 +35,6 @@ public class Country {
         this.name = name;
     }
 
-    public Set<From_Cities> getFrom_CitiesSet() {
-        return from_CitiesSet;
-    }
-
-    public void setFrom_CitiesSet(Set<From_Cities> from_CitiesSet) {
-        this.from_CitiesSet = from_CitiesSet;
-    }
-
     public Set<Tour> getTours() {
         return tours;
     }
@@ -56,20 +43,12 @@ public class Country {
         this.tours = tours;
     }
 
-    public Set<Request> getRequests() {
-        return requests;
-    }
-
-    public void setRequests(Set<Request> requests) {
-        this.requests = requests;
-    }
-
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 53 * hash + Objects.hashCode(this.id);
-        hash = 53 * hash + Objects.hashCode(this.name);
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.id);
+        hash = 67 * hash + Objects.hashCode(this.name);
         return hash;
     }
 
@@ -85,7 +64,7 @@ public class Country {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Country other = (Country) obj;
+        final Hotel_Rating other = (Hotel_Rating) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
@@ -97,7 +76,7 @@ public class Country {
 
     @Override
     public String toString() {
-        return "Country{" + "id=" + id + ", name=" + name + ", from_CitiesSet=" + from_CitiesSet + ", tours=" + tours + ", requests=" + requests + '}';
+        return "Hotel_Rating{" + "id=" + id + ", name=" + name + ", tours=" + tours + '}';
     }
 
 

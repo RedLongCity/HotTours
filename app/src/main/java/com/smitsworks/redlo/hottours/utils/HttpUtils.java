@@ -21,16 +21,15 @@ public class HttpUtils {
 
     public static final String TAG = "TAG";
 
-    public static JSONObject getDataByURL(String url){
+    public static Response getDataByURL(String url){
 
         try{
             OkHttpClient client = new OkHttpClient();
 
             Request request = new Request.Builder().
                     url(url).build();
-            Response response = client.newCall(request).execute();
-            return new JSONObject(response.body().toString());
-        } catch (@NonNull IOException | JSONException e) {
+            return client.newCall(request).execute();
+        } catch (@NonNull IOException e) {
             Log.e(TAG, "" + e.getLocalizedMessage());
         }
         return null;

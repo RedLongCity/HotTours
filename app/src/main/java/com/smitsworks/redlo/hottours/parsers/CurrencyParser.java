@@ -3,7 +3,7 @@ package com.smitsworks.redlo.hottours.parsers;
 import android.util.Log;
 
 import com.smitsworks.redlo.hottours.keys.CurrencyKeys;
-import com.smitsworks.redlo.hottours.models.Currency;
+import com.smitsworks.redlo.hottours.data.models.Currency;
 
 import org.json.JSONException;
 import org.json.JSONObject;

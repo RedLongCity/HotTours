@@ -1,4 +1,4 @@
-package com.smitsworks.redlo.hottours.models;
+package com.smitsworks.redlo.hottours.data.models;
 
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -11,14 +11,18 @@ import java.util.Set;
  * @author redlongcity
  */
 
-public class Hotel_Rating {
+public class From_Cities {
     
     private String id;
     
     private String name;
     
+    private Set<Country> countrySet = new HashSet<Country>();
+    
     private Set<Tour> tours = new HashSet<Tour>();
-
+    
+    private Set<Request> requests = new HashSet<Request>();
+    
     public String getId() {
         return id;
     }
@@ -35,6 +39,14 @@ public class Hotel_Rating {
         this.name = name;
     }
 
+    public Set<Country> getCountrySet() {
+        return countrySet;
+    }
+
+    public void setCountrySet(Set<Country> countrySet) {
+        this.countrySet = countrySet;
+    }
+
     public Set<Tour> getTours() {
         return tours;
     }
@@ -43,12 +55,22 @@ public class Hotel_Rating {
         this.tours = tours;
     }
 
+    public Set<Request> getRequests() {
+        return requests;
+    }
+
+    public void setRequests(Set<Request> requests) {
+        this.requests = requests;
+    }
+    
+    
+
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 67 * hash + Objects.hashCode(this.id);
-        hash = 67 * hash + Objects.hashCode(this.name);
+        hash = 71 * hash + Objects.hashCode(this.id);
+        hash = 71 * hash + Objects.hashCode(this.name);
         return hash;
     }
 
@@ -64,7 +86,7 @@ public class Hotel_Rating {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Hotel_Rating other = (Hotel_Rating) obj;
+        final From_Cities other = (From_Cities) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
@@ -76,8 +98,7 @@ public class Hotel_Rating {
 
     @Override
     public String toString() {
-        return "Hotel_Rating{" + "id=" + id + ", name=" + name + ", tours=" + tours + '}';
+        return "From_Cities{" + "id=" + id + ", name=" + name + ", countrySet=" + countrySet + ", tours=" + tours + ", requests=" + requests + '}';
     }
-
 
 }

@@ -3,7 +3,7 @@ package com.smitsworks.redlo.hottours.parsers;
 import android.util.Log;
 
 import com.smitsworks.redlo.hottours.keys.MealTypeKeys;
-import com.smitsworks.redlo.hottours.models.Meal_Type;
+import com.smitsworks.redlo.hottours.data.models.Meal_Type;
 
 import org.json.JSONException;
 import org.json.JSONObject;

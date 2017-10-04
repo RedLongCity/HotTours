@@ -3,7 +3,7 @@ package com.smitsworks.redlo.hottours.parsers;
 import android.util.Log;
 
 import com.smitsworks.redlo.hottours.keys.HotelRatingKeys;
-import com.smitsworks.redlo.hottours.models.Hotel_Rating;
+import com.smitsworks.redlo.hottours.data.models.Hotel_Rating;
 
 import org.json.JSONException;
 import org.json.JSONObject;

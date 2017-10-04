@@ -1,4 +1,4 @@
-package com.smitsworks.redlo.hottours.models;
+package com.smitsworks.redlo.hottours.data.models;
 
 import android.os.Build;
 import android.support.annotation.RequiresApi;

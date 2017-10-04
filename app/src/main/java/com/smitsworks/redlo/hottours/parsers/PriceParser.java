@@ -3,8 +3,8 @@ package com.smitsworks.redlo.hottours.parsers;
 import android.util.Log;
 
 import com.smitsworks.redlo.hottours.keys.PriceKeys;
-import com.smitsworks.redlo.hottours.models.Currency;
-import com.smitsworks.redlo.hottours.models.Price;
+import com.smitsworks.redlo.hottours.data.models.Currency;
+import com.smitsworks.redlo.hottours.data.models.Price;
 
 import org.json.JSONException;
 import org.json.JSONObject;

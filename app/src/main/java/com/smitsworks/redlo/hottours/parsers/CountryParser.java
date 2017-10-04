@@ -3,8 +3,8 @@ package com.smitsworks.redlo.hottours.parsers;
 import android.util.Log;
 
 import com.smitsworks.redlo.hottours.keys.CountryKeys;
-import com.smitsworks.redlo.hottours.models.Country;
-import com.smitsworks.redlo.hottours.models.From_Cities;
+import com.smitsworks.redlo.hottours.data.models.Country;
+import com.smitsworks.redlo.hottours.data.models.From_Cities;
 
 import org.json.JSONArray;
 import org.json.JSONException;

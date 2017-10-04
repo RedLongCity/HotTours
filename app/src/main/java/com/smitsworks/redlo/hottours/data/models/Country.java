@@ -1,4 +1,4 @@
-package com.smitsworks.redlo.hottours.models;
+package com.smitsworks.redlo.hottours.data.models;
 
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -6,18 +6,23 @@ import android.support.annotation.RequiresApi;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+
 /**
- *
- * @author redlongcity
- * Currency model
+ * Created by redlongcity on 02.10.2017.
+ * Country model
  */
-public class Currency {
-    
+
+public class Country {
+
     private String id;
 
     private String name;
-    
-    private Set<Price> prices = new HashSet<Price>();
+
+    private Set<From_Cities> from_CitiesSet = new HashSet<From_Cities>();
+
+    private Set<Tour> tours = new HashSet<Tour>();
+
+    private Set<Request> requests = new HashSet<Request>();
 
     public String getId() {
         return id;
@@ -35,20 +40,34 @@ public class Currency {
         this.name = name;
     }
 
-    public Set<Price> getPrices() {
-        return prices;
+    public Set<From_Cities> getFrom_CitiesSet() {
+        return from_CitiesSet;
     }
 
-    public void setPrices(Set<Price> prices) {
-        this.prices = prices;
+    public void setFrom_CitiesSet(Set<From_Cities> from_CitiesSet) {
+        this.from_CitiesSet = from_CitiesSet;
     }
-    
-    
+
+    public Set<Tour> getTours() {
+        return tours;
+    }
+
+    public void setTours(Set<Tour> tours) {
+        this.tours = tours;
+    }
+
+    public Set<Request> getRequests() {
+        return requests;
+    }
+
+    public void setRequests(Set<Request> requests) {
+        this.requests = requests;
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public int hashCode() {
-        int hash = 5;
+        int hash = 3;
         hash = 53 * hash + Objects.hashCode(this.id);
         hash = 53 * hash + Objects.hashCode(this.name);
         return hash;
@@ -66,7 +85,7 @@ public class Currency {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Currency other = (Currency) obj;
+        final Country other = (Country) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
@@ -78,7 +97,8 @@ public class Currency {
 
     @Override
     public String toString() {
-        return "Currency{" + "id=" + id + ", name=" + name + ", prices=" + prices + '}';
+        return "Country{" + "id=" + id + ", name=" + name + ", from_CitiesSet=" + from_CitiesSet + ", tours=" + tours + ", requests=" + requests + '}';
     }
+
 
 }

@@ -2,10 +2,10 @@ package com.smitsworks.redlo.hottours.parsers;
 
 import android.util.Log;
 
-import com.smitsworks.redlo.hottours.keys.ResponseKeys;
-import com.smitsworks.redlo.hottours.models.Request;
-import com.smitsworks.redlo.hottours.models.Response;
-import com.smitsworks.redlo.hottours.models.Tour;
+import com.smitsworks.redlo.hottours.keys.TourResponseKeys;
+import com.smitsworks.redlo.hottours.data.models.Request;
+import com.smitsworks.redlo.hottours.data.models.TourResponse;
+import com.smitsworks.redlo.hottours.data.models.Tour;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,24 +16,24 @@ import java.util.List;
 
 /**
  * Created by redlongcity on 03.10.2017.
- * class for parsing Response object from JSONObject
+ * class for parsing TourResponse object from JSONObject
  */
 
-public class ResponseParser  implements Parser<Response>{
+public class TourResponseParser implements Parser<TourResponse>{
 
     public static final String TAG = "TAG";
 
     @Override
-    public Response parse(JSONObject json) {
+    public TourResponse parse(JSONObject json) {
         try{
             if (json != null) {
                 if(json.length()>0){
-                    Response model = new Response();
+                    TourResponse model = new TourResponse();
 
-                 Long comeBackDelay = (long)json.getInt(ResponseKeys.KEY_COMEBACK_DELAY);
+                 Long comeBackDelay = (long)json.getInt(TourResponseKeys.KEY_COMEBACK_DELAY);
 
                     List<Tour> tourList = new ArrayList<Tour>();
-                    JSONArray array = json.getJSONArray(ResponseKeys.KEY_TOUR_LIST);
+                    JSONArray array = json.getJSONArray(TourResponseKeys.KEY_TOUR_LIST);
 
                     int arrayLength=array.length();
                     if(arrayLength>0){
@@ -48,7 +48,7 @@ public class ResponseParser  implements Parser<Response>{
 
                     RequestParser requestParser = new RequestParser();
                     Request request = requestParser.parse(
-                            json.getJSONObject(ResponseKeys.KEY_REQUEST));
+                            json.getJSONObject(TourResponseKeys.KEY_REQUEST));
 
                     model.setComeBackDelay(comeBackDelay);
                     model.setTourList(tourList);

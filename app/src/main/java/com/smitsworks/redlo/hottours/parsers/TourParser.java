@@ -7,14 +7,14 @@ import java.util.Set;
 
 
 import com.smitsworks.redlo.hottours.keys.TourKeys;
-import com.smitsworks.redlo.hottours.models.Country;
-import com.smitsworks.redlo.hottours.models.Currency;
-import com.smitsworks.redlo.hottours.models.From_Cities;
-import com.smitsworks.redlo.hottours.models.Hotel_Image;
-import com.smitsworks.redlo.hottours.models.Hotel_Rating;
-import com.smitsworks.redlo.hottours.models.Meal_Type;
-import com.smitsworks.redlo.hottours.models.Price;
-import com.smitsworks.redlo.hottours.models.Tour;
+import com.smitsworks.redlo.hottours.data.models.Country;
+import com.smitsworks.redlo.hottours.data.models.Currency;
+import com.smitsworks.redlo.hottours.data.models.From_Cities;
+import com.smitsworks.redlo.hottours.data.models.Hotel_Image;
+import com.smitsworks.redlo.hottours.data.models.Hotel_Rating;
+import com.smitsworks.redlo.hottours.data.models.Meal_Type;
+import com.smitsworks.redlo.hottours.data.models.Price;
+import com.smitsworks.redlo.hottours.data.models.Tour;
 
 import org.json.JSONArray;
 import org.json.JSONException;

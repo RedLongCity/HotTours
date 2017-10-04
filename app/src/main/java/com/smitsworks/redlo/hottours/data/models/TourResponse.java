@@ -1,4 +1,4 @@
-package com.smitsworks.redlo.hottours.models;
+package com.smitsworks.redlo.hottours.data.models;
 
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -12,7 +12,7 @@ import java.util.Objects;
  * 14/09/2017
  * class for incapsulating ItTours Hot Search response to client
  */
-public class Response {
+public class TourResponse {
     
     
     private Long comeBackDelay;
@@ -21,10 +21,10 @@ public class Response {
 
     private Request request;
 
-    public Response() {
+    public TourResponse() {
     }
 
-    public Response(Long comeBackDelay, List<Tour> tourList) {
+    public TourResponse(Long comeBackDelay, List<Tour> tourList) {
         this.comeBackDelay = comeBackDelay;
         this.tourList = tourList;
     }
@@ -75,7 +75,7 @@ public class Response {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Response other = (Response) obj;
+        final TourResponse other = (TourResponse) obj;
         if (!Objects.equals(this.comeBackDelay, other.comeBackDelay)) {
             return false;
         }
@@ -90,7 +90,7 @@ public class Response {
 
     @Override
     public String toString() {
-        return "Response{" + "comeBackDelay=" + comeBackDelay + ", tourList=" + tourList + ", request=" + request + '}';
+        return "TourResponse{" + "comeBackDelay=" + comeBackDelay + ", tourList=" + tourList + ", request=" + request + '}';
     }
     
     
