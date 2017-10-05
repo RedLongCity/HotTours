@@ -1,4 +1,4 @@
-package com.smitsworks.redlo.hottours.Tours;
+package com.smitsworks.redlo.hottours.tours;
 
 import android.content.Context;
 import android.support.v4.view.ViewCompat;

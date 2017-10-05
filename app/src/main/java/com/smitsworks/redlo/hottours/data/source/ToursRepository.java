@@ -60,12 +60,7 @@ public class ToursRepository implements ToursDataSource {
         checkNotNull(tourId);
         checkNotNull(callback);
 
-        Tour cahedTour = getTourWithId(tourId);
-
-        if (cahedTour != null) {
-            callback.onTourLoaded(cahedTour);
-            return;
-        }
+        getTourWithId(tourId,callback);
     }
 
     @Override
@@ -99,21 +94,19 @@ public class ToursRepository implements ToursDataSource {
     }
 
     @Nullable
-    private Tour getTourWithId(@NonNull Integer id){
+    private void getTourWithId(@NonNull Integer id,@NonNull final GetTourCallback callback){
         checkNotNull(id);
-        final Tour[] innerTour = new Tour[1];
        remoteDataSource.getTour(id, new GetTourCallback() {
             @Override
-            public void onTourLoaded(Tour tour) {
-                innerTour[0] =tour;
+            public void onTourLoaded(Tour tour){
+                callback.onTourLoaded(tour);
             }
 
             @Override
             public void onDataNotAvailable() {
-                innerTour[0] =null;
+                callback.onDataNotAvailable();
             }
 
         });
-        return innerTour[0];
     }
 }

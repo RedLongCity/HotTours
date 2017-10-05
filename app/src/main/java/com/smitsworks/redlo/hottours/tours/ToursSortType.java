@@ -1,4 +1,4 @@
-package com.smitsworks.redlo.hottours.Tours;
+package com.smitsworks.redlo.hottours.tours;
 
 /**
  * Created by redlongcity on 04.10.2017.

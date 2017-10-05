@@ -1,4 +1,4 @@
-package com.smitsworks.redlo.hottours.Tours;
+package com.smitsworks.redlo.hottours.tours;
 
 import android.support.annotation.NonNull;
 
@@ -21,17 +21,15 @@ public interface ToursContract {
 
         void showTours(List<Tour> tasks);
 
-        void showTourDetailsUi(String tourId);
+        void showTourDetailsUi(Integer tourId);
 
         void showLoadingTourError();
 
         void showNoTours();
 
-        void showActiveFilterLabel();
+        void showFilterLable();
 
-        void showCompletedFilterLabel();
-
-        void showAllFilterLabel();
+        void showSuccessfullyLoadedMessage();
 
         boolean isActive();
 
@@ -45,7 +43,9 @@ public interface ToursContract {
 
         void loadTours(boolean forceUpdate);
 
-        void openTourDetails(@NonNull Tour requestedTask);
+        void showFilterLabel();
+
+        void openTourDetails(@NonNull Tour requestedTour);
 
         void setSotring(ToursSortType requestType);
 
