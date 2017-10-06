@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="country_city_color">#ffffff</color>
+    <color name="price_color">#ffffff</color>
+    <color name="hotel_name">#e1d315</color>
+    <color name="currency">#ffffff</color>
+    <color name="date_from">#ffffff</color>
 </resources>

@@ -19,7 +19,7 @@ public interface ToursContract {
 
         void setLoadingIndicator(boolean active);
 
-        void showTours(List<Tour> tasks);
+        void showTours(List<Tour> tours);
 
         void showTourDetailsUi(Integer tourId);
 
@@ -27,13 +27,17 @@ public interface ToursContract {
 
         void showNoTours();
 
-        void showFilterLable();
-
         void showSuccessfullyLoadedMessage();
 
         boolean isActive();
 
         void showFilteringPopUpMenu();
+
+        void showCurrencyTypePopUpMenu();
+
+        void setCurrencyType(TourCurrencyType requestType);
+
+        TourCurrencyType getTourCurrencyType();
 
     }
 

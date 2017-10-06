@@ -138,7 +138,7 @@ public class ToursPresenter implements ToursContract.Presenter {
 
     @Override
     public void showFilterLabel() {
-        toursView.showFilterLable();
+        toursView.showFilterLabel();
     }
 
     @Override
@@ -157,4 +157,5 @@ public class ToursPresenter implements ToursContract.Presenter {
 
         return sortType;
     }
-}
+
+    }
