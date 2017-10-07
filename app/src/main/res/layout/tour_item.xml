@@ -2,10 +2,11 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tours_item_main"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="170dp"
-    android:background="@drawable/casino">
+    android:background="@drawable/tour_placeholder">
 
     <TextView
         android:id="@+id/country_city"
