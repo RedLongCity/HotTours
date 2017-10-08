@@ -21,22 +21,20 @@ public class ToursRepository implements ToursDataSource {
 
     private final ToursDataSource remoteDataSource;
 
-    private final ToursDataSource localDataSource;
 
     TourResponse cachedTours;
     Tour cachedTour;
 
     boolean cacheIsDirty = false;
 
-    private ToursRepository(ToursDataSource remoteDataSource, ToursDataSource localDataSource) {
+    private ToursRepository(ToursDataSource remoteDataSource) {
         this.remoteDataSource = checkNotNull(remoteDataSource);
-        this.localDataSource = checkNotNull(localDataSource);
     }
 
-    public static ToursRepository getInstance(ToursDataSource remoteDataSource,
-                                              ToursDataSource localDataSource){
+    public static ToursRepository getInstance(ToursDataSource remoteDataSource
+                                              ){
         if (INSTANCE == null) {
-            INSTANCE = new ToursRepository(remoteDataSource,localDataSource);
+            INSTANCE = new ToursRepository(remoteDataSource);
         }
         return INSTANCE;
     }
