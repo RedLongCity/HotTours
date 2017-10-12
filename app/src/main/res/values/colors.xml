@@ -8,4 +8,7 @@
     <color name="hotel_name">#e1d315</color>
     <color name="currency">#ffffff</color>
     <color name="date_from">#ffffff</color>
+    <color name="background_light">#ffffff</color>
+    <color name="details_text_head">#000000</color>
+    <color name="details_text_content">#000000</color>
 </resources>

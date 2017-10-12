@@ -5,4 +5,27 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="toolbar_placeholder">Country City</string>
+    <string name="from_city">From City</string>
+    <string name="from_city_placeholder">Some City</string>
+    <string name="hotel_name">Hotel Title:</string>
+    <string name="hotel_title_placeholder">Some hotel title</string>
+    <string name="hotel_rating">Hotel Rating:</string>
+    <string name="hotel_rating_placeholder">03</string>
+    <string name="meal_type">Meal Type:</string>
+    <string name="meal_type_placeholder">All Inclusive</string>
+    <string name="adult_amount_placeholder">2</string>
+    <string name="adult_amount">Adult Amount:</string>
+    <string name="children_amount">Children Amount:</string>
+    <string name="children_amount_placeholder">2</string>
+    <string name="duration">Duration:</string>
+    <string name="duration_placeholder">7 days</string>
+    <string name="date_from">Date From:</string>
+    <string name="date_from_placeholder">12.12.2017</string>
+    <string name="price_value">Price:</string>
+    <string name="price_value_placeholder">350</string>
+    <string name="currency_symbol_placeholder">$</string>
+    <string name="currency">Currency</string>
+    <string name="transport_type_placeholder">Flight</string>
+    <string name="tramspot_type">Transport Type</string>
 </resources>
