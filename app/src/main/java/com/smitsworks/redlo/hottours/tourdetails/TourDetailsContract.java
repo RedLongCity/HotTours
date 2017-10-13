@@ -32,23 +32,23 @@ public interface TourDetailsContract {
 
         void hideHotelName();
 
-        void showHotelRating(String hotelRating);
+        void showHotelRating(String rating);
 
         void hideHotelRating();
 
-        void showMealType(String mealType);
+        void showMealType(String meal);
 
         void hideMealType();
 
-        void showAdultAmount(Integer adultsAmount);
+        void showAdultAmount(Integer adults);
 
         void hideAdultAmount();
 
-        void showChildrenAmount(Integer childAmount);
+        void showChildrenAmount(Integer children);
 
         void hideChildrenAmount();
 
-        void showDuration(Integer duration);
+        void showDuration(Integer durationValue);
 
         void hideDuration();
 
@@ -60,7 +60,7 @@ public interface TourDetailsContract {
 
         void hidePriceValue();
 
-        void showCurrencySymbol(String currencySymbol);
+        void showCurrencySymbol(String symbol);
 
         void hideCurrencySymbol();
 
@@ -68,7 +68,7 @@ public interface TourDetailsContract {
 
         void hideFromCity();
 
-        void showTransportType(String transportType);
+        void showTransportType(String transport);
 
         void hideTransportType();
 
@@ -76,7 +76,7 @@ public interface TourDetailsContract {
 
         void hideImage();
 
-        void showTour(Integer tourId);
+        void orderTour(Integer tourId);
 
         boolean isActive();
 
@@ -84,7 +84,7 @@ public interface TourDetailsContract {
 
     interface Presenter extends BasePresenter{
 
-        void loadTour(Integer tourId);
+        void orderTour();
 
         void setCurrencyType(TourCurrencyType requestType);
 

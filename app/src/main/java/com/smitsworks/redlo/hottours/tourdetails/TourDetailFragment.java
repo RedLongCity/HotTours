@@ -1,5 +1,7 @@
 package com.smitsworks.redlo.hottours.tourdetails;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,10 +15,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.smitsworks.redlo.hottours.R;
-
-import org.w3c.dom.Text;
+import com.smitsworks.redlo.hottours.tours.ToursActivity;
+import com.squareup.picasso.Picasso;
 
 import java.sql.Date;
+
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * Created by redlongcity on 11.10.2017.
@@ -101,177 +105,217 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
 
             @Override
             public void onClick(View v) {
-
+                presenter.orderTour();
             }
         });
-
+        return root;
     }
 
-    @Nullable
+    @Override
+    public void orderTour(Integer tourId) {
+        Intent intent = new Intent(getContext(),TourOrderActivity.class);
+        intent.putExtra(TourOrderFragment.ARGUMENT_TOUR_ID,tourId);
+        startActivityForResult(intent,REQUEST_EDIT_TOUR);
+    }
 
+    public void showTours(){
+        Intent intent = new Intent(getContext(), ToursActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     public void setLoadingIndicator(boolean active) {
-
+        if(active){
+            mainCollapsing.setTitle("");
+            fromCity.setText(R.string.loading);
+            hotelTitle.setText(R.string.loading);
+            hotelRating.setText(R.string.loading);
+            mealType.setText(R.string.loading);
+            adultAmount.setText(R.string.loading);
+            childrenAmount.setText(R.string.loading);
+            duration.setText(R.string.loading);
+            fromDate.setText(R.string.loading);
+            price.setText(R.string.loading);
+            currencySymbol.setText(R.string.loading);
+            transportType.setText(R.string.loading);
+        }
     }
 
     @Override
     public void showMissingTour() {
-
+        mainCollapsing.setTitle(getString(R.string.no_data));
     }
 
     @Override
-    public void showCountryName(String countryName) {
-
+    public void showCountryName(@NonNull String countryName) {
+        mainCollapsing.setTitle(countryName);
     }
 
     @Override
     public void hideCountryName() {
-
+        mainCollapsing.setTitle(getString(R.string.no_data));
     }
 
     @Override
     public void showRegion(String region) {
-
+        mainCollapsing.setTitle(mainCollapsing.getTitle()+" "+region);
     }
 
     @Override
     public void hideRegion() {
-
+        mainCollapsing.setTitle(mainCollapsing.getTitle()+" "+R.string.no_data);
     }
 
     @Override
-    public void showHotelName(String hotelName) {
-
+    public void showHotelName(@NonNull String hotelName) {
+        hotelTitle.setVisibility(View.VISIBLE);
+        hotelTitle.setText(hotelName);
     }
 
     @Override
     public void hideHotelName() {
-
+        hotelTitle.setVisibility(View.GONE);
     }
 
     @Override
-    public void showHotelRating(String hotelRating) {
-
+    public void showHotelRating(@NonNull String rating) {
+        hotelRating.setVisibility(View.VISIBLE);
+        hotelRating.setText(rating);
     }
 
     @Override
     public void hideHotelRating() {
-
+        hotelRating.setVisibility(View.GONE);
     }
 
     @Override
-    public void showMealType(String mealType) {
-
+    public void showMealType(@NonNull String meal) {
+        mealType.setVisibility(View.VISIBLE);
+        mealType.setText(meal);
     }
 
     @Override
     public void hideMealType() {
-
+        mealType.setVisibility(View.GONE);
     }
 
     @Override
-    public void showAdultAmount(Integer adultsAmount) {
-
+    public void showAdultAmount(@NonNull Integer adults) {
+        adultAmount.setVisibility(View.VISIBLE);
+        adultAmount.setText(adults);
     }
 
     @Override
     public void hideAdultAmount() {
-
+        adultAmount.setVisibility(View.GONE);
     }
 
     @Override
-    public void showChildrenAmount(Integer childAmount) {
-
+    public void showChildrenAmount(@NonNull Integer children) {
+        childrenAmount.setVisibility(View.VISIBLE);
+        childrenAmount.setText(children);
     }
 
     @Override
     public void hideChildrenAmount() {
-
+        childrenAmount.setVisibility(View.GONE);
     }
 
     @Override
-    public void showDuration(Integer duration) {
-
+    public void showDuration(@NonNull Integer durationValue) {
+        duration.setVisibility(View.VISIBLE);
+        duration.setText(durationValue);
     }
 
     @Override
     public void hideDuration() {
-
+        duration.setVisibility(View.GONE);
     }
 
     @Override
-    public void showDateFrom(Date dateFrom) {
-
+    public void showDateFrom(@NonNull Date dateFrom) {
+        fromDate.setVisibility(View.VISIBLE);
+        fromDate.setText(dateFrom.toString());
     }
 
     @Override
     public void hideDateFrom() {
-
+        fromDate.setVisibility(View.GONE);
     }
 
     @Override
-    public void showPriceValue(Integer priceValue) {
-
+    public void showPriceValue(@NonNull Integer priceValue) {
+        price.setVisibility(View.VISIBLE);
+        price.setText(priceValue);
     }
 
     @Override
     public void hidePriceValue() {
-
+        price.setVisibility(View.GONE);
     }
 
     @Override
-    public void showCurrencySymbol(String currencySymbol) {
-
+    public void showCurrencySymbol(@NonNull String symbol) {
+        currencySymbol.setVisibility(View.VISIBLE);
+        currencySymbol.setText(symbol);
     }
 
     @Override
     public void hideCurrencySymbol() {
-
+        currencySymbol.setVisibility(View.GONE);
     }
 
     @Override
-    public void showFromCity(String city) {
-
+    public void showFromCity(@NonNull String city) {
+        fromCity.setVisibility(View.VISIBLE);
+        fromCity.setText(city);
     }
 
     @Override
     public void hideFromCity() {
-
+        fromCity.setVisibility(View.GONE);
     }
 
     @Override
-    public void showTransportType(String transportType) {
-
+    public void showTransportType(@NonNull String transport) {
+        transportType.setVisibility(View.VISIBLE);
+        transportType.setText(transport);
     }
 
     @Override
     public void hideTransportType() {
-
+        transportType.setVisibility(View.GONE);
     }
 
     @Override
-    public void showImage(String imageUrl) {
-
+    public void showImage(@NonNull String imageUrl) {
+        detailImage.setVisibility(View.VISIBLE);
+        Picasso.with(getActivity()).load(imageUrl).
+                placeholder(R.drawable.tour_placeholder).into(detailImage);
     }
 
     @Override
     public void hideImage() {
-
-    }
-
-    @Override
-    public void showTour(Integer tourId) {
-
+        detailImage.setVisibility(View.GONE);
     }
 
     @Override
     public boolean isActive() {
-        return false;
+        return isAdded();
     }
 
     @Override
     public void setPresenter(TourDetailsContract.Presenter presenter) {
+        presenter = checkNotNull(presenter);
+    }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode==REQUEST_EDIT_TOUR){
+            showTours();
+            if(resultCode== Activity.RESULT_OK){
+                getActivity().finish();
+            }
+        }
     }
 }

@@ -28,4 +28,6 @@
     <string name="currency">Currency</string>
     <string name="transport_type_placeholder">Flight</string>
     <string name="tramspot_type">Transport Type</string>
+    <string name="loading">Loading</string>
+    <string name="no_data">Tour didn\'t find</string>
 </resources>

@@ -177,8 +177,8 @@ public class ToursFragment extends Fragment implements ToursContract.View {
 
     @Override
     public void showTourDetailsUi(Integer tourId) {
-        Intent intent = new Intent(getContext(),ToursDetailActivity.class);
-        intent.putExtra(ToursDetailActivity.EXTRA_TOUR_ID, tourId);
+        Intent intent = new Intent(getContext(),TourDetailActivity.class);
+        intent.putExtra(TourDetailActivity.EXTRA_TOUR_ID, tourId);
         startActivity(intent);
     }
 
