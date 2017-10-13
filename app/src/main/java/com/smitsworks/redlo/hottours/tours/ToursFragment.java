@@ -2,6 +2,7 @@ package com.smitsworks.redlo.hottours.tours;
 
 import com.smitsworks.redlo.hottours.R;
 import com.smitsworks.redlo.hottours.data.models.Tour;
+import com.smitsworks.redlo.hottours.tourdetails.TourDetailActivity;
 import com.smitsworks.redlo.hottours.tours.ToursAdapter;
 
 import java.util.ArrayList;
@@ -179,6 +180,7 @@ public class ToursFragment extends Fragment implements ToursContract.View {
     public void showTourDetailsUi(Integer tourId) {
         Intent intent = new Intent(getContext(),TourDetailActivity.class);
         intent.putExtra(TourDetailActivity.EXTRA_TOUR_ID, tourId);
+        intent.putExtra(TourDetailActivity.EXTRA_CURRENCY_TYPE,currencyType);
         startActivity(intent);
     }
 
