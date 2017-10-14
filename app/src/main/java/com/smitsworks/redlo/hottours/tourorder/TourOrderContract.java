@@ -25,13 +25,19 @@ public interface TourOrderContract {
 
         void setCity(String city);
 
+        void showSuccessfullPosting();
+
+        void showFailedPosting();
+
         boolean isActive();
 
     }
 
     interface Presenter extends BasePresenter{
 
-        void orderTour(UserData data, Integer tourId);
+        void populateData();
+
+        void createOrder(String name,String phoneNumber,String email,String city);
 
         boolean isDataMissing();
 

@@ -12,5 +12,5 @@ public interface Urls {
     static final String BASE_REQUEST_URL=URL_JSON+"/gettours?hotel_rating=3:78"+
             "&night_from=2&night_till=7";
     static final String TOUR_URL="URL_JSON+/tour";
-
+    static final String ORDER_URL="URL_JSON+/postorder";
 }

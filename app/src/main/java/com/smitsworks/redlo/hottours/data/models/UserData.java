@@ -1,5 +1,7 @@
 package com.smitsworks.redlo.hottours.data.models;
 
+import com.google.common.base.Strings;
+
 /**
  * Created by redlo on 13.10.2017.
  */
@@ -13,6 +15,13 @@ public class UserData {
     private String email;
 
     private String city;
+
+    public UserData(String name, String mobileNumber, String email, String city) {
+        this.name = name;
+        this.mobileNumber = mobileNumber;
+        this.email = email;
+        this.city = city;
+    }
 
     public String getName() {
         return name;
@@ -45,6 +54,14 @@ public class UserData {
     public void setCity(String city) {
         this.city = city;
     }
+
+    public boolean isEmpty(){
+        return Strings.isNullOrEmpty(name)&&
+                Strings.isNullOrEmpty(mobileNumber)&&
+                Strings.isNullOrEmpty(email)&&
+                Strings.isNullOrEmpty(city);
+    }
+
 
     @Override
     public boolean equals(Object o) {

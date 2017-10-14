@@ -30,4 +30,11 @@
     <string name="tramspot_type">Transport Type</string>
     <string name="loading">Loading</string>
     <string name="no_data">Tour didn\'t find</string>
+    <string name="name_hint">Name</string>
+    <string name="phone_hint">Phone Number</string>
+    <string name="email_hint">Email</string>
+    <string name="city_hint">City</string>
+    <string name="empty_data_message">Some fields are empty</string>
+    <string name="posting_success">Order was sent</string>
+    <string name="posting_failed">Server is not available</string>
 </resources>

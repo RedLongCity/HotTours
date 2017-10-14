@@ -12,8 +12,6 @@ import okhttp3.Response;
 
 public class FilterResponseProvider implements Urls,Provider{
 
-    public static final String TAG = "TAG";
-
     @Override
     public Response provide() {
         return HttpUtils.getDataByURL(FILTERS_URL);

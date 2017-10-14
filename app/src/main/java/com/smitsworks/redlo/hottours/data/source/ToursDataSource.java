@@ -8,7 +8,8 @@ import com.smitsworks.redlo.hottours.data.models.TourResponse;
 import java.util.List;
 
 /**
- * Created by redlo on 04.10.2017.
+ * Created by redlongcity on 04.10.2017.
+ * interface for providing access to variable data sources
  */
 
 public interface ToursDataSource {
