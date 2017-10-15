@@ -23,6 +23,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 public class TourOrderFragment extends Fragment implements TourOrderContract.View {
 
+    public static final String ARGUMENT_ORDER_TOUR_ID = "ORDER_TOUR_ID";
+
     private TourOrderPresenter presenter;
 
     private EditText name;

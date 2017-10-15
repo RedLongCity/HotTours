@@ -37,4 +37,5 @@
     <string name="empty_data_message">Some fields are empty</string>
     <string name="posting_success">Order was sent</string>
     <string name="posting_failed">Server is not available</string>
+    <string name="create_order">Order</string>
 </resources>

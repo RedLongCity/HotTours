@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.smitsworks.redlo.hottours.R;
+import com.smitsworks.redlo.hottours.tourorder.TourOrderActivity;
+import com.smitsworks.redlo.hottours.tourorder.TourOrderFragment;
 import com.smitsworks.redlo.hottours.tours.ToursActivity;
 import com.squareup.picasso.Picasso;
 
@@ -114,7 +116,7 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
     @Override
     public void orderTour(Integer tourId) {
         Intent intent = new Intent(getContext(),TourOrderActivity.class);
-        intent.putExtra(TourOrderFragment.ARGUMENT_TOUR_ID,tourId);
+        intent.putExtra(TourOrderFragment.ARGUMENT_ORDER_TOUR_ID,tourId);
         startActivityForResult(intent,REQUEST_EDIT_TOUR);
     }
 
