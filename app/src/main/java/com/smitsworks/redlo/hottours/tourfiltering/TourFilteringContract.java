@@ -9,6 +9,7 @@ import com.smitsworks.redlo.hottours.data.models.From_Cities;
 import com.smitsworks.redlo.hottours.data.models.Hotel_Rating;
 import com.smitsworks.redlo.hottours.data.models.Meal_Type;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,27 +21,45 @@ public interface TourFilteringContract {
 
     interface View extends BaseView<Presenter>{
 
+        void showCountry(String name);
+
+        void showCity(String city);
+
+        void showHotelRating(Integer rating);
+
+        void showMealType(String name);
+
+        void showDateFrom(Date date);
+
+        void showAdultsAmount(Integer adults);
+
+        void showChildrenAmount(Integer children);
+
+        void openCountries();
+
+        void openCities();
+
+        void openHotelRatings();
+
+        void openMealTypes();
+
+        void openCalendar();
+
+        boolean isActive();
+
     }
 
     interface Presenter extends BasePresenter{
 
         void result(int requestCode, int resultCode);
 
-        void loadCountries(boolean forceUpdate);
+        void openCountries();
 
-        void loadCities(boolean forceUpdate);
+        void openCitites();
 
-        void loadHotelRatings(boolean forceUpdate);
+        void openHotelRatings();
 
-        void loadMealTypes(boolean forceUpdate);
-
-        void openCountries(@NonNull List<Country> countries);
-
-        void openCitites(@NonNull List<From_Cities> cities);
-
-        void openHotelRatings(@NonNull List<Hotel_Rating> ratings);
-
-        void openMealTypes(@NonNull List<Meal_Type> types);
+        void openMealTypes();
 
     }
 }

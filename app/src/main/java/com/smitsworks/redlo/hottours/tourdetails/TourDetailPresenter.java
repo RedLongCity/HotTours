@@ -48,7 +48,7 @@ public class TourDetailPresenter implements TourDetailsContract.Presenter {
 
     @Override
     public void orderTour() {
-        if (tourId != null) {
+        if (tourId == null) {
             tourDetailsView.showMissingTour();
             return;
         }
