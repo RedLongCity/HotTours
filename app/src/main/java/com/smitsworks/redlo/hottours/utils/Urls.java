@@ -1,7 +1,8 @@
 package com.smitsworks.redlo.hottours.utils;
 
 /**
- * Created by redlo on 04.10.2017.
+ * Created by redlongcity on 04.10.2017.
+ * interface for storaging urls
  */
 
 public interface Urls {
