@@ -39,5 +39,15 @@ dependencies {
                             //Picasso
     compile group: 'com.squareup.picasso', name: 'picasso', version: '2.5.2'
 
+                            //Horizontal Calendar
+
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        compile 'devs.mulham.horizontalcalendar:horizontalcalendar:1.1.7'
+    }
+
     testCompile 'junit:junit:4.12'
 }

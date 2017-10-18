@@ -11,4 +11,7 @@
     <color name="background_light">#ffffff</color>
     <color name="details_text_head">#000000</color>
     <color name="details_text_content">#000000</color>
+    <color name="background_grey">#d1cbcb</color>
+    <color name="background_white">#ffffff</color>
+    <color name="selected_text_color">#ffffff</color>
 </resources>

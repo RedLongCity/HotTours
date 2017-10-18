@@ -7,11 +7,8 @@ import android.support.annotation.Nullable;
 
 import com.smitsworks.redlo.hottours.data.models.Country;
 import com.smitsworks.redlo.hottours.data.models.From_Cities;
-import com.smitsworks.redlo.hottours.data.models.Hotel_Rating;
 import com.smitsworks.redlo.hottours.data.models.Meal_Type;
 import com.smitsworks.redlo.hottours.data.models.Request;
-
-import java.sql.Date;
 
 /**
  * Created by redlongcity on 18.10.2017.
@@ -172,4 +169,25 @@ public class TourFilteringPresenter implements TourFilteringContract.Presenter {
         }
     }
 
+    @Override
+    public void createRequest(String countryId, String cityId, String hotelRating, String mealTypeId, Integer nightFrom, Integer nightTill) {
+        Request request = new Request();
+        Country country= new Country();
+        country.setId(countryId);
+        From_Cities city = new From_Cities();
+        city.setId(cityId);
+        Meal_Type type = new Meal_Type();
+        type.setId(mealTypeId);
+        request.setCountry(country);
+        request.setFrom_Cities(city);
+        request.setHotel_Rating(hotelRating);
+        request.setMeal_Type(type);
+        request.setNight_From(nightFrom);
+        request.setNight_Till(nightTill);
+        filteringView.showTours(request);
+    }
+
+    private void populateFilters(){
+
+    }
 }

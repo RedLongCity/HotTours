@@ -38,4 +38,6 @@
     <string name="posting_success">Order was sent</string>
     <string name="posting_failed">Server is not available</string>
     <string name="create_order">Order</string>
+    <string name="to_country">To Country</string>
+    <string name="to_country_placeholder">Some Country</string>
 </resources>

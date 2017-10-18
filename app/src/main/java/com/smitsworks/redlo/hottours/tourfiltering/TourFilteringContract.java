@@ -4,6 +4,7 @@ import android.content.Intent;
 
 import com.smitsworks.redlo.hottours.BasePresenter;
 import com.smitsworks.redlo.hottours.BaseView;
+import com.smitsworks.redlo.hottours.data.models.Request;
 
 import java.util.Date;
 
@@ -40,6 +41,8 @@ public interface TourFilteringContract {
 
         void openCalendarUI();
 
+        void showTours(Request request);
+
         boolean isActive();
 
     }
@@ -55,6 +58,14 @@ public interface TourFilteringContract {
         void openMealTypes();
 
         void openCalendar();
+
+        void createRequest(
+                String countryId,
+                String cityId,
+                String hotelRating,
+                String mealTypeId,
+                Integer nightFrom,
+                Integer nightTill);
 
         void result(int requestCode, int resultCode, Intent data);
 

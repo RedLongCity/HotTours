@@ -1,6 +1,8 @@
 package com.smitsworks.redlo.hottours.data.models;
 
 import android.os.Build;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.annotation.RequiresApi;
 
 import java.util.HashSet;
@@ -13,7 +15,7 @@ import java.util.logging.Logger;
  * model for storaging requests
  */
 
-public class Request {
+public class Request implements Parcelable {
 
     private static final Logger LOG = Logger.getLogger(Request.class.getName());
     
@@ -35,7 +37,26 @@ public class Request {
     
     private Long requestDelay;
 
-    
+    public Request() {
+    }
+
+    public Request(Parcel in){
+        String[] data = new String[4];
+        in.readStringArray(data);
+        country = new Country();
+        country.setId(data[0]);
+        from_Cities = new From_Cities();
+        from_Cities.setId(data[1]);
+        hotel_Rating = data[2];
+        meal_Type = new Meal_Type();
+        meal_Type.setId(data[3]);
+
+        int[] intData = new int[2];
+        in.readIntArray(intData);
+        night_From = intData[0];
+        night_Till = intData[1];
+    }
+
     public Integer getId() {
         return id;
     }
@@ -107,9 +128,39 @@ public class Request {
     public void setRequestDelay(Long requestDelay) {
         this.requestDelay = requestDelay;
     }
-    
-    
-    
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeStringArray(new String[]{
+                country!=null?country.getId():"null",
+                from_Cities!=null?from_Cities.getId():"null",
+                hotel_Rating!=null?hotel_Rating:"3:78",
+                meal_Type!=null?meal_Type.getId():"null"});
+
+        dest.writeIntArray(new int[]{
+                night_From!=null?night_From:2,
+                night_Till!=null?night_Till:7,});
+    }
+
+    public static final Parcelable.Creator<Request> CREATOR =
+            new Parcelable.Creator<Request>(){
+
+                @Override
+                public Request createFromParcel(Parcel source) {
+                    return new Request(source);
+                }
+
+                @Override
+                public Request[] newArray(int size) {
+                    return new Request[size];
+                }
+            };
+
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public int hashCode() {
