@@ -1,16 +1,11 @@
 package com.smitsworks.redlo.hottours.tourfiltering;
 
-import android.support.annotation.NonNull;
+import android.content.Intent;
 
 import com.smitsworks.redlo.hottours.BasePresenter;
 import com.smitsworks.redlo.hottours.BaseView;
-import com.smitsworks.redlo.hottours.data.models.Country;
-import com.smitsworks.redlo.hottours.data.models.From_Cities;
-import com.smitsworks.redlo.hottours.data.models.Hotel_Rating;
-import com.smitsworks.redlo.hottours.data.models.Meal_Type;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by redlongcity on 17.10.2017.
@@ -29,29 +24,27 @@ public interface TourFilteringContract {
 
         void showMealType(String name);
 
-        void showDateFrom(Date date);
+        void showDateFrom(String date);
 
         void showAdultsAmount(Integer adults);
 
         void showChildrenAmount(Integer children);
 
-        void openCountries();
+        void openCountriesUI();
 
-        void openCities();
+        void openCitiesUI();
 
-        void openHotelRatings();
+        void openHotelRatingsUI();
 
-        void openMealTypes();
+        void openMealTypesUI();
 
-        void openCalendar();
+        void openCalendarUI();
 
         boolean isActive();
 
     }
 
     interface Presenter extends BasePresenter{
-
-        void result(int requestCode, int resultCode);
 
         void openCountries();
 
@@ -60,6 +53,10 @@ public interface TourFilteringContract {
         void openHotelRatings();
 
         void openMealTypes();
+
+        void openCalendar();
+
+        void result(int requestCode, int resultCode, Intent data);
 
     }
 }
