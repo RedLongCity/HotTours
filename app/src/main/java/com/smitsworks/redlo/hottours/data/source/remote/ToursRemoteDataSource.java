@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.smitsworks.redlo.hottours.data.models.Request;
 import com.smitsworks.redlo.hottours.data.models.Tour;
 import com.smitsworks.redlo.hottours.data.models.TourResponse;
 import com.smitsworks.redlo.hottours.data.source.ToursDataSource;
@@ -89,6 +90,31 @@ public class ToursRemoteDataSource implements ToursDataSource{
                     }
                 }
             });
+    }
+
+    @Override
+    public void getToursByRequest(@NonNull final Request request, @NonNull final LoadToursCallback callback) {
+        Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                TourProvider provider = new TourProvider();
+                Response response = provider.provide(request);
+                if(response.isSuccessful()){
+                    try{
+                        TourResponseParser parser = new TourResponseParser();
+                        TourResponse tourResponse = parser.parse(
+                          new JSONObject(response.body().string())
+                        );
+                        callback.onToursLoaded(tourResponse);
+                    }catch(@NonNull IOException | JSONException e){
+                        Log.e(TAG,e.getLocalizedMessage());
+                    }
+                }else{
+                    callback.onDataNotAvailable();
+                }
+            }
+        });
     }
 
     @Override

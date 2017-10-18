@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import com.smitsworks.redlo.hottours.data.models.Request;
 import com.smitsworks.redlo.hottours.data.models.Tour;
 import com.smitsworks.redlo.hottours.data.models.TourResponse;
 
@@ -54,6 +55,21 @@ public class ToursRepository implements ToursDataSource {
     }
 
     @Override
+    public void getToursByRequest(@NonNull Request request, @NonNull LoadToursCallback callback) {
+        checkNotNull(callback);
+        checkNotNull(request);
+
+        if(cachedTours!=null && !cacheIsDirty){
+            callback.onToursLoaded(cachedTours);
+            return;
+        }
+
+        if(cacheIsDirty){
+            getToursByRequestFromRemoteDataSource(request,callback);
+        }
+    }
+
+    @Override
     public void getTour(@NonNull Integer tourId, @NonNull GetTourCallback callback) {
         checkNotNull(tourId);
         checkNotNull(callback);
@@ -73,6 +89,22 @@ public class ToursRepository implements ToursDataSource {
 
     private void getToursFromRemoteDataSource(@NonNull final LoadToursCallback callback){
         remoteDataSource.getTours(new LoadToursCallback() {
+            @Override
+            public void onToursLoaded(TourResponse tourResponse) {
+                refreshCache(tourResponse);
+                callback.onToursLoaded(tourResponse);
+            }
+
+            @Override
+            public void onDataNotAvailable() {
+                callback.onDataNotAvailable();
+            }
+        });
+    }
+
+    private void getToursByRequestFromRemoteDataSource(@NonNull Request request,
+            @NonNull final LoadToursCallback callback){
+        remoteDataSource.getToursByRequest(request, new LoadToursCallback() {
             @Override
             public void onToursLoaded(TourResponse tourResponse) {
                 refreshCache(tourResponse);

@@ -7,20 +7,14 @@ import com.smitsworks.redlo.hottours.utils.Urls;
 import okhttp3.Response;
 
 /**
- * Created by redlongcity on 04.10.2017.
- * class for providing Tour from server
+ * Created by redlongcity on 18.10.2017.
+ * posts Request to server
  */
 
-public class TourProvider implements Provider,Urls {
-
-
+public class RequestProvider implements Provider,Urls {
     @Override
     public Response provide() {
         return null;
-    }
-
-    public Response provide(Integer id){
-        return HttpUtils.getDataByURL(TOUR_URL+"/"+id);
     }
 
     public Response provide(Request request){
