@@ -124,7 +124,18 @@ public class ToursPresenter implements ToursContract.Presenter {
                         });
                         break;
                 }
+
+                if(!toursView.isActive()){
+                    return;
+                }
+                if(showLoadingUI){
+                    toursView.setLoadingIndicator(false);
+                }
+
+                processTours(tourList);
             }
+
+
 
             @Override
             public void onDataNotAvailable() {
@@ -134,6 +145,19 @@ public class ToursPresenter implements ToursContract.Presenter {
                 toursView.showLoadingTourError();
             }
         });
+    }
+
+    private void processTours(List<Tour> tours){
+        if(tours.isEmpty()){
+            processEmptyTours();
+        }else{
+            toursView.showTours(tours);
+            showFilterLabel();
+        }
+    }
+
+    private void processEmptyTours(){
+        toursView.showNoTours();
     }
 
     @Override

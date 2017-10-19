@@ -40,4 +40,5 @@
     <string name="create_order">Order</string>
     <string name="to_country">To Country</string>
     <string name="to_country_placeholder">Some Country</string>
+    <string name="night_amount">Night Amount</string>
 </resources>

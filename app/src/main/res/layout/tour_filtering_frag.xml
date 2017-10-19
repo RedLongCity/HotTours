@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,11 +17,11 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
                 android:layout_marginRight="1dp"
-                android:orientation="vertical"
                 android:layout_weight="4"
-                android:background="@color/background_grey">
+                android:background="@color/background_grey"
+                android:orientation="vertical"
+                android:padding="5dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -30,7 +30,7 @@
                     android:padding="2dp"
                     android:text="@string/from_city"
                     android:textColor="@color/details_text_head"
-                    android:textSize="16dp"/>
+                    android:textSize="16dp" />
 
                 <TextView
                     android:id="@+id/from_city_tv"
@@ -47,11 +47,11 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="3"
-                android:padding="5dp"
                 android:layout_marginLeft="1dp"
-                android:background="@color/background_grey">
+                android:layout_weight="3"
+                android:background="@color/background_grey"
+                android:orientation="vertical"
+                android:padding="5dp">
 
 
                 <TextView
@@ -61,7 +61,7 @@
                     android:padding="2dp"
                     android:text="@string/to_country"
                     android:textColor="@color/details_text_head"
-                    android:textSize="16dp"/>
+                    android:textSize="16dp" />
 
                 <TextView
                     android:id="@+id/to_country_tv"
@@ -85,11 +85,11 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
                 android:layout_marginRight="1dp"
-                android:orientation="vertical"
                 android:layout_weight="4"
-                android:background="@color/background_white">
+                android:background="@color/background_white"
+                android:orientation="vertical"
+                android:padding="5dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -98,7 +98,7 @@
                     android:padding="2dp"
                     android:text="@string/hotel_rating"
                     android:textColor="@color/details_text_head"
-                    android:textSize="16dp"/>
+                    android:textSize="16dp" />
 
                 <TextView
                     android:id="@+id/hotel_rating_filters_tv"
@@ -107,7 +107,7 @@
                     android:lineSpacingExtra="4dp"
                     android:padding="2dp"
                     android:text="@string/hotel_rating_placeholder"
-                    android:textColor="@color/details_text_head"
+                    android:textColor="@color/details_text_content"
                     android:textSize="20dp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -115,11 +115,11 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="3"
-                android:padding="5dp"
                 android:layout_marginLeft="1dp"
-                android:background="@color/background_white">
+                android:layout_weight="3"
+                android:background="@color/background_white"
+                android:orientation="vertical"
+                android:padding="5dp">
 
 
                 <TextView
@@ -129,7 +129,7 @@
                     android:padding="2dp"
                     android:text="@string/meal_type"
                     android:textColor="@color/details_text_head"
-                    android:textSize="16dp"/>
+                    android:textSize="16dp" />
 
                 <TextView
                     android:id="@+id/meal_type_filters_tv"
@@ -145,16 +145,40 @@
 
         </LinearLayout>
 
-        <android.support.design.widget.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <devs.mulham.horizontalcalendar.HorizontalCalendarView
-            android:id="@+id/calendarView"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            app:textColorSelected="@color/selected_text_color"/>
-    </android.support.design.widget.AppBarLayout>
+            android:orientation="vertical"
+            android:background="@color/background_grey">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:layout_marginTop="20dp"
+            android:padding="2dp"
+            android:text="@string/night_amount"
+            android:textColor="@color/details_text_head"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <com.appyvet.rangebar.RangeBar
+            xmlns:custom="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/rangebar"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            custom:rangeBarColor="@color/details_text_content"
+            custom:connectingLineColor="@color/colorPrimary"
+            custom:pinColor="@color/pin_color"
+            custom:tickColor="@color/pin_color"
+            custom:tickStart="1"
+            custom:tickInterval="1"
+            custom:tickEnd="9"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"/>
+
+            </LinearLayout>
     </LinearLayout>
+
+
 </ScrollView>

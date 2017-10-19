@@ -14,4 +14,5 @@
     <color name="background_grey">#d1cbcb</color>
     <color name="background_white">#ffffff</color>
     <color name="selected_text_color">#ffffff</color>
+    <color name="pin_color">#e7491d</color>
 </resources>
