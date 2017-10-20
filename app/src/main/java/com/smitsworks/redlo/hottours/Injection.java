@@ -3,8 +3,10 @@ package com.smitsworks.redlo.hottours;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
+import com.smitsworks.redlo.hottours.data.source.FiltersRepository;
 import com.smitsworks.redlo.hottours.data.source.OrderRepository;
 import com.smitsworks.redlo.hottours.data.source.ToursRepository;
+import com.smitsworks.redlo.hottours.data.source.remote.FilterRemoteDataSource;
 import com.smitsworks.redlo.hottours.data.source.remote.OrderRemoteDataPoster;
 import com.smitsworks.redlo.hottours.data.source.remote.ToursRemoteDataSource;
 
@@ -27,5 +29,8 @@ public class Injection {
         return OrderRepository.getInstance(OrderRemoteDataPoster.getInstance());
     }
 
-
+    public static FiltersRepository provideFilterRepository(@NonNull Context context){
+        checkNotNull(context);
+        return FiltersRepository.getInstance(FilterRemoteDataSource.getInstance());
+    }
 }

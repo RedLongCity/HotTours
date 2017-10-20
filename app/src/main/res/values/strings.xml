@@ -41,4 +41,6 @@
     <string name="to_country">To Country</string>
     <string name="to_country_placeholder">Some Country</string>
     <string name="night_amount">Night Amount</string>
+    <string name="load_countries_error">Error when loading countries</string>
+    <string name="no_countries_found">No countries found</string>
 </resources>
