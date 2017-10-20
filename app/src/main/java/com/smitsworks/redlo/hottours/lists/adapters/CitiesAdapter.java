@@ -7,44 +7,44 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.smitsworks.redlo.hottours.R;
-import com.smitsworks.redlo.hottours.data.models.Country;
-import com.smitsworks.redlo.hottours.lists.countries.CountriesFragment;
+import com.smitsworks.redlo.hottours.data.models.From_Cities;
+import com.smitsworks.redlo.hottours.lists.Cities.CitiesFragment;
 
 import java.util.List;
 
 /**
- * Created by redlongcity on 19.10.2017.
- * adapter for creating list from Countries
+ * Created by redlongcity on 20.10.2017.
+ * adapter for creating list of cities
  */
 
-public class CountryAdapter extends BaseAdapter {
+public class CitiesAdapter extends BaseAdapter {
 
-    private List<Country> countries;
-    private CountriesFragment.CountriesItemListener listener;
+    private List<From_Cities> cities;
+    private CitiesFragment.CitiesItemListener listener;
 
-    public CountryAdapter(List<Country> countries,
-                          CountriesFragment.CountriesItemListener listener) {
-        this.countries = countries;
+    public CitiesAdapter(List<From_Cities> cities,
+                         CitiesFragment.CitiesItemListener listener) {
+        this.cities = cities;
         this.listener = listener;
     }
 
-    public void replaceData(List<Country> countries){
-        setCountries(countries);
+    public void replaceData(List<From_Cities> cities){
+        setCities(cities);
         notifyDataSetChanged();
     }
 
-    public void setCountries(List<Country> countries) {
-        this.countries = countries;
+    public void setCities(List<From_Cities> cities) {
+        this.cities = cities;
     }
 
     @Override
     public int getCount() {
-        return countries.size();
+        return cities.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return countries.get(position);
+        return cities.get(position);
     }
 
     @Override
@@ -59,14 +59,13 @@ public class CountryAdapter extends BaseAdapter {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
             rowView = inflater.inflate(R.layout.list_item,parent,false);
 
-            final Country country = (Country) getItem(position);
+            final From_Cities city = (From_Cities) getItem(position);
 
             TextView textView = (TextView) rowView.findViewById(R.id.li_text_view);
-            textView.setText(country.getName());
+            textView.setText(city.getName());
 
             return rowView;
         }
-
-        return null;
+        return rowView;
     }
 }

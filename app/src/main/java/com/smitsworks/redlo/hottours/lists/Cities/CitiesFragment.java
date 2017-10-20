@@ -1,4 +1,4 @@
-package com.smitsworks.redlo.hottours.lists.countries;
+package com.smitsworks.redlo.hottours.lists.Cities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -17,8 +17,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.smitsworks.redlo.hottours.R;
-import com.smitsworks.redlo.hottours.data.models.Country;
-import com.smitsworks.redlo.hottours.lists.adapters.CountriesAdapter;
+import com.smitsworks.redlo.hottours.data.models.From_Cities;
+import com.smitsworks.redlo.hottours.lists.adapters.CitiesAdapter;
 import com.smitsworks.redlo.hottours.tourfiltering.TourFilteringPresenter;
 import com.smitsworks.redlo.hottours.tours.ScrollChildSwipeRefreshLayout;
 
@@ -28,15 +28,15 @@ import java.util.List;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- * Created by redlongcity on 19.10.2017.
- * Displays list of countries
+ * Created by redlongcity on 20.10.2017.
+ * Displays list of cities
  */
 
-public class CountriesFragment extends Fragment implements CountriesContract.View{
+public class CitiesFragment extends Fragment implements CitiesContract.View {
 
-    private CountriesContract.Presenter presenter;
+    private CitiesContract.Presenter presenter;
 
-    private CountriesAdapter adapter;
+    private CitiesAdapter adapter;
 
     private View noElementsView;
 
@@ -46,17 +46,17 @@ public class CountriesFragment extends Fragment implements CountriesContract.Vie
 
     private LinearLayout elementsView;
 
-    public CountriesFragment() {
+    public CitiesFragment() {
     }
 
-    public static CountriesFragment newInstance(){
-        return new CountriesFragment();
+    public static CitiesFragment newInstance(){
+        return new CitiesFragment();
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        adapter = new CountriesAdapter(new ArrayList<Country>(),itemListener);
+        adapter = new CitiesAdapter(new ArrayList<From_Cities>(),itemListener);
     }
 
     @Override
@@ -92,7 +92,7 @@ public class CountriesFragment extends Fragment implements CountriesContract.Vie
 
             @Override
             public void onRefresh() {
-                presenter.loadCountries(false);
+                presenter.loadCities(false);
             }
         });
         setHasOptionsMenu(true);
@@ -100,10 +100,10 @@ public class CountriesFragment extends Fragment implements CountriesContract.Vie
         return root;
     }
 
-    CountriesItemListener itemListener = new CountriesItemListener() {
+    CitiesItemListener itemListener = new CitiesItemListener() {
         @Override
-        public void onCountryClick(Country clickedCountry) {
-            presenter.chooseCountry(clickedCountry);
+        public void onCityClick(From_Cities clickedCity) {
+            presenter.chooseCity(clickedCity);
         }
     };
 
@@ -125,33 +125,33 @@ public class CountriesFragment extends Fragment implements CountriesContract.Vie
     }
 
     @Override
-    public void showLoadingCountriesError() {
-        showMessage(getString(R.string.load_countries_error));
+    public void showLoadingCitiesError() {
+        showMessage(getString(R.string.load_cities_error));
     }
 
     @Override
-    public void showCountries(List<Country> countries) {
-        adapter.replaceData(countries);
+    public void showCitites(List<From_Cities> cities) {
+        adapter.replaceData(cities);
 
         elementsView.setVisibility(View.VISIBLE);
         noElementsView.setVisibility(View.GONE);
     }
 
     @Override
-    public void showNoCountries() {
-        showNoCountriesViews(
-                getString(R.string.no_countries_found),
+    public void showNoCities() {
+        showNoCitiesViews(
+                getString(R.string.no_cities_founded),
                 R.drawable.ic_assignment_turned_in_24dp
         );
     }
 
     @Override
-    public void chooseCountryUI(Country country) {
+    public void chooseCityUI(From_Cities city) {
         Intent intent = new Intent();
         intent.putExtra(
-                TourFilteringPresenter.COUNTRY_EXTRA,country.getId());
+                TourFilteringPresenter.CITY_EXTRA,city.getId());
         intent.putExtra(
-                TourFilteringPresenter.COUNTRY_NAME_EXTRA,country.getName());
+                TourFilteringPresenter.CITY_NAME_EXTRA,city.getName());
         getActivity().setResult(Activity.RESULT_OK,intent);
         getActivity().finish();
     }
@@ -162,7 +162,7 @@ public class CountriesFragment extends Fragment implements CountriesContract.Vie
     }
 
     @Override
-    public void setPresenter(CountriesContract.Presenter presenter) {
+    public void setPresenter(CitiesContract.Presenter presenter) {
         presenter = checkNotNull(presenter);
     }
 
@@ -170,7 +170,7 @@ public class CountriesFragment extends Fragment implements CountriesContract.Vie
         Snackbar.make(getView(),message,Snackbar.LENGTH_LONG).show();
     }
 
-    private void showNoCountriesViews(String mainText, int iconRes){
+    private void showNoCitiesViews(String mainText, int iconRes){
         elementsView.setVisibility(View.GONE);
         noElementsView.setVisibility(View.VISIBLE);
 
@@ -178,9 +178,9 @@ public class CountriesFragment extends Fragment implements CountriesContract.Vie
         noElementsIcon.setImageDrawable(getResources().getDrawable(iconRes));
     }
 
-    public interface CountriesItemListener{
+    public interface CitiesItemListener{
 
-        void onCountryClick(Country clickedCountry);
+        void onCityClick(From_Cities clickedCity);
 
     }
 }

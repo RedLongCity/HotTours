@@ -43,4 +43,6 @@
     <string name="night_amount">Night Amount</string>
     <string name="load_countries_error">Error when loading countries</string>
     <string name="no_countries_found">No countries found</string>
+    <string name="load_cities_error">No cities loaded</string>
+    <string name="no_cities_founded">Found no cities</string>
 </resources>
