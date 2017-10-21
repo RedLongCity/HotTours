@@ -7,44 +7,44 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.smitsworks.redlo.hottours.R;
-import com.smitsworks.redlo.hottours.data.models.From_Cities;
-import com.smitsworks.redlo.hottours.lists.cities.CitiesFragment;
+import com.smitsworks.redlo.hottours.data.models.Hotel_Rating;
+import com.smitsworks.redlo.hottours.lists.hotelratings.HotelRatingsFragment;
 
 import java.util.List;
 
 /**
- * Created by redlongcity on 20.10.2017.
- * adapter for creating list of cities
+ * Created by redlongcity on 21.10.2017.
+ * adapter for convertion Hotel_Rating object ot list element
  */
 
-public class CitiesAdapter extends BaseAdapter {
+public class HotelRatingsAdapter extends BaseAdapter {
 
-    private List<From_Cities> cities;
-    private CitiesFragment.CitiesItemListener listener;
+    private List<Hotel_Rating> ratings;
+    private HotelRatingsFragment.HotelRatingsItemListener listener;
 
-    public CitiesAdapter(List<From_Cities> cities,
-                         CitiesFragment.CitiesItemListener listener) {
-        this.cities = cities;
+    public HotelRatingsAdapter(List<Hotel_Rating> ratings,
+                               HotelRatingsFragment.HotelRatingsItemListener listener) {
+        this.ratings = ratings;
         this.listener = listener;
     }
 
-    public void replaceData(List<From_Cities> cities){
-        setCities(cities);
+    public void replaceData(List<Hotel_Rating> ratings){
+        setRatings(ratings);
         notifyDataSetChanged();
     }
 
-    public void setCities(List<From_Cities> cities) {
-        this.cities = cities;
+    public void setRatings(List<Hotel_Rating> ratings) {
+        this.ratings = ratings;
     }
 
     @Override
     public int getCount() {
-        return cities.size();
+        return ratings.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return cities.get(position);
+        return ratings.get(position);
     }
 
     @Override
@@ -59,10 +59,10 @@ public class CitiesAdapter extends BaseAdapter {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
             rowView = inflater.inflate(R.layout.list_item,parent,false);
 
-            final From_Cities city = (From_Cities) getItem(position);
+            final Hotel_Rating rating = ratings.get(position);
 
             TextView textView = (TextView) rowView.findViewById(R.id.li_text_view);
-            textView.setText(city.getName());
+            textView.setText(rating.getName());
 
             return rowView;
         }

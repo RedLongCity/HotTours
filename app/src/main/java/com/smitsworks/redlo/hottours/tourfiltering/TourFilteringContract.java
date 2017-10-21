@@ -21,7 +21,7 @@ public interface TourFilteringContract {
 
         void showCity(String city);
 
-        void showHotelRating(Integer rating);
+        void showHotelRating(String rating);
 
         void showMealType(String name);
 

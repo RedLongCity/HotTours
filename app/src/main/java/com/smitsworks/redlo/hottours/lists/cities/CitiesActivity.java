@@ -1,4 +1,4 @@
-package com.smitsworks.redlo.hottours.lists.Cities;
+package com.smitsworks.redlo.hottours.lists.cities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

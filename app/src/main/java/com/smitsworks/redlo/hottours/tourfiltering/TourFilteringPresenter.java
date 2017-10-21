@@ -62,7 +62,7 @@ public class TourFilteringPresenter implements TourFilteringContract.Presenter {
     private String cityName;
 
     @Nullable
-    private Integer hotelRatingValue;
+    private String hotelRatingValue;
 
     @Nullable
     private String mealTypeName;
@@ -76,6 +76,8 @@ public class TourFilteringPresenter implements TourFilteringContract.Presenter {
     public static final String CITY_NAME_EXTRA="CITY_NAME_EXTRA";
 
     public static final String HOTEL_RATING_EXTRA="HOTEL_RATING_EXTRA";
+
+    public static final String HOTEL_RATING_NAME_EXTRA="HOTEL_RATING_NAME_EXTRA";
 
     public static final String MEAL_TYPE_EXTRA="MEAL_TYPE_EXTRA";
 
@@ -144,7 +146,7 @@ public class TourFilteringPresenter implements TourFilteringContract.Presenter {
                 if(resultCode == Activity.RESULT_OK){
                     if(data.hasExtra(HOTEL_RATING_EXTRA)){
                         hotelRatingId = data.getStringExtra(HOTEL_RATING_EXTRA);
-                        hotelRatingValue = data.getIntExtra(HOTEL_RATING_EXTRA,3);
+                        hotelRatingValue = data.getStringExtra(HOTEL_RATING_NAME_EXTRA);
                         filteringView.showHotelRating(hotelRatingValue);
                     }
                 }

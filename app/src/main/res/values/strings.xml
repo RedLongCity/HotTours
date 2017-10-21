@@ -45,4 +45,6 @@
     <string name="no_countries_found">No countries found</string>
     <string name="load_cities_error">No cities loaded</string>
     <string name="no_cities_founded">Found no cities</string>
+    <string name="load_hotel_ratings_error">No Hotel Ratings were loaded</string>
+    <string name="no_hotel_ratings_found">No Hotel Ratings faounded</string>
 </resources>

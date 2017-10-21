@@ -1,12 +1,10 @@
-package com.smitsworks.redlo.hottours.lists.Cities;
+package com.smitsworks.redlo.hottours.lists.cities;
 
 import android.support.annotation.NonNull;
 
 import com.smitsworks.redlo.hottours.BasePresenter;
 import com.smitsworks.redlo.hottours.BaseView;
-import com.smitsworks.redlo.hottours.data.models.Country;
 import com.smitsworks.redlo.hottours.data.models.From_Cities;
-import com.smitsworks.redlo.hottours.tourorder.TourOrderContract;
 
 import java.util.List;
 
