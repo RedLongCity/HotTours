@@ -15,6 +15,8 @@ import com.smitsworks.redlo.hottours.utils.ActivityUtils;
 
 public class CountriesActivity extends AppCompatActivity {
 
+    public static final int REQUEST_CHOOSE_COUNTRY = 1;
+
     private CountriesPresenter presenter;
 
     @Override

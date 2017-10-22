@@ -21,7 +21,7 @@
     <string name="duration">Duration:</string>
     <string name="duration_placeholder">7 days</string>
     <string name="date_from">Date From:</string>
-    <string name="date_from_placeholder">12.12.2017</string>
+    <string name="date_from_placeholder">Fri, Dec 31, 2017</string>
     <string name="price_value">Price:</string>
     <string name="price_value_placeholder">350</string>
     <string name="currency_symbol_placeholder">$</string>
@@ -47,4 +47,14 @@
     <string name="no_cities_founded">Found no cities</string>
     <string name="load_hotel_ratings_error">No Hotel Ratings were loaded</string>
     <string name="no_hotel_ratings_found">No Hotel Ratings faounded</string>
+    <string name="load_meal_types_error">No Meal Types were loaded</string>
+    <string name="no_meal_types_found">No Meal Types were founded</string>
+    <string name="date_till">Till:</string>
+    <string name="date_till_placeholder">Wed, Dec 31, 2017</string>
+    <string name="travelers">Travelers</string>
+    <string name="adults">Adults:</string>
+    <string name="adults_placeholder">1</string>
+    <string name="children">Children:</string>
+    <string name="children_placeholder">0</string>
+    <string name="find_button">Find tours</string>
 </resources>

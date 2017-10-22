@@ -77,6 +77,7 @@
 
         </LinearLayout>
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -148,8 +149,76 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/background_white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="4"
+                android:background="@color/background_grey"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="4dp"
+                    android:padding="2dp"
+                    android:text="@string/date_from"
+                    android:textColor="@color/details_text_head"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/date_from_filters_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="4dp"
+                    android:padding="2dp"
+                    android:text="@string/date_from_placeholder"
+                    android:textColor="@color/details_text_content"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="1dp"
+                android:layout_weight="3"
+                android:background="@color/background_grey"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="4dp"
+                    android:padding="2dp"
+                    android:text="@string/date_till"
+                    android:textColor="@color/details_text_head"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/date_till_filters_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="4dp"
+                    android:padding="2dp"
+                    android:text="@string/date_till_placeholder"
+                    android:textColor="@color/details_text_head"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@color/background_grey">
+            android:background="@color/background_white">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -178,6 +247,105 @@
             android:layout_marginRight="16dp"/>
 
             </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:padding="2dp"
+            android:text="@string/travelers"
+            android:textColor="@color/details_text_head"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background_grey">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="4"
+                android:background="@color/background_white"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="4dp"
+                    android:padding="2dp"
+                    android:text="@string/adults"
+                    android:textColor="@color/details_text_head"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/adult_amount_filters_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="4dp"
+                    android:padding="2dp"
+                    android:text="@string/adults_placeholder"
+                    android:textColor="@color/details_text_content"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="1dp"
+                android:layout_weight="3"
+                android:background="@color/background_white"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="4dp"
+                    android:padding="2dp"
+                    android:text="@string/children"
+                    android:textColor="@color/details_text_head"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/children_amount_filters_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="4dp"
+                    android:padding="2dp"
+                    android:text="@string/children_placeholder"
+                    android:textColor="@color/details_text_head"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/but_find"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/find_button"
+            android:textColor="#ffffff"
+            android:background="@drawable/button"
+            />
+
     </LinearLayout>
 
 

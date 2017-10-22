@@ -15,6 +15,8 @@ import com.smitsworks.redlo.hottours.utils.ActivityUtils;
 
 public class HotelRatingsActivity extends AppCompatActivity {
 
+    public static final int REQUEST_CHOOSE_RATING = 3;
+
     private HotelRatingsPresenter presenter;
 
     @Override

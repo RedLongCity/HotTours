@@ -15,6 +15,8 @@ import com.smitsworks.redlo.hottours.utils.ActivityUtils;
 
 public class CitiesActivity extends AppCompatActivity {
 
+    public static final int REQUEST_CHOOSE_CITY = 2;
+
     private CitiesPresenter presenter;
 
     @Override

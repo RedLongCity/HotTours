@@ -27,6 +27,8 @@ public interface TourFilteringContract {
 
         void showDateFrom(String date);
 
+        void showDateTill(String date);
+
         void showAdultsAmount(Integer adults);
 
         void showChildrenAmount(Integer children);
@@ -39,7 +41,13 @@ public interface TourFilteringContract {
 
         void openMealTypesUI();
 
-        void openCalendarUI();
+        void openDateFromUI();
+
+        void openDateTillUI();
+
+        void openAdultsUI();
+
+        void openChildrenUI();
 
         void showTours(Request request);
 
@@ -57,15 +65,19 @@ public interface TourFilteringContract {
 
         void openMealTypes();
 
-        void openCalendar();
+        void openDateFrom();
 
-        void createRequest(
-                String countryId,
-                String cityId,
-                String hotelRating,
-                String mealTypeId,
-                Integer nightFrom,
-                Integer nightTill);
+        void openDateTill();
+
+        void openAdults();
+
+        void openChildren();
+
+        void createRequest();
+
+        void setNightFrom(Integer nightFrom);
+
+        void setNightTill(Integer nightTill);
 
         void result(int requestCode, int resultCode, Intent data);
 

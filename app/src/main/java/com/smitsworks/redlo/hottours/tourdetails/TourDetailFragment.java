@@ -68,10 +68,10 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
     private TextView transportType;
 
     public static TourDetailFragment newInstance(@Nullable Integer tourId){
-        Bundle argumentss = new Bundle();
-        argumentss.putInt(ARGUMENT_TOUR_ID,tourId);
+        Bundle arguments = new Bundle();
+        arguments.putInt(ARGUMENT_TOUR_ID,tourId);
         TourDetailFragment fragment = new TourDetailFragment();
-        fragment.setArguments(argumentss);
+        fragment.setArguments(arguments);
         return fragment;
     }
 
