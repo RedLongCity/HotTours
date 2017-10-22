@@ -19,6 +19,8 @@ import com.smitsworks.redlo.hottours.lists.countries.CountriesActivity;
 import com.smitsworks.redlo.hottours.lists.hotelratings.HotelRatingsActivity;
 import com.smitsworks.redlo.hottours.lists.mealtypes.MealTypesActivity;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 /**
  * Created by redlobgcity on 22.10.2017.
  * shows fields for creating filters
@@ -171,27 +173,30 @@ public class TourFilteringFragment extends Fragment implements TourFilteringCont
         Intent intent = new Intent(getContext(),AdultsActivity.class);
         startActivity(intent);
     }
-    @Override
-    public void showTours(Request request) {
-        Intent intent = new Intent();
-        intent.putExtra(request,TourFilteringActivity.ON_REQUEST);
-        getActivity().setResult(TourFilterngActivity.REQUEST_EXTRA);
-        getActivity().finish();
-    }
 
     @Override
     public void openChildrenUI() {
-
+        Intent intent = new Intent(getContext(),ChildrenActivity.class);
+        startActivity(intent);
     }
 
     @Override
+    public void showTours(Request request) {
+        Intent intent = new Intent();
+        intent.putExtra(TourFilteringActivity.ON_REQUEST,request);
+        getActivity().setResult(TourFilteringActivity.RESULT_REQUEST,intent);
+        getActivity().finish();
+    }
+
+
+    @Override
     public boolean isActive() {
-        return false;
+        return isAdded();
     }
 
     @Override
     public void setPresenter(TourFilteringContract.Presenter presenter) {
-
+        presenter = checkNotNull(presenter);
     }
 
     View.OnClickListener clickListener = new View.OnClickListener(){
