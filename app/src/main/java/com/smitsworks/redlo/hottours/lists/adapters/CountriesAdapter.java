@@ -57,15 +57,21 @@ public class CountriesAdapter extends BaseAdapter {
         View rowView = convertView;
         if (rowView == null) {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-            rowView = inflater.inflate(R.layout.list_item,parent,false);
+            rowView = inflater.inflate(R.layout.list_item, parent, false);
+        }
 
             final Country country = (Country) getItem(position);
 
             TextView textView = (TextView) rowView.findViewById(R.id.li_text_view);
             textView.setText(country.getName());
 
+            rowView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onCountryClick(country);
+                }
+            });
             return rowView;
-        }
-        return rowView;
+
     }
 }

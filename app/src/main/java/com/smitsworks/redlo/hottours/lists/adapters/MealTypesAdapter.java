@@ -57,16 +57,20 @@ public class MealTypesAdapter extends BaseAdapter {
         View rowView = convertView;
         if (rowView == null) {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-            rowView = inflater.inflate(R.layout.list_item,parent,false);
-
+            rowView = inflater.inflate(R.layout.list_item, parent, false);
+        }
             final Meal_Type type = (Meal_Type) getItem(position);
 
             TextView textView = (TextView) rowView.findViewById(R.id.li_text_view);
             textView.setText(type.getName_full());
 
+            rowView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onMealTypesClick(type);
+                }
+            });
             return rowView;
-        }
 
-        return rowView;
     }
 }

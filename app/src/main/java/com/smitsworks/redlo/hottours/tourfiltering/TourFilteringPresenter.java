@@ -89,6 +89,10 @@ public class TourFilteringPresenter implements TourFilteringContract.Presenter {
 
     public static final String DATE_FROM_EXTRA="DATA_FROM_EXTRA";
 
+    public static final String ADULTS_EXTRA="ADULTS_EXTRA";
+
+    public static final String CHILDREN_EXTRA="CHILDREN_EXTRA";
+
     public TourFilteringPresenter(TourFilteringContract.View filteringView) {
         this.filteringView = filteringView;
 

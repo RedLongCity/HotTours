@@ -7,44 +7,40 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.smitsworks.redlo.hottours.R;
-import com.smitsworks.redlo.hottours.data.models.From_Cities;
-import com.smitsworks.redlo.hottours.lists.cities.CitiesFragment;
-
-import java.util.List;
+import com.smitsworks.redlo.hottours.lists.adults.AdultsFragment;
 
 /**
- * Created by redlongcity on 20.10.2017.
- * adapter for creating list of cities
+ * Created by redlongcity on 23.10.2017.
+ * this adapter serve for creating list with amounts of something
  */
 
-public class CitiesAdapter extends BaseAdapter {
+public class AdultsAdapter extends BaseAdapter {
 
-    private List<From_Cities> cities;
-    private CitiesFragment.CitiesItemListener listener;
+    private int number;
+    private AdultsFragment.AdultsItemListener listener;
 
-    public CitiesAdapter(List<From_Cities> cities,
-                         CitiesFragment.CitiesItemListener listener) {
-        this.cities = cities;
+    public AdultsAdapter(int count, AdultsFragment.AdultsItemListener listener) {
+        this.number = count;
         this.listener = listener;
     }
 
-    public void replaceData(List<From_Cities> cities){
-        setCities(cities);
+    public void replaceData(int number){
+        setNumber(number);
         notifyDataSetChanged();
     }
 
-    public void setCities(List<From_Cities> cities) {
-        this.cities = cities;
+    public void setNumber(int number) {
+        this.number = number;
     }
 
     @Override
     public int getCount() {
-        return cities.size();
+        return number;
     }
 
     @Override
     public Object getItem(int position) {
-        return cities.get(position);
+        return position;
     }
 
     @Override
@@ -57,20 +53,21 @@ public class CitiesAdapter extends BaseAdapter {
         View rowView = convertView;
         if (rowView == null) {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-            rowView = inflater.inflate(R.layout.list_item, parent, false);
-        }
-            final From_Cities city = (From_Cities) getItem(position);
+            inflater.inflate(R.layout.list_item,parent,false);
+
+            final int value = (int) getItem(position);
 
             TextView textView = (TextView) rowView.findViewById(R.id.li_text_view);
-            textView.setText(city.getName());
+            textView.setText(value);
 
             rowView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    listener.onCityClick(city);
+                    listener.onItemClick(value);
                 }
             });
-            return rowView;
+        }
 
+        return rowView;
     }
 }
