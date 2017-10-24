@@ -308,7 +308,7 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
 
     @Override
     public void setPresenter(TourDetailsContract.Presenter presenter) {
-        presenter = checkNotNull(presenter);
+        this.presenter = checkNotNull(presenter);
     }
 
     @Override

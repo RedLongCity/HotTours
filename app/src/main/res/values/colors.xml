@@ -16,4 +16,5 @@
     <color name="selected_text_color">#ffffff</color>
     <color name="pin_color">#e7491d</color>
     <color name="find_color">#328c05</color>
+    <color name="text_color_white">#ffffff</color>
 </resources>
