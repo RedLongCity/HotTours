@@ -14,7 +14,7 @@ import com.smitsworks.redlo.hottours.utils.ActivityUtils;
 
 public class CalendarActivity extends AppCompatActivity {
 
-    public static final String REQUEST_CHOOSE_DATE="REQUEST_CHOOSE_DATE";
+    public static final int REQUEST_CHOOSE_DATE=5;
 
     private CalendarPresenter presenter;
 

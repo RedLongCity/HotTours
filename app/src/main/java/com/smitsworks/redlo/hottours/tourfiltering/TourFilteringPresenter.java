@@ -2,13 +2,15 @@ package com.smitsworks.redlo.hottours.tourfiltering;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.smitsworks.redlo.hottours.calendar.CalendarActivity;
 import com.smitsworks.redlo.hottours.data.models.Country;
 import com.smitsworks.redlo.hottours.data.models.From_Cities;
 import com.smitsworks.redlo.hottours.data.models.Meal_Type;
 import com.smitsworks.redlo.hottours.data.models.Request;
+import com.smitsworks.redlo.hottours.lists.adults.AdultsActivity;
+import com.smitsworks.redlo.hottours.lists.children.ChildrenActivity;
 import com.smitsworks.redlo.hottours.lists.cities.CitiesActivity;
 import com.smitsworks.redlo.hottours.lists.countries.CountriesActivity;
 import com.smitsworks.redlo.hottours.lists.hotelratings.HotelRatingsActivity;
@@ -87,7 +89,7 @@ public class TourFilteringPresenter implements TourFilteringContract.Presenter {
 
     public static final String MEAL_TYPE_NAME_EXTRA="MEAL_TYPE_NAME_EXTRA";
 
-    public static final String DATE_FROM_EXTRA="DATA_FROM_EXTRA";
+    public static final String DATE_EXTRA ="DATE_EXTRA";
 
     public static final String ADULTS_EXTRA="ADULTS_EXTRA";
 
@@ -125,13 +127,8 @@ public class TourFilteringPresenter implements TourFilteringContract.Presenter {
     }
 
     @Override
-    public void openDateFrom() {
-        filteringView.openDateFromUI();
-    }
-
-    @Override
-    public void openDateTill() {
-        filteringView.openDateFromUI();
+    public void openCalendar() {
+        filteringView.openCalendarUI();
     }
 
     @Override
@@ -185,9 +182,25 @@ public class TourFilteringPresenter implements TourFilteringContract.Presenter {
                 break;
             case CalendarActivity.REQUEST_CHOOSE_DATE:
                 if(resultCode == Activity.RESULT_OK){
-                    if(data.hasExtra(DATE_FROM_EXTRA)){
-                        dateFrom = data.getStringExtra(DATE_FROM_EXTRA);
-                        filteringView.showDateFrom(dateFrom);
+                    if(data.hasExtra(DATE_EXTRA)){
+                        dateFrom = data.getStringExtra(DATE_EXTRA);
+                        filteringView.showDate(dateFrom);
+                    }
+                }
+                break;
+            case AdultsActivity.REQUEST_CHOOSE_ADULTS_AMOUNT:
+                if(resultCode == Activity.RESULT_OK){
+                    if(data.hasExtra(ADULTS_EXTRA)){
+                        adults = data.getIntExtra(ADULTS_EXTRA,2);
+                        filteringView.showAdultsAmount(adults);
+                    }
+                }
+                break;
+            case ChildrenActivity.REQUEST_CHOOSE_CHILDREN_AMOUNT:
+                if(resultCode == Activity.RESULT_OK){
+                    if(data.hasExtra(CHILDREN_EXTRA)){
+                        children = data.getIntExtra(CHILDREN_EXTRA,0);
+                        filteringView.showChildrenAmount(children);
                     }
                 }
                 break;

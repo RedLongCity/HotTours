@@ -166,7 +166,7 @@
                     android:gravity="center"/>
 
                 <TextView
-                    android:id="@+id/date_from_filters_tv"
+                    android:id="@+id/date_filters_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:lineSpacingExtra="4dp"

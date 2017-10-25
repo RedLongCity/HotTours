@@ -7,6 +7,7 @@ import com.smitsworks.redlo.hottours.data.models.Tour;
 import com.smitsworks.redlo.hottours.data.models.TourResponse;
 import com.smitsworks.redlo.hottours.data.source.ToursDataSource;
 import com.smitsworks.redlo.hottours.data.source.ToursRepository;
+import com.smitsworks.redlo.hottours.tourfiltering.TourFilteringActivity;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -45,7 +46,7 @@ public class ToursPresenter implements ToursContract.Presenter {
 
     @Override
     public void result(int requestCode, int resultCode) {
-        if(FilteringToursActivity.REQUEST_LOAD_TASK == requestCode &&
+        if(TourFilteringActivity.RESULT_REQUEST == requestCode &&
                 Activity.RESULT_OK == resultCode){
             toursView.showSuccessfullyLoadedMessage();
         }
@@ -180,6 +181,81 @@ public class ToursPresenter implements ToursContract.Presenter {
     public ToursSortType getSorting() {
 
         return sortType;
+    }
+
+    ToursDataSource.LoadToursCallback callback = new ToursDataSource.LoadToursCallback(){
+
+        @Override
+        public void onToursLoaded(TourResponse tourResponse) {
+            List<Tour> tourList = tourResponse.getTourList();
+
+            switch(sortType){
+                case ALL_TOURS:
+                    break;
+                case TOURS_BY_COUNTRY:
+                    Collections.sort(tourList,new Comparator<Tour>() {
+                        @Override
+                        public int compare(Tour o1, Tour o2) {
+                            return o1.getCountry().getName().compareTo(o2.getCountry().getName());
+                        }
+                    });
+                    break;
+                case TOURS_BY_CITY:
+                    Collections.sort(tourList,new Comparator<Tour>() {
+                        @Override
+                        public int compare(Tour o1, Tour o2) {
+                            return o1.getFrom_Cities().getName().compareTo(o2.getFrom_Cities().getName());
+                        }
+                    });
+                    break;
+                case TOURS_BY_DURATION:
+                    Collections.sort(tourList,new Comparator<Tour>() {
+                        @Override
+                        public int compare(Tour o1, Tour o2) {
+                            return o1.getDuration()-o2.getDuration();
+                        }
+                    });
+                    break;
+                case TOURS_BY_ADULT:
+                    Collections.sort(tourList,new Comparator<Tour>() {
+                        @Override
+                        public int compare(Tour o1, Tour o2) {
+                            return o1.getAdult_Amount()-o2.getAdult_Amount();
+                        }
+                    });
+                    break;
+                case TOURS_BY_CHILDREN:
+                    Collections.sort(tourList,new Comparator<Tour>() {
+                        @Override
+                        public int compare(Tour o1, Tour o2) {
+                            return o1.getChild_Amount()-o2.getChild_Amount();
+                        }
+                    });
+                    break;
+                case TOURS_BY_DATEFROM:
+                    Collections.sort(tourList,new Comparator<Tour>() {
+                        @Override
+                        public int compare(Tour o1, Tour o2) {
+                            return o1.getDate_From().compareTo(o2.getDate_From());
+                        }
+                    });
+                    break;
+            }
+
+            if(!toursView.isActive()){
+                return;
+            }
+            if(showLoadingUI){
+                toursView.setLoadingIndicator(false);
+            }
+
+            processTours(tourList);
+        }
+
+        @Override
+        public void onDataNotAvailable() {
+
+        }
     }
 
     }

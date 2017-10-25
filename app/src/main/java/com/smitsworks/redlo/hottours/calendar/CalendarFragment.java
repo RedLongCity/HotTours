@@ -15,6 +15,7 @@ import android.widget.CalendarView;
 import android.widget.TextView;
 
 import com.smitsworks.redlo.hottours.R;
+import com.smitsworks.redlo.hottours.tourfiltering.TourFilteringPresenter;
 
 import java.sql.Timestamp;
 import java.util.Calendar;
@@ -100,7 +101,7 @@ public class CalendarFragment extends Fragment implements CalendarContract.View 
     @Override
     public void chooseDateUI(Timestamp date) {
         Intent intent = new Intent();
-        intent.putExtra(CalendarActivity.REQUEST_CHOOSE_DATE, date);
+        intent.putExtra(TourFilteringPresenter.DATE_EXTRA, date);
         getActivity().setResult(Activity.RESULT_OK,intent);
         getActivity().finish();
     }

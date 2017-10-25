@@ -14,7 +14,7 @@ import com.smitsworks.redlo.hottours.utils.ActivityUtils;
 
 public class AdultsActivity extends AppCompatActivity {
 
-    public static final String REQUEST_CHOOSE_ADULTS_AMOUNT="REQUEST_CHOOSE_ADULTS_AMOUNT";
+    public static final int REQUEST_CHOOSE_ADULTS_AMOUNT=6;
 
     private AdultsPresenter presenter;
 

@@ -25,9 +25,7 @@ public interface TourFilteringContract {
 
         void showMealType(String name);
 
-        void showDateFrom(String date);
-
-        void showDateTill(String date);
+        void showDate(String date);
 
         void showAdultsAmount(Integer adults);
 
@@ -41,9 +39,7 @@ public interface TourFilteringContract {
 
         void openMealTypesUI();
 
-        void openDateFromUI();
-
-        void openDateTillUI();
+        void openCalendarUI();
 
         void openAdultsUI();
 
@@ -65,9 +61,7 @@ public interface TourFilteringContract {
 
         void openMealTypes();
 
-        void openDateFrom();
-
-        void openDateTill();
+        void openCalendar();
 
         void openAdults();
 

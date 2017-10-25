@@ -12,8 +12,11 @@ import android.widget.TextView;
 
 import com.appyvet.rangebar.RangeBar;
 import com.smitsworks.redlo.hottours.R;
+import com.smitsworks.redlo.hottours.calendar.CalendarActivity;
 import com.smitsworks.redlo.hottours.data.models.Meal_Type;
 import com.smitsworks.redlo.hottours.data.models.Request;
+import com.smitsworks.redlo.hottours.lists.adults.AdultsActivity;
+import com.smitsworks.redlo.hottours.lists.children.ChildrenActivity;
 import com.smitsworks.redlo.hottours.lists.cities.CitiesActivity;
 import com.smitsworks.redlo.hottours.lists.countries.CountriesActivity;
 import com.smitsworks.redlo.hottours.lists.hotelratings.HotelRatingsActivity;
@@ -38,9 +41,7 @@ public class TourFilteringFragment extends Fragment implements TourFilteringCont
 
     private TextView mealType;
 
-    private TextView dateFrom;
-
-    private TextView dateTill;
+    private TextView date;
 
     private TextView adults;
 
@@ -72,8 +73,7 @@ public class TourFilteringFragment extends Fragment implements TourFilteringCont
         toCountry = (TextView) root.findViewById(R.id.to_country_tv);
         hotelRating = (TextView) root.findViewById(R.id.hotel_rating_filters_tv);
         mealType = (TextView) root.findViewById(R.id.meal_type_filters_tv);
-        dateFrom = (TextView) root.findViewById(R.id.date_from_filters_tv);
-        dateTill = (TextView) root.findViewById(R.id.date_till_filters_tv);
+        date = (TextView) root.findViewById(R.id.date_filters_tv);
         adults = (TextView) root.findViewById(R.id.adult_amount_filters_tv);
         children = (TextView) root.findViewById(R.id.children_amount_filters_tv);
         find = (Button) root.findViewById(R.id.but_find);
@@ -83,8 +83,7 @@ public class TourFilteringFragment extends Fragment implements TourFilteringCont
         toCountry.setOnClickListener(clickListener);
         hotelRating.setOnClickListener(clickListener);
         mealType.setOnClickListener(clickListener);
-        dateFrom.setOnClickListener(clickListener);
-        dateTill.setOnClickListener(clickListener);
+        date.setOnClickListener(clickListener);
         adults.setOnClickListener(clickListener);
         children.setOnClickListener(clickListener);
         find.setOnClickListener(clickListener);
@@ -114,13 +113,8 @@ public class TourFilteringFragment extends Fragment implements TourFilteringCont
     }
 
     @Override
-    public void showDateFrom(String date) {
-        dateFrom.setText(date);
-    }
-
-    @Override
-    public void showDateTill(String date) {
-        dateTill.setText(date);
+    public void showDate(String dateValue) {
+        date.setText(dateValue);
     }
 
     @Override
@@ -158,14 +152,9 @@ public class TourFilteringFragment extends Fragment implements TourFilteringCont
     }
 
     @Override
-    public void openDateFromUI() {
-
-    }
-
-
-    @Override
-    public void openDateTillUI() {
-
+    public void openCalendarUI() {
+        Intent intent = new Intent(getContext(), CalendarActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -216,11 +205,8 @@ public class TourFilteringFragment extends Fragment implements TourFilteringCont
                 case R.id.meal_type_filters_tv:
                     presenter.openMealTypes();
                     break;
-                case R.id.date_from_filters_tv:
-                    presenter.openDateFrom();
-                    break;
-                case R.id.date_till_filters_tv:
-                    presenter.openDateTill();
+                case R.id.date_filters_tv:
+                    presenter.openCalendar();
                     break;
                 case R.id.adult_amount_filters_tv:
                     presenter.openAdults();

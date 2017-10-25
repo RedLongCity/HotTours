@@ -14,7 +14,7 @@ import com.smitsworks.redlo.hottours.utils.ActivityUtils;
 
 public class ChildrenActivity extends AppCompatActivity {
 
-    public static String REQUEST_CHOOSE_CHILDREN_AMOUNT="REQUEST_CHOOSE_CHILDREN_AMOUNT";
+    public static final int REQUEST_CHOOSE_CHILDREN_AMOUNT=7;
 
     private ChildrenPresenter presenter;
 
