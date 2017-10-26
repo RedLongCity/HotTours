@@ -1,13 +1,16 @@
 package com.smitsworks.redlo.hottours.tours;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 
+import com.smitsworks.redlo.hottours.data.models.Request;
 import com.smitsworks.redlo.hottours.data.models.Tour;
 import com.smitsworks.redlo.hottours.data.models.TourResponse;
 import com.smitsworks.redlo.hottours.data.source.ToursDataSource;
 import com.smitsworks.redlo.hottours.data.source.ToursRepository;
 import com.smitsworks.redlo.hottours.tourfiltering.TourFilteringActivity;
+import com.smitsworks.redlo.hottours.tourfiltering.TourFilteringPresenter;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -45,10 +48,12 @@ public class ToursPresenter implements ToursContract.Presenter {
     }
 
     @Override
-    public void result(int requestCode, int resultCode) {
+    public void result(int requestCode, int resultCode, Intent data) {
         if(TourFilteringActivity.RESULT_REQUEST == requestCode &&
                 Activity.RESULT_OK == resultCode){
-            toursView.showSuccessfullyLoadedMessage();
+            Request request =
+                    data.getParcelableExtra(TourFilteringActivity.ON_REQUEST);
+            loadToursByRequest(request,false);
         }
     }
 
@@ -72,59 +77,7 @@ public class ToursPresenter implements ToursContract.Presenter {
             @Override
             public void onToursLoaded(TourResponse tourResponse) {
                 List<Tour> tourList = tourResponse.getTourList();
-
-                switch(sortType){
-                    case ALL_TOURS:
-                        break;
-                    case TOURS_BY_COUNTRY:
-                        Collections.sort(tourList,new Comparator<Tour>() {
-                            @Override
-                            public int compare(Tour o1, Tour o2) {
-                                return o1.getCountry().getName().compareTo(o2.getCountry().getName());
-                            }
-                        });
-                        break;
-                    case TOURS_BY_CITY:
-                        Collections.sort(tourList,new Comparator<Tour>() {
-                            @Override
-                            public int compare(Tour o1, Tour o2) {
-                                return o1.getFrom_Cities().getName().compareTo(o2.getFrom_Cities().getName());
-                            }
-                        });
-                        break;
-                    case TOURS_BY_DURATION:
-                        Collections.sort(tourList,new Comparator<Tour>() {
-                            @Override
-                            public int compare(Tour o1, Tour o2) {
-                                return o1.getDuration()-o2.getDuration();
-                            }
-                        });
-                        break;
-                    case TOURS_BY_ADULT:
-                        Collections.sort(tourList,new Comparator<Tour>() {
-                            @Override
-                            public int compare(Tour o1, Tour o2) {
-                                return o1.getAdult_Amount()-o2.getAdult_Amount();
-                            }
-                        });
-                        break;
-                    case TOURS_BY_CHILDREN:
-                        Collections.sort(tourList,new Comparator<Tour>() {
-                            @Override
-                            public int compare(Tour o1, Tour o2) {
-                                return o1.getChild_Amount()-o2.getChild_Amount();
-                            }
-                        });
-                        break;
-                    case TOURS_BY_DATEFROM:
-                        Collections.sort(tourList,new Comparator<Tour>() {
-                            @Override
-                            public int compare(Tour o1, Tour o2) {
-                                return o1.getDate_From().compareTo(o2.getDate_From());
-                            }
-                        });
-                        break;
-                }
+                sortTours(tourList);
 
                 if(!toursView.isActive()){
                     return;
@@ -134,9 +87,53 @@ public class ToursPresenter implements ToursContract.Presenter {
                 }
 
                 processTours(tourList);
+                toursView.showSuccessfullyLoadedMessage();
             }
 
 
+
+            @Override
+            public void onDataNotAvailable() {
+                if(!toursView.isActive()){
+                    return;
+                }
+                toursView.showLoadingTourError();
+            }
+        });
+    }
+
+    @Override
+    public void loadToursByRequest(Request request, boolean forceUpdate) {
+        loadTours(request, forceUpdate || firstLoad, true);
+        firstLoad = false;
+    }
+
+    private void loadTours(Request request,
+                           boolean forceUpdate,
+                           final boolean showLoadingUI){
+        if(showLoadingUI){
+            toursView.setLoadingIndicator(true);
+        }
+
+        if(forceUpdate){
+            toursRepository.refreshTours();
+        }
+
+        toursRepository.getToursByRequest(request, new ToursDataSource.LoadToursCallback() {
+            @Override
+            public void onToursLoaded(TourResponse tourResponse) {
+                List<Tour> tourList = tourResponse.getTourList();
+                sortTours(tourList);
+
+                if(!toursView.isActive()){
+                    return;
+                }
+                if(showLoadingUI){
+                    toursView.setLoadingIndicator(false);
+                }
+                processTours(tourList);
+                toursView.showSuccessfullyLoadedMessage();
+            }
 
             @Override
             public void onDataNotAvailable() {
@@ -163,7 +160,7 @@ public class ToursPresenter implements ToursContract.Presenter {
 
     @Override
     public void showFilterLabel() {
-        toursView.showFilterLabel();
+        toursView.showFilteringPopUpMenu();
     }
 
     @Override
@@ -183,78 +180,58 @@ public class ToursPresenter implements ToursContract.Presenter {
         return sortType;
     }
 
-    ToursDataSource.LoadToursCallback callback = new ToursDataSource.LoadToursCallback(){
-
-        @Override
-        public void onToursLoaded(TourResponse tourResponse) {
-            List<Tour> tourList = tourResponse.getTourList();
-
-            switch(sortType){
-                case ALL_TOURS:
-                    break;
-                case TOURS_BY_COUNTRY:
-                    Collections.sort(tourList,new Comparator<Tour>() {
-                        @Override
-                        public int compare(Tour o1, Tour o2) {
-                            return o1.getCountry().getName().compareTo(o2.getCountry().getName());
-                        }
-                    });
-                    break;
-                case TOURS_BY_CITY:
-                    Collections.sort(tourList,new Comparator<Tour>() {
-                        @Override
-                        public int compare(Tour o1, Tour o2) {
-                            return o1.getFrom_Cities().getName().compareTo(o2.getFrom_Cities().getName());
-                        }
-                    });
-                    break;
-                case TOURS_BY_DURATION:
-                    Collections.sort(tourList,new Comparator<Tour>() {
-                        @Override
-                        public int compare(Tour o1, Tour o2) {
-                            return o1.getDuration()-o2.getDuration();
-                        }
-                    });
-                    break;
-                case TOURS_BY_ADULT:
-                    Collections.sort(tourList,new Comparator<Tour>() {
-                        @Override
-                        public int compare(Tour o1, Tour o2) {
-                            return o1.getAdult_Amount()-o2.getAdult_Amount();
-                        }
-                    });
-                    break;
-                case TOURS_BY_CHILDREN:
-                    Collections.sort(tourList,new Comparator<Tour>() {
-                        @Override
-                        public int compare(Tour o1, Tour o2) {
-                            return o1.getChild_Amount()-o2.getChild_Amount();
-                        }
-                    });
-                    break;
-                case TOURS_BY_DATEFROM:
-                    Collections.sort(tourList,new Comparator<Tour>() {
-                        @Override
-                        public int compare(Tour o1, Tour o2) {
-                            return o1.getDate_From().compareTo(o2.getDate_From());
-                        }
-                    });
-                    break;
-            }
-
-            if(!toursView.isActive()){
-                return;
-            }
-            if(showLoadingUI){
-                toursView.setLoadingIndicator(false);
-            }
-
-            processTours(tourList);
-        }
-
-        @Override
-        public void onDataNotAvailable() {
-
+    private void sortTours(List<Tour> tourList){
+        switch(sortType){
+            case ALL_TOURS:
+                break;
+            case TOURS_BY_COUNTRY:
+                Collections.sort(tourList,new Comparator<Tour>() {
+                    @Override
+                    public int compare(Tour o1, Tour o2) {
+                        return o1.getCountry().getName().compareTo(o2.getCountry().getName());
+                    }
+                });
+                break;
+            case TOURS_BY_CITY:
+                Collections.sort(tourList,new Comparator<Tour>() {
+                    @Override
+                    public int compare(Tour o1, Tour o2) {
+                        return o1.getFrom_Cities().getName().compareTo(o2.getFrom_Cities().getName());
+                    }
+                });
+                break;
+            case TOURS_BY_DURATION:
+                Collections.sort(tourList,new Comparator<Tour>() {
+                    @Override
+                    public int compare(Tour o1, Tour o2) {
+                        return o1.getDuration()-o2.getDuration();
+                    }
+                });
+                break;
+            case TOURS_BY_ADULT:
+                Collections.sort(tourList,new Comparator<Tour>() {
+                    @Override
+                    public int compare(Tour o1, Tour o2) {
+                        return o1.getAdult_Amount()-o2.getAdult_Amount();
+                    }
+                });
+                break;
+            case TOURS_BY_CHILDREN:
+                Collections.sort(tourList,new Comparator<Tour>() {
+                    @Override
+                    public int compare(Tour o1, Tour o2) {
+                        return o1.getChild_Amount()-o2.getChild_Amount();
+                    }
+                });
+                break;
+            case TOURS_BY_DATEFROM:
+                Collections.sort(tourList,new Comparator<Tour>() {
+                    @Override
+                    public int compare(Tour o1, Tour o2) {
+                        return o1.getDate_From().compareTo(o2.getDate_From());
+                    }
+                });
+                break;
         }
     }
 
