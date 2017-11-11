@@ -1,5 +1,7 @@
 package com.smitsworks.redlo.hottours.utils;
 
+import android.content.AsyncTaskLoader;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
@@ -55,5 +57,4 @@ public class HttpUtils {
         }
         return null;
     }
-
 }

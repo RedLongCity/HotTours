@@ -71,7 +71,7 @@ public class ToursFragment extends Fragment implements ToursContract.View {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        presenter.result(requestCode,resultCode);
+        presenter.result(requestCode,resultCode,data);
     }
 
     @Nullable
@@ -276,7 +276,7 @@ public class ToursFragment extends Fragment implements ToursContract.View {
 
     @Override
     public void setPresenter(ToursContract.Presenter presenter) {
-        presenter = checkNotNull(presenter);
+        this.presenter = checkNotNull(presenter);
     }
 
     private void showNoToursViews(String mainText,int iconRes){

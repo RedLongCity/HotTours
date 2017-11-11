@@ -1,5 +1,7 @@
 package com.smitsworks.redlo.hottours.data.source.remote;
 
+import android.content.AsyncTaskLoader;
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -49,22 +51,55 @@ public class ToursRemoteDataSource implements ToursDataSource{
         handler.post(new Runnable() {
             @Override
             public void run() {
-                TourResponseProvider provider = new TourResponseProvider();
-                Response response = provider.provide();
-                if(response.isSuccessful()){
-                    try {
-                        TourResponseParser parser = new TourResponseParser();
-                        TourResponse tourResponse = parser.parse(
-                                new JSONObject(response.body().string()));
-                        callback.onToursLoaded(tourResponse);
-                    }catch(@NonNull IOException | JSONException e){
-                        Log.e(TAG,e.getLocalizedMessage());
+                new AsyncTask<Void,Void,TourResponse>() {
+                    @Override
+                    protected TourResponse doInBackground(Void[] voids) {
+                        TourResponseProvider provider = new TourResponseProvider();
+                        Response response = provider.provide();
+                        if(response.isSuccessful()){
+                            try {
+                                TourResponseParser parser = new TourResponseParser();
+                                return  parser.parse(new JSONObject(response.body().string()));
+                            }catch(@NonNull IOException | JSONException e){
+                                Log.e(TAG,e.getLocalizedMessage());
+                            }
+                        }else{
+                            return null;
+                        }
+                        return null;
                     }
-                }else{
-                    callback.onDataNotAvailable();
-                }
+
+                    @Override
+                    protected void onPostExecute(TourResponse response) {
+                        if (response == null) {
+                            callback.onDataNotAvailable();
+                            return;
+                        }
+                        callback.onToursLoaded(response);
+                    }
+                }.execute();
             }
         });
+//        Handler handler = new Handler();
+//        handler.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                TourResponseProvider provider = new TourResponseProvider();
+//                Response response = provider.provide();
+//                if(response.isSuccessful()){
+//                    try {
+//                        TourResponseParser parser = new TourResponseParser();
+//                        TourResponse tourResponse = parser.parse(
+//                                new JSONObject(response.body().string()));
+//                        callback.onToursLoaded(tourResponse);
+//                    }catch(@NonNull IOException | JSONException e){
+//                        Log.e(TAG,e.getLocalizedMessage());
+//                    }
+//                }else{
+//                    callback.onDataNotAvailable();
+//                }
+//            }
+//        });
     }
 
     @Override

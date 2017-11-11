@@ -12,6 +12,25 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"></application>
+        android:theme="@style/AppTheme">
+
+        <activity android:name=".tours.ToursActivity"
+            android:theme="@style/AppTheme.OverlapSystemBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".tourdetails.TourDetailActivity"/>
+        <activity android:name=".calendar.CalendarActivity"/>
+        <activity android:name=".lists.adults.AdultsActivity"/>
+        <activity android:name=".lists.children.ChildrenActivity"/>
+        <activity android:name=".lists.cities.CitiesActivity"/>
+        <activity android:name=".lists.countries.CountriesActivity"/>
+        <activity android:name=".lists.hotelratings.HotelRatingsActivity"/>
+        <activity android:name=".lists.mealtypes.MealTypesActivity"/>
+        <activity android:name=".tourfiltering.TourFilteringActivity"/>
+        <activity android:name=".tourorder.TourOrderActivity"/>
+    </application>
 
 </manifest>
