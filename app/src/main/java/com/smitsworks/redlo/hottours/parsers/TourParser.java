@@ -31,10 +31,10 @@ public class TourParser implements Parser<Tour>{
 
     @Override
     public Tour parse(JSONObject json) {
-        try {
-            if (json != null) {
+        Tour model = new Tour();
+        if (json != null) {
+            try {
                 if (json.length() > 0) {
-                    Tour model = new Tour();
 
                     Integer id = json.getInt(TourKeys.KEY_ID);
                     Integer type = json.getInt(TourKeys.KEY_TYPE);
@@ -49,12 +49,12 @@ public class TourParser implements Parser<Tour>{
 
                     HotelRatingParser hotelRatingParser = new HotelRatingParser();
                     Hotel_Rating rating = hotelRatingParser.parse(
-                      json.getJSONObject(TourKeys.KEY_HOTEL_RATING)
+                            json.getJSONObject(TourKeys.KEY_HOTEL_RATING)
                     );
 
                     MealTypeParser mealTypeParser = new MealTypeParser();
                     Meal_Type meal_type = mealTypeParser.parse(
-                      json.getJSONObject(TourKeys.KEY_MEAL_TYPE)
+                            json.getJSONObject(TourKeys.KEY_MEAL_TYPE)
                     );
 
                     String roomType = json.getString(TourKeys.KEY_ROOM_TYPE);
@@ -71,20 +71,24 @@ public class TourParser implements Parser<Tour>{
                     JSONArray array = json.getJSONArray(TourKeys.KEY_PRICES);
 
                     int arrayLength = array.length();
-                    if(arrayLength>0){
+                    if (arrayLength > 0) {
                         PriceParser priceParser = new PriceParser();
-                        for(int i=0;i<arrayLength;i++){
+                        for (int i = 0; i < arrayLength; i++) {
                             Price price = new Price();
                             JSONObject innerObject = array.getJSONObject(i);
                             price = priceParser.parse(innerObject);
                             priceSet.add(price);
                         }
                     }
-
-                    Integer priceOld = json.getInt(TourKeys.KEY_PRICE_OLD);
-                    Float priceChangePercent = (float) json.getDouble(
-                            TourKeys.KEY_PRICE_CHANGE_PERCENT);
-
+                    if (json.has(TourKeys.KEY_PRICE_OLD) && !json.isNull(TourKeys.KEY_PRICE_OLD)) {
+                        Integer priceOld = json.getInt(TourKeys.KEY_PRICE_OLD);
+                        model.setPrice_Old(priceOld);
+                    }
+                    if(json.has(TourKeys.KEY_PRICE_CHANGE_PERCENT)&&!json.isNull(TourKeys.KEY_PRICE_CHANGE_PERCENT)) {
+                        Float priceChangePercent = (float) json.getDouble(
+                                TourKeys.KEY_PRICE_CHANGE_PERCENT);
+                        model.setPrice_Change_Percent(priceChangePercent);
+                    }
                     CityParser cityParser = new CityParser();
                     From_Cities from_cities = cityParser.parse(
                             json.getJSONObject(TourKeys.KEY_FROM_CITIES)
@@ -92,20 +96,21 @@ public class TourParser implements Parser<Tour>{
 
                     String fromCityGen = json.getString(TourKeys.KEY_FROM_CITY_GEN);
                     String transportType = json.getString(TourKeys.KEY_TRANSPORT_TYPE);
-                    Set<Hotel_Image> hotelImageSet = new HashSet<Hotel_Image>();
-                    JSONArray jsonArray = json.getJSONArray(TourKeys.KEY_HOTEL_IMAGES);
-
-                    int jsonArrayLength = jsonArray.length();
-                    if(jsonArrayLength>0){
-                        HotelImageParser hotelImageParser = new HotelImageParser();
-                        for(int i=0;i<jsonArrayLength;i++){
-                            Hotel_Image image = new Hotel_Image();
-                            JSONObject innerObject = jsonArray.getJSONObject(i);
-                            image = hotelImageParser.parse(innerObject);
-                            hotelImageSet.add(image);
+                    if (json.has(TourKeys.KEY_HOTEL_IMAGES)) {
+                        Set<Hotel_Image> hotelImageSet = new HashSet<Hotel_Image>();
+                        JSONArray jsonArray = json.getJSONArray(TourKeys.KEY_HOTEL_IMAGES);
+                        int jsonArrayLength = jsonArray.length();
+                        if (jsonArrayLength > 0) {
+                            HotelImageParser hotelImageParser = new HotelImageParser();
+                            for (int i = 0; i < jsonArrayLength; i++) {
+                                Hotel_Image image = new Hotel_Image();
+                                JSONObject innerObject = jsonArray.getJSONObject(i);
+                                image = hotelImageParser.parse(innerObject);
+                                hotelImageSet.add(image);
+                            }
                         }
+                        model.setHotel_ImageSet(hotelImageSet);
                     }
-
 
                     model.setId(id);
                     model.setType(type);
@@ -124,19 +129,15 @@ public class TourParser implements Parser<Tour>{
                     model.setCurrency_id(currencyId);
                     model.setCurrency_Symbol(currencySymbol);
                     model.setPrices(priceSet);
-                    model.setPrice_Old(priceOld);
-                    model.setPrice_Change_Percent(priceChangePercent);
                     model.setFrom_Cities(from_cities);
                     model.setFrom_City_Gen(fromCityGen);
                     model.setTransport_Type(transportType);
-                    model.setHotel_ImageSet(hotelImageSet);
 
-                    return model;
                 }
-            }
-        }catch (JSONException je){
+        } catch (JSONException je) {
             Log.i(TAG, "" + je.getLocalizedMessage());
         }
-        return null;
+    }
+        return model;
     }
 }

@@ -25,20 +25,20 @@ public class TourResponseParser implements Parser<TourResponse>{
 
     @Override
     public TourResponse parse(JSONObject json) {
-        try{
+        TourResponse model = new TourResponse();
             if (json != null) {
-                if(json.length()>0){
-                    TourResponse model = new TourResponse();
+                try {
+                    if (json.length() > 0) {
 
-                 Long comeBackDelay = (long)json.getInt(TourResponseKeys.KEY_COMEBACK_DELAY);
+                    Long comeBackDelay = (long) json.getInt(TourResponseKeys.KEY_COMEBACK_DELAY);
 
                     List<Tour> tourList = new ArrayList<Tour>();
                     JSONArray array = json.getJSONArray(TourResponseKeys.KEY_TOUR_LIST);
 
-                    int arrayLength=array.length();
-                    if(arrayLength>0){
+                    int arrayLength = array.length();
+                    if (arrayLength > 0) {
                         TourParser parser = new TourParser();
-                        for (int i = 0; i <arrayLength ; i++) {
+                        for (int i = 0; i < arrayLength; i++) {
                             Tour tour = new Tour();
                             JSONObject innerObject = array.getJSONObject(i);
                             tour = parser.parse(innerObject);
@@ -54,12 +54,11 @@ public class TourResponseParser implements Parser<TourResponse>{
                     model.setTourList(tourList);
                     model.setRequest(request);
 
-                    return model;
                 }
-            }
-        }catch (JSONException je){
+        } catch (JSONException je) {
             Log.i(TAG, "" + je.getLocalizedMessage());
         }
-        return null;
+    }
+        return model;
     }
 }

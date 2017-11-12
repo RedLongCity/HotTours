@@ -103,7 +103,7 @@ public class ToursAdapter extends BaseAdapter {
         ImageView star_5=(ImageView) rowView.findViewById(R.id.star_5);
 
         HashSet<Hotel_Image> hotelImageSet = (HashSet<Hotel_Image>) tour.getHotel_ImageSet();
-        if (hotelImageSet != null) {
+        if (hotelImageSet != null&&!hotelImageSet.isEmpty()) {
             Hotel_Image hotelImage=null;
             for(Hotel_Image image:hotelImageSet){
                 hotelImage=image;
@@ -173,7 +173,7 @@ public class ToursAdapter extends BaseAdapter {
         while(iterator.hasNext()){
             Price priceIt = iterator.next();
             if(priceIt.getCurrency().getId().equals(currencyId)){
-                price.setText(priceIt.getCost());
+                price.setText(priceIt.getCost().toString());
             }
         }
 

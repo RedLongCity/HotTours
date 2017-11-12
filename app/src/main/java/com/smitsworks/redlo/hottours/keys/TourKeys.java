@@ -15,7 +15,7 @@ public class TourKeys {
     public static final String KEY_HOTEL= "hotel";
     public static final String KEY_HOTEL_RATING= "hotel_Rating";
     public static final String KEY_MEAL_TYPE= "meal_Type";
-    public static final String KEY_ROOM_TYPE= "room_type";
+    public static final String KEY_ROOM_TYPE= "room_Type";
     public static final String KEY_ADULT_AMOUNT= "adult_Amount";
     public static final String KEY_CHILD_AMOUNT= "child_Amount";
     public static final String KEY_ACCOMODATION= "accomodation";
