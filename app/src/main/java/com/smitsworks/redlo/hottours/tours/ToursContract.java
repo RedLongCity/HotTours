@@ -57,7 +57,11 @@ public interface ToursContract {
 
         void setSotring(ToursSortType requestType);
 
+        void setCurrencyType(TourCurrencyType requestType);
+
         ToursSortType getSorting();
+
+        TourCurrencyType getCurrencyType();
 
 
     }

@@ -32,6 +32,8 @@ public class ToursPresenter implements ToursContract.Presenter {
 
     private ToursSortType sortType = ToursSortType.ALL_TOURS;
 
+    private TourCurrencyType currencyType = TourCurrencyType.DOLLAR;
+
     private boolean firstLoad = true;
 
     public ToursPresenter(@NonNull ToursRepository toursRepository,
@@ -178,6 +180,16 @@ public class ToursPresenter implements ToursContract.Presenter {
     public ToursSortType getSorting() {
 
         return sortType;
+    }
+
+    @Override
+    public TourCurrencyType getCurrencyType() {
+        return currencyType;
+    }
+
+    @Override
+    public void setCurrencyType(TourCurrencyType currencyType) {
+        this.currencyType = currencyType;
     }
 
     private void sortTours(List<Tour> tourList){

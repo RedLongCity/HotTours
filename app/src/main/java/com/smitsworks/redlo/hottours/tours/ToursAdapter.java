@@ -183,14 +183,39 @@ public class ToursAdapter extends BaseAdapter {
         switch(tour.getHotel_Rating().getId()){
             case "78":
                 star_5.setVisibility(View.VISIBLE);
-            case "4":
                 star_4.setVisibility(View.VISIBLE);
-            case "3":
                 star_3.setVisibility(View.VISIBLE);
-            case "2":
                 star_2.setVisibility(View.VISIBLE);
-            case "1":
                 star_1.setVisibility(View.VISIBLE);
+                break;
+            case "4":
+                star_5.setVisibility(View.GONE);
+                star_4.setVisibility(View.VISIBLE);
+                star_3.setVisibility(View.VISIBLE);
+                star_2.setVisibility(View.VISIBLE);
+                star_1.setVisibility(View.VISIBLE);
+                break;
+            case "3":
+                star_5.setVisibility(View.GONE);
+                star_4.setVisibility(View.GONE);
+                star_3.setVisibility(View.VISIBLE);
+                star_2.setVisibility(View.VISIBLE);
+                star_1.setVisibility(View.VISIBLE);
+                break;
+            case "2":
+                star_5.setVisibility(View.GONE);
+                star_4.setVisibility(View.GONE);
+                star_3.setVisibility(View.GONE);
+                star_2.setVisibility(View.VISIBLE);
+                star_1.setVisibility(View.VISIBLE);
+                break;
+            case "1":
+                star_5.setVisibility(View.GONE);
+                star_4.setVisibility(View.GONE);
+                star_3.setVisibility(View.GONE);
+                star_2.setVisibility(View.GONE);
+                star_1.setVisibility(View.VISIBLE);
+                break;
         }
 
         return rowView;

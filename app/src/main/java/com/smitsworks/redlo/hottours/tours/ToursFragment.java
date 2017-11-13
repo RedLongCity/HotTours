@@ -250,7 +250,7 @@ public class ToursFragment extends Fragment implements ToursContract.View {
 
     @Override
     public void showCurrencyTypePopUpMenu() {
-        PopupMenu popup = new PopupMenu(getContext(),getActivity().findViewById(R.id.menu_currency));
+        PopupMenu popup = new PopupMenu(getContext(),getActivity().findViewById(R.id.menu_sorting));
         popup.getMenuInflater().inflate(R.menu.currency_tours,popup.getMenu());
 
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -259,15 +259,19 @@ public class ToursFragment extends Fragment implements ToursContract.View {
                 switch(item.getItemId()){
                     case R.id.hryvna:
                         setCurrencyType(TourCurrencyType.HRYVNA);
+                        adapter.setCurrencyType(currencyType);
                         break;
                     case R.id.euro:
                         setCurrencyType(TourCurrencyType.EURO);
+                        adapter.setCurrencyType(currencyType);
                         break;
                     case R.id.dollar:
                         setCurrencyType(TourCurrencyType.DOLLAR);
+                        adapter.setCurrencyType(currencyType);
                         break;
                 }
-                presenter.loadTours(false);
+                adapter.notifyDataSetChanged();
+//                presenter.loadTours(false);
                 return true;
             }
         });
