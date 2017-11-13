@@ -271,7 +271,6 @@ public class ToursFragment extends Fragment implements ToursContract.View {
                         break;
                 }
                 adapter.notifyDataSetChanged();
-//                presenter.loadTours(false);
                 return true;
             }
         });
