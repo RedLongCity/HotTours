@@ -81,14 +81,20 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
         presenter.start();
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        mainCollapsing = (CollapsingToolbarLayout) getActivity().findViewById(R.id.main_collapsing);
+        detailImage = (ImageView) getActivity().findViewById(R.id.detail_image);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.tour_detail_frag,container,false);
         setHasOptionsMenu(true);
 
-        mainCollapsing = (CollapsingToolbarLayout) root.findViewById(R.id.main_collapsing);
-        detailImage = (ImageView) root.findViewById(R.id.detail_image);
         fromCity = (TextView) root.findViewById(R.id.city_tv);
         hotelTitle = (TextView) root.findViewById(R.id.hotel_name_tv);
         hotelRating = (TextView) root.findViewById(R.id.hotel_rating_tv);
@@ -204,7 +210,7 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
     @Override
     public void showAdultAmount(@NonNull Integer adults) {
         adultAmount.setVisibility(View.VISIBLE);
-        adultAmount.setText(adults);
+        adultAmount.setText(adults.toString());
     }
 
     @Override
@@ -215,7 +221,7 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
     @Override
     public void showChildrenAmount(@NonNull Integer children) {
         childrenAmount.setVisibility(View.VISIBLE);
-        childrenAmount.setText(children);
+        childrenAmount.setText(children.toString());
     }
 
     @Override
@@ -226,7 +232,7 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
     @Override
     public void showDuration(@NonNull Integer durationValue) {
         duration.setVisibility(View.VISIBLE);
-        duration.setText(durationValue);
+        duration.setText(durationValue.toString());
     }
 
     @Override
@@ -248,7 +254,7 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
     @Override
     public void showPriceValue(@NonNull Integer priceValue) {
         price.setVisibility(View.VISIBLE);
-        price.setText(priceValue);
+        price.setText(priceValue.toString());
     }
 
     @Override

@@ -47,10 +47,6 @@ public class ToursRemoteDataSource implements ToursDataSource{
 
     @Override
     public void getTours(@NonNull final LoadToursCallback callback) {
-        Handler handler = new Handler();
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
                 new AsyncTask<Void,Void,TourResponse>() {
                     @Override
                     protected TourResponse doInBackground(Void[] voids) {
@@ -63,8 +59,6 @@ public class ToursRemoteDataSource implements ToursDataSource{
                             }catch(@NonNull IOException | JSONException e){
                                 Log.e(TAG,e.getLocalizedMessage());
                             }
-                        }else{
-                            return null;
                         }
                         return null;
                     }
@@ -78,53 +72,59 @@ public class ToursRemoteDataSource implements ToursDataSource{
                         callback.onToursLoaded(response);
                     }
                 }.execute();
-            }
-        });
-//        Handler handler = new Handler();
-//        handler.post(new Runnable() {
-//            @Override
-//            public void run() {
-//                TourResponseProvider provider = new TourResponseProvider();
-//                Response response = provider.provide();
-//                if(response.isSuccessful()){
-//                    try {
-//                        TourResponseParser parser = new TourResponseParser();
-//                        TourResponse tourResponse = parser.parse(
-//                                new JSONObject(response.body().string()));
-//                        callback.onToursLoaded(tourResponse);
-//                    }catch(@NonNull IOException | JSONException e){
-//                        Log.e(TAG,e.getLocalizedMessage());
-//                    }
-//                }else{
-//                    callback.onDataNotAvailable();
-//                }
-//            }
-//        });
     }
 
     @Override
     public void getTour(@NonNull final Integer tourId, @NonNull final GetTourCallback callback) {
-            Handler handler = new Handler();
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    TourProvider provider = new TourProvider();
-                    Response response = provider.provide(tourId);
-                    if(response.isSuccessful()){
-                        try{
-                            TourParser parser = new TourParser();
-                            Tour tour = parser.parse(
-                                    new JSONObject(response.body().string())
-                            );
-                            callback.onTourLoaded(tour);
-                        }catch(@NonNull IOException | JSONException e){
-                            Log.e(TAG,e.getLocalizedMessage());
-                        }
-                    }else{
-                        callback.onDataNotAvailable();
+        new AsyncTask<Void, Void, Tour>() {
+            @Override
+            protected Tour doInBackground(Void... voids) {
+                TourProvider provider = new TourProvider();
+                Response response = provider.provide(tourId);
+                if(response.isSuccessful()){
+                    try{
+                        TourParser parser = new TourParser();
+                        return parser.parse(
+                                new JSONObject(response.body().string())
+                        );
+                    }catch(@NonNull IOException | JSONException e){
+                        Log.e(TAG,e.getLocalizedMessage());
                     }
                 }
-            });
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Tour tour) {
+                if(tour==null){
+                    callback.onDataNotAvailable();
+                    return;
+                }else{
+                    callback.onTourLoaded(tour);
+                }
+            }
+        }.execute();
+//            Handler handler = new Handler();
+//            handler.post(new Runnable() {
+//                @Override
+//                public void run() {
+//                    TourProvider provider = new TourProvider();
+//                    Response response = provider.provide(tourId);
+//                    if(response.isSuccessful()){
+//                        try{
+//                            TourParser parser = new TourParser();
+//                            Tour tour = parser.parse(
+//                                    new JSONObject(response.body().string())
+//                            );
+//                            callback.onTourLoaded(tour);
+//                        }catch(@NonNull IOException | JSONException e){
+//                            Log.e(TAG,e.getLocalizedMessage());
+//                        }
+//                    }else{
+//                        callback.onDataNotAvailable();
+//                    }
+//                }
+//            });
     }
 
     @Override
