@@ -1,5 +1,6 @@
 package com.smitsworks.redlo.hottours.data.source.remote;
 
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 
@@ -33,10 +34,9 @@ public class OrderRemoteDataPoster implements OrderDataPoster {
     @Override
     public void postOrder(@NonNull final Order order,
                           @NonNull final PostOrderCallback callback) {
-        Handler handler = new Handler();
-        handler.post(new Runnable() {
+        new AsyncTask<Void, Void, Void>() {
             @Override
-            public void run() {
+            protected Void doInBackground(Void... voids) {
                 OrderProvider provider = new OrderProvider();
                 Response response = provider.provide(order);
                 if(response.isSuccessful()){
@@ -44,7 +44,8 @@ public class OrderRemoteDataPoster implements OrderDataPoster {
                 }else{
                     callback.onPostFailed();
                 }
+                return null;
             }
-        });
+        }.execute();
     }
 }

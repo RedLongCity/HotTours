@@ -24,5 +24,5 @@ public interface Urls {
                             //POST
 
     static final String REQUEST_URL=URL_JSON+"/request";
-    static final String ORDER_URL=URL_JSON+"/postorder";
+    static final String ORDER_URL=URL_JSON+"/order";
 }

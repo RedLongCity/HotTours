@@ -104,52 +104,37 @@ public class ToursRemoteDataSource implements ToursDataSource{
                 }
             }
         }.execute();
-//            Handler handler = new Handler();
-//            handler.post(new Runnable() {
-//                @Override
-//                public void run() {
-//                    TourProvider provider = new TourProvider();
-//                    Response response = provider.provide(tourId);
-//                    if(response.isSuccessful()){
-//                        try{
-//                            TourParser parser = new TourParser();
-//                            Tour tour = parser.parse(
-//                                    new JSONObject(response.body().string())
-//                            );
-//                            callback.onTourLoaded(tour);
-//                        }catch(@NonNull IOException | JSONException e){
-//                            Log.e(TAG,e.getLocalizedMessage());
-//                        }
-//                    }else{
-//                        callback.onDataNotAvailable();
-//                    }
-//                }
-//            });
     }
 
     @Override
     public void getToursByRequest(@NonNull final Request request, @NonNull final LoadToursCallback callback) {
-        Handler handler = new Handler();
-        handler.post(new Runnable() {
+        new AsyncTask<Void, Void, TourResponse>() {
             @Override
-            public void run() {
+            protected TourResponse doInBackground(Void... voids) {
                 TourProvider provider = new TourProvider();
                 Response response = provider.provide(request);
                 if(response.isSuccessful()){
                     try{
                         TourResponseParser parser = new TourResponseParser();
-                        TourResponse tourResponse = parser.parse(
-                          new JSONObject(response.body().string())
+                        return parser.parse(
+                                new JSONObject(response.body().string())
                         );
-                        callback.onToursLoaded(tourResponse);
                     }catch(@NonNull IOException | JSONException e){
                         Log.e(TAG,e.getLocalizedMessage());
                     }
-                }else{
-                    callback.onDataNotAvailable();
                 }
+                return null;
             }
-        });
+
+            @Override
+            protected void onPostExecute(TourResponse tourResponse) {
+                if (tourResponse == null) {
+                    callback.onDataNotAvailable();
+                    return;
+                }
+                callback.onToursLoaded(tourResponse);
+            }
+        }.execute();
     }
 
     @Override

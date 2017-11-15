@@ -25,7 +25,7 @@ public class TourOrderFragment extends Fragment implements TourOrderContract.Vie
 
     public static final String ARGUMENT_ORDER_TOUR_ID = "ORDER_TOUR_ID";
 
-    private TourOrderPresenter presenter;
+    private TourOrderContract.Presenter presenter;
 
     private EditText name;
 
@@ -127,6 +127,6 @@ public class TourOrderFragment extends Fragment implements TourOrderContract.Vie
 
     @Override
     public void setPresenter(@NonNull TourOrderContract.Presenter presenter) {
-        presenter = checkNotNull(presenter);
+        this.presenter = checkNotNull(presenter);
     }
 }
