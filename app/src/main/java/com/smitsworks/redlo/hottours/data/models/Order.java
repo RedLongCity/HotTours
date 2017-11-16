@@ -11,9 +11,7 @@ public class Order {
 
     private Integer tourId;
 
-    public Order(UserData data, Integer tourId) {
-        this.data = data;
-        this.tourId = tourId;
+    public Order() {
     }
 
     public UserData getData() {

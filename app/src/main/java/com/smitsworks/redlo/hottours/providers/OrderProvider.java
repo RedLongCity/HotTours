@@ -1,8 +1,12 @@
 package com.smitsworks.redlo.hottours.providers;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.smitsworks.redlo.hottours.data.models.Order;
 import com.smitsworks.redlo.hottours.utils.HttpUtils;
 import com.smitsworks.redlo.hottours.utils.Urls;
+
+import org.json.JSONObject;
 
 import okhttp3.Response;
 
@@ -18,6 +22,8 @@ public class OrderProvider implements Provider,Urls {
     }
 
     public Response provide(Order order){
-        return HttpUtils.postData(ORDER_URL,order);
+        GsonBuilder builder = new GsonBuilder();
+        Gson gson = builder.create();
+        return HttpUtils.postData(ORDER_URL,gson.toJson(order));
     }
 }

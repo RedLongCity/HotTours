@@ -304,7 +304,7 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
 
     @Override
     public void hideImage() {
-        detailImage.setVisibility(View.GONE);
+        Picasso.with(getActivity()).load(R.drawable.tour_placeholder).into(detailImage);
     }
 
     @Override

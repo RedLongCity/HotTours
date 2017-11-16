@@ -42,7 +42,14 @@ public class TourOrderPresenter implements TourOrderContract.Presenter {
 
     @Override
     public void createOrder(String name, String phoneNumber, String email, String city) {
-        Order order = new Order(new UserData(name,phoneNumber,email,city),tourId);
+        Order order = new Order();
+        UserData data = new UserData();
+        data.setName(name);
+        data.setEmail(email);
+        data.setCity(city);
+        data.setMobileNumber(phoneNumber);
+        order.setData(data);
+        order.setTourId(tourId);
         if(order.isEmpty()){
             tourOrderView.showEmptyDataError();
         }else{
@@ -50,7 +57,7 @@ public class TourOrderPresenter implements TourOrderContract.Presenter {
                 @Override
                 public void onOrderPosted() {
                     tourOrderView.showSuccessfullPosting();
-                    tourOrderView.showToursList();
+                   // tourOrderView.showToursList();
                 }
 
                 @Override
