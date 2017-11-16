@@ -41,6 +41,8 @@ public interface ToursContract {
 
         TourCurrencyType getTourCurrencyType();
 
+        void findToursUI();
+
     }
 
     interface Presenter extends BasePresenter{
@@ -63,6 +65,6 @@ public interface ToursContract {
 
         TourCurrencyType getCurrencyType();
 
-
+        void findTours();
     }
 }

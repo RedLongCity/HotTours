@@ -183,6 +183,11 @@ public class ToursPresenter implements ToursContract.Presenter {
     }
 
     @Override
+    public void findTours() {
+        toursView.findToursUI();
+    }
+
+    @Override
     public TourCurrencyType getCurrencyType() {
         return currencyType;
     }

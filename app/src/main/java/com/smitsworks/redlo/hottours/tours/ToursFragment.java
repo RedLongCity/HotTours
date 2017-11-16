@@ -3,6 +3,7 @@ package com.smitsworks.redlo.hottours.tours;
 import com.smitsworks.redlo.hottours.R;
 import com.smitsworks.redlo.hottours.data.models.Tour;
 import com.smitsworks.redlo.hottours.tourdetails.TourDetailActivity;
+import com.smitsworks.redlo.hottours.tourfiltering.TourFilteringActivity;
 import com.smitsworks.redlo.hottours.tours.ToursAdapter;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.List;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -38,6 +40,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 public class ToursFragment extends Fragment implements ToursContract.View {
 
+    private static final int REQUEST_FIND_TOURS = 1;
+
     private ToursContract.Presenter presenter;
 
     private ToursAdapter adapter;
@@ -49,6 +53,8 @@ public class ToursFragment extends Fragment implements ToursContract.View {
     private TextView noToursMainView;
 
     private LinearLayout toursView;
+
+    private FloatingActionButton button;
 
     private TourCurrencyType currencyType = TourCurrencyType.DOLLAR;
 
@@ -72,6 +78,19 @@ public class ToursFragment extends Fragment implements ToursContract.View {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         presenter.result(requestCode,resultCode,data);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        button = (FloatingActionButton) getActivity().findViewById(R.id.fab_search_tours);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.findTours();
+            }
+        });
     }
 
     @Nullable
@@ -282,7 +301,13 @@ public class ToursFragment extends Fragment implements ToursContract.View {
         this.presenter = checkNotNull(presenter);
     }
 
-    private void showNoToursViews(String mainText,int iconRes){
+    @Override
+    public void findToursUI() {
+        Intent intent = new Intent(getContext(), TourFilteringActivity.class);
+        startActivityForResult(intent,REQUEST_FIND_TOURS);
+    }
+
+    private void showNoToursViews(String mainText, int iconRes){
         toursView.setVisibility(View.GONE);
         noToursView.setVisibility(View.VISIBLE);
 
