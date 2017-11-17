@@ -163,7 +163,7 @@ public class CountriesFragment extends Fragment implements CountriesContract.Vie
 
     @Override
     public void setPresenter(CountriesContract.Presenter presenter) {
-        presenter = checkNotNull(presenter);
+        this.presenter = checkNotNull(presenter);
     }
 
     private void showMessage(String message){

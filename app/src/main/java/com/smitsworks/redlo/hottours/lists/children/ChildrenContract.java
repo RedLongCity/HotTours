@@ -14,6 +14,10 @@ public interface ChildrenContract {
 
     interface View extends BaseView<Presenter>{
 
+        void setLoadingIndicator(boolean active);
+
+        void showChildren();
+
         void chooseChildrenAmountUI(Integer amount);
 
         boolean isActive();
@@ -21,6 +25,8 @@ public interface ChildrenContract {
     }
 
     interface Presenter extends BasePresenter{
+
+        void loadChildren();
 
         void chooseChildrenAmount(@NonNull Integer amount);
 

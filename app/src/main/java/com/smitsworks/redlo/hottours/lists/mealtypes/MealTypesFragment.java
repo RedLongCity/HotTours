@@ -164,7 +164,7 @@ public class MealTypesFragment extends Fragment implements MealTypesContract.Vie
 
     @Override
     public void setPresenter(MealTypesContract.Presenter presenter) {
-        presenter = checkNotNull(presenter);
+        this.presenter = checkNotNull(presenter);
     }
 
     private void showMessage(String message){

@@ -163,7 +163,7 @@ public class CitiesFragment extends Fragment implements CitiesContract.View {
 
     @Override
     public void setPresenter(CitiesContract.Presenter presenter) {
-        presenter = checkNotNull(presenter);
+        this.presenter = checkNotNull(presenter);
     }
 
     private void showMessage(String message){

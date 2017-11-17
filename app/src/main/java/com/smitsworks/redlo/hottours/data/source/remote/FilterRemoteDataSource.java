@@ -1,5 +1,6 @@
 package com.smitsworks.redlo.hottours.data.source.remote;
 
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -50,41 +51,47 @@ public class FilterRemoteDataSource implements FilterDataSource {
 
     @Override
     public void getCountries(@NonNull final LoadCountriesCallback callback) {
-        Handler handler = new Handler();
-        handler.post(new Runnable() {
+        new AsyncTask<Void, Void, List<Country>>() {
             @Override
-            public void run() {
-                    CountriesProvider provider = new CountriesProvider();
-                    Response response = provider.provide();
-                    if (response.isSuccessful()) {
-                        try {
-                            CountryParser parser = new CountryParser();
-                            JSONArray array = new JSONArray(response.body().string());
-                            int length = array.length();
-                            if (length > 0) {
-                                List<Country> countryList = new ArrayList<Country>();
-                                for (int i = 0; i < length; i++) {
-                                    Country country = parser.parse(array.getJSONObject(i));
-                                    countryList.add(country);
-                                }
-                                callback.onCountriesLoaded(countryList);
+            protected List<Country> doInBackground(Void... voids) {
+                CountriesProvider provider = new CountriesProvider();
+                Response response = provider.provide();
+                if (response.isSuccessful()) {
+                    try {
+                        CountryParser parser = new CountryParser();
+                        JSONArray array = new JSONArray(response.body().string());
+                        int length = array.length();
+                        if (length > 0) {
+                            List<Country> countryList = new ArrayList<Country>();
+                            for (int i = 0; i < length; i++) {
+                                Country country = parser.parse(array.getJSONObject(i));
+                                countryList.add(country);
                             }
-                        }catch(@NonNull IOException | JSONException e){
-                            Log.e(TAG,e.getLocalizedMessage());
+                            return countryList;
                         }
-                    }else{
-                        callback.onDataNotAvailable();
+                    }catch(@NonNull IOException | JSONException e){
+                        Log.e(TAG,e.getLocalizedMessage());
                     }
+                }
+                return null;
             }
-        });
+
+            @Override
+            protected void onPostExecute(List<Country> countries) {
+                if (countries == null) {
+                    callback.onDataNotAvailable();
+                    return;
+                }
+                callback.onCountriesLoaded(countries);
+            }
+        }.execute();
     }
 
     @Override
     public void getCities(@NonNull final LoadCititesCallback callback) {
-        Handler handler = new Handler();
-        handler.post(new Runnable() {
+        new AsyncTask<Void, Void, List<From_Cities>>() {
             @Override
-            public void run() {
+            protected List<From_Cities> doInBackground(Void... voids) {
                 CitiesProvider provider = new CitiesProvider();
                 Response response = provider.provide();
                 if(response.isSuccessful()){
@@ -98,24 +105,31 @@ public class FilterRemoteDataSource implements FilterDataSource {
                                 From_Cities city = parser.parse(array.getJSONObject(i));
                                 cityList.add(city);
                             }
-                            callback.onCitiesLoaded(cityList);
+                            return cityList;
                         }
                     }catch(@NonNull IOException | JSONException e){
                         Log.e(TAG,e.getLocalizedMessage());
                     }
-                }else{
-                    callback.onDataNotAvailable();
                 }
+                return null;
             }
-        });
+
+            @Override
+            protected void onPostExecute(List<From_Cities> from_cities) {
+                if (from_cities == null) {
+                    callback.onDataNotAvailable();
+                    return;
+                }
+                callback.onCitiesLoaded(from_cities);
+            }
+        }.execute();
     }
 
     @Override
     public void getHotelRatings(@NonNull final LoadHotelRatingsCallback callback) {
-        Handler handler = new Handler();
-        handler.post(new Runnable() {
+        new AsyncTask<Void, Void, List<Hotel_Rating>>() {
             @Override
-            public void run() {
+            protected List<Hotel_Rating> doInBackground(Void... voids) {
                 HotelRatingsProvider provider = new HotelRatingsProvider();
                 Response response = provider.provide();
                 if(response.isSuccessful()){
@@ -129,24 +143,31 @@ public class FilterRemoteDataSource implements FilterDataSource {
                                 Hotel_Rating rating = parser.parse(array.getJSONObject(i));
                                 list.add(rating);
                             }
-                            callback.onHotelRatingsLoaded(list);
+                            return list;
                         }
                     }catch(@NonNull IOException | JSONException e){
                         Log.e(TAG,e.getLocalizedMessage());
                     }
-                }else{
-                    callback.onDataNotAvailable();
                 }
+                return null;
             }
-        });
+
+            @Override
+            protected void onPostExecute(List<Hotel_Rating> hotel_ratings) {
+                if (hotel_ratings == null) {
+                    callback.onDataNotAvailable();
+                    return;
+                }
+                callback.onHotelRatingsLoaded(hotel_ratings);
+            }
+        }.execute();
     }
 
     @Override
     public void getMealTypes(@NonNull final LoadMealTypesCallback callback) {
-        Handler handler = new Handler();
-        handler.post(new Runnable() {
+        new AsyncTask<Void, Void, List<Meal_Type>>() {
             @Override
-            public void run() {
+            protected List<Meal_Type> doInBackground(Void... voids) {
                 MealTypesProvider provider = new MealTypesProvider();
                 Response response = provider.provide();
                 if(response.isSuccessful()){
@@ -160,16 +181,24 @@ public class FilterRemoteDataSource implements FilterDataSource {
                                 Meal_Type type = parser.parse(array.getJSONObject(i));
                                 list.add(type);
                             }
-                            callback.onMealTypesLoaded(list);
+                            return list;
                         }
                     }catch(@NonNull IOException | JSONException e){
                         Log.e(TAG,e.getLocalizedMessage());
                     }
-                }else{
-                    callback.onDataNotAvailable();
                 }
+                return null;
             }
-        });
+
+            @Override
+            protected void onPostExecute(List<Meal_Type> meal_types) {
+                if (meal_types == null) {
+                    callback.onDataNotAvailable();
+                    return;
+                }
+                callback.onMealTypesLoaded(meal_types);
+            }
+        }.execute();
     }
 
     @Override

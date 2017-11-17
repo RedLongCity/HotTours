@@ -185,7 +185,7 @@ public class TourFilteringFragment extends Fragment implements TourFilteringCont
 
     @Override
     public void setPresenter(TourFilteringContract.Presenter presenter) {
-        presenter = checkNotNull(presenter);
+        this.presenter = checkNotNull(presenter);
     }
 
     View.OnClickListener clickListener = new View.OnClickListener(){

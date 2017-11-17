@@ -26,7 +26,7 @@ public class CitiesActivity extends AppCompatActivity {
 
         CitiesFragment citiesFragment = (CitiesFragment) getSupportFragmentManager().
                 findFragmentById(R.id.contentFrame);
-        if (citiesFragment != null) {
+        if (citiesFragment == null) {
             citiesFragment = new CitiesFragment().newInstance();
             ActivityUtils.addFragmentToActivity(
                     getSupportFragmentManager(),citiesFragment,R.id.contentFrame

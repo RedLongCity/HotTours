@@ -53,12 +53,12 @@ public class AdultsAdapter extends BaseAdapter {
         View rowView = convertView;
         if (rowView == null) {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-            inflater.inflate(R.layout.list_item,parent,false);
-
+            rowView = inflater.inflate(R.layout.list_item, parent, false);
+        }
             final int value = (int) getItem(position);
 
             TextView textView = (TextView) rowView.findViewById(R.id.li_text_view);
-            textView.setText(value);
+            textView.setText(String.valueOf(value));
 
             rowView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -66,7 +66,7 @@ public class AdultsAdapter extends BaseAdapter {
                     listener.onItemClick(value);
                 }
             });
-        }
+
 
         return rowView;
     }

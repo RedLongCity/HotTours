@@ -5,14 +5,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.smitsworks.redlo.hottours.R;
 import com.smitsworks.redlo.hottours.lists.adapters.ChildrenAdapter;
 import com.smitsworks.redlo.hottours.tourfiltering.TourFilteringPresenter;
+import com.smitsworks.redlo.hottours.tours.ScrollChildSwipeRefreshLayout;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -26,6 +31,12 @@ public class ChildrenFragment extends Fragment implements ChildrenContract.View{
     private ChildrenContract.Presenter presenter;
 
     private ChildrenAdapter adapter;
+
+    private View noElementsView;
+
+    private ImageView noElementsIcon;
+
+    private TextView noElementsMainView;
 
     public ChildrenFragment() {
     }
@@ -54,7 +65,35 @@ public class ChildrenFragment extends Fragment implements ChildrenContract.View{
         ListView listView = (ListView) root.findViewById(R.id.elements_list);
         listView.setAdapter(adapter);
 
+        noElementsView = root.findViewById(R.id.noElements);
+        noElementsIcon = (ImageView) root.findViewById(R.id.noElementsIcon);
+        noElementsMainView = (TextView) root.findViewById(R.id.noElementsMain);
+
+        final ScrollChildSwipeRefreshLayout swipeRefreshLayout =
+                (ScrollChildSwipeRefreshLayout) root.findViewById(R.id.refresh_layout);
+        swipeRefreshLayout.setColorSchemeColors(
+                ContextCompat.getColor(getActivity(),R.color.colorPrimary),
+                ContextCompat.getColor(getActivity(),R.color.colorAccent),
+                ContextCompat.getColor(getActivity(),R.color.colorPrimaryDark)
+        );
+
+        swipeRefreshLayout.setScrollUpChild(listView);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener(){
+
+            @Override
+            public void onRefresh() {
+                presenter.loadChildren();
+            }
+        });
+
         return root;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        noElementsView.setVisibility(View.GONE);
     }
 
     ChildrenItemListener itemListener = new ChildrenItemListener(){
@@ -81,6 +120,29 @@ public class ChildrenFragment extends Fragment implements ChildrenContract.View{
     @Override
     public void setPresenter(ChildrenContract.Presenter presenter) {
         this.presenter = checkNotNull(presenter);
+    }
+
+    @Override
+    public void setLoadingIndicator(final boolean active) {
+        if (getView() == null) {
+            return;
+        }
+
+        final SwipeRefreshLayout srl =
+                (SwipeRefreshLayout) getView().findViewById(R.id.refresh_layout);
+
+        srl.post(new Runnable() {
+            @Override
+            public void run() {
+                srl.setRefreshing(active);
+            }
+        });
+    }
+
+    @Override
+    public void showChildren() {
+        adapter.notifyDataSetChanged();
+
     }
 
     public interface ChildrenItemListener{

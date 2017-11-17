@@ -164,7 +164,7 @@ public class HotelRatingsFragment extends Fragment implements HotelRatingsContra
 
     @Override
     public void setPresenter(HotelRatingsContract.Presenter presenter) {
-        presenter = checkNotNull(presenter);
+        this.presenter = checkNotNull(presenter);
     }
 
     private void showMessage(String message){
