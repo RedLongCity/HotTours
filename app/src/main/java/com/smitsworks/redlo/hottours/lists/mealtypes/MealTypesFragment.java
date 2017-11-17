@@ -152,7 +152,7 @@ public class MealTypesFragment extends Fragment implements MealTypesContract.Vie
         intent.putExtra(
                 TourFilteringPresenter.MEAL_TYPE_EXTRA,type.getId());
         intent.putExtra(
-                TourFilteringPresenter.MEAL_TYPE_NAME_EXTRA,type.getName());
+                TourFilteringPresenter.MEAL_TYPE_NAME_EXTRA,type.getName_full());
         getActivity().setResult(Activity.RESULT_OK,intent);
         getActivity().finish();
     }

@@ -1,5 +1,6 @@
 package com.smitsworks.redlo.hottours.tourfiltering;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -63,6 +64,11 @@ public class TourFilteringFragment extends Fragment implements TourFilteringCont
         super.onCreate(savedInstanceState);
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        presenter.result(requestCode,resultCode,data);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -119,61 +125,61 @@ public class TourFilteringFragment extends Fragment implements TourFilteringCont
 
     @Override
     public void showAdultsAmount(Integer adultsValue) {
-        adults.setText(adultsValue);
+        adults.setText(String.valueOf(adultsValue));
     }
 
     @Override
     public void showChildrenAmount(Integer childrenValue) {
-        children.setText(childrenValue);
+        children.setText(String.valueOf(childrenValue));
     }
 
     @Override
     public void openCountriesUI() {
         Intent intent = new Intent(getContext(), CountriesActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent,CountriesActivity.REQUEST_CHOOSE_COUNTRY);
     }
 
     @Override
     public void openCitiesUI() {
         Intent intent = new Intent(getContext(), CitiesActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent,CitiesActivity.REQUEST_CHOOSE_CITY);
     }
 
     @Override
     public void openHotelRatingsUI() {
         Intent intent = new Intent(getContext(), HotelRatingsActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent,HotelRatingsActivity.REQUEST_CHOOSE_RATING);
     }
 
     @Override
     public void openMealTypesUI() {
         Intent intent = new Intent(getContext(), MealTypesActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent,MealTypesActivity.REQUEST_CHOOSE_MEAL_TYPE);
     }
 
     @Override
     public void openCalendarUI() {
         Intent intent = new Intent(getContext(), CalendarActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent,CalendarActivity.REQUEST_CHOOSE_DATE);
     }
 
     @Override
     public void openAdultsUI() {
         Intent intent = new Intent(getContext(),AdultsActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent,AdultsActivity.REQUEST_CHOOSE_ADULTS_AMOUNT);
     }
 
     @Override
     public void openChildrenUI() {
         Intent intent = new Intent(getContext(),ChildrenActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent,ChildrenActivity.REQUEST_CHOOSE_CHILDREN_AMOUNT);
     }
 
     @Override
     public void showTours(Request request) {
         Intent intent = new Intent();
         intent.putExtra(TourFilteringActivity.ON_REQUEST,request);
-        getActivity().setResult(TourFilteringActivity.RESULT_REQUEST,intent);
+        getActivity().setResult(Activity.RESULT_OK,intent);
         getActivity().finish();
     }
 
