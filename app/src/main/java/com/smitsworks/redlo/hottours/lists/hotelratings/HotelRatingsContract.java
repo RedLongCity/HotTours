@@ -22,6 +22,8 @@ public interface HotelRatingsContract {
 
         void showLoadingHotelRatingsError();
 
+        void showSuccessfullyLoadedMessage();
+
         void showHotelRatings(List<Hotel_Rating> ratings);
 
         void showNoHotelRatings();

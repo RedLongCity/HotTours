@@ -108,4 +108,12 @@
     <string name="day_month_placeholder">Mon, Dec 31</string>
     <string name="ok">Ok</string>
     <string name="cancel">Cancel</string>
+    <string name="load_countries_success">Countries loaded</string>
+    <string name="load_cities_success">Cities loaded</string>
+    <string name="load_hotel_ratings_success">Hotel ratings loaded</string>
+    <string name="load_meal_types_success">Meal types loaded</string>
+    <string name="load_children_error">Loading was failed</string>
+    <string name="load_children_success">Loading finished succesfully</string>
+    <string name="load_adults_error">Loading failed</string>
+    <string name="load_adults_success">Loading finished succesfully</string>
 </resources>

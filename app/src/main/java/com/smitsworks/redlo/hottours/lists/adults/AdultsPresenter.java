@@ -29,6 +29,7 @@ public class AdultsPresenter implements AdultsContract.Presenter {
     public void loadAdults() {
         adultsView.showAdults();
         adultsView.setLoadingIndicator(false);
+        adultsView.showSuccessfullyLoadedMessage();
     }
 
     @Override

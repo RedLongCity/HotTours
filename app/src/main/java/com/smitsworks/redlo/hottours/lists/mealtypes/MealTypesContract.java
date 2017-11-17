@@ -21,6 +21,8 @@ public interface MealTypesContract {
 
         void showLoadingMealTypesError();
 
+        void showSuccessfullyLoadedMessage();
+
         void showMealTypes(List<Meal_Type> types);
 
         void showNoMealTypes();

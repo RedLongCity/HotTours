@@ -16,6 +16,10 @@ public interface ChildrenContract {
 
         void setLoadingIndicator(boolean active);
 
+        void showLoadingChildrenError();
+
+        void showSuccessfullyLoadedMessage();
+
         void showChildren();
 
         void chooseChildrenAmountUI(Integer amount);

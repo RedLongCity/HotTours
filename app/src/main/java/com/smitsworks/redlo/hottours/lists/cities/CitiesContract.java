@@ -21,6 +21,8 @@ public interface CitiesContract {
 
         void showLoadingCitiesError();
 
+        void showSuccessfullyLoadedMessage();
+
         void showCitites(List<From_Cities> cities);
 
         void showNoCities();

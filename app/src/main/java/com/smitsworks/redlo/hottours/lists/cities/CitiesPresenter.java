@@ -63,6 +63,7 @@ public class CitiesPresenter implements CitiesContract.Presenter {
                     citiesView.setLoadingIndicator(false);
                 }
                 processCities(cities);
+                citiesView.showSuccessfullyLoadedMessage();
             }
 
             @Override

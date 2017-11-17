@@ -167,6 +167,11 @@ public class HotelRatingsFragment extends Fragment implements HotelRatingsContra
         this.presenter = checkNotNull(presenter);
     }
 
+    @Override
+    public void showSuccessfullyLoadedMessage() {
+        showMessage(getString(R.string.load_hotel_ratings_success));
+    }
+
     private void showMessage(String message){
         Snackbar.make(getView(),message,Snackbar.LENGTH_LONG).show();
     }

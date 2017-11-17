@@ -56,6 +56,7 @@ public class CountriesPresenter implements CountriesContract.Presenter {
                     countriesView.setLoadingIndicator(false);
                 }
                 processCountries(countries);
+                countriesView.showSuccessfullyLoadedMessage();
             }
 
             @Override

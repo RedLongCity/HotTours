@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -94,6 +95,7 @@ public class ChildrenFragment extends Fragment implements ChildrenContract.View{
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         noElementsView.setVisibility(View.GONE);
+        showSuccessfullyLoadedMessage();
     }
 
     ChildrenItemListener itemListener = new ChildrenItemListener(){
@@ -143,6 +145,20 @@ public class ChildrenFragment extends Fragment implements ChildrenContract.View{
     public void showChildren() {
         adapter.notifyDataSetChanged();
 
+    }
+
+    @Override
+    public void showLoadingChildrenError() {
+        showMessage(getString(R.string.load_children_error));
+    }
+
+    @Override
+    public void showSuccessfullyLoadedMessage() {
+        showMessage(getString(R.string.load_children_success));
+    }
+
+    private void showMessage(String message){
+        Snackbar.make(getView(),message,Snackbar.LENGTH_LONG).show();
     }
 
     public interface ChildrenItemListener{

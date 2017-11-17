@@ -62,6 +62,7 @@ public class HotelRatingsPresenter implements HotelRatingsContract.Presenter {
                     hotelRatingsView.setLoadingIndicator(false);
                 }
                 processHotelRatings(ratings);
+                hotelRatingsView.showSuccessfullyLoadedMessage();
             }
 
             @Override

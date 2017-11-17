@@ -61,6 +61,7 @@ public class MealTypesPresenter implements MealTypesContract.Presenter {
                     mealTypesView.setLoadingIndicator(false);
                 }
                 processMealTypes(types);
+                mealTypesView.showSuccessfullyLoadedMessage();
             }
 
             @Override

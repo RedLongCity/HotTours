@@ -167,6 +167,11 @@ public class MealTypesFragment extends Fragment implements MealTypesContract.Vie
         this.presenter = checkNotNull(presenter);
     }
 
+    @Override
+    public void showSuccessfullyLoadedMessage() {
+        showMessage(getString(R.string.load_meal_types_success));
+    }
+
     private void showMessage(String message){
         Snackbar.make(getView(),message,Snackbar.LENGTH_LONG).show();
     }

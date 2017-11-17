@@ -28,6 +28,7 @@ public class ChildrenPresenter implements ChildrenContract.Presenter {
     public void loadChildren() {
         childrenView.showChildren();
         childrenView.setLoadingIndicator(false);
+        childrenView.showSuccessfullyLoadedMessage();
     }
 
     @Override

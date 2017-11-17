@@ -16,6 +16,10 @@ public interface AdultsContract {
 
         void setLoadingIndicator(boolean active);
 
+        void showLoadingAdultsError();
+
+        void showSuccessfullyLoadedMessage();
+
         void showAdults();
 
         void chooseAdultsAmountUI(Integer amount);

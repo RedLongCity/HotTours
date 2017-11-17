@@ -166,6 +166,11 @@ public class CountriesFragment extends Fragment implements CountriesContract.Vie
         this.presenter = checkNotNull(presenter);
     }
 
+    @Override
+    public void showSuccessfullyLoadedMessage() {
+        showMessage(getString(R.string.load_countries_success));
+    }
+
     private void showMessage(String message){
         Snackbar.make(getView(),message,Snackbar.LENGTH_LONG).show();
     }

@@ -21,6 +21,8 @@ public interface CountriesContract {
 
         void showLoadingCountriesError();
 
+        void showSuccessfullyLoadedMessage();
+
         void showCountries(List<Country> countries);
 
         void showNoCountries();
