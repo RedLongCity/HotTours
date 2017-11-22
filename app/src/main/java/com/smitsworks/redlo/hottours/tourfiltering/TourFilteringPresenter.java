@@ -215,30 +215,42 @@ public class TourFilteringPresenter implements TourFilteringContract.Presenter {
             Country country= new Country();
             country.setId(countryId);
             request.setCountry(country);
+        }else{
+            request.setCountry(null);
         }
 
         if (cityId != null) {
             From_Cities city = new From_Cities();
             city.setId(cityId);
             request.setFrom_Cities(city);
+        }else{
+            request.setFrom_Cities(null);
         }
 
         if (mealTypeId != null) {
             Meal_Type type = new Meal_Type();
             type.setId(mealTypeId);
             request.setMeal_Type(type);
+        }else{
+            request.setMeal_Type(null);
         }
 
         if (hotelRatingId != null) {
             request.setHotel_Rating(hotelRatingId);
+        }else{
+            request.setHotel_Rating("3:78");
         }
 
         if (nightFrom != null) {
             request.setNight_From(nightFrom);
+        }else{
+            request.setNight_From(2);
         }
 
         if (nightTill != null) {
             request.setNight_Till(nightTill);
+        }else{
+            request.setNight_Till(7);
         }
 
         filteringView.showTours(request);

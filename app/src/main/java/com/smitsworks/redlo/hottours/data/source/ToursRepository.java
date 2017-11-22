@@ -119,6 +119,10 @@ public class ToursRepository implements ToursDataSource {
     }
 
     private void refreshCache(TourResponse tourResponse){
+        if (cachedTours == null) {
+            cachedTours = new TourResponse();
+        }
+        cachedTours = null;
         cachedTours = tourResponse;
         cacheIsDirty = false;
     }

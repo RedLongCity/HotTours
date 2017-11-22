@@ -55,7 +55,7 @@ public class ToursPresenter implements ToursContract.Presenter {
                 Activity.RESULT_OK == resultCode){
             Request request =
                     data.getParcelableExtra(TourFilteringActivity.ON_REQUEST);
-            loadToursByRequest(request,false);
+            loadToursByRequest(request,true);
         }
     }
 
@@ -120,7 +120,6 @@ public class ToursPresenter implements ToursContract.Presenter {
         if(forceUpdate){
             toursRepository.refreshTours();
         }
-
         toursRepository.getToursByRequest(request, new ToursDataSource.LoadToursCallback() {
             @Override
             public void onToursLoaded(TourResponse tourResponse) {
@@ -152,7 +151,7 @@ public class ToursPresenter implements ToursContract.Presenter {
             processEmptyTours();
         }else{
             toursView.showTours(tours);
-            showFilterLabel();
+            //showFilterLabel();
         }
     }
 
@@ -178,7 +177,6 @@ public class ToursPresenter implements ToursContract.Presenter {
 
     @Override
     public ToursSortType getSorting() {
-
         return sortType;
     }
 

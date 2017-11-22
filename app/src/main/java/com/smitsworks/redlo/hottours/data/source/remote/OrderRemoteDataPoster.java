@@ -39,6 +39,9 @@ public class OrderRemoteDataPoster implements OrderDataPoster {
             protected Void doInBackground(Void... voids) {
                 OrderProvider provider = new OrderProvider();
                 Response response = provider.provide(order);
+                if (response == null) {
+                    return null;
+                }
                 if(response.isSuccessful()){
                     callback.onOrderPosted();
                 }else{

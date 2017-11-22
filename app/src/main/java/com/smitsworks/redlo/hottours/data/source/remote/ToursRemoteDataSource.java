@@ -52,6 +52,9 @@ public class ToursRemoteDataSource implements ToursDataSource{
                     protected TourResponse doInBackground(Void[] voids) {
                         TourResponseProvider provider = new TourResponseProvider();
                         Response response = provider.provide();
+                        if (response == null) {
+                            return null;
+                        }
                         if(response.isSuccessful()){
                             try {
                                 TourResponseParser parser = new TourResponseParser();
@@ -81,6 +84,9 @@ public class ToursRemoteDataSource implements ToursDataSource{
             protected Tour doInBackground(Void... voids) {
                 TourProvider provider = new TourProvider();
                 Response response = provider.provide(tourId);
+                if (response == null) {
+                    return null;
+                }
                 if(response.isSuccessful()){
                     try{
                         TourParser parser = new TourParser();
@@ -113,6 +119,9 @@ public class ToursRemoteDataSource implements ToursDataSource{
             protected TourResponse doInBackground(Void... voids) {
                 TourProvider provider = new TourProvider();
                 Response response = provider.provide(request);
+                if (response == null) {
+                    return null;
+                }
                 if(response.isSuccessful()){
                     try{
                         TourResponseParser parser = new TourResponseParser();

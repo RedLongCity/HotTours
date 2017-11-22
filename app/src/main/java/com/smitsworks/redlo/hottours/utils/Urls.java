@@ -22,7 +22,7 @@ public interface Urls {
     static final String MEAL_TYPES_URL=URL_JSON+"/mealtype";
 
                             //POST
-
+    static final String REQUEST_TOUR_URL=URL_JSON+"/gettoursbyrequest";
     static final String REQUEST_URL=URL_JSON+"/request";
     static final String ORDER_URL=URL_JSON+"/order";
 }

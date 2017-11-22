@@ -120,7 +120,7 @@ public class ToursFragment extends Fragment implements ToursContract.View {
 
             @Override
             public void onRefresh() {
-                presenter.loadTours(false);
+                presenter.loadTours(true);
             }
         });
 

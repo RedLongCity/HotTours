@@ -43,13 +43,19 @@ public class Request implements Parcelable {
     public Request(Parcel in){
         String[] data = new String[4];
         in.readStringArray(data);
-        country = new Country();
-        country.setId(data[0]);
-        from_Cities = new From_Cities();
-        from_Cities.setId(data[1]);
+        if(!data[0].equals("null")){
+            country = new Country();
+            country.setId(data[0]);
+        }
+        if(!data[1].equals("null")) {
+            from_Cities = new From_Cities();
+            from_Cities.setId(data[1]);
+        }
         hotel_Rating = data[2];
-        meal_Type = new Meal_Type();
-        meal_Type.setId(data[3]);
+        if(!data[3].equals("null")) {
+            meal_Type = new Meal_Type();
+            meal_Type.setId(data[3]);
+        }
 
         int[] intData = new int[2];
         in.readIntArray(intData);

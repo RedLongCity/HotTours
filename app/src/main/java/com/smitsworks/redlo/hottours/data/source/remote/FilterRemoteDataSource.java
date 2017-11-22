@@ -56,6 +56,9 @@ public class FilterRemoteDataSource implements FilterDataSource {
             protected List<Country> doInBackground(Void... voids) {
                 CountriesProvider provider = new CountriesProvider();
                 Response response = provider.provide();
+                if (response == null) {
+                    return null;
+                }
                 if (response.isSuccessful()) {
                     try {
                         CountryParser parser = new CountryParser();
@@ -94,6 +97,9 @@ public class FilterRemoteDataSource implements FilterDataSource {
             protected List<From_Cities> doInBackground(Void... voids) {
                 CitiesProvider provider = new CitiesProvider();
                 Response response = provider.provide();
+                if (response == null) {
+                    return null;
+                }
                 if(response.isSuccessful()){
                     try{
                         CityParser parser = new CityParser();
@@ -132,6 +138,9 @@ public class FilterRemoteDataSource implements FilterDataSource {
             protected List<Hotel_Rating> doInBackground(Void... voids) {
                 HotelRatingsProvider provider = new HotelRatingsProvider();
                 Response response = provider.provide();
+                if (response == null) {
+                    return null;
+                }
                 if(response.isSuccessful()){
                     try{
                         HotelRatingParser parser = new HotelRatingParser();
@@ -170,6 +179,9 @@ public class FilterRemoteDataSource implements FilterDataSource {
             protected List<Meal_Type> doInBackground(Void... voids) {
                 MealTypesProvider provider = new MealTypesProvider();
                 Response response = provider.provide();
+                if (response == null) {
+                    return null;
+                }
                 if(response.isSuccessful()){
                     try{
                         MealTypeParser parser = new MealTypeParser();

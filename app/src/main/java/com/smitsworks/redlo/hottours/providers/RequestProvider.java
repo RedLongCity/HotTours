@@ -1,5 +1,7 @@
 package com.smitsworks.redlo.hottours.providers;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.smitsworks.redlo.hottours.data.models.Request;
 import com.smitsworks.redlo.hottours.utils.HttpUtils;
 import com.smitsworks.redlo.hottours.utils.Urls;
@@ -18,6 +20,8 @@ public class RequestProvider implements Provider,Urls {
     }
 
     public Response provide(Request request){
-        return HttpUtils.postData(REQUEST_URL,request);
+        GsonBuilder builder = new GsonBuilder();
+        Gson gson = builder.create();
+        return HttpUtils.postData(REQUEST_TOUR_URL,gson.toJson(request));
     }
 }
