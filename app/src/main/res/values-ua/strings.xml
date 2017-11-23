@@ -1,0 +1,119 @@
+<resources>
+    <string name="app_name">Hot Tours</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <array name="days_of_week">
+        <item>@string/mon</item>
+        <item>@string/tue</item>
+        <item>@string/wed</item>
+        <item>@string/thu</item>
+        <item>@string/fri</item>
+        <item>@string/sat</item>
+        <item>@string/sun</item>
+    </array>
+    
+    <array name="months_of_year">
+        <item>@string/jan</item>
+        <item>@string/feb</item>
+        <item>@string/mar</item>
+        <item>@string/apr</item>
+        <item>@string/may</item>
+        <item>@string/jun</item>
+        <item>@string/jul</item>
+        <item>@string/aug</item>
+        <item>@string/sep</item>
+        <item>@string/oct</item>
+        <item>@string/nov</item>
+        <item>@string/dec</item>
+    </array>
+
+    <string name="mon">Пон</string>
+    <string name="tue">Вт</string>
+    <string name="wed">Ср</string>
+    <string name="thu">Чт</string>
+    <string name="fri">Пт</string>
+    <string name="sat">Сб</string>
+    <string name="sun">Вс</string>
+
+    <string name="jan">Янв</string>
+    <string name="feb">Фев</string>
+    <string name="mar">Март</string>
+    <string name="apr">Апр</string>
+    <string name="may">Май</string>
+    <string name="jun">Июнь</string>
+    <string name="jul">Июль</string>
+    <string name="aug">Авг</string>
+    <string name="sep">Сент</string>
+    <string name="oct">Окт</string>
+    <string name="nov">Ноя</string>
+    <string name="dec">Дек</string>
+
+    <string name="action_settings">Настройки</string>
+    <string name="toolbar_placeholder">Страна Город</string>
+    <string name="from_city">Из города</string>
+    <string name="from_city_placeholder">Город</string>
+    <string name="hotel_name">Название отеля:</string>
+    <string name="hotel_title_placeholder">Название отеля</string>
+    <string name="hotel_rating">Рейтинг отеля:</string>
+    <string name="hotel_rating_placeholder">03</string>
+    <string name="meal_type">Тип питания:</string>
+    <string name="meal_type_placeholder">Все включено</string>
+    <string name="adult_amount_placeholder">2</string>
+    <string name="adult_amount">Кол-во взрослых:</string>
+    <string name="children_amount">Кол-во детей:</string>
+    <string name="children_amount_placeholder">2</string>
+    <string name="duration">Продолжительность:</string>
+    <string name="duration_placeholder">7 дней</string>
+    <string name="date_from">С :</string>
+    <string name="date_from_placeholder">Пят, Дек 31, 2017</string>
+    <string name="price_value">Цена:</string>
+    <string name="price_value_placeholder">350</string>
+    <string name="currency_symbol_placeholder">$</string>
+    <string name="currency">Валюта</string>
+    <string name="transport_type_placeholder">Полет</string>
+    <string name="tramspot_type">Тип транспорта</string>
+    <string name="loading">Загрузка</string>
+    <string name="no_data">Тур не найден</string>
+    <string name="name_hint">Имя</string>
+    <string name="phone_hint">Номер тел.</string>
+    <string name="email_hint">Email</string>
+    <string name="city_hint">Город</string>
+    <string name="empty_data_message">Некоторые поля незаполнены</string>
+    <string name="posting_success">Заказ отправлен</string>
+    <string name="posting_failed">Сервер недоступен</string>
+    <string name="create_order">Заказ</string>
+    <string name="to_country">В страну</string>
+    <string name="to_country_placeholder">Страна</string>
+    <string name="night_amount">Кол-во ночей</string>
+    <string name="load_countries_error">Ошибка при загрузке стран</string>
+    <string name="no_countries_found">Страны не найдены</string>
+    <string name="load_cities_error">Города не загружены</string>
+    <string name="no_cities_founded">Города не найдены</string>
+    <string name="load_hotel_ratings_error">Рейтинги отелей не загружены</string>
+    <string name="no_hotel_ratings_found">Рейтинги отелей не найдены</string>
+    <string name="load_meal_types_error">Типы питания не загружены</string>
+    <string name="no_meal_types_found">Типы питания не найдены</string>
+    <string name="date_till">До:</string>
+    <string name="date_till_placeholder">Ср, Дек 31, 2017</string>
+    <string name="travelers">Путешественники</string>
+    <string name="adults">Взрослые:</string>
+    <string name="adults_placeholder">1</string>
+    <string name="children">Дети:</string>
+    <string name="children_placeholder">0</string>
+    <string name="find_button">Найти туры</string>
+    <string name="select_date">Выбор даты:</string>
+    <string name="year_placeholder">2017</string>
+    <string name="day_month_placeholder">Пон, Дек 31</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Выход</string>
+    <string name="load_countries_success">Страны успешно загружены</string>
+    <string name="load_cities_success">Города успешно загружены</string>
+    <string name="load_hotel_ratings_success">Рейтинги отелей загружены</string>
+    <string name="load_meal_types_success">Типы питания загружены</string>
+    <string name="load_children_error">Загрузка закончилась неудачей</string>
+    <string name="load_children_success">Загрузка закончилась успешно</string>
+    <string name="load_adults_error">Загрузка закончилась неудачей</string>
+    <string name="load_adults_success">Загрузка закончилась успешно</string>
+</resources>

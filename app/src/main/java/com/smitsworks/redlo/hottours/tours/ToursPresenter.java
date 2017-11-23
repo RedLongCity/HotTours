@@ -30,6 +30,8 @@ public class ToursPresenter implements ToursContract.Presenter {
 
     private final ToursContract.View toursView;
 
+    private Request request;
+
     private ToursSortType sortType = ToursSortType.ALL_TOURS;
 
     private TourCurrencyType currencyType = TourCurrencyType.DOLLAR;
@@ -53,15 +55,24 @@ public class ToursPresenter implements ToursContract.Presenter {
     public void result(int requestCode, int resultCode, Intent data) {
         if(TourFilteringActivity.RESULT_REQUEST == requestCode &&
                 Activity.RESULT_OK == resultCode){
-            Request request =
+            Request entity =
                     data.getParcelableExtra(TourFilteringActivity.ON_REQUEST);
+            if (entity != null) {
+                request = entity;
+            }
             loadToursByRequest(request,true);
         }
     }
 
     @Override
     public void loadTours(boolean forceUpdate) {
-        loadTours(forceUpdate || firstLoad,true);
+        if(firstLoad){
+            request = new Request();
+            request.setHotel_Rating("3:78");
+            request.setNight_From(2);
+            request.setNight_Till(7);
+        }
+        loadTours(request,forceUpdate || firstLoad,true);
         firstLoad = false;
     }
 
