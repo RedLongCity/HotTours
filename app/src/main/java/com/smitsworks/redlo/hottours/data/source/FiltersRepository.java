@@ -39,6 +39,14 @@ public class FiltersRepository implements FilterDataSource {
 
     Meal_Type cachedMealType;
 
+    Integer cachedNightFrom;
+
+    Integer cachedNightTill;
+
+    Integer cachedAdultsAmount;
+
+    Integer cachedChildrenAmount;
+
     boolean countryCacheIsDirty = false;
 
     boolean cityCacheIsDirty = false;
@@ -206,6 +214,8 @@ public class FiltersRepository implements FilterDataSource {
         mealTypesCacheIsDirty = false;
     }
 
+
+
     @Override
     public void cachedCountry(Country country) {
         cachedCountry = country;
@@ -227,6 +237,26 @@ public class FiltersRepository implements FilterDataSource {
     }
 
     @Override
+    public void cachedNightFrom(Integer nightFrom) {
+        cachedNightFrom = nightFrom;
+    }
+
+    @Override
+    public void cachedNightTill(Integer nightTill) {
+        cachedNightTill = nightTill;
+    }
+
+    @Override
+    public void cachedAdultsAmount(Integer adults) {
+        cachedAdultsAmount = adults;
+    }
+
+    @Override
+    public void cachedChildrenAmount(Integer children) {
+        cachedChildrenAmount = children;
+    }
+
+    @Override
     public Country getCachedCountry() {
         return cachedCountry;
     }
@@ -244,5 +274,25 @@ public class FiltersRepository implements FilterDataSource {
     @Override
     public Meal_Type getCachedMealType() {
         return cachedMealType;
+    }
+
+    @Override
+    public Integer getCachedNightFrom() {
+        return cachedNightFrom;
+    }
+
+    @Override
+    public Integer getCachedNightTill() {
+        return cachedNightTill;
+    }
+
+    @Override
+    public Integer getCachedAdultsAmount() {
+        return cachedAdultsAmount;
+    }
+
+    @Override
+    public Integer getCachedChildrenAmount() {
+        return cachedChildrenAmount;
     }
 }

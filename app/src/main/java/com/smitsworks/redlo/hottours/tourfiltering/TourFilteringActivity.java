@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.smitsworks.redlo.hottours.Injection;
 import com.smitsworks.redlo.hottours.R;
 import com.smitsworks.redlo.hottours.utils.ActivityUtils;
 
@@ -35,7 +36,8 @@ public class TourFilteringActivity extends AppCompatActivity{
             ActivityUtils.addFragmentToActivity(getSupportFragmentManager(),
                     fragment,R.id.contentFrame);
 
-            presenter = new TourFilteringPresenter(fragment);
+            presenter = new TourFilteringPresenter(
+                    Injection.provideFilterRepository(getApplicationContext()),fragment);
 
         }
     }

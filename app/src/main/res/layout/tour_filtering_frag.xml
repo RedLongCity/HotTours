@@ -153,36 +153,36 @@
 
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/background_white"
-                android:orientation="vertical"
-                android:padding="5dp"
-                android:clickable="true">
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@color/background_white"-->
+                <!--android:orientation="vertical"-->
+                <!--android:padding="5dp"-->
+                <!--android:clickable="true">-->
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:lineSpacingExtra="4dp"
-                    android:padding="2dp"
-                    android:text="@string/date_from"
-                    android:textColor="@color/details_text_head"
-                    android:textSize="16dp"
-                    android:gravity="center"/>
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:lineSpacingExtra="4dp"-->
+                    <!--android:padding="2dp"-->
+                    <!--android:text="@string/date_from"-->
+                    <!--android:textColor="@color/details_text_head"-->
+                    <!--android:textSize="16dp"-->
+                    <!--android:gravity="center"/>-->
 
-                <TextView
-                    android:id="@+id/date_filters_tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:lineSpacingExtra="4dp"
-                    android:padding="2dp"
-                    android:text="@string/date_from_placeholder"
-                    android:textColor="@color/details_text_content"
-                    android:textSize="18dp"
-                    android:textStyle="bold"
-                    android:gravity="center"/>
-            </LinearLayout>
+                <!--<TextView-->
+                    <!--android:id="@+id/date_filters_tv"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:lineSpacingExtra="4dp"-->
+                    <!--android:padding="2dp"-->
+                    <!--android:text="@string/date_from_placeholder"-->
+                    <!--android:textColor="@color/details_text_content"-->
+                    <!--android:textSize="18dp"-->
+                    <!--android:textStyle="bold"-->
+                    <!--android:gravity="center"/>-->
+            <!--</LinearLayout>-->
 
 
 
@@ -207,11 +207,14 @@
             xmlns:custom="http://schemas.android.com/apk/res-auto"
             android:id="@+id/rangebar"
             android:layout_width="match_parent"
-            android:layout_height="72dp"
+            android:layout_height="90dp"
             custom:rangeBarColor="@color/details_text_content"
-            custom:connectingLineColor="@color/colorPrimary"
-            custom:pinColor="@color/pin_color"
-            custom:tickColor="@color/pin_color"
+            custom:connectingLineColor="@color/pin_color"
+            custom:pinColor="@color/colorPrimary"
+            custom:pinRadius="20dp"
+            custom:pinMaxFont="25dp"
+            custom:tickColor="@color/colorPrimary"
+            custom:tickHeight="2dp"
             custom:tickStart="1"
             custom:tickInterval="1"
             custom:tickEnd="9"

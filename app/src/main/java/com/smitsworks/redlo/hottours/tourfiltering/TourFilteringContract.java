@@ -31,6 +31,8 @@ public interface TourFilteringContract {
 
         void showChildrenAmount(Integer children);
 
+        void showNightsRange(Integer nightsFrom, Integer nightsTill);
+
         void openCountriesUI();
 
         void openCitiesUI();

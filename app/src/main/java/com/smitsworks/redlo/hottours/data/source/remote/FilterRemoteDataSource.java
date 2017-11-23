@@ -239,6 +239,26 @@ public class FilterRemoteDataSource implements FilterDataSource {
     }
 
     @Override
+    public void cachedNightFrom(Integer nightFrom) {
+
+    }
+
+    @Override
+    public void cachedNightTill(Integer nightTill) {
+
+    }
+
+    @Override
+    public void cachedAdultsAmount(Integer adults) {
+
+    }
+
+    @Override
+    public void cachedChildrenAmount(Integer children) {
+
+    }
+
+    @Override
     public Country getCachedCountry() {
         return null;
     }
@@ -255,6 +275,26 @@ public class FilterRemoteDataSource implements FilterDataSource {
 
     @Override
     public Meal_Type getCachedMealType() {
+        return null;
+    }
+
+    @Override
+    public Integer getCachedNightFrom() {
+        return null;
+    }
+
+    @Override
+    public Integer getCachedNightTill() {
+        return null;
+    }
+
+    @Override
+    public Integer getCachedAdultsAmount() {
+        return null;
+    }
+
+    @Override
+    public Integer getCachedChildrenAmount() {
         return null;
     }
 }

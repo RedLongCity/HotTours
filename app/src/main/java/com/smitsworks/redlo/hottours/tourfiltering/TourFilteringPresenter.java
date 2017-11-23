@@ -2,19 +2,25 @@ package com.smitsworks.redlo.hottours.tourfiltering;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.smitsworks.redlo.hottours.calendar.CalendarActivity;
 import com.smitsworks.redlo.hottours.data.models.Country;
 import com.smitsworks.redlo.hottours.data.models.From_Cities;
+import com.smitsworks.redlo.hottours.data.models.Hotel_Rating;
 import com.smitsworks.redlo.hottours.data.models.Meal_Type;
 import com.smitsworks.redlo.hottours.data.models.Request;
+import com.smitsworks.redlo.hottours.data.source.FiltersRepository;
+import com.smitsworks.redlo.hottours.data.source.ToursRepository;
 import com.smitsworks.redlo.hottours.lists.adults.AdultsActivity;
 import com.smitsworks.redlo.hottours.lists.children.ChildrenActivity;
 import com.smitsworks.redlo.hottours.lists.cities.CitiesActivity;
 import com.smitsworks.redlo.hottours.lists.countries.CountriesActivity;
 import com.smitsworks.redlo.hottours.lists.hotelratings.HotelRatingsActivity;
 import com.smitsworks.redlo.hottours.lists.mealtypes.MealTypesActivity;
+
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * Created by redlongcity on 18.10.2017.
@@ -24,6 +30,8 @@ import com.smitsworks.redlo.hottours.lists.mealtypes.MealTypesActivity;
 public class TourFilteringPresenter implements TourFilteringContract.Presenter {
 
     private final TourFilteringContract.View filteringView;
+
+    private final FiltersRepository filtersRepository;
 
     @Nullable
     private String countryId;
@@ -95,9 +103,10 @@ public class TourFilteringPresenter implements TourFilteringContract.Presenter {
 
     public static final String CHILDREN_EXTRA="CHILDREN_EXTRA";
 
-    public TourFilteringPresenter(TourFilteringContract.View filteringView) {
-        this.filteringView = filteringView;
-
+    public TourFilteringPresenter(@NonNull FiltersRepository filtersRepository,
+                                  @NonNull TourFilteringContract.View filteringView) {
+        this.filtersRepository = checkNotNull(filtersRepository);
+        this.filteringView = checkNotNull(filteringView);
         filteringView.setPresenter(this);
     }
 
@@ -149,6 +158,16 @@ public class TourFilteringPresenter implements TourFilteringContract.Presenter {
                     if(data.hasExtra(COUNTRY_EXTRA)){
                         countryId = data.getStringExtra(COUNTRY_EXTRA);
                         countryName = data.getStringExtra(COUNTRY_NAME_EXTRA);
+
+                        Country country = new Country();
+                        if (countryId != null) {
+                        country.setId(countryId);
+                        }
+                        if (countryName != null) {
+                            country.setName(countryName);
+                        }
+                        filtersRepository.cachedCountry(country);
+
                         filteringView.showCountry(countryName);
                     }
                 }
@@ -158,6 +177,16 @@ public class TourFilteringPresenter implements TourFilteringContract.Presenter {
                     if(data.hasExtra(CITY_EXTRA)){
                         cityId = data.getStringExtra(CITY_EXTRA);
                         cityName = data.getStringExtra(CITY_NAME_EXTRA);
+
+                        From_Cities city = new From_Cities();
+                        if (cityId != null) {
+                            city.setId(cityId);
+                        }
+                        if (cityName != null) {
+                            city.setName(cityName);
+                        }
+                        filtersRepository.cachedCity(city);
+
                         filteringView.showCity(cityName);
                     }
                 }
@@ -167,6 +196,16 @@ public class TourFilteringPresenter implements TourFilteringContract.Presenter {
                     if(data.hasExtra(HOTEL_RATING_EXTRA)){
                         hotelRatingId = data.getStringExtra(HOTEL_RATING_EXTRA);
                         hotelRatingValue = data.getStringExtra(HOTEL_RATING_NAME_EXTRA);
+
+                        Hotel_Rating rating = new Hotel_Rating();
+                        if (hotelRatingId != null) {
+                            rating.setId(hotelRatingId);
+                        }
+                        if (hotelRatingValue != null) {
+                            rating.setName(hotelRatingValue);
+                        }
+                        filtersRepository.cachedHotelRating(rating);
+
                         filteringView.showHotelRating(hotelRatingValue);
                     }
                 }
@@ -176,6 +215,16 @@ public class TourFilteringPresenter implements TourFilteringContract.Presenter {
                     if(data.hasExtra(MEAL_TYPE_EXTRA)){
                         mealTypeId = data.getStringExtra(MEAL_TYPE_EXTRA);
                         mealTypeName = data.getStringExtra(MEAL_TYPE_NAME_EXTRA);
+
+                        Meal_Type type = new Meal_Type();
+                        if (mealTypeId != null) {
+                            type.setId(mealTypeId);
+                        }
+                        if (mealTypeName != null) {
+                            type.setName_full(mealTypeName);
+                        }
+                        filtersRepository.cachedMealType(type);
+
                         filteringView.showMealType(mealTypeName);
                     }
                 }
@@ -183,7 +232,7 @@ public class TourFilteringPresenter implements TourFilteringContract.Presenter {
             case CalendarActivity.REQUEST_CHOOSE_DATE:
                 if(resultCode == Activity.RESULT_OK){
                     if(data.hasExtra(DATE_EXTRA)){
-                        dateFrom = data.getStringExtra(DATE_EXTRA);
+                        dateFrom = data.getStringExtra(DATE_EXTRA);//need update when field would be added
                         filteringView.showDate(dateFrom);
                     }
                 }
@@ -192,6 +241,7 @@ public class TourFilteringPresenter implements TourFilteringContract.Presenter {
                 if(resultCode == Activity.RESULT_OK){
                     if(data.hasExtra(ADULTS_EXTRA)){
                         adults = data.getIntExtra(ADULTS_EXTRA,2);
+                        filtersRepository.cachedAdultsAmount(adults);
                         filteringView.showAdultsAmount(adults);
                     }
                 }
@@ -200,6 +250,7 @@ public class TourFilteringPresenter implements TourFilteringContract.Presenter {
                 if(resultCode == Activity.RESULT_OK){
                     if(data.hasExtra(CHILDREN_EXTRA)){
                         children = data.getIntExtra(CHILDREN_EXTRA,0);
+                        filtersRepository.cachedChildrenAmount(children);
                         filteringView.showChildrenAmount(children);
                     }
                 }
@@ -257,14 +308,109 @@ public class TourFilteringPresenter implements TourFilteringContract.Presenter {
     }
 
     private void populateFilters(){
+        if (filtersRepository == null) {
+            return;
+        }
+
+        if(countryName!=null) {
+            filteringView.showCountry(countryName);
+        }else{
+            Country country = filtersRepository.getCachedCountry();
+            if (country != null) {
+                countryId = country.getId();
+                countryName = country.getName();
+                filteringView.showCountry(countryName);
+            }
+        }
+
+
+        if (cityName != null) {
+            filteringView.showCity(cityName);
+        }else{
+            From_Cities city = filtersRepository.getCachedCity();
+            if (city != null) {
+                cityId = city.getId();
+                cityName = city.getName();
+                filteringView.showCity(cityName);
+            }
+        }
+
+        if (hotelRatingValue != null) {
+            filteringView.showHotelRating(hotelRatingValue);
+        }else{
+            Hotel_Rating rating = filtersRepository.getCachedRating();
+            if (rating != null) {
+                hotelRatingId = rating.getId();
+                hotelRatingValue = rating.getName();
+                filteringView.showHotelRating(hotelRatingValue);
+            }
+        }
+
+        if (mealTypeName != null) {
+            filteringView.showMealType(mealTypeName);
+        }else{
+            Meal_Type type = filtersRepository.getCachedMealType();
+            if (type != null) {
+                mealTypeId = type.getId();
+                mealTypeName = type.getName_full();
+                filteringView.showMealType(mealTypeName);
+            }
+        }
+
+        if (adults != null) {
+            filteringView.showAdultsAmount(adults);
+        }else{
+            Integer adultsAmount = filtersRepository.getCachedAdultsAmount();
+            if (adultsAmount != null) {
+                adults = adultsAmount;
+                filteringView.showAdultsAmount(adults);
+            }
+        }
+
+        if (children != null) {
+            filteringView.showChildrenAmount(children);
+        }else{
+            Integer childrenAmount = filtersRepository.getCachedChildrenAmount();
+            if (childrenAmount != null) {
+                children = childrenAmount;
+                filteringView.showChildrenAmount(children);
+            }
+        }
+
+        if (nightFrom == null) {
+            Integer from = filtersRepository.getCachedNightFrom();
+            if (from != null) {
+                nightFrom = from;
+            }else{
+                nightFrom = 1;
+            }
+        }
+
+        if (nightTill == null) {
+            Integer till = filtersRepository.getCachedNightTill();
+            if (till != null) {
+                nightTill = till;
+            }else{
+                nightTill = 9;
+            }
+        }
+
+        filteringView.showNightsRange(nightFrom,nightTill);
 
     }
+
     @Override
     public void setNightFrom(@Nullable Integer nightFrom) {
         this.nightFrom = nightFrom;
+        if (nightFrom != null) {
+            filtersRepository.cachedNightFrom(nightFrom);
+        }
     }
     @Override
     public void setNightTill(@Nullable Integer nightTill) {
         this.nightTill = nightTill;
+        if (nightTill != null) {
+            filtersRepository.cachedNightTill(nightTill);
+        }
     }
 }

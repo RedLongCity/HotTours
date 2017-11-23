@@ -63,6 +63,14 @@ public interface FilterDataSource {
 
     void cachedMealType(Meal_Type type);
 
+    void cachedNightFrom(Integer nightFrom);
+
+    void cachedNightTill(Integer nightTill);
+
+    void cachedAdultsAmount(Integer adults);
+
+    void cachedChildrenAmount(Integer children);
+
     Country getCachedCountry();
 
     From_Cities getCachedCity();
@@ -70,5 +78,13 @@ public interface FilterDataSource {
     Hotel_Rating getCachedRating();
 
     Meal_Type getCachedMealType();
+
+    Integer getCachedNightFrom();
+
+    Integer getCachedNightTill();
+
+    Integer getCachedAdultsAmount();
+
+    Integer getCachedChildrenAmount();
 
 }

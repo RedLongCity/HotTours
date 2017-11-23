@@ -24,6 +24,7 @@ public class ToursRepository implements ToursDataSource {
 
 
     TourResponse cachedTours;
+
     Tour cachedTour;
 
     boolean cacheIsDirty = false;

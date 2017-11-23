@@ -42,7 +42,7 @@ public class TourFilteringFragment extends Fragment implements TourFilteringCont
 
     private TextView mealType;
 
-    private TextView date;
+//    private TextView date;
 
     private TextView adults;
 
@@ -65,6 +65,12 @@ public class TourFilteringFragment extends Fragment implements TourFilteringCont
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        presenter.start();
+    }
+
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         presenter.result(requestCode,resultCode,data);
     }
@@ -79,7 +85,7 @@ public class TourFilteringFragment extends Fragment implements TourFilteringCont
         toCountry = (TextView) root.findViewById(R.id.to_country_tv);
         hotelRating = (TextView) root.findViewById(R.id.hotel_rating_filters_tv);
         mealType = (TextView) root.findViewById(R.id.meal_type_filters_tv);
-        date = (TextView) root.findViewById(R.id.date_filters_tv);
+//        date = (TextView) root.findViewById(R.id.date_filters_tv);
         adults = (TextView) root.findViewById(R.id.adult_amount_filters_tv);
         children = (TextView) root.findViewById(R.id.children_amount_filters_tv);
         find = (Button) root.findViewById(R.id.but_find);
@@ -89,7 +95,7 @@ public class TourFilteringFragment extends Fragment implements TourFilteringCont
         toCountry.setOnClickListener(clickListener);
         hotelRating.setOnClickListener(clickListener);
         mealType.setOnClickListener(clickListener);
-        date.setOnClickListener(clickListener);
+//        date.setOnClickListener(clickListener);
         adults.setOnClickListener(clickListener);
         children.setOnClickListener(clickListener);
         find.setOnClickListener(clickListener);
@@ -120,7 +126,7 @@ public class TourFilteringFragment extends Fragment implements TourFilteringCont
 
     @Override
     public void showDate(String dateValue) {
-        date.setText(dateValue);
+//        date.setText(dateValue);
     }
 
     @Override
@@ -131,6 +137,11 @@ public class TourFilteringFragment extends Fragment implements TourFilteringCont
     @Override
     public void showChildrenAmount(Integer childrenValue) {
         children.setText(String.valueOf(childrenValue));
+    }
+
+    @Override
+    public void showNightsRange(Integer nightsFrom, Integer nightsTill) {
+        range.setRangePinsByValue(nightsFrom,nightsTill);
     }
 
     @Override
@@ -211,9 +222,9 @@ public class TourFilteringFragment extends Fragment implements TourFilteringCont
                 case R.id.meal_type_filters_tv:
                     presenter.openMealTypes();
                     break;
-                case R.id.date_filters_tv:
-                    presenter.openCalendar();
-                    break;
+//                case R.id.date_filters_tv:
+//                    presenter.openCalendar();
+//                    break;
                 case R.id.adult_amount_filters_tv:
                     presenter.openAdults();
                     break;
