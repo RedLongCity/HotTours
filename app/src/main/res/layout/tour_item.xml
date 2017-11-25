@@ -6,7 +6,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="170dp"
-    android:background="@drawable/tour_placeholder">
+    android:background="@drawable/tour_placeholder"
+    >
 
     <TextView
         android:id="@+id/country_city"
