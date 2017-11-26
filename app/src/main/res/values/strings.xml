@@ -116,4 +116,8 @@
     <string name="load_children_success">Loading finished succesfully</string>
     <string name="load_adults_error">Loading failed</string>
     <string name="load_adults_success">Loading finished succesfully</string>
+    <string name="tours_not_founded">Tours not found</string>
+    <string name="tours_succesfully_loaded">Tours loaded succesfully</string>
+    <string name="searching">Searching</string>
+    <string name="hot_tours">Hot Tours</string>
 </resources>

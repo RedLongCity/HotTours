@@ -48,7 +48,7 @@ public class ToursPresenter implements ToursContract.Presenter {
 
     @Override
     public void start() {
-        loadTours(false);
+        loadTours(true);
     }
 
     @Override
@@ -60,7 +60,7 @@ public class ToursPresenter implements ToursContract.Presenter {
             if (entity != null) {
                 request = entity;
             }
-            loadToursByRequest(request,true);
+//            loadToursByRequest(request,true);
         }
     }
 
@@ -72,53 +72,14 @@ public class ToursPresenter implements ToursContract.Presenter {
             request.setNight_From(2);
             request.setNight_Till(7);
         }
-        loadTours(request,forceUpdate || firstLoad,true);
+        loadToursByRequest(request,forceUpdate || firstLoad);
         firstLoad = false;
     }
 
-    private void loadTours(boolean forceUpdate, final boolean showLoadingUI){
-        if(showLoadingUI){
-            toursView.setLoadingIndicator(true);
-        }
-
-        if(forceUpdate){
-            toursRepository.refreshTours();
-        }
-
-        toursRepository.getTours(new ToursDataSource.LoadToursCallback(){
-
-            @Override
-            public void onToursLoaded(TourResponse tourResponse) {
-                List<Tour> tourList = tourResponse.getTourList();
-                sortTours(tourList);
-
-                if(!toursView.isActive()){
-                    return;
-                }
-                if(showLoadingUI){
-                    toursView.setLoadingIndicator(false);
-                }
-
-                processTours(tourList);
-                toursView.showSuccessfullyLoadedMessage();
-            }
-
-
-
-            @Override
-            public void onDataNotAvailable() {
-                if(!toursView.isActive()){
-                    return;
-                }
-                toursView.showLoadingTourError();
-            }
-        });
-    }
 
     @Override
     public void loadToursByRequest(Request request, boolean forceUpdate) {
         loadTours(request, forceUpdate || firstLoad, true);
-        firstLoad = false;
     }
 
     private void loadTours(Request request,
@@ -144,7 +105,6 @@ public class ToursPresenter implements ToursContract.Presenter {
                     toursView.setLoadingIndicator(false);
                 }
                 processTours(tourList);
-                toursView.showSuccessfullyLoadedMessage();
             }
 
             @Override
@@ -162,6 +122,7 @@ public class ToursPresenter implements ToursContract.Presenter {
             processEmptyTours();
         }else{
             toursView.showTours(tours);
+            toursView.showSuccessfullyLoadedMessage();
             //showFilterLabel();
         }
     }

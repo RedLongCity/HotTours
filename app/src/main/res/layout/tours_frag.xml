@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/refresh_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_shape_background">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -45,6 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="You have no Tours"
+                android:textColor="@color/background_white"
                 android:layout_marginBottom="8dp"/>
         </LinearLayout>
     </RelativeLayout>

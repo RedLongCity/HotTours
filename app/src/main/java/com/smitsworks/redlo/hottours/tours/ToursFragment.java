@@ -211,14 +211,15 @@ public class ToursFragment extends Fragment implements ToursContract.View {
     @Override
     public void showNoTours() {
         showNoToursViews(
-                "Tours not found!",
+                getString(R.string.tours_not_founded),
                 R.drawable.ic_assignment_turned_in_24dp
         );
+        showMessage(getString(R.string.tours_not_founded));
     }
 
     @Override
     public void showSuccessfullyLoadedMessage() {
-        showMessage("Tours Loaded");
+        showMessage(getString(R.string.tours_succesfully_loaded));
     }
 
     @Override
