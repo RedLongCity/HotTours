@@ -1,241 +1,505 @@
 <?xml version="1.0" encoding="utf-8"?>
-        <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_white"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="5"
+            android:lineSpacingExtra="4dp"
+            android:padding="2dp"
+            android:text="@string/from_city"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/background_grey" />
+
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="4dp"
-                android:text="@string/from_city"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="2dp"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:textColor="@color/details_text_head"/>
+            android:layout_weight="5"
+            android:scrollbars="none">
 
             <TextView
                 android:id="@+id/city_tv"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:lineSpacingExtra="4dp"
+                android:padding="2dp"
+                android:scrollHorizontally="true"
                 android:text="@string/from_city_placeholder"
-                android:textSize="12sp"
-                android:textColor="@color/details_text_content"/>
+                android:textColor="@color/colorPrimary"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+        </HorizontalScrollView>
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="4dp"
-                android:text="@string/hotel_name"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="2dp"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:textColor="@color/details_text_head"/>
-            />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_grey"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="5"
+            android:lineSpacingExtra="4dp"
+            android:padding="2dp"
+            android:text="@string/hotel_name"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+        />
+
+        <ImageView
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/background_white" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:scrollbars="none"
+            >
 
             <TextView
                 android:id="@+id/hotel_name_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:lineSpacingExtra="4dp"
+                android:padding="2dp"
+                android:scrollHorizontally="true"
                 android:text="@string/hotel_title_placeholder"
-                android:textSize="12sp"
-                android:textColor="@color/details_text_content"/>
+                android:textColor="@color/colorPrimary"
+                android:textSize="16dp"
+                android:textStyle="bold"/>
+        </HorizontalScrollView>
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="4dp"
-                android:text="@string/hotel_rating"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="2dp"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:textColor="@color/details_text_head"/>
-            />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_white"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="5"
+            android:lineSpacingExtra="4dp"
+            android:padding="2dp"
+            android:text="@string/hotel_rating"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/background_grey" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:scrollbars="none">
 
             <TextView
                 android:id="@+id/hotel_rating_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:lineSpacingExtra="4dp"
+                android:padding="2dp"
+                android:scrollHorizontally="true"
                 android:text="@string/hotel_rating_placeholder"
-                android:textSize="12sp"
-                android:textColor="@color/details_text_content"/>
+                android:textColor="@color/colorPrimary"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+        </HorizontalScrollView>
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="4dp"
-                android:text="@string/meal_type"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="2dp"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:textColor="@color/details_text_head"/>
-            />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_grey"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="5"
+            android:lineSpacingExtra="4dp"
+            android:padding="2dp"
+            android:text="@string/meal_type"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/background_white" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:scrollbars="none">
 
             <TextView
                 android:id="@+id/meal_type_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:lineSpacingExtra="4dp"
+                android:padding="2dp"
+                android:scrollHorizontally="true"
                 android:text="@string/meal_type_placeholder"
-                android:textSize="12sp"
-                android:textColor="@color/details_text_content"/>
+                android:textColor="@color/colorPrimary"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+        </HorizontalScrollView>
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="4dp"
-                android:text="@string/adult_amount"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="2dp"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:textColor="@color/details_text_head"/>
-            />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_white"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="5"
+            android:lineSpacingExtra="4dp"
+            android:padding="2dp"
+            android:text="@string/adult_amount"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/background_grey" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:scrollbars="none">
 
             <TextView
                 android:id="@+id/adult_amount_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:lineSpacingExtra="4dp"
+                android:padding="2dp"
+                android:scrollHorizontally="true"
                 android:text="@string/adult_amount_placeholder"
-                android:textSize="12sp"
-                android:textColor="@color/details_text_content"/>
+                android:textColor="@color/colorPrimary"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+        </HorizontalScrollView>
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="4dp"
-                android:text="@string/children_amount"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="2dp"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:textColor="@color/details_text_head"/>
-            />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_grey"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="5"
+            android:lineSpacingExtra="4dp"
+            android:padding="2dp"
+            android:text="@string/children_amount"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/background_white" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:scrollbars="none">
 
             <TextView
                 android:id="@+id/children_amount_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="5"
                 android:lineSpacingExtra="4dp"
+                android:padding="2dp"
                 android:text="@string/children_amount_placeholder"
-                android:textSize="12sp"
-                android:textColor="@color/details_text_content"/>
+                android:textColor="@color/colorPrimary"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+        </HorizontalScrollView>
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="4dp"
-                android:text="@string/duration"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="2dp"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:textColor="@color/details_text_head"/>
-            />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_white"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="5"
+            android:lineSpacingExtra="4dp"
+            android:padding="2dp"
+            android:text="@string/duration"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/background_grey" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:scrollbars="none">
 
             <TextView
                 android:id="@+id/duration_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:lineSpacingExtra="4dp"
+                android:padding="2dp"
+                android:scrollHorizontally="true"
                 android:text="@string/duration_placeholder"
-                android:textSize="12sp"
-                android:textColor="@color/details_text_content"/>
+                android:textColor="@color/colorPrimary"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+        </HorizontalScrollView>
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="4dp"
-                android:text="@string/date_from"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="2dp"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:textColor="@color/details_text_head"/>
-            />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_grey"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="5"
+            android:lineSpacingExtra="4dp"
+            android:padding="2dp"
+            android:text="@string/date_from"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/background_white" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:scrollbars="none">
 
             <TextView
                 android:id="@+id/date_from_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:lineSpacingExtra="4dp"
+                android:padding="2dp"
+                android:scrollHorizontally="true"
                 android:text="@string/date_from_placeholder"
-                android:textSize="12sp"
-                android:textColor="@color/details_text_content"/>
+                android:textColor="@color/colorPrimary"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+        </HorizontalScrollView>
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="4dp"
-                android:text="@string/price_value"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="2dp"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:textColor="@color/details_text_head"/>
-            />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_white"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="5"
+            android:lineSpacingExtra="4dp"
+            android:padding="2dp"
+            android:text="@string/price_value"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/background_grey" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:scrollbars="none">
 
             <TextView
                 android:id="@+id/price_value_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:lineSpacingExtra="4dp"
+                android:padding="2dp"
+                android:scrollHorizontally="true"
                 android:text="@string/price_value_placeholder"
-                android:textSize="12sp"
-                android:textColor="@color/details_text_content"/>
+                android:textColor="@color/colorPrimary"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+        </HorizontalScrollView>
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="4dp"
-                android:text="@string/currency"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="2dp"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:textColor="@color/details_text_head"/>
-            />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_grey"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="5"
+            android:lineSpacingExtra="4dp"
+            android:padding="2dp"
+            android:text="@string/currency"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/background_white" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:scrollbars="none">
 
             <TextView
                 android:id="@+id/currency_symbol_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:lineSpacingExtra="4dp"
+                android:padding="2dp"
+                android:scrollHorizontally="true"
                 android:text="@string/currency_symbol_placeholder"
-                android:textSize="12sp"
-                android:textColor="@color/details_text_content"/>
+                android:textColor="@color/colorPrimary"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+        </HorizontalScrollView>
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="4dp"
-                android:text="@string/tramspot_type"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="2dp"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:textColor="@color/details_text_head"/>
-            />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_white"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="5"
+            android:lineSpacingExtra="4dp"
+            android:padding="2dp"
+            android:text="@string/tramspot_type"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/background_grey" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="5">
 
             <TextView
                 android:id="@+id/transport_type_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:lineSpacingExtra="4dp"
+                android:padding="2dp"
+                android:scrollHorizontally="true"
                 android:text="@string/transport_type_placeholder"
-                android:textSize="12sp"
-                android:textColor="@color/details_text_content"/>
+                android:textColor="@color/colorPrimary"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+        </HorizontalScrollView>
+    </LinearLayout>
 
-        </LinearLayout>
+</LinearLayout>
 
