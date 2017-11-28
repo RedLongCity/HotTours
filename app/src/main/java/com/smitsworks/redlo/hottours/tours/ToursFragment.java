@@ -250,14 +250,17 @@ public class ToursFragment extends Fragment implements ToursContract.View {
                     case R.id.by_duration:
                         presenter.setSotring(ToursSortType.TOURS_BY_DURATION);
                         break;
-                    case R.id.by_adult:
-                        presenter.setSotring(ToursSortType.TOURS_BY_ADULT);
-                        break;
-                    case R.id.by_child:
-                        presenter.setSotring(ToursSortType.TOURS_BY_CHILDREN);
-                        break;
+//                    case R.id.by_adult:
+//                        presenter.setSotring(ToursSortType.TOURS_BY_ADULT);
+//                        break;
+//                    case R.id.by_child:
+//                        presenter.setSotring(ToursSortType.TOURS_BY_CHILDREN);
+//                        break;
                     case R.id.by_date:
                         presenter.setSotring(ToursSortType.TOURS_BY_DATEFROM);
+                        break;
+                    case R.id.by_price:
+                        presenter.setSotring(ToursSortType.TOURS_BY_PRICE);
                         break;
                 }
                 presenter.loadTours(false);

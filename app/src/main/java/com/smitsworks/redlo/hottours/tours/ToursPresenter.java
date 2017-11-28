@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 
+import com.smitsworks.redlo.hottours.data.models.Price;
 import com.smitsworks.redlo.hottours.data.models.Request;
 import com.smitsworks.redlo.hottours.data.models.Tour;
 import com.smitsworks.redlo.hottours.data.models.TourResponse;
@@ -216,6 +217,22 @@ public class ToursPresenter implements ToursContract.Presenter {
                     @Override
                     public int compare(Tour o1, Tour o2) {
                         return o1.getDate_From().compareTo(o2.getDate_From());
+                    }
+                });
+                break;
+            case TOURS_BY_PRICE:
+                Collections.sort(tourList, new Comparator<Tour>() {
+                    @Override
+                    public int compare(Tour o1, Tour o2) {
+                        int o1Costs=0;
+                        int o2Costs=0;
+                        for(Price price:o1.getPrices()){
+                            o1Costs+=price.getCost();
+                        }
+                        for(Price price:o2.getPrices()){
+                            o2Costs+=price.getCost();
+                        }
+                        return o1Costs-o2Costs;
                     }
                 });
                 break;

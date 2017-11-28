@@ -3,35 +3,39 @@
 
     <item
         android:id="@+id/all"
-        android:title="All"/>
+        android:title="@string/filter_all"/>
 
     <item
         android:id="@+id/by_country"
-        android:title="By Country"
+        android:title="@string/filter_country"
         />
 
     <item
         android:id="@+id/by_city"
-        android:title="By City"
+        android:title="@string/filter_city"
         />
 
     <item
         android:id="@+id/by_duration"
-        android:title="By Duration"
+        android:title="@string/filter_duration"
         />
 
-    <item
-        android:id="@+id/by_adult"
-        android:title="By Adult Amount"
-        />
+    <!--<item-->
+        <!--android:id="@+id/by_adult"-->
+        <!--android:title="By Adult Amount"-->
+        <!--/>-->
 
+    <!--<item-->
+        <!--android:id="@+id/by_child"-->
+        <!--android:title="By Child Amount"-->
+        <!--/>-->
     <item
-        android:id="@+id/by_child"
-        android:title="By Child Amount"
+        android:id="@+id/by_price"
+        android:title="@string/filter_price"
         />
 
     <item
         android:id="@+id/by_date"
-        android:title="By Date From"
+        android:title="@string/filter_date"
         />
 </menu>

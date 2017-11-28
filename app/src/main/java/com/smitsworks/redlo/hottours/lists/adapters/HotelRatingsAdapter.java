@@ -1,5 +1,6 @@
 package com.smitsworks.redlo.hottours.lists.adapters;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,6 +65,11 @@ public class HotelRatingsAdapter extends BaseAdapter {
 
             TextView textView = (TextView) rowView.findViewById(R.id.li_text_view);
             textView.setText(rating.getName());
+        if(position%2==0) {
+            textView.setBackgroundColor(Color.LTGRAY);
+        }else{
+            textView.setBackgroundColor(Color.WHITE);
+        }
 
             rowView.setOnClickListener(new View.OnClickListener() {
                 @Override

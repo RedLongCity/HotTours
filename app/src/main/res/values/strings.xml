@@ -120,4 +120,10 @@
     <string name="tours_succesfully_loaded">Tours loaded succesfully</string>
     <string name="searching">Searching</string>
     <string name="hot_tours">Hot Tours</string>
+    <string name="filter_all">All</string>
+    <string name="filter_country">Country</string>
+    <string name="filter_city">City</string>
+    <string name="filter_duration">Duration</string>
+    <string name="filter_price">Price</string>
+    <string name="filter_date">Date</string>
 </resources>

@@ -116,4 +116,10 @@
     <string name="load_children_success">Загрузка закончилась успешно</string>
     <string name="load_adults_error">Загрузка закончилась неудачей</string>
     <string name="load_adults_success">Загрузка закончилась успешно</string>
+    <string name="filter_all">Все</string>
+    <string name="filter_country">Страна</string>
+    <string name="filter_city">Город</string>
+    <string name="filter_duration">Длительность</string>
+    <string name="filter_price">Цена</string>
+    <string name="filter_date">Дата</string>
 </resources>

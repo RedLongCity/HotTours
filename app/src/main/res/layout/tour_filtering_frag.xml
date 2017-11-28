@@ -225,7 +225,10 @@
             custom:tickInterval="1"
             custom:tickEnd="9"
             android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"/>
+            android:layout_marginRight="16dp"
+            custom:temporaryPins="false"
+            custom:pinMinFont="10dp"
+            />
 
             </LinearLayout>
 

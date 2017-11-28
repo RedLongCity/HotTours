@@ -1,5 +1,8 @@
 package com.smitsworks.redlo.hottours.lists.adapters;
 
+import android.graphics.Color;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +55,7 @@ public class CountriesAdapter extends BaseAdapter {
         return position;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View rowView = convertView;
@@ -64,6 +68,12 @@ public class CountriesAdapter extends BaseAdapter {
 
             TextView textView = (TextView) rowView.findViewById(R.id.li_text_view);
             textView.setText(country.getName());
+
+            if(position%2==0) {
+                textView.setBackgroundColor(Color.LTGRAY);
+            }else{
+                textView.setBackgroundColor(Color.WHITE);
+            }
 
             rowView.setOnClickListener(new View.OnClickListener() {
                 @Override
