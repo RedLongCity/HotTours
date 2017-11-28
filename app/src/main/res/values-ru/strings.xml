@@ -13,7 +13,7 @@
         <item>@string/sat</item>
         <item>@string/sun</item>
     </array>
-    
+
     <array name="months_of_year">
         <item>@string/jan</item>
         <item>@string/feb</item>
@@ -52,12 +52,12 @@
 
     <string name="action_settings">Настройки</string>
     <string name="toolbar_placeholder">Страна Город</string>
-    <string name="from_city">Из города</string>
+    <string name="from_city">Из города:</string>
     <string name="from_city_placeholder">Город</string>
     <string name="hotel_name">Название отеля:</string>
     <string name="hotel_title_placeholder">Название отеля</string>
     <string name="hotel_rating">Рейтинг отеля:</string>
-    <string name="hotel_rating_placeholder">03</string>
+    <string name="hotel_rating_placeholder">3</string>
     <string name="meal_type">Тип питания:</string>
     <string name="meal_type_placeholder">Все включено</string>
     <string name="adult_amount_placeholder">2</string>
@@ -71,9 +71,9 @@
     <string name="price_value">Цена:</string>
     <string name="price_value_placeholder">350</string>
     <string name="currency_symbol_placeholder">$</string>
-    <string name="currency">Валюта</string>
+    <string name="currency">Валюта:</string>
     <string name="transport_type_placeholder">Полет</string>
-    <string name="tramspot_type">Тип транспорта</string>
+    <string name="tramspot_type">Тип транспорта:</string>
     <string name="loading">Загрузка</string>
     <string name="no_data">Тур не найден</string>
     <string name="name_hint">Имя</string>
@@ -86,7 +86,7 @@
     <string name="create_order">Заказ</string>
     <string name="to_country">В страну</string>
     <string name="to_country_placeholder">Страна</string>
-    <string name="night_amount">Кол-во ночей</string>
+    <string name="night_amount">Количество ночей:</string>
     <string name="load_countries_error">Ошибка при загрузке стран</string>
     <string name="no_countries_found">Страны не найдены</string>
     <string name="load_cities_error">Города не загружены</string>
@@ -122,4 +122,15 @@
     <string name="filter_duration">Длительность</string>
     <string name="filter_price">Цена</string>
     <string name="filter_date">Дата</string>
+    <string name="hryna">Гривна</string>
+    <string name="euro">Евро</string>
+    <string name="dollar">Доллар</string>
+    <string name="hot_tours">Горящие Туры</string>
+    <string name="searching">Поиск</string>
+    <string name="sorting">Сортировка</string>
+    <string name="filter_currency">Валюта</string>
+    <string name="refresh">Обновить</string>
+    <string name="tours_not_founded">Туры не найдены</string>
+    <string name="tours_succesfully_loaded">Туры успешно загружены</string>
+    <string name="searching_tours">Поиск туров</string>
 </resources>

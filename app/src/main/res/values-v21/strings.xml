@@ -6,4 +6,13 @@
     <string name="filter_duration">Duration</string>
     <string name="filter_price">Price</string>
     <string name="filter_date">Date</string>
+    <string name="hryna">Гривна</string>
+    <string name="euro">Евро</string>
+    <string name="dollar">Доллар</string>
+    <string name="hot_tours">Hot Tours</string>
+    <string name="searching">Searching</string>
+    <string name="sorting">Sorting</string>
+    <string name="filter_currency">Currency</string>
+    <string name="refresh">Refresh</string>
+    <string name="searching_tours">Searching Tours</string>
 </resources>

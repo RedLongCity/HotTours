@@ -3,15 +3,15 @@
 
     <item
         android:id="@+id/hryvna"
-        android:title="Гривня"
+        android:title="@string/hryna"
         />
     <item
         android:id="@+id/euro"
-        android:title="Euro"
+        android:title="@string/euro"
         />
     <item
         android:id="@+id/dollar"
-        android:title="US Dollar"
+        android:title="@string/dollar"
         />
 
 </menu>
