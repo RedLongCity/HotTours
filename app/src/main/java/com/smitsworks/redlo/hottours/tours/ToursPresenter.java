@@ -12,6 +12,7 @@ import com.smitsworks.redlo.hottours.data.source.ToursDataSource;
 import com.smitsworks.redlo.hottours.data.source.ToursRepository;
 import com.smitsworks.redlo.hottours.tourfiltering.TourFilteringActivity;
 import com.smitsworks.redlo.hottours.tourfiltering.TourFilteringPresenter;
+import com.smitsworks.redlo.hottours.utils.ComeBackUtils;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -83,7 +84,7 @@ public class ToursPresenter implements ToursContract.Presenter {
         loadTours(request, forceUpdate || firstLoad, true);
     }
 
-    private void loadTours(Request request,
+    private void loadTours(final Request request,
                            boolean forceUpdate,
                            final boolean showLoadingUI){
         if(showLoadingUI){
@@ -96,16 +97,13 @@ public class ToursPresenter implements ToursContract.Presenter {
         toursRepository.getToursByRequest(request, new ToursDataSource.LoadToursCallback() {
             @Override
             public void onToursLoaded(TourResponse tourResponse) {
-                List<Tour> tourList = tourResponse.getTourList();
-                sortTours(tourList);
-
                 if(!toursView.isActive()){
                     return;
                 }
                 if(showLoadingUI){
                     toursView.setLoadingIndicator(false);
                 }
-                processTours(tourList);
+                processTours(tourResponse,true);
             }
 
             @Override
@@ -118,13 +116,41 @@ public class ToursPresenter implements ToursContract.Presenter {
         });
     }
 
-    private void processTours(List<Tour> tours){
-        if(tours.isEmpty()){
+    private void processTours(TourResponse tourResponse, boolean firstProcess){
+        if(firstProcess){
+            showTours(tourResponse.getTourList());
+        }
+        if(tourResponse.getComeBackDelay()>0){
+            ComeBackUtils.start(tourResponse.getComeBackDelay(),
+                    request,
+                    toursRepository,
+                    new ComeBackUtils.ComeBackCallBack() {
+                        @Override
+                        public void onToursLoaded(TourResponse tourResponse) {
+                            processTours(tourResponse,false);
+                        }
+
+                        @Override
+                        public void onDataNotAvailable() {
+                            if(!toursView.isActive()){
+                                return;
+                            }
+                            toursView.showLoadingTourError();
+                        }
+                    });
+            //place for loading indicator for comeback event
+        }else{
+            showTours(tourResponse.getTourList());
+        }
+    }
+
+    private void showTours(List<Tour> tourList){
+        if(tourList.isEmpty()){
             processEmptyTours();
         }else{
-            toursView.showTours(tours);
+            sortTours(tourList);
+            toursView.showTours(tourList);
             toursView.showSuccessfullyLoadedMessage();
-            //showFilterLabel();
         }
     }
 
