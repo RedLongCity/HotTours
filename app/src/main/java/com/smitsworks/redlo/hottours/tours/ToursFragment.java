@@ -10,8 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -61,12 +64,14 @@ public class ToursFragment extends Fragment implements ToursContract.View {
     public ToursFragment() {
     }
 
-    public static ToursFragment newInstance(){return new ToursFragment();}
+    public static ToursFragment newInstance() {
+        return new ToursFragment();
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        adapter = new ToursAdapter(new ArrayList<Tour>(),itemListener, currencyType);
+        adapter = new ToursAdapter(new ArrayList<Tour>(), itemListener, currencyType);
     }
 
     @Override
@@ -77,7 +82,7 @@ public class ToursFragment extends Fragment implements ToursContract.View {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        presenter.result(requestCode,resultCode,data);
+        presenter.result(requestCode, resultCode, data);
     }
 
     @Override
@@ -96,7 +101,7 @@ public class ToursFragment extends Fragment implements ToursContract.View {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.tours_frag,container,false);
+        View root = inflater.inflate(R.layout.tours_frag, container, false);
 
         ListView listView = (ListView) root.findViewById(R.id.tours_list);
         listView.setAdapter(adapter);
@@ -109,14 +114,14 @@ public class ToursFragment extends Fragment implements ToursContract.View {
         final ScrollChildSwipeRefreshLayout swipeRefreshLayout =
                 (ScrollChildSwipeRefreshLayout) root.findViewById(R.id.refresh_layout);
         swipeRefreshLayout.setColorSchemeColors(
-                ContextCompat.getColor(getActivity(),R.color.colorPrimary),
-                ContextCompat.getColor(getActivity(),R.color.colorAccent),
-                ContextCompat.getColor(getActivity(),R.color.colorPrimaryDark)
+                ContextCompat.getColor(getActivity(), R.color.colorPrimary),
+                ContextCompat.getColor(getActivity(), R.color.colorAccent),
+                ContextCompat.getColor(getActivity(), R.color.colorPrimaryDark)
         );
 
         swipeRefreshLayout.setScrollUpChild(listView);
 
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener(){
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 
             @Override
             public void onRefresh() {
@@ -131,7 +136,7 @@ public class ToursFragment extends Fragment implements ToursContract.View {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.menu_sorting:
                 showFilteringPopUpMenu();
                 break;
@@ -147,8 +152,9 @@ public class ToursFragment extends Fragment implements ToursContract.View {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.tours_fragment_menu,menu);
+        inflater.inflate(R.menu.tours_fragment_menu, menu);
     }
+
     /**
      * Listener for clicks on tasks in the ListView.
      */
@@ -161,7 +167,7 @@ public class ToursFragment extends Fragment implements ToursContract.View {
 
     @Override
     public void setCurrencyType(TourCurrencyType requestType) {
-        currencyType=requestType;
+        currencyType = requestType;
     }
 
     @Override
@@ -172,7 +178,7 @@ public class ToursFragment extends Fragment implements ToursContract.View {
 
     @Override
     public void setLoadingIndicator(final boolean active) {
-        if(getView()==null){
+        if (getView() == null) {
             return;
         }
 
@@ -197,9 +203,9 @@ public class ToursFragment extends Fragment implements ToursContract.View {
 
     @Override
     public void showTourDetailsUi(Integer tourId) {
-        Intent intent = new Intent(getContext(),TourDetailActivity.class);
+        Intent intent = new Intent(getContext(), TourDetailActivity.class);
         intent.putExtra(TourDetailActivity.EXTRA_TOUR_ID, tourId);
-        intent.putExtra(TourDetailActivity.EXTRA_CURRENCY_TYPE,currencyType);
+        intent.putExtra(TourDetailActivity.EXTRA_CURRENCY_TYPE, currencyType);
         startActivity(intent);
     }
 
@@ -233,11 +239,11 @@ public class ToursFragment extends Fragment implements ToursContract.View {
                 getActivity().findViewById(R.id.menu_sorting));
         popup.getMenuInflater().inflate(R.menu.sorting_tours, popup.getMenu());
 
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener(){
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
 
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                switch(item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.all:
                         presenter.setSotring(ToursSortType.ALL_TOURS);
                         break;
@@ -273,13 +279,13 @@ public class ToursFragment extends Fragment implements ToursContract.View {
 
     @Override
     public void showCurrencyTypePopUpMenu() {
-        PopupMenu popup = new PopupMenu(getContext(),getActivity().findViewById(R.id.menu_sorting));
-        popup.getMenuInflater().inflate(R.menu.currency_tours,popup.getMenu());
+        PopupMenu popup = new PopupMenu(getContext(), getActivity().findViewById(R.id.menu_sorting));
+        popup.getMenuInflater().inflate(R.menu.currency_tours, popup.getMenu());
 
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                switch(item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.hryvna:
                         setCurrencyType(TourCurrencyType.HRYVNA);
                         adapter.setCurrencyType(currencyType);
@@ -308,10 +314,10 @@ public class ToursFragment extends Fragment implements ToursContract.View {
     @Override
     public void findToursUI() {
         Intent intent = new Intent(getContext(), TourFilteringActivity.class);
-        startActivityForResult(intent,REQUEST_FIND_TOURS);
+        startActivityForResult(intent, REQUEST_FIND_TOURS);
     }
 
-    private void showNoToursViews(String mainText, int iconRes){
+    private void showNoToursViews(String mainText, int iconRes) {
         toursView.setVisibility(View.GONE);
         noToursView.setVisibility(View.VISIBLE);
 
@@ -319,11 +325,11 @@ public class ToursFragment extends Fragment implements ToursContract.View {
         noToursIcon.setImageDrawable(getResources().getDrawable(iconRes));
     }
 
-    private void showMessage(String message){
-        Snackbar.make(getView(),message,Snackbar.LENGTH_LONG).show();
+    private void showMessage(String message) {
+        Snackbar.make(getView(), message, Snackbar.LENGTH_LONG).show();
     }
 
-    public interface ToursItemListener{
+    public interface ToursItemListener {
 
         void onTourClick(Tour clickedTour);
 

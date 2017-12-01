@@ -121,7 +121,11 @@ public class ToursPresenter implements ToursContract.Presenter {
             showTours(tourResponse.getTourList());
         }
         if(tourResponse.getComeBackDelay()>0){
-            ComeBackUtils.start(tourResponse.getComeBackDelay(),
+            if(firstProcess){
+                toursView.setLoadingIndicator(true);
+            }
+            ComeBackUtils utils = ComeBackUtils.getInstance(toursRepository);
+            utils.start(tourResponse.getComeBackDelay(),
                     request,
                     toursRepository,
                     new ComeBackUtils.ComeBackCallBack() {
@@ -138,8 +142,10 @@ public class ToursPresenter implements ToursContract.Presenter {
                             toursView.showLoadingTourError();
                         }
                     });
-            //place for loading indicator for comeback event
         }else{
+            if(!firstProcess){
+                toursView.setLoadingIndicator(false);
+            }
             showTours(tourResponse.getTourList());
         }
     }

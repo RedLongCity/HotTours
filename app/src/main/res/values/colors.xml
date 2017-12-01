@@ -17,4 +17,6 @@
     <color name="pin_color">#e7491d</color>
     <color name="find_color">#328c05</color>
     <color name="text_color_white">#ffffff</color>
+    <color name="waiting_1">#5b0bdc</color>
+    <color name="waiting_2">#a7a327</color>
 </resources>

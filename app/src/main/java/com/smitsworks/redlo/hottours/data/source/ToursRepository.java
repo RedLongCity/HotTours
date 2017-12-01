@@ -33,8 +33,7 @@ public class ToursRepository implements ToursDataSource {
         this.remoteDataSource = checkNotNull(remoteDataSource);
     }
 
-    public static ToursRepository getInstance(ToursDataSource remoteDataSource
-                                              ){
+    public static ToursRepository getInstance(ToursDataSource remoteDataSource){
         if (INSTANCE == null) {
             INSTANCE = new ToursRepository(remoteDataSource);
         }
