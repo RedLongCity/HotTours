@@ -57,9 +57,9 @@
     <string name="hotel_name">Название отеля:</string>
     <string name="hotel_title_placeholder">Название отеля</string>
     <string name="hotel_rating">Рейтинг отеля:</string>
-    <string name="hotel_rating_placeholder">3</string>
+    <string name="hotel_rating_placeholder">Рейтинг</string>
     <string name="meal_type">Тип питания:</string>
-    <string name="meal_type_placeholder">Все включено</string>
+    <string name="meal_type_placeholder">Тип питания</string>
     <string name="adult_amount_placeholder">2</string>
     <string name="adult_amount">Кол-во взрослых:</string>
     <string name="children_amount">Кол-во детей:</string>
@@ -133,4 +133,8 @@
     <string name="tours_not_founded">Туры не найдены</string>
     <string name="tours_succesfully_loaded">Туры успешно загружены</string>
     <string name="searching_tours">Поиск туров</string>
+    <string name="hot_tours_ua">Горящие Туры Украина</string>
+    <string name="tours_updating">Туры обновляются</string>
+    <string name="tours_succesfully_updated">Туры обновлены успешно</string>
+    <string name="started_updating">Туры обновляются</string>
 </resources>

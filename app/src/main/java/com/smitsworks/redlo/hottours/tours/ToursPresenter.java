@@ -62,7 +62,6 @@ public class ToursPresenter implements ToursContract.Presenter {
             if (entity != null) {
                 request = entity;
             }
-//            loadToursByRequest(request,true);
         }
     }
 
@@ -117,8 +116,14 @@ public class ToursPresenter implements ToursContract.Presenter {
     }
 
     private void processTours(TourResponse tourResponse, boolean firstProcess){
-        if(firstProcess){
+        if(firstProcess && tourResponse.getComeBackDelay()>0){
             showTours(tourResponse.getTourList());
+            toursView.showUpdatingTours();
+            toursView.showUpdatingMessage();
+        }
+        if(firstProcess && !(tourResponse.getComeBackDelay()>0)){
+            showTours(tourResponse.getTourList());
+            toursView.showSuccessfullyLoadedMessage();
         }
         if(tourResponse.getComeBackDelay()>0){
             if(firstProcess){
@@ -145,18 +150,19 @@ public class ToursPresenter implements ToursContract.Presenter {
         }else{
             if(!firstProcess){
                 toursView.setLoadingIndicator(false);
+                toursView.showSuccessfullyUpdatedMessage();
             }
             showTours(tourResponse.getTourList());
         }
     }
 
-    private void showTours(List<Tour> tourList){
+    private void showTours(List<Tour> tourList, boolean uploaded){
+        if(uploaded && tourList.)
         if(tourList.isEmpty()){
             processEmptyTours();
         }else{
             sortTours(tourList);
             toursView.showTours(tourList);
-            toursView.showSuccessfullyLoadedMessage();
         }
     }
 
@@ -172,6 +178,7 @@ public class ToursPresenter implements ToursContract.Presenter {
     @Override
     public void openTourDetails(@NonNull Tour requestedTour) {
         checkNotNull(requestedTour);
+        stopBackgroundLoading();
         toursView.showTourDetailsUi(requestedTour.getId());
     }
 
@@ -187,6 +194,7 @@ public class ToursPresenter implements ToursContract.Presenter {
 
     @Override
     public void findTours() {
+        stopBackgroundLoading();
         toursView.findToursUI();
     }
 
@@ -198,6 +206,13 @@ public class ToursPresenter implements ToursContract.Presenter {
     @Override
     public void setCurrencyType(TourCurrencyType currencyType) {
         this.currencyType = currencyType;
+    }
+
+    @Override
+    public void stopBackgroundLoading() {
+        ComeBackUtils utils = ComeBackUtils.getInstance(toursRepository);
+        toursView.setLoadingIndicator(false);
+        utils.stop();
     }
 
     private void sortTours(List<Tour> tourList){

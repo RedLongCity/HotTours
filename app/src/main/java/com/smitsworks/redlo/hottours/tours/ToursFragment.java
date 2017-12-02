@@ -81,6 +81,12 @@ public class ToursFragment extends Fragment implements ToursContract.View {
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        presenter.stopBackgroundLoading();
+    }
+
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         presenter.result(requestCode, resultCode, data);
     }
@@ -224,8 +230,27 @@ public class ToursFragment extends Fragment implements ToursContract.View {
     }
 
     @Override
+    public void showUpdatingTours() {
+        showNoToursViews(
+                getString(R.string.tours_updating),
+                R.drawable.ic_refresh_white_24dp
+        );
+        showMessage(getString(R.string.tours_updating));
+    }
+
+    @Override
     public void showSuccessfullyLoadedMessage() {
         showMessage(getString(R.string.tours_succesfully_loaded));
+    }
+
+    @Override
+    public void showSuccessfullyUpdatedMessage() {
+        showMessage(getString(R.string.tours_succesfully_updated));
+    }
+
+    @Override
+    public void showUpdatingMessage() {
+        showMessage(getString(R.string.started_updating));
     }
 
     @Override

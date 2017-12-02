@@ -57,9 +57,9 @@
     <string name="hotel_name">Hotel Title:</string>
     <string name="hotel_title_placeholder">Some hotel title</string>
     <string name="hotel_rating">Hotel Rating:</string>
-    <string name="hotel_rating_placeholder">3</string>
+    <string name="hotel_rating_placeholder">Hotel Rating</string>
     <string name="meal_type">Meal Type:</string>
-    <string name="meal_type_placeholder">All Inclusive</string>
+    <string name="meal_type_placeholder">Meal type</string>
     <string name="adult_amount_placeholder">2</string>
     <string name="adult_amount">Adult Amount:</string>
     <string name="children_amount">Children Amount:</string>
@@ -133,4 +133,8 @@
     <string name="filter_currency">Currency</string>
     <string name="refresh">Refresh</string>
     <string name="searching_tours">Searching Tours</string>
+    <string name="hot_tours_ua">Hot Tours Ukraine</string>
+    <string name="tours_updating">Tours are updated</string>
+    <string name="tours_succesfully_updated">Tours updated succesfully</string>
+    <string name="started_updating">Updating started</string>
 </resources>

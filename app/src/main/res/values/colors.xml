@@ -19,4 +19,8 @@
     <color name="text_color_white">#ffffff</color>
     <color name="waiting_1">#5b0bdc</color>
     <color name="waiting_2">#a7a327</color>
+    <color name="background_header">#b1a417</color>
+    <color name="header_start">#1398dd</color>
+    <color name="header_end">#05aaf4</color>
+    <color name="background_black">#000000</color>
 </resources>

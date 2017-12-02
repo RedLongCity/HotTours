@@ -25,11 +25,17 @@ public interface ToursContract {
 
         void showTourDetailsUi(Integer tourId);
 
-        void showLoadingTourError();
-
         void showNoTours();
 
+        void showUpdatingTours();
+
+        void showLoadingTourError();
+
         void showSuccessfullyLoadedMessage();
+
+        void showSuccessfullyUpdatedMessage();
+
+        void showUpdatingMessage();
 
         boolean isActive();
 
@@ -66,5 +72,7 @@ public interface ToursContract {
         TourCurrencyType getCurrencyType();
 
         void findTours();
+
+        void stopBackgroundLoading();
     }
 }
