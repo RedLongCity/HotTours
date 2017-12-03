@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.smitsworks.redlo.hottours.App;
 import com.smitsworks.redlo.hottours.data.models.Country;
 import com.smitsworks.redlo.hottours.data.models.From_Cities;
 import com.smitsworks.redlo.hottours.data.models.Hotel_Rating;
@@ -18,6 +19,7 @@ import com.smitsworks.redlo.hottours.providers.CitiesProvider;
 import com.smitsworks.redlo.hottours.providers.CountriesProvider;
 import com.smitsworks.redlo.hottours.providers.HotelRatingsProvider;
 import com.smitsworks.redlo.hottours.providers.MealTypesProvider;
+import com.smitsworks.redlo.hottours.utils.InternetConnection;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,6 +53,12 @@ public class FilterRemoteDataSource implements FilterDataSource {
 
     @Override
     public void getCountries(@NonNull final LoadCountriesCallback callback) {
+
+        if(!InternetConnection.checkConnection(App.getAppContext())){
+            callback.onNotAvailableConnection();
+            return;
+        }
+
         new AsyncTask<Void, Void, List<Country>>() {
             @Override
             protected List<Country> doInBackground(Void... voids) {
@@ -92,6 +100,12 @@ public class FilterRemoteDataSource implements FilterDataSource {
 
     @Override
     public void getCities(@NonNull final LoadCititesCallback callback) {
+
+        if(!InternetConnection.checkConnection(App.getAppContext())){
+            callback.onNotAvailableConnection();
+            return;
+        }
+
         new AsyncTask<Void, Void, List<From_Cities>>() {
             @Override
             protected List<From_Cities> doInBackground(Void... voids) {
@@ -133,6 +147,12 @@ public class FilterRemoteDataSource implements FilterDataSource {
 
     @Override
     public void getHotelRatings(@NonNull final LoadHotelRatingsCallback callback) {
+
+        if(!InternetConnection.checkConnection(App.getAppContext())){
+            callback.onNotAvailableConnection();
+            return;
+        }
+
         new AsyncTask<Void, Void, List<Hotel_Rating>>() {
             @Override
             protected List<Hotel_Rating> doInBackground(Void... voids) {
@@ -174,6 +194,12 @@ public class FilterRemoteDataSource implements FilterDataSource {
 
     @Override
     public void getMealTypes(@NonNull final LoadMealTypesCallback callback) {
+
+        if(!InternetConnection.checkConnection(App.getAppContext())){
+            callback.onNotAvailableConnection();
+            return;
+        }
+
         new AsyncTask<Void, Void, List<Meal_Type>>() {
             @Override
             protected List<Meal_Type> doInBackground(Void... voids) {

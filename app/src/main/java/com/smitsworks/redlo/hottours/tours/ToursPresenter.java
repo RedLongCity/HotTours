@@ -112,6 +112,14 @@ public class ToursPresenter implements ToursContract.Presenter {
                 }
                 toursView.showLoadingTourError();
             }
+
+            @Override
+            public void onNotAvailableConnection() {
+                if(!toursView.isActive()){
+                    return;
+                }
+                toursView.showNotAvailableConnection();
+            }
         });
     }
 
@@ -138,6 +146,14 @@ public class ToursPresenter implements ToursContract.Presenter {
                             }
                             toursView.showLoadingTourError();
                         }
+
+                        @Override
+                        public void onNotAvailableConnection() {
+                            if(!toursView.isActive()){
+                                return;
+                            }
+                            toursView.showNotAvailableConnection();
+                        }
                     });
         }else{
             if(!firstProcess){
@@ -150,12 +166,16 @@ public class ToursPresenter implements ToursContract.Presenter {
     private void showTours(List<Tour> tourList, boolean hasComeBackDelay,boolean firstLoad){
         if(hasComeBackDelay){
             if(firstLoad){
+                if(tourList.isEmpty()){
+                    toursView.showUpdatingTours();
+                    toursView.showUpdatingMessage();
+                    return;
+                }
                 sortTours(tourList);
+                toursView.showUpdatingMessage();
                 toursView.showTours(tourList);
+                return;
             }
-            toursView.showUpdatingMessage();
-            toursView.showUpdatingTours();
-
         }else{
             if(tourList.isEmpty()){
                 processEmptyTours();
@@ -165,6 +185,12 @@ public class ToursPresenter implements ToursContract.Presenter {
                 toursView.showSuccessfullyUpdatedMessage();
                 sortTours(tourList);
                 toursView.showTours(tourList);
+                return;
+            }else{
+                toursView.showSuccessfullyLoadedMessage();
+                sortTours(tourList);
+                toursView.showTours(tourList);
+                return;
             }
         }
     }

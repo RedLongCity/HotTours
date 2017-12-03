@@ -1,22 +1,20 @@
 package com.smitsworks.redlo.hottours.tours;
 
+import com.smitsworks.redlo.hottours.Dialog;
 import com.smitsworks.redlo.hottours.R;
 import com.smitsworks.redlo.hottours.data.models.Tour;
 import com.smitsworks.redlo.hottours.tourdetails.TourDetailActivity;
 import com.smitsworks.redlo.hottours.tourfiltering.TourFilteringActivity;
-import com.smitsworks.redlo.hottours.tours.ToursAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -26,7 +24,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -58,6 +55,8 @@ public class ToursFragment extends Fragment implements ToursContract.View {
     private LinearLayout toursView;
 
     private FloatingActionButton button;
+
+    private DialogFragment dialogFragment;
 
     private TourCurrencyType currencyType = TourCurrencyType.DOLLAR;
 
@@ -116,6 +115,8 @@ public class ToursFragment extends Fragment implements ToursContract.View {
         noToursView = root.findViewById(R.id.noTours);
         noToursIcon = (ImageView) root.findViewById(R.id.noToursIcon);
         noToursMainView = (TextView) root.findViewById(R.id.noToursMain);
+
+        dialogFragment = new Dialog();
 
         final ScrollChildSwipeRefreshLayout swipeRefreshLayout =
                 (ScrollChildSwipeRefreshLayout) root.findViewById(R.id.refresh_layout);
@@ -224,7 +225,7 @@ public class ToursFragment extends Fragment implements ToursContract.View {
     public void showNoTours() {
         showNoToursViews(
                 getString(R.string.tours_not_founded),
-                R.drawable.ic_assignment_turned_in_24dp
+                R.drawable.ic_cancel_white_24dp
         );
         showMessage(getString(R.string.tours_not_founded));
     }
@@ -340,6 +341,13 @@ public class ToursFragment extends Fragment implements ToursContract.View {
     public void findToursUI() {
         Intent intent = new Intent(getContext(), TourFilteringActivity.class);
         startActivityForResult(intent, REQUEST_FIND_TOURS);
+    }
+
+    @Override
+    public void showNotAvailableConnection() {
+        dialogFragment.show(getFragmentManager(),getString(R.string.no_connection_dialog_message));
+        showNoTours();
+        setLoadingIndicator(false);
     }
 
     private void showNoToursViews(String mainText, int iconRes) {

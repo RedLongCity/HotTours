@@ -143,6 +143,11 @@ public class FiltersRepository implements FilterDataSource {
             public void onDataNotAvailable() {
                 callback.onDataNotAvailable();
             }
+
+            @Override
+            public void onNotAvailableConnection() {
+                callback.onNotAvailableConnection();
+            }
         });
     }
 
@@ -158,6 +163,11 @@ public class FiltersRepository implements FilterDataSource {
             @Override
             public void onDataNotAvailable() {
                 callback.onDataNotAvailable();
+            }
+
+            @Override
+            public void onNotAvailableConnection() {
+                callback.onNotAvailableConnection();
             }
         });
     }
@@ -175,6 +185,11 @@ public class FiltersRepository implements FilterDataSource {
             public void onDataNotAvailable() {
                 callback.onDataNotAvailable();
             }
+
+            @Override
+            public void onNotAvailableConnection() {
+                callback.onNotAvailableConnection();
+            }
         });
     }
 
@@ -190,6 +205,11 @@ public class FiltersRepository implements FilterDataSource {
             @Override
             public void onDataNotAvailable() {
                 callback.onDataNotAvailable();
+            }
+
+            @Override
+            public void onNotAvailableConnection() {
+                callback.onNotAvailableConnection();
             }
         });
     }

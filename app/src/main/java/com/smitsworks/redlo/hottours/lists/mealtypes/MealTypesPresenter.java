@@ -71,6 +71,14 @@ public class MealTypesPresenter implements MealTypesContract.Presenter {
                 }
                 mealTypesView.showLoadingMealTypesError();
             }
+
+            @Override
+            public void onNotAvailableConnection() {
+                if(!mealTypesView.isActive()){
+                    return;
+                }
+                mealTypesView.showNotAwailableConnection();
+            }
         });
     }
 

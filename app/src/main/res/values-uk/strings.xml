@@ -137,4 +137,6 @@
     <string name="tours_updating">Туры обновляются</string>
     <string name="tours_succesfully_updated">Туры обновлены успешно</string>
     <string name="started_updating">Туры обновляются</string>
+    <string name="dialog_not_awailable_connection">Соединение с сервером не может быть установлено. Проверьте  интернет соединениe.</string>
+    <string name="no_connection_dialog_message">dialog for no connection</string>
 </resources>

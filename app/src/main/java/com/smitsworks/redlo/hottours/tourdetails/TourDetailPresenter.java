@@ -89,6 +89,14 @@ public class TourDetailPresenter implements TourDetailsContract.Presenter {
                 }
                 tourDetailsView.showMissingTour();
             }
+
+            @Override
+            public void onNotAvailableConnection() {
+                if(!tourDetailsView.isActive()){
+                    return;
+                }
+                tourDetailsView.showNotAwailableConnection();
+            }
         });
     }
 

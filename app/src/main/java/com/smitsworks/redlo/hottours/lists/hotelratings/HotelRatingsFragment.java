@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -16,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.smitsworks.redlo.hottours.Dialog;
 import com.smitsworks.redlo.hottours.R;
 import com.smitsworks.redlo.hottours.data.models.Hotel_Rating;
 import com.smitsworks.redlo.hottours.lists.adapters.HotelRatingsAdapter;
@@ -45,6 +47,8 @@ public class HotelRatingsFragment extends Fragment implements HotelRatingsContra
     private TextView noElementsMainView;
 
     private LinearLayout elementsView;
+
+    private DialogFragment dialogFragment;
 
     public HotelRatingsFragment() {
     }
@@ -77,6 +81,8 @@ public class HotelRatingsFragment extends Fragment implements HotelRatingsContra
         noElementsView = root.findViewById(R.id.noElements);
         noElementsIcon = (ImageView) root.findViewById(R.id.noElementsIcon);
         noElementsMainView = (TextView) root.findViewById(R.id.noElementsMain);
+
+        dialogFragment = new Dialog();
 
         final ScrollChildSwipeRefreshLayout swipeRefreshLayout =
                 (ScrollChildSwipeRefreshLayout) root.findViewById(R.id.refresh_layout);
@@ -142,7 +148,7 @@ public class HotelRatingsFragment extends Fragment implements HotelRatingsContra
     public void showNoHotelRatings() {
         showNoHotelRatingsViews(
                 getString(R.string.no_hotel_ratings_found),
-                R.drawable.ic_assignment_turned_in_24dp
+                R.drawable.ic_cancel_black_24dp
         );
     }
 
@@ -160,6 +166,14 @@ public class HotelRatingsFragment extends Fragment implements HotelRatingsContra
     @Override
     public boolean isActive() {
         return isAdded();
+    }
+
+    @Override
+    public void showNotAwailableConnection() {
+        dialogFragment.show(getFragmentManager(),getString(R.string.no_connection_dialog_message));
+        setLoadingIndicator(false);
+        showNoHotelRatings();
+        showLoadingHotelRatingsError();
     }
 
     @Override

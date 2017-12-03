@@ -72,6 +72,14 @@ public class HotelRatingsPresenter implements HotelRatingsContract.Presenter {
                 }
                 hotelRatingsView.showLoadingHotelRatingsError();
             }
+
+            @Override
+            public void onNotAvailableConnection() {
+                if(!hotelRatingsView.isActive()){
+                    return;
+                }
+                hotelRatingsView.showNotAwailableConnection();
+            }
         });
     }
 

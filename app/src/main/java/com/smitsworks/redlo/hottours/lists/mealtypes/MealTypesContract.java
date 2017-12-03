@@ -31,6 +31,8 @@ public interface MealTypesContract {
 
         boolean isActive();
 
+        void showNotAwailableConnection();
+
     }
 
     interface Presenter extends BasePresenter{

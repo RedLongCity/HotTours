@@ -16,6 +16,8 @@ public interface OrderDataPoster {
         void onOrderPosted();
 
         void onPostFailed();
+
+        void onNotAvailableConnection();
     }
 
     void postOrder(@NonNull Order order,@NonNull PostOrderCallback callback);

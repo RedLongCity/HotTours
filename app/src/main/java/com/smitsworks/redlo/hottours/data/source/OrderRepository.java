@@ -48,6 +48,11 @@ public class OrderRepository implements OrderDataPoster {
             public void onPostFailed() {
                 callback.onPostFailed();
             }
+
+            @Override
+            public void onNotAvailableConnection() {
+                callback.onNotAvailableConnection();
+            }
         });
     }
 }

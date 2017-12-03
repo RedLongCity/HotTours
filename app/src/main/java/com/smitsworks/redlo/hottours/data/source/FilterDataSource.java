@@ -22,6 +22,7 @@ public interface FilterDataSource {
 
         void onDataNotAvailable();
 
+        void onNotAvailableConnection();
     }
 
     interface LoadCititesCallback{
@@ -29,6 +30,8 @@ public interface FilterDataSource {
         void onCitiesLoaded(List<From_Cities> cities);
 
         void onDataNotAvailable();
+
+        void onNotAvailableConnection();
     }
 
     interface LoadHotelRatingsCallback{
@@ -36,6 +39,8 @@ public interface FilterDataSource {
         void onHotelRatingsLoaded(List<Hotel_Rating> ratings);
 
         void onDataNotAvailable();
+
+        void onNotAvailableConnection();
     }
 
     interface LoadMealTypesCallback{
@@ -43,6 +48,8 @@ public interface FilterDataSource {
         void onMealTypesLoaded(List<Meal_Type> types);
 
         void onDataNotAvailable();
+
+        void onNotAvailableConnection();
     }
 
     void getCountries(@NonNull LoadCountriesCallback callback);

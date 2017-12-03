@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -16,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.smitsworks.redlo.hottours.Dialog;
 import com.smitsworks.redlo.hottours.R;
 import com.smitsworks.redlo.hottours.data.models.From_Cities;
 import com.smitsworks.redlo.hottours.lists.adapters.CitiesAdapter;
@@ -45,6 +47,8 @@ public class CitiesFragment extends Fragment implements CitiesContract.View {
     private TextView noElementsMainView;
 
     private LinearLayout elementsView;
+
+    private DialogFragment dialogFragment;
 
     public CitiesFragment() {
     }
@@ -77,6 +81,8 @@ public class CitiesFragment extends Fragment implements CitiesContract.View {
         noElementsView = root.findViewById(R.id.noElements);
         noElementsIcon = (ImageView) root.findViewById(R.id.noElementsIcon);
         noElementsMainView = (TextView) root.findViewById(R.id.noElementsMain);
+
+        dialogFragment = new Dialog();
 
         final ScrollChildSwipeRefreshLayout swipeRefreshLayout =
                 (ScrollChildSwipeRefreshLayout) root.findViewById(R.id.refresh_layout);
@@ -141,7 +147,7 @@ public class CitiesFragment extends Fragment implements CitiesContract.View {
     public void showNoCities() {
         showNoCitiesViews(
                 getString(R.string.no_cities_founded),
-                R.drawable.ic_assignment_turned_in_24dp
+                R.drawable.ic_cancel_black_24dp
         );
     }
 
@@ -169,6 +175,14 @@ public class CitiesFragment extends Fragment implements CitiesContract.View {
     @Override
     public void showSuccessfullyLoadedMessage() {
         showMessage(getString(R.string.load_cities_success));
+    }
+
+    @Override
+    public void showNotAwailableConnection() {
+        dialogFragment.show(getFragmentManager(),getString(R.string.no_connection_dialog_message));
+        setLoadingIndicator(false);
+        showNoCities();
+        showLoadingCitiesError();
     }
 
     private void showMessage(String message){

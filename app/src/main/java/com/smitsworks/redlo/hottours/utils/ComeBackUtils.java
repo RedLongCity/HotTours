@@ -59,6 +59,11 @@ public class ComeBackUtils {
                                     public void onDataNotAvailable() {
                                         callBack.onDataNotAvailable();
                                     }
+
+                                    @Override
+                                    public void onNotAvailableConnection() {
+                                        callBack.onNotAvailableConnection();
+                                    }
                                 });
                     }
                 },delay);
@@ -77,6 +82,8 @@ public class ComeBackUtils {
         void onToursLoaded(TourResponse tourResponse);
 
         void onDataNotAvailable();
+
+        void onNotAvailableConnection();
 
     }
 }

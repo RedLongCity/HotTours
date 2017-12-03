@@ -4,9 +4,11 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 
+import com.smitsworks.redlo.hottours.App;
 import com.smitsworks.redlo.hottours.data.models.Order;
 import com.smitsworks.redlo.hottours.data.source.OrderDataPoster;
 import com.smitsworks.redlo.hottours.providers.OrderProvider;
+import com.smitsworks.redlo.hottours.utils.InternetConnection;
 
 import okhttp3.Response;
 
@@ -34,6 +36,12 @@ public class OrderRemoteDataPoster implements OrderDataPoster {
     @Override
     public void postOrder(@NonNull final Order order,
                           @NonNull final PostOrderCallback callback) {
+
+        if(!InternetConnection.checkConnection(App.getAppContext())){
+            callback.onNotAvailableConnection();
+            return;
+        }
+
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... voids) {

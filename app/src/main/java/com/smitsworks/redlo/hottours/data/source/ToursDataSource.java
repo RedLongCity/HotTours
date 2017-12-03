@@ -21,6 +21,8 @@ public interface ToursDataSource {
 
         void onDataNotAvailable();
 
+        void onNotAvailableConnection();
+
     }
 
     interface GetTourCallback{
@@ -28,6 +30,9 @@ public interface ToursDataSource {
         void onTourLoaded(Tour tour);
 
         void onDataNotAvailable();
+
+        void onNotAvailableConnection();
+
     }
 
     void getTours(@NonNull LoadToursCallback callback);

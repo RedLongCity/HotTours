@@ -66,6 +66,14 @@ public class CountriesPresenter implements CountriesContract.Presenter {
                 }
                 countriesView.showLoadingCountriesError();
             }
+
+            @Override
+            public void onNotAvailableConnection() {
+                if(!countriesView.isActive()){
+                    return;
+                }
+                countriesView.showNotAwailableConnection();
+            }
         });
     }
 

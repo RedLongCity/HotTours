@@ -80,6 +80,8 @@ public interface TourDetailsContract {
 
         boolean isActive();
 
+        void showNotAwailableConnection();
+
     }
 
     interface Presenter extends BasePresenter{

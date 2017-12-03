@@ -313,6 +313,11 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
     }
 
     @Override
+    public void showNotAwailableConnection() {
+
+    }
+
+    @Override
     public void setPresenter(TourDetailsContract.Presenter presenter) {
         this.presenter = checkNotNull(presenter);
     }

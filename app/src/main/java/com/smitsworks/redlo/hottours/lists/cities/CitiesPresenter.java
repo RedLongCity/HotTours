@@ -73,6 +73,14 @@ public class CitiesPresenter implements CitiesContract.Presenter {
                 }
                 citiesView.showLoadingCitiesError();
             }
+
+            @Override
+            public void onNotAvailableConnection() {
+                if(!citiesView.isActive()){
+                    return;
+                }
+                citiesView.showNotAwailableConnection();
+            }
         });
 
     }

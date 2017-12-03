@@ -19,4 +19,6 @@
     <string name="tours_updating">Tours are updated</string>
     <string name="tours_succesfully_updated">Tours updated succesfully</string>
     <string name="started_updating">Updating started</string>
+    <string name="dialog_not_awailable_connection">No connection with server. Check internet connection.</string>
+    <string name="no_connection_dialog_message">dialog for no connection</string>
 </resources>

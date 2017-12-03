@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.smitsworks.redlo.hottours.App;
 import com.smitsworks.redlo.hottours.data.models.Request;
 import com.smitsworks.redlo.hottours.data.models.Tour;
 import com.smitsworks.redlo.hottours.data.models.TourResponse;
@@ -15,6 +16,7 @@ import com.smitsworks.redlo.hottours.parsers.TourResponseParser;
 import com.smitsworks.redlo.hottours.providers.TourProvider;
 import com.smitsworks.redlo.hottours.providers.TourResponseProvider;
 import com.smitsworks.redlo.hottours.utils.HttpUtils;
+import com.smitsworks.redlo.hottours.utils.InternetConnection;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -47,9 +49,17 @@ public class ToursRemoteDataSource implements ToursDataSource{
 
     @Override
     public void getTours(@NonNull final LoadToursCallback callback) {
+
+        if(!InternetConnection.checkConnection(App.getAppContext())){
+            callback.onNotAvailableConnection();
+            return;
+        }
+
                 new AsyncTask<Void,Void,TourResponse>() {
                     @Override
                     protected TourResponse doInBackground(Void[] voids) {
+
+
                         TourResponseProvider provider = new TourResponseProvider();
                         Response response = provider.provide();
                         if (response == null) {
@@ -79,6 +89,11 @@ public class ToursRemoteDataSource implements ToursDataSource{
 
     @Override
     public void getTour(@NonNull final Integer tourId, @NonNull final GetTourCallback callback) {
+
+        if(!InternetConnection.checkConnection(App.getAppContext())){
+            callback.onNotAvailableConnection();
+            return;
+        }
         new AsyncTask<Void, Void, Tour>() {
             @Override
             protected Tour doInBackground(Void... voids) {
@@ -114,6 +129,12 @@ public class ToursRemoteDataSource implements ToursDataSource{
 
     @Override
     public void getToursByRequest(@NonNull final Request request, @NonNull final LoadToursCallback callback) {
+
+        if(!InternetConnection.checkConnection(App.getAppContext())){
+            callback.onNotAvailableConnection();
+            return;
+        }
+
         new AsyncTask<Void, Void, TourResponse>() {
             @Override
             protected TourResponse doInBackground(Void... voids) {

@@ -31,6 +31,7 @@ public interface TourOrderContract {
 
         boolean isActive();
 
+        void showNotAvailableConnection();
     }
 
     interface Presenter extends BasePresenter{

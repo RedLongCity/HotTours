@@ -31,6 +31,8 @@ public interface HotelRatingsContract {
         void chooseHotelRatingUI(Hotel_Rating rating);
 
         boolean isActive();
+
+        void showNotAwailableConnection();
     }
 
     interface Presenter extends BasePresenter{

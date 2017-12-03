@@ -49,6 +49,8 @@ public interface ToursContract {
 
         void findToursUI();
 
+        void showNotAvailableConnection();
+
     }
 
     interface Presenter extends BasePresenter{

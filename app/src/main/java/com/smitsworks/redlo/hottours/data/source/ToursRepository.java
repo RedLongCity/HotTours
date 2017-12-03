@@ -99,6 +99,11 @@ public class ToursRepository implements ToursDataSource {
             public void onDataNotAvailable() {
                 callback.onDataNotAvailable();
             }
+
+            @Override
+            public void onNotAvailableConnection() {
+                callback.onNotAvailableConnection();
+            }
         });
     }
 
@@ -114,6 +119,11 @@ public class ToursRepository implements ToursDataSource {
             @Override
             public void onDataNotAvailable() {
                 callback.onDataNotAvailable();
+            }
+
+            @Override
+            public void onNotAvailableConnection() {
+                callback.onNotAvailableConnection();
             }
         });
     }
@@ -140,6 +150,11 @@ public class ToursRepository implements ToursDataSource {
             public void onDataNotAvailable() {
                 callback.onDataNotAvailable();
             }
+
+           @Override
+           public void onNotAvailableConnection() {
+               callback.onNotAvailableConnection();
+           }
 
         });
     }

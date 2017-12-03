@@ -6,12 +6,14 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import com.smitsworks.redlo.hottours.Dialog;
 import com.smitsworks.redlo.hottours.R;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -34,6 +36,8 @@ public class TourOrderFragment extends Fragment implements TourOrderContract.Vie
     private EditText email;
 
     private EditText city;
+
+    private DialogFragment dialogFragment;
 
     public static TourOrderFragment newInstance(){
         return new TourOrderFragment();
@@ -74,6 +78,9 @@ public class TourOrderFragment extends Fragment implements TourOrderContract.Vie
         phoneNumber = (EditText) root.findViewById(R.id.user_phone_number);
         email = (EditText) root.findViewById(R.id.user_email);
         city = (EditText) root.findViewById(R.id.user_city);
+
+        dialogFragment = new Dialog();
+
         setHasOptionsMenu(true);
         return root;
     }
@@ -122,7 +129,13 @@ public class TourOrderFragment extends Fragment implements TourOrderContract.Vie
 
     @Override
     public boolean isActive() {
-        return false;
+        return isAdded();
+    }
+
+    @Override
+    public void showNotAvailableConnection() {
+        dialogFragment.show(getFragmentManager(),getString(R.string.no_connection_dialog_message));
+        showFailedPosting();
     }
 
     @Override

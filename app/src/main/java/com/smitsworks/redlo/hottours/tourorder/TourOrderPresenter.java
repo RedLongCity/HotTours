@@ -1,12 +1,12 @@
 package com.smitsworks.redlo.hottours.tourorder;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.smitsworks.redlo.hottours.data.models.Order;
 import com.smitsworks.redlo.hottours.data.models.UserData;
 import com.smitsworks.redlo.hottours.data.source.OrderDataPoster;
 import com.smitsworks.redlo.hottours.data.source.OrderRepository;
-import com.smitsworks.redlo.hottours.tourorder.TourOrderContract.Presenter;
 
 /**
  * Created by redlongcity on 14.10.2017.
@@ -56,13 +56,27 @@ public class TourOrderPresenter implements TourOrderContract.Presenter {
             orderRepository.postOrder(order, new OrderDataPoster.PostOrderCallback() {
                 @Override
                 public void onOrderPosted() {
+                    if(!tourOrderView.isActive()){
+                        return;
+                    }
                     tourOrderView.showSuccessfullPosting();
-                   // tourOrderView.showToursList();
+                    tourOrderView.showToursList();
                 }
 
                 @Override
                 public void onPostFailed() {
+                    if(!tourOrderView.isActive()){
+                        return;
+                    }
                     tourOrderView.showFailedPosting();
+                }
+
+                @Override
+                public void onNotAvailableConnection() {
+                    if(!tourOrderView.isActive()){
+                        return;
+                    }
+                    tourOrderView.showNotAvailableConnection();
                 }
             });
         }
