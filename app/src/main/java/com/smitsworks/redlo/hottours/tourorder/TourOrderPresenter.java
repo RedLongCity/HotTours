@@ -1,12 +1,11 @@
 package com.smitsworks.redlo.hottours.tourorder;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.smitsworks.redlo.hottours.data.models.Order;
 import com.smitsworks.redlo.hottours.data.models.UserData;
-import com.smitsworks.redlo.hottours.data.source.OrderDataPoster;
-import com.smitsworks.redlo.hottours.data.source.OrderRepository;
+import com.smitsworks.redlo.hottours.data.source.datasource.OrderDataPoster;
+import com.smitsworks.redlo.hottours.data.source.repositories.OrderRepository;
 
 /**
  * Created by redlongcity on 14.10.2017.

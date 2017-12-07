@@ -3,8 +3,8 @@ package com.smitsworks.redlo.hottours.lists.mealtypes;
 import android.support.annotation.NonNull;
 
 import com.smitsworks.redlo.hottours.data.models.Meal_Type;
-import com.smitsworks.redlo.hottours.data.source.FilterDataSource;
-import com.smitsworks.redlo.hottours.data.source.FiltersRepository;
+import com.smitsworks.redlo.hottours.data.source.datasource.FilterDataSource;
+import com.smitsworks.redlo.hottours.data.source.repositories.FiltersRepository;
 
 import java.util.List;
 

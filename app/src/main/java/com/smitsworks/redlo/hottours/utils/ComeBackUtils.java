@@ -2,12 +2,10 @@ package com.smitsworks.redlo.hottours.utils;
 
 import com.smitsworks.redlo.hottours.data.models.Request;
 import com.smitsworks.redlo.hottours.data.models.TourResponse;
-import com.smitsworks.redlo.hottours.data.source.ToursDataSource;
-import com.smitsworks.redlo.hottours.data.source.ToursRepository;
+import com.smitsworks.redlo.hottours.data.source.datasource.ToursDataSource;
 
 import java.util.Timer;
 import java.util.TimerTask;
-import android.os.Handler;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 

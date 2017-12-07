@@ -4,38 +4,37 @@ import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
 import com.smitsworks.redlo.hottours.App;
-import com.smitsworks.redlo.hottours.data.models.Order;
-import com.smitsworks.redlo.hottours.data.source.datasource.OrderDataPoster;
-import com.smitsworks.redlo.hottours.providers.OrderProvider;
+import com.smitsworks.redlo.hottours.data.models.FeedBack;
+import com.smitsworks.redlo.hottours.data.source.datasource.FeedBackDataSource;
+import com.smitsworks.redlo.hottours.providers.FeedBackProvider;
 import com.smitsworks.redlo.hottours.utils.InternetConnection;
 
 import okhttp3.Response;
 
 /**
- * Created by redlongcity on 14.10.2017.
- * class for posting Order to server
+ * Created by redlongcity on 07.12.2017.
+ * class for posting FeedBack to server
  */
 
-public class OrderRemoteDataPoster implements OrderDataPoster {
+public class FeedBackRemoteDataSource implements FeedBackDataSource{
 
-    private static OrderRemoteDataPoster instance;
+    private static FeedBackRemoteDataSource instance;
 
     public static final String TAG = "TAG";
 
-    public static OrderRemoteDataPoster getInstance(){
+    public static FeedBackRemoteDataSource getInstance(){
         if (instance == null) {
-            instance = new OrderRemoteDataPoster();
+            instance = new FeedBackRemoteDataSource();
         }
         return instance;
     }
 
-    public OrderRemoteDataPoster() {
+    public FeedBackRemoteDataSource() {
     }
 
     @Override
-    public void postOrder(@NonNull final Order order,
-                          @NonNull final PostOrderCallback callback) {
-
+    public void postFeedBack(@NonNull final FeedBack feedBack,
+                             @NonNull final PostFeedBackCallback callback) {
         if(!InternetConnection.checkConnection(App.getAppContext())){
             callback.onNotAvailableConnection();
             return;
@@ -44,13 +43,13 @@ public class OrderRemoteDataPoster implements OrderDataPoster {
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... voids) {
-                OrderProvider provider = new OrderProvider();
-                Response response = provider.provide(order);
+                FeedBackProvider provider = new FeedBackProvider();
+                Response response = provider.provide(feedBack);
                 if (response == null) {
                     return null;
                 }
                 if(response.isSuccessful()){
-                    callback.onOrderPosted();
+                    callback.onFeedBackPosted();
                 }else{
                     callback.onPostFailed();
                 }

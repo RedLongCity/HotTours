@@ -1,4 +1,4 @@
-package com.smitsworks.redlo.hottours.data.source;
+package com.smitsworks.redlo.hottours.data.source.repositories;
 
 import android.support.annotation.NonNull;
 
@@ -6,6 +6,7 @@ import com.smitsworks.redlo.hottours.data.models.Country;
 import com.smitsworks.redlo.hottours.data.models.From_Cities;
 import com.smitsworks.redlo.hottours.data.models.Hotel_Rating;
 import com.smitsworks.redlo.hottours.data.models.Meal_Type;
+import com.smitsworks.redlo.hottours.data.source.datasource.FilterDataSource;
 
 import java.util.List;
 

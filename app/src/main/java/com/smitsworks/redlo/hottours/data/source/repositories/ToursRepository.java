@@ -1,4 +1,4 @@
-package com.smitsworks.redlo.hottours.data.source;
+package com.smitsworks.redlo.hottours.data.source.repositories;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,8 +8,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import com.smitsworks.redlo.hottours.data.models.Request;
 import com.smitsworks.redlo.hottours.data.models.Tour;
 import com.smitsworks.redlo.hottours.data.models.TourResponse;
-
-import java.util.List;
+import com.smitsworks.redlo.hottours.data.source.datasource.ToursDataSource;
 
 /**
  * Created by redlongcity on 04.10.2017.

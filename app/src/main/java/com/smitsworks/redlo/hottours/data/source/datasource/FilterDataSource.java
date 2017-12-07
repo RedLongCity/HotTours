@@ -1,4 +1,4 @@
-package com.smitsworks.redlo.hottours.data.source;
+package com.smitsworks.redlo.hottours.data.source.datasource;
 
 import android.support.annotation.NonNull;
 

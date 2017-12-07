@@ -3,8 +3,8 @@ package com.smitsworks.redlo.hottours.lists.countries;
 import android.support.annotation.NonNull;
 
 import com.smitsworks.redlo.hottours.data.models.Country;
-import com.smitsworks.redlo.hottours.data.source.FilterDataSource;
-import com.smitsworks.redlo.hottours.data.source.FiltersRepository;
+import com.smitsworks.redlo.hottours.data.source.datasource.FilterDataSource;
+import com.smitsworks.redlo.hottours.data.source.repositories.FiltersRepository;
 
 import java.util.List;
 

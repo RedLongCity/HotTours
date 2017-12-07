@@ -6,8 +6,8 @@ import android.support.annotation.Nullable;
 import com.smitsworks.redlo.hottours.data.models.Hotel_Image;
 import com.smitsworks.redlo.hottours.data.models.Price;
 import com.smitsworks.redlo.hottours.data.models.Tour;
-import com.smitsworks.redlo.hottours.data.source.ToursDataSource;
-import com.smitsworks.redlo.hottours.data.source.ToursRepository;
+import com.smitsworks.redlo.hottours.data.source.datasource.ToursDataSource;
+import com.smitsworks.redlo.hottours.data.source.repositories.ToursRepository;
 import com.smitsworks.redlo.hottours.tours.TourCurrencyType;
 
 import java.sql.Date;
@@ -15,7 +15,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 import static com.google.common.base.Preconditions.checkNotNull;
-import static com.smitsworks.redlo.hottours.tours.TourCurrencyType.*;
 
 /**
  * Created by redlongcity on 08.10.2017.

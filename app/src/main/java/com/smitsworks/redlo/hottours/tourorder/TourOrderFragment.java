@@ -20,7 +20,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * Created by redlongcity on 14.10.2017.
- * Main UI the of tour order screen. User can fill the forms and send order.
+ * Main UI of the tour order screen. User can fill the forms and send order.
  */
 
 public class TourOrderFragment extends Fragment implements TourOrderContract.View {

@@ -1,8 +1,6 @@
 package com.smitsworks.redlo.hottours.data.source.remote;
 
-import android.content.AsyncTaskLoader;
 import android.os.AsyncTask;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
@@ -10,19 +8,17 @@ import com.smitsworks.redlo.hottours.App;
 import com.smitsworks.redlo.hottours.data.models.Request;
 import com.smitsworks.redlo.hottours.data.models.Tour;
 import com.smitsworks.redlo.hottours.data.models.TourResponse;
-import com.smitsworks.redlo.hottours.data.source.ToursDataSource;
+import com.smitsworks.redlo.hottours.data.source.datasource.ToursDataSource;
 import com.smitsworks.redlo.hottours.parsers.TourParser;
 import com.smitsworks.redlo.hottours.parsers.TourResponseParser;
 import com.smitsworks.redlo.hottours.providers.TourProvider;
 import com.smitsworks.redlo.hottours.providers.TourResponseProvider;
-import com.smitsworks.redlo.hottours.utils.HttpUtils;
 import com.smitsworks.redlo.hottours.utils.InternetConnection;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.List;
 
 import okhttp3.Response;
 

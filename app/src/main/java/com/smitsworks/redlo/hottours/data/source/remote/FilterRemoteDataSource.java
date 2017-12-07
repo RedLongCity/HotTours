@@ -1,7 +1,6 @@
 package com.smitsworks.redlo.hottours.data.source.remote;
 
 import android.os.AsyncTask;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
@@ -10,7 +9,7 @@ import com.smitsworks.redlo.hottours.data.models.Country;
 import com.smitsworks.redlo.hottours.data.models.From_Cities;
 import com.smitsworks.redlo.hottours.data.models.Hotel_Rating;
 import com.smitsworks.redlo.hottours.data.models.Meal_Type;
-import com.smitsworks.redlo.hottours.data.source.FilterDataSource;
+import com.smitsworks.redlo.hottours.data.source.datasource.FilterDataSource;
 import com.smitsworks.redlo.hottours.parsers.CityParser;
 import com.smitsworks.redlo.hottours.parsers.CountryParser;
 import com.smitsworks.redlo.hottours.parsers.HotelRatingParser;

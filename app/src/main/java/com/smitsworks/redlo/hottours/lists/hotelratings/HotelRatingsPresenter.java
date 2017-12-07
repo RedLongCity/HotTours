@@ -4,7 +4,7 @@ package com.smitsworks.redlo.hottours.lists.hotelratings;
 import android.support.annotation.NonNull;
 
 import com.smitsworks.redlo.hottours.data.models.Hotel_Rating;
-import com.smitsworks.redlo.hottours.data.source.FiltersRepository;
+import com.smitsworks.redlo.hottours.data.source.repositories.FiltersRepository;
 
 import java.util.List;
 

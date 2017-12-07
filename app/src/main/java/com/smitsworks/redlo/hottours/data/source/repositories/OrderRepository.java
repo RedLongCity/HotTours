@@ -1,16 +1,16 @@
-package com.smitsworks.redlo.hottours.data.source;
+package com.smitsworks.redlo.hottours.data.source.repositories;
 
 import android.support.annotation.NonNull;
 
 import com.smitsworks.redlo.hottours.data.models.Order;
-import com.smitsworks.redlo.hottours.data.models.UserData;
+import com.smitsworks.redlo.hottours.data.source.datasource.OrderDataPoster;
 import com.smitsworks.redlo.hottours.data.source.remote.OrderRemoteDataPoster;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * Created by redlongcity on 14.10.2017.
- * Concrete implementation for post orter to server
+ * Concrete implementation for posting order to server
  */
 
 public class OrderRepository implements OrderDataPoster {
@@ -19,11 +19,11 @@ public class OrderRepository implements OrderDataPoster {
 
     private final OrderRemoteDataPoster remoteDataPoster;
 
-    public OrderRepository(OrderRemoteDataPoster remoteDataPoster) {
+    private OrderRepository(OrderRemoteDataPoster remoteDataPoster) {
         this.remoteDataPoster = remoteDataPoster;
     }
 
-    public static OrderRepository getInstance(OrderRemoteDataPoster dataPoster){
+    public static OrderRepository getInstance(@NonNull OrderRemoteDataPoster dataPoster){
         if (instance == null) {
             instance = new OrderRepository(dataPoster);
         }

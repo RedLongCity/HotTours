@@ -8,10 +8,9 @@ import com.smitsworks.redlo.hottours.data.models.Price;
 import com.smitsworks.redlo.hottours.data.models.Request;
 import com.smitsworks.redlo.hottours.data.models.Tour;
 import com.smitsworks.redlo.hottours.data.models.TourResponse;
-import com.smitsworks.redlo.hottours.data.source.ToursDataSource;
-import com.smitsworks.redlo.hottours.data.source.ToursRepository;
+import com.smitsworks.redlo.hottours.data.source.datasource.ToursDataSource;
+import com.smitsworks.redlo.hottours.data.source.repositories.ToursRepository;
 import com.smitsworks.redlo.hottours.tourfiltering.TourFilteringActivity;
-import com.smitsworks.redlo.hottours.tourfiltering.TourFilteringPresenter;
 import com.smitsworks.redlo.hottours.utils.ComeBackUtils;
 
 import java.util.Collections;
@@ -50,7 +49,7 @@ public class ToursPresenter implements ToursContract.Presenter {
 
     @Override
     public void start() {
-        loadTours(true);
+        loadTours(false);
     }
 
     @Override
@@ -61,6 +60,7 @@ public class ToursPresenter implements ToursContract.Presenter {
                     data.getParcelableExtra(TourFilteringActivity.ON_REQUEST);
             if (entity != null) {
                 request = entity;
+                toursRepository.refreshTours();
             }
         }
     }
