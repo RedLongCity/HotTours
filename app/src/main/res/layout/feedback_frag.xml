@@ -6,12 +6,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:paddingBottom="16dp"
         android:paddingLeft="64dp"
         android:paddingRight="64dp"
-        android:paddingTop="16dp"
-        android:orientation="vertical"
-        >
+        android:paddingTop="16dp">
+
 
         <EditText
             android:id="@+id/user_name"
@@ -20,37 +20,36 @@
             android:hint="@string/name_hint"
             android:inputType="textPersonName"
             android:maxLines="1"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            />
-
-        <EditText
-            android:id="@+id/user_phone_number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/phone_hint"
-            android:maxLines="1"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:inputType="phone"
-            />
+            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
         <EditText
             android:id="@+id/user_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/email_hint"
-            android:maxLines="1"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:inputType="textEmailAddress"
-            />
+            android:maxLines="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
         <EditText
-            android:id="@+id/user_city"
+            android:id="@+id/user_device"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/city_hint"
+            android:hint="@string/device_hint"
+            android:inputType="textShortMessage"
             android:maxLines="1"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:inputType="text"/>
+            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+        <EditText
+            android:id="@+id/user_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top|left"
+            android:hint="@string/feedback_hint"
+            android:inputType="textMultiLine"
+            android:lines="8"
+            android:paddingTop="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
 
     </LinearLayout>

@@ -139,4 +139,8 @@
     <string name="started_updating">Туры обновляются</string>
     <string name="dialog_not_awailable_connection">Соединение с сервером не может быть установлено. Проверьте  интернет соединениe.</string>
     <string name="no_connection_dialog_message">dialog for no connection</string>
+    <string name="device_hint">Device / Android version</string>
+    <string name="feedback_hint">Leave your feedback here</string>
+    <string name="posting_feedback_success">Your feedback was sent</string>
+    <string name="posting_feedback_fail">No connection to the server</string>
 </resources>

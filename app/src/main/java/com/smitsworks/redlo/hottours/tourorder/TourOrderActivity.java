@@ -37,7 +37,6 @@ public class TourOrderActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tour_order_act);
 
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         actionBar = getSupportActionBar();
@@ -45,7 +44,7 @@ public class TourOrderActivity extends AppCompatActivity{
         actionBar.setDisplayShowHomeEnabled(true);
 
         TourOrderFragment orderFragment = (TourOrderFragment) getSupportFragmentManager().
-                findFragmentById(R.id.content_frame);
+                findFragmentById(R.id.contentFrame);
 
         Integer tourId = getIntent().getIntExtra(TourOrderFragment.ARGUMENT_ORDER_TOUR_ID,0);
 
