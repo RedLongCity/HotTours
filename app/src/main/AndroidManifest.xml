@@ -32,6 +32,7 @@
         <activity android:name=".lists.mealtypes.MealTypesActivity"/>
         <activity android:name=".tourfiltering.TourFilteringActivity"/>
         <activity android:name=".tourorder.TourOrderActivity"/>
+        <activity android:name=".feedback.FeedBackActivity"/>
     </application>
 
 </manifest>

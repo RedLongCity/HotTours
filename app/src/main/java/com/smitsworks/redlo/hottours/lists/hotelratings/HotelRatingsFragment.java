@@ -134,6 +134,8 @@ public class HotelRatingsFragment extends Fragment implements HotelRatingsContra
     @Override
     public void showLoadingHotelRatingsError() {
         showMessage(getString(R.string.load_hotel_ratings_error));
+        setLoadingIndicator(false);
+        showNoHotelRatings();
     }
 
     @Override

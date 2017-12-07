@@ -14,6 +14,7 @@ import android.view.MenuItem;
 
 import com.smitsworks.redlo.hottours.Injection;
 import com.smitsworks.redlo.hottours.R;
+import com.smitsworks.redlo.hottours.feedback.FeedBackActivity;
 import com.smitsworks.redlo.hottours.tours.ToursActivity;
 import com.smitsworks.redlo.hottours.utils.ActivityUtils;
 
@@ -86,6 +87,10 @@ public class TourFilteringActivity extends AppCompatActivity{
                                 break;
                             case R.id.settings_navigation_menu_item:
                                 break;//we're already on that screen
+                            case R.id.feedback_navigation_menu_item:
+                                Intent feddBackIntent = new Intent(TourFilteringActivity.this,FeedBackActivity.class);
+                                startActivity(feddBackIntent);
+                                break;
                             default:
                                 break;
                         }

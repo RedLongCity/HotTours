@@ -325,9 +325,8 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode==REQUEST_EDIT_TOUR){
-            showTours();
             if(resultCode== Activity.RESULT_OK){
-                getActivity().finish();
+                showTours();
             }
         }
     }

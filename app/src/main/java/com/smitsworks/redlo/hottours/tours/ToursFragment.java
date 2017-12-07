@@ -218,7 +218,9 @@ public class ToursFragment extends Fragment implements ToursContract.View {
 
     @Override
     public void showLoadingTourError() {
-        showMessage("Error when loading tours");
+        setLoadingIndicator(false);
+        showNoTours();
+        showMessage(getString(R.string.tours_load_fail));
     }
 
     @Override

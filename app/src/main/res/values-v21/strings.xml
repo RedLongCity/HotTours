@@ -25,4 +25,9 @@
     <string name="feedback_hint">Leave your feedback here</string>
     <string name="posting_feedback_success">Your feedback was sent</string>
     <string name="posting_feedback_fail">No connection to the server</string>
+    <string name="tours_load_fail">Error loading tours</string>
+    <string name="feedback">Feedback</string>
+    <string name="hot_tours_title">Горящие туры</string>
+    <string name="searching_title">Поиск туров</string>
+    <string name="feedback_title">Отзыв</string>
 </resources>

@@ -16,7 +16,8 @@
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -24,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:background="?attr/colorPrimary"
                 android:minHeight="?attr/actionBarSize"
+                app:title="@string/hot_tours_title"
                 android:theme="@style/Toolbar"
                 android:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
         </android.support.design.widget.AppBarLayout>

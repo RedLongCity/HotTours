@@ -11,4 +11,9 @@
         android:icon="@drawable/ic_search_black_24dp"
         android:title="@string/searching"/>
 
+    <item
+        android:id="@+id/feedback_navigation_menu_item"
+        android:icon="@drawable/ic_feedback_black_24dp"
+        android:title="@string/feedback"/>
+
 </menu>

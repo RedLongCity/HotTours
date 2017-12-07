@@ -134,6 +134,8 @@ public class MealTypesFragment extends Fragment implements MealTypesContract.Vie
     @Override
     public void showLoadingMealTypesError() {
         showMessage(getString(R.string.load_meal_types_error));
+        setLoadingIndicator(false);
+        showNoMealTypes();
     }
 
     @Override

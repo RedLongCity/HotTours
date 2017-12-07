@@ -133,6 +133,8 @@ public class CitiesFragment extends Fragment implements CitiesContract.View {
     @Override
     public void showLoadingCitiesError() {
         showMessage(getString(R.string.load_cities_error));
+        setLoadingIndicator(false);
+        showNoCities();
     }
 
     @Override
