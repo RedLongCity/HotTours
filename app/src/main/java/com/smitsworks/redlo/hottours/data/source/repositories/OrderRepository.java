@@ -19,6 +19,14 @@ public class OrderRepository implements OrderDataPoster {
 
     private final OrderRemoteDataPoster remoteDataPoster;
 
+    private String cachedName;
+
+    private String cachedCity;
+
+    private String cachedPhone;
+
+    private String cachedEmail;
+
     private OrderRepository(OrderRemoteDataPoster remoteDataPoster) {
         this.remoteDataPoster = remoteDataPoster;
     }
@@ -54,5 +62,45 @@ public class OrderRepository implements OrderDataPoster {
                 callback.onNotAvailableConnection();
             }
         });
+    }
+
+    @Override
+    public String getCachedName() {
+        return cachedName;
+    }
+
+    @Override
+    public String getCachedPhone() {
+        return cachedPhone;
+    }
+
+    @Override
+    public String getCachedEmail() {
+        return cachedEmail;
+    }
+
+    @Override
+    public String getCachedCity() {
+        return cachedCity;
+    }
+
+    @Override
+    public void cacheName(String name) {
+        this.cachedName = name;
+    }
+
+    @Override
+    public void cachePhone(String phone) {
+        this.cachedPhone = phone;
+    }
+
+    @Override
+    public void cacheEmail(String email) {
+        this.cachedEmail = email;
+    }
+
+    @Override
+    public void cacheCity(String city) {
+        this.cachedCity = city;
     }
 }

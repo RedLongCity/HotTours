@@ -27,12 +27,34 @@ public class FeedBackPresenter implements FeedBackContract.Presenter{
 
     @Override
     public void start() {
-
+        populateData();
     }
 
     @Override
     public void populateData() {
+        if (feedBackRepository == null) {
+            return;
+        }
 
+        String name = feedBackRepository.getCachedName();
+        if (name != null) {
+            feedBackView.setName(name);
+        }
+
+        String email = feedBackRepository.getCachedEmail();
+        if (email != null) {
+            feedBackView.setEmail(email);
+        }
+
+        String device = feedBackRepository.getCachedDevice();
+        if (device != null) {
+            feedBackView.setDevice(device);
+        }
+
+        String feedBack = feedBackRepository.getCachedFeedBack();
+        if (feedBack != null) {
+            feedBackView.setFeedBack(feedBack);
+        }
     }
 
     @Override
@@ -72,5 +94,37 @@ public class FeedBackPresenter implements FeedBackContract.Presenter{
                 }
             });
         }
+    }
+
+    @Override
+    public void cachedName(String name) {
+        if (feedBackRepository == null || name == null) {
+            return;
+        }
+        feedBackRepository.cacheName(name);
+    }
+
+    @Override
+    public void cachedEmail(String email) {
+        if (feedBackRepository == null|| email == null) {
+            return;
+        }
+        feedBackRepository.cacheEmail(email);
+    }
+
+    @Override
+    public void cachedDevice(String device) {
+        if (feedBackRepository == null || device == null) {
+            return;
+        }
+        feedBackRepository.cacheDevice(device);
+    }
+
+    @Override
+    public void cacheFeedBack(String feedBack) {
+        if (feedBackRepository == null || feedBack == null) {
+            return;
+        }
+        feedBackRepository.cacheFeedBack(feedBack);
     }
 }

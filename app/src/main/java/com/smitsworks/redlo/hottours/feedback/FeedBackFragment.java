@@ -50,6 +50,12 @@ public class FeedBackFragment extends Fragment implements FeedBackContract.View 
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        cacheData();
+    }
+
+    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
@@ -137,5 +143,27 @@ public class FeedBackFragment extends Fragment implements FeedBackContract.View 
     @Override
     public void setPresenter(FeedBackContract.Presenter presenter) {
         this.presenter = checkNotNull(presenter);
+    }
+
+    private void cacheData(){
+        String cachedName =  name.getText().toString();
+        if (cachedName != null) {
+            presenter.cachedName(cachedName);
+        }
+
+        String cachedEmail = email.getText().toString();
+        if (cachedEmail != null) {
+            presenter.cachedEmail(cachedEmail);
+        }
+
+        String cachedDevice = device.getText().toString();
+        if (cachedDevice != null) {
+            presenter.cachedDevice(cachedDevice);
+        }
+
+        String cachedFeedBack = feedBack.getText().toString();
+        if (cachedFeedBack != null) {
+            presenter.cacheFeedBack(cachedFeedBack);
+        }
     }
 }

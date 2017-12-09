@@ -19,6 +19,14 @@ public class FeedBackRepository implements FeedBackDataSource{
 
     private final FeedBackRemoteDataSource remoteDataSource;
 
+    private String cachedName;
+
+    private String cachedEmail;
+
+    private String cachedDevice;
+
+    private String cachedFeedBack;
+
     private FeedBackRepository(FeedBackRemoteDataSource remoteDataSource) {
         this.remoteDataSource = remoteDataSource;
     }
@@ -54,5 +62,45 @@ public class FeedBackRepository implements FeedBackDataSource{
                 callback.onNotAvailableConnection();
             }
         });
+    }
+
+    @Override
+    public String getCachedName() {
+        return cachedName;
+    }
+
+    @Override
+    public String getCachedDevice() {
+        return cachedDevice;
+    }
+
+    @Override
+    public String getCachedEmail() {
+        return cachedEmail;
+    }
+
+    @Override
+    public void cacheName(String name) {
+        this.cachedName = name;
+    }
+
+    @Override
+    public void cacheEmail(String email) {
+        this.cachedEmail = email;
+    }
+
+    @Override
+    public void cacheDevice(String device) {
+        this.cachedDevice = device;
+    }
+
+    @Override
+    public String getCachedFeedBack() {
+        return cachedFeedBack;
+    }
+
+    @Override
+    public void cacheFeedBack(String feedBack) {
+        this.cachedFeedBack = feedBack;
     }
 }

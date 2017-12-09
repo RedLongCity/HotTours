@@ -39,5 +39,13 @@ public class FeedBackContract {
 
         void createCallback(String name, String device, String email, String feedBack);
 
+        void cachedName(String name);
+
+        void cachedEmail(String email);
+
+        void cachedDevice(String device);
+
+        void cacheFeedBack(String feedBack);
+
     }
 }

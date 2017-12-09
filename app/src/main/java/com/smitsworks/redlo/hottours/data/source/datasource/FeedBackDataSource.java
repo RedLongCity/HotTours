@@ -11,7 +11,7 @@ import com.smitsworks.redlo.hottours.data.models.FeedBack;
 
 public interface FeedBackDataSource {
 
-    interface PostFeedBackCallback{//O_o
+    interface PostFeedBackCallback {//O_o
 
         void onFeedBackPosted();
 
@@ -21,4 +21,20 @@ public interface FeedBackDataSource {
     }
 
     void postFeedBack(@NonNull FeedBack feedBack, @NonNull PostFeedBackCallback callback);
+
+    String getCachedName();
+
+    String getCachedDevice();
+
+    String getCachedEmail();
+
+    String getCachedFeedBack();
+
+    void cacheName(String name);
+
+    void cacheEmail(String email);
+
+    void cacheDevice(String device);
+
+    void cacheFeedBack(String feedBack);
 }

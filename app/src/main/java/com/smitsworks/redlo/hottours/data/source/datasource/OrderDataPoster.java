@@ -22,4 +22,19 @@ public interface OrderDataPoster {
 
     void postOrder(@NonNull Order order,@NonNull PostOrderCallback callback);
 
+    String getCachedName();
+
+    String getCachedPhone();
+
+    String getCachedEmail();
+
+    String getCachedCity();
+
+    void cacheName(String name);
+
+    void cachePhone(String phone);
+
+    void cacheEmail(String email);
+
+    void cacheCity(String city);
 }

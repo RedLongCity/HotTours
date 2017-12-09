@@ -40,7 +40,13 @@ public interface TourOrderContract {
 
         void createOrder(String name,String phoneNumber,String email,String city);
 
-        boolean isDataMissing();
+        void cachedName(String name);
+
+        void cachedEmail(String email);
+
+        void cachedCity(String city);
+
+        void cachedPhone(String phone);
 
     }
 

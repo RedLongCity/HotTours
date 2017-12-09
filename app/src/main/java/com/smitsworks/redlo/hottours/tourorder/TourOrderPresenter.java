@@ -20,8 +20,6 @@ public class TourOrderPresenter implements TourOrderContract.Presenter {
 
     private Integer tourId;
 
-    private boolean isDataMissing;
-
     public TourOrderPresenter(@NonNull OrderRepository orderRepository,
                               @NonNull TourOrderContract.View tourOrderView,
                               @NonNull Integer tourId) {
@@ -34,9 +32,7 @@ public class TourOrderPresenter implements TourOrderContract.Presenter {
 
     @Override
     public void start() {
-        if(isDataMissing){
-            populateData();
-        }
+        populateData();
     }
 
     @Override
@@ -49,13 +45,13 @@ public class TourOrderPresenter implements TourOrderContract.Presenter {
         data.setMobileNumber(phoneNumber);
         order.setData(data);
         order.setTourId(tourId);
-        if(order.isEmpty()){
+        if (order.isEmpty()) {
             tourOrderView.showEmptyDataError();
-        }else{
+        } else {
             orderRepository.postOrder(order, new OrderDataPoster.PostOrderCallback() {
                 @Override
                 public void onOrderPosted() {
-                    if(!tourOrderView.isActive()){
+                    if (!tourOrderView.isActive()) {
                         return;
                     }
                     tourOrderView.showSuccessfullPosting();
@@ -64,7 +60,7 @@ public class TourOrderPresenter implements TourOrderContract.Presenter {
 
                 @Override
                 public void onPostFailed() {
-                    if(!tourOrderView.isActive()){
+                    if (!tourOrderView.isActive()) {
                         return;
                     }
                     tourOrderView.showFailedPosting();
@@ -72,7 +68,7 @@ public class TourOrderPresenter implements TourOrderContract.Presenter {
 
                 @Override
                 public void onNotAvailableConnection() {
-                    if(!tourOrderView.isActive()){
+                    if (!tourOrderView.isActive()) {
                         return;
                     }
                     tourOrderView.showNotAvailableConnection();
@@ -82,12 +78,61 @@ public class TourOrderPresenter implements TourOrderContract.Presenter {
     }
 
     @Override
-    public boolean isDataMissing() {
-        return isDataMissing;
+    public void populateData() {
+        if (orderRepository == null) {
+            return;
+        }
+
+        String name = orderRepository.getCachedName();
+        if (name != null) {
+            tourOrderView.setName(name);
+        }
+
+        String phone = orderRepository.getCachedPhone();
+        if (phone != null) {
+            tourOrderView.setMobileNumber(phone);
+        }
+
+        String email = orderRepository.getCachedEmail();
+        if (email != null) {
+            tourOrderView.setEmail(email);
+        }
+
+        String city = orderRepository.getCachedCity();
+        if (city != null) {
+            tourOrderView.setCity(city);
+        }
     }
 
     @Override
-    public void populateData() {
+    public void cachedName(String name) {
+        if(orderRepository==null || name==null){
+            return;
+        }
+        orderRepository.cacheName(name);
+    }
 
+    @Override
+    public void cachedEmail(String email) {
+        if (orderRepository==null || email == null) {
+            return;
+        }
+        orderRepository.cacheEmail(email);
+    }
+
+    @Override
+    public void cachedCity(String city) {
+        if (orderRepository==null || city == null) {
+            return;
+        }
+        orderRepository.cacheCity(city);
+    }
+
+    @Override
+    public void cachedPhone(String phone) {
+        if (orderRepository==null || phone == null) {
+            return;
+        }
+        orderRepository.cachePhone(phone);
     }
 }

@@ -58,4 +58,44 @@ public class OrderRemoteDataPoster implements OrderDataPoster {
             }
         }.execute();
     }
+
+    @Override
+    public String getCachedName() {
+        return null;
+    }
+
+    @Override
+    public String getCachedPhone() {
+        return null;
+    }
+
+    @Override
+    public String getCachedEmail() {
+        return null;
+    }
+
+    @Override
+    public String getCachedCity() {
+        return null;
+    }
+
+    @Override
+    public void cacheName(String name) {
+
+    }
+
+    @Override
+    public void cachePhone(String phone) {
+
+    }
+
+    @Override
+    public void cacheEmail(String email) {
+
+    }
+
+    @Override
+    public void cacheCity(String city) {
+
+    }
 }

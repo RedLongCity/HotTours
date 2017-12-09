@@ -53,6 +53,12 @@ public class TourOrderFragment extends Fragment implements TourOrderContract.Vie
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        cachedData();
+    }
+
+    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
@@ -141,5 +147,27 @@ public class TourOrderFragment extends Fragment implements TourOrderContract.Vie
     @Override
     public void setPresenter(@NonNull TourOrderContract.Presenter presenter) {
         this.presenter = checkNotNull(presenter);
+    }
+
+    private void cachedData(){
+        String cachedCity = city.getText().toString();
+        if (cachedCity != null) {
+            presenter.cachedCity(cachedCity);
+        }
+
+        String cachedName = name.getText().toString();
+        if (cachedName != null) {
+            presenter.cachedName(cachedName);
+        }
+
+        String cachedEmail = email.getText().toString();
+        if (cachedEmail != null) {
+            presenter.cachedEmail(cachedEmail);
+        }
+
+        String cachedPhone = phoneNumber.getText().toString();
+        if (cachedPhone != null) {
+            presenter.cachedPhone(cachedPhone);
+        }
     }
 }
