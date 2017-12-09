@@ -13,6 +13,15 @@
         android:orientation="vertical"
         >
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textStyle="bold"
+            android:textColor="@color/background_black"
+            android:padding="5dp"
+            android:textSize="20dp"/>
+
         <EditText
             android:id="@+id/user_name"
             android:layout_width="match_parent"
@@ -22,6 +31,15 @@
             android:maxLines="1"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/phone_number"
+            android:textStyle="bold"
+            android:textColor="@color/background_black"
+            android:padding="5dp"
+            android:textSize="20dp"/>
 
         <EditText
             android:id="@+id/user_phone_number"
@@ -33,6 +51,15 @@
             android:inputType="phone"
             />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/email"
+            android:textStyle="bold"
+            android:textColor="@color/background_black"
+            android:padding="5dp"
+            android:textSize="20dp"/>
+
         <EditText
             android:id="@+id/user_email"
             android:layout_width="match_parent"
@@ -42,6 +69,15 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:inputType="textEmailAddress"
             />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/city"
+            android:textStyle="bold"
+            android:textColor="@color/background_black"
+            android:padding="5dp"
+            android:textSize="20dp"/>
 
         <EditText
             android:id="@+id/user_city"

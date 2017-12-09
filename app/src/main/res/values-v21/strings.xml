@@ -30,4 +30,8 @@
     <string name="hot_tours_title">Горящие туры</string>
     <string name="searching_title">Поиск туров</string>
     <string name="feedback_title">Отзыв</string>
+    <string name="name">Name:</string>
+    <string name="phone_number">Phone number</string>
+    <string name="email">Email:</string>
+    <string name="city">City:</string>
 </resources>
