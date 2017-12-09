@@ -153,4 +153,6 @@
     <string name="email">Email:</string>
     <string name="city">City:</string>
     <string name="device">Device:</string>
+    <string name="no_connecion">No connection to the server</string>
+    <string name="no_connection_indicator">No connection</string>
 </resources>

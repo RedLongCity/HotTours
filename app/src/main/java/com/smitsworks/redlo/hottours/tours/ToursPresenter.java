@@ -10,6 +10,7 @@ import com.smitsworks.redlo.hottours.data.models.Tour;
 import com.smitsworks.redlo.hottours.data.models.TourResponse;
 import com.smitsworks.redlo.hottours.data.source.datasource.ToursDataSource;
 import com.smitsworks.redlo.hottours.data.source.repositories.ToursRepository;
+import com.smitsworks.redlo.hottours.feedback.FeedBackActivity;
 import com.smitsworks.redlo.hottours.tourfiltering.TourFilteringActivity;
 import com.smitsworks.redlo.hottours.utils.ComeBackUtils;
 
@@ -54,26 +55,32 @@ public class ToursPresenter implements ToursContract.Presenter {
 
     @Override
     public void result(int requestCode, int resultCode, Intent data) {
-        if(TourFilteringActivity.RESULT_REQUEST == requestCode &&
-                Activity.RESULT_OK == resultCode){
-            Request entity =
-                    data.getParcelableExtra(TourFilteringActivity.ON_REQUEST);
-            if (entity != null) {
-                request = entity;
-                toursRepository.refreshTours();
+        if (resultCode == Activity.RESULT_OK) {
+            switch (requestCode) {
+                case TourFilteringActivity.RESULT_REQUEST:
+                    Request entity =
+                            data.getParcelableExtra(TourFilteringActivity.ON_REQUEST);
+                    if (entity != null) {
+                        request = entity;
+                        toursRepository.refreshTours();
+                    }
+                    break;
+                case FeedBackActivity.REQUEST_SEND_FEEDBACK:
+                    toursView.showSuccesfullyPostedFeedBackMessage();
+                    break;
             }
         }
     }
 
     @Override
     public void loadTours(boolean forceUpdate) {
-        if(firstLoad){
+        if (firstLoad) {
             request = new Request();
             request.setHotel_Rating("3:78");
             request.setNight_From(2);
             request.setNight_Till(7);
         }
-        loadToursByRequest(request,forceUpdate || firstLoad);
+        loadToursByRequest(request, forceUpdate || firstLoad);
         firstLoad = false;
     }
 
@@ -85,29 +92,29 @@ public class ToursPresenter implements ToursContract.Presenter {
 
     private void loadTours(final Request request,
                            boolean forceUpdate,
-                           final boolean showLoadingUI){
-        if(showLoadingUI){
+                           final boolean showLoadingUI) {
+        if (showLoadingUI) {
             toursView.setLoadingIndicator(true);
         }
 
-        if(forceUpdate){
+        if (forceUpdate) {
             toursRepository.refreshTours();
         }
         toursRepository.getToursByRequest(request, new ToursDataSource.LoadToursCallback() {
             @Override
             public void onToursLoaded(TourResponse tourResponse) {
-                if(!toursView.isActive()){
+                if (!toursView.isActive()) {
                     return;
                 }
-                if(showLoadingUI){
+                if (showLoadingUI) {
                     toursView.setLoadingIndicator(false);
                 }
-                processTours(tourResponse,true);
+                processTours(tourResponse, true);
             }
 
             @Override
             public void onDataNotAvailable() {
-                if(!toursView.isActive()){
+                if (!toursView.isActive()) {
                     return;
                 }
                 toursView.showLoadingTourError();
@@ -115,7 +122,7 @@ public class ToursPresenter implements ToursContract.Presenter {
 
             @Override
             public void onNotAvailableConnection() {
-                if(!toursView.isActive()){
+                if (!toursView.isActive()) {
                     return;
                 }
                 toursView.showNotAvailableConnection();
@@ -123,12 +130,12 @@ public class ToursPresenter implements ToursContract.Presenter {
         });
     }
 
-    private void processTours(TourResponse tourResponse, boolean firstProcess){
-        if(tourResponse.getComeBackDelay()>0){
-            if(firstProcess){
+    private void processTours(TourResponse tourResponse, boolean firstProcess) {
+        if (tourResponse.getComeBackDelay() > 0) {
+            if (firstProcess) {
                 toursView.setLoadingIndicator(true);
             }
-            showTours(tourResponse.getTourList(),true,firstProcess);
+            showTours(tourResponse.getTourList(), true, firstProcess);
             ComeBackUtils utils = ComeBackUtils.getInstance(toursRepository);
             utils.start(tourResponse.getComeBackDelay(),
                     request,
@@ -136,12 +143,12 @@ public class ToursPresenter implements ToursContract.Presenter {
                     new ComeBackUtils.ComeBackCallBack() {
                         @Override
                         public void onToursLoaded(TourResponse tourResponse) {
-                            processTours(tourResponse,false);
+                            processTours(tourResponse, false);
                         }
 
                         @Override
                         public void onDataNotAvailable() {
-                            if(!toursView.isActive()){
+                            if (!toursView.isActive()) {
                                 return;
                             }
                             toursView.showLoadingTourError();
@@ -149,24 +156,24 @@ public class ToursPresenter implements ToursContract.Presenter {
 
                         @Override
                         public void onNotAvailableConnection() {
-                            if(!toursView.isActive()){
+                            if (!toursView.isActive()) {
                                 return;
                             }
                             toursView.showNotAvailableConnection();
                         }
                     });
-        }else{
-            if(!firstProcess){
+        } else {
+            if (!firstProcess) {
                 toursView.setLoadingIndicator(false);
             }
-            showTours(tourResponse.getTourList(),false,firstProcess);
+            showTours(tourResponse.getTourList(), false, firstProcess);
         }
     }
 
-    private void showTours(List<Tour> tourList, boolean hasComeBackDelay,boolean firstLoad){
-        if(hasComeBackDelay){
-            if(firstLoad){
-                if(tourList.isEmpty()){
+    private void showTours(List<Tour> tourList, boolean hasComeBackDelay, boolean firstLoad) {
+        if (hasComeBackDelay) {
+            if (firstLoad) {
+                if (tourList.isEmpty()) {
                     toursView.showUpdatingTours();
                     toursView.showUpdatingMessage();
                     return;
@@ -176,17 +183,17 @@ public class ToursPresenter implements ToursContract.Presenter {
                 toursView.showTours(tourList);
                 return;
             }
-        }else{
-            if(tourList.isEmpty()){
+        } else {
+            if (tourList.isEmpty()) {
                 processEmptyTours();
                 return;
             }
-            if(!firstLoad) {
+            if (!firstLoad) {
                 toursView.showSuccessfullyUpdatedMessage();
                 sortTours(tourList);
                 toursView.showTours(tourList);
                 return;
-            }else{
+            } else {
                 toursView.showSuccessfullyLoadedMessage();
                 sortTours(tourList);
                 toursView.showTours(tourList);
@@ -195,7 +202,7 @@ public class ToursPresenter implements ToursContract.Presenter {
         }
     }
 
-    private void processEmptyTours(){
+    private void processEmptyTours() {
         toursView.showNoTours();
     }
 
@@ -244,12 +251,12 @@ public class ToursPresenter implements ToursContract.Presenter {
         utils.stop();
     }
 
-    private void sortTours(List<Tour> tourList){
-        switch(sortType){
+    private void sortTours(List<Tour> tourList) {
+        switch (sortType) {
             case ALL_TOURS:
                 break;
             case TOURS_BY_COUNTRY:
-                Collections.sort(tourList,new Comparator<Tour>() {
+                Collections.sort(tourList, new Comparator<Tour>() {
                     @Override
                     public int compare(Tour o1, Tour o2) {
                         return o1.getCountry().getName().compareTo(o2.getCountry().getName());
@@ -257,7 +264,7 @@ public class ToursPresenter implements ToursContract.Presenter {
                 });
                 break;
             case TOURS_BY_CITY:
-                Collections.sort(tourList,new Comparator<Tour>() {
+                Collections.sort(tourList, new Comparator<Tour>() {
                     @Override
                     public int compare(Tour o1, Tour o2) {
                         return o1.getFrom_Cities().getName().compareTo(o2.getFrom_Cities().getName());
@@ -265,31 +272,31 @@ public class ToursPresenter implements ToursContract.Presenter {
                 });
                 break;
             case TOURS_BY_DURATION:
-                Collections.sort(tourList,new Comparator<Tour>() {
+                Collections.sort(tourList, new Comparator<Tour>() {
                     @Override
                     public int compare(Tour o1, Tour o2) {
-                        return o1.getDuration()-o2.getDuration();
+                        return o1.getDuration() - o2.getDuration();
                     }
                 });
                 break;
             case TOURS_BY_ADULT:
-                Collections.sort(tourList,new Comparator<Tour>() {
+                Collections.sort(tourList, new Comparator<Tour>() {
                     @Override
                     public int compare(Tour o1, Tour o2) {
-                        return o1.getAdult_Amount()-o2.getAdult_Amount();
+                        return o1.getAdult_Amount() - o2.getAdult_Amount();
                     }
                 });
                 break;
             case TOURS_BY_CHILDREN:
-                Collections.sort(tourList,new Comparator<Tour>() {
+                Collections.sort(tourList, new Comparator<Tour>() {
                     @Override
                     public int compare(Tour o1, Tour o2) {
-                        return o1.getChild_Amount()-o2.getChild_Amount();
+                        return o1.getChild_Amount() - o2.getChild_Amount();
                     }
                 });
                 break;
             case TOURS_BY_DATEFROM:
-                Collections.sort(tourList,new Comparator<Tour>() {
+                Collections.sort(tourList, new Comparator<Tour>() {
                     @Override
                     public int compare(Tour o1, Tour o2) {
                         return o1.getDate_From().compareTo(o2.getDate_From());
@@ -300,19 +307,19 @@ public class ToursPresenter implements ToursContract.Presenter {
                 Collections.sort(tourList, new Comparator<Tour>() {
                     @Override
                     public int compare(Tour o1, Tour o2) {
-                        int o1Costs=0;
-                        int o2Costs=0;
-                        for(Price price:o1.getPrices()){
-                            o1Costs+=price.getCost();
+                        int o1Costs = 0;
+                        int o2Costs = 0;
+                        for (Price price : o1.getPrices()) {
+                            o1Costs += price.getCost();
                         }
-                        for(Price price:o2.getPrices()){
-                            o2Costs+=price.getCost();
+                        for (Price price : o2.getPrices()) {
+                            o2Costs += price.getCost();
                         }
-                        return o1Costs-o2Costs;
+                        return o1Costs - o2Costs;
                     }
                 });
                 break;
         }
     }
 
-    }
+}

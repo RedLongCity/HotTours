@@ -28,8 +28,9 @@ import com.smitsworks.redlo.hottours.utils.ActivityUtils;
 
 public class FeedBackActivity extends AppCompatActivity{
 
-    private FeedBackPresenter presenter;
+    public static final int REQUEST_SEND_FEEDBACK = 3;
 
+    private FeedBackPresenter presenter;
 
     private DrawerLayout drawerLayout;
 

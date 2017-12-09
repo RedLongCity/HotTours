@@ -35,6 +35,10 @@ public interface ToursContract {
 
         void showSuccessfullyUpdatedMessage();
 
+        void showSuccessfullyPostedOrderMessage();
+
+        void showSuccesfullyPostedFeedBackMessage();
+
         void showUpdatingMessage();
 
         boolean isActive();

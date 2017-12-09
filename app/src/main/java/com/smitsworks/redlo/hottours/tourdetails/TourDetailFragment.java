@@ -7,6 +7,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.smitsworks.redlo.hottours.Dialog;
 import com.smitsworks.redlo.hottours.R;
 import com.smitsworks.redlo.hottours.tourorder.TourOrderActivity;
 import com.smitsworks.redlo.hottours.tourorder.TourOrderFragment;
@@ -32,7 +35,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class TourDetailFragment extends Fragment implements TourDetailsContract.View {
 
     @NonNull
-    private static final String ARGUMENT_TOUR_ID="TOUR_ID";
+    private static final String ARGUMENT_TOUR_ID = "TOUR_ID";
 
     @NonNull
     private static final int REQUEST_EDIT_TOUR = 1;
@@ -67,9 +70,11 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
 
     private TextView transportType;
 
-    public static TourDetailFragment newInstance(@Nullable Integer tourId){
+    private DialogFragment dialogFragment;
+
+    public static TourDetailFragment newInstance(@Nullable Integer tourId) {
         Bundle arguments = new Bundle();
-        arguments.putInt(ARGUMENT_TOUR_ID,tourId);
+        arguments.putInt(ARGUMENT_TOUR_ID, tourId);
         TourDetailFragment fragment = new TourDetailFragment();
         fragment.setArguments(arguments);
         return fragment;
@@ -92,7 +97,7 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.tour_detail_frag,container,false);
+        View root = inflater.inflate(R.layout.tour_detail_frag, container, false);
         setHasOptionsMenu(true);
 
         fromCity = (TextView) root.findViewById(R.id.city_tv);
@@ -107,9 +112,11 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
         currencySymbol = (TextView) root.findViewById(R.id.currency_symbol_tv);
         transportType = (TextView) root.findViewById(R.id.transport_type_tv);
 
+        dialogFragment = new Dialog();
+
         orderButton = (FloatingActionButton) getActivity().findViewById(R.id.order_but);
 
-        orderButton.setOnClickListener(new View.OnClickListener(){
+        orderButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -121,19 +128,19 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
 
     @Override
     public void orderTour(Integer tourId) {
-        Intent intent = new Intent(getContext(),TourOrderActivity.class);
-        intent.putExtra(TourOrderFragment.ARGUMENT_ORDER_TOUR_ID,tourId);
-        startActivityForResult(intent,REQUEST_EDIT_TOUR);
+        Intent intent = new Intent(getContext(), TourOrderActivity.class);
+        intent.putExtra(TourOrderFragment.ARGUMENT_ORDER_TOUR_ID, tourId);
+        startActivityForResult(intent, REQUEST_EDIT_TOUR);
     }
 
-    public void showTours(){
+    public void showTours() {
         Intent intent = new Intent(getContext(), ToursActivity.class);
         startActivity(intent);
     }
 
     @Override
     public void setLoadingIndicator(boolean active) {
-        if(active){
+        if (active) {
             mainCollapsing.setTitle("");
             fromCity.setText(R.string.loading);
             hotelTitle.setText(R.string.loading);
@@ -166,12 +173,12 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
 
     @Override
     public void showRegion(String region) {
-        mainCollapsing.setTitle(mainCollapsing.getTitle()+" "+region);
+        mainCollapsing.setTitle(mainCollapsing.getTitle() + " " + region);
     }
 
     @Override
     public void hideRegion() {
-        mainCollapsing.setTitle(mainCollapsing.getTitle()+" "+R.string.no_data);
+        mainCollapsing.setTitle(mainCollapsing.getTitle() + " " + R.string.no_data);
     }
 
     @Override
@@ -314,7 +321,9 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
 
     @Override
     public void showNotAwailableConnection() {
-
+        dialogFragment.show(getFragmentManager(), getString(R.string.no_connection_dialog_message));
+        showMessage(getString(R.string.no_connecion));
+        setNoConnectionIndicator();
     }
 
     @Override
@@ -324,10 +333,29 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode==REQUEST_EDIT_TOUR){
-            if(resultCode== Activity.RESULT_OK){
+        if (requestCode == REQUEST_EDIT_TOUR) {
+            if (resultCode == Activity.RESULT_OK) {
                 showTours();
             }
         }
+    }
+
+    private void showMessage(String message) {
+        Snackbar.make(getView(), message, Snackbar.LENGTH_LONG).show();
+    }
+    
+    private void setNoConnectionIndicator(){
+        mainCollapsing.setTitle("");
+        fromCity.setText(R.string.no_connection_indicator);
+        hotelTitle.setText(R.string.no_connection_indicator);
+        hotelRating.setText(R.string.no_connection_indicator);
+        mealType.setText(R.string.no_connection_indicator);
+        adultAmount.setText(R.string.no_connection_indicator);
+        childrenAmount.setText(R.string.no_connection_indicator);
+        duration.setText(R.string.no_connection_indicator);
+        fromDate.setText(R.string.no_connection_indicator);
+        price.setText(R.string.no_connection_indicator);
+        currencySymbol.setText(R.string.no_connection_indicator);
+        transportType.setText(R.string.no_connection_indicator);
     }
 }

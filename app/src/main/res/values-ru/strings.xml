@@ -66,7 +66,7 @@
     <string name="children_amount_placeholder">2</string>
     <string name="duration">Продолжительность:</string>
     <string name="duration_placeholder">7 дней</string>
-    <string name="date_from">С :</string>
+    <string name="date_from">Дата начала:</string>
     <string name="date_from_placeholder">Пят, Дек 31, 2017</string>
     <string name="price_value">Цена:</string>
     <string name="price_value_placeholder">350</string>
@@ -148,9 +148,11 @@
     <string name="hot_tours_title">Горящие туры</string>
     <string name="searching_title">Поиск туров</string>
     <string name="feedback_title">Отзыв</string>
-    <string name="name">Name:</string>
-    <string name="phone_number">Phone number:</string>
+    <string name="name">Имя:</string>
+    <string name="phone_number">Номер телефона:</string>
     <string name="email">Email:</string>
-    <string name="city">City:</string>
-    <string name="device">Device:</string>
+    <string name="city">Город:</string>
+    <string name="device">Устройство:</string>
+    <string name="no_connecion">Нет связи с сервером</string>
+    <string name="no_connection_indicator">Нет связи</string>
 </resources>

@@ -97,7 +97,7 @@ public class ToursActivity extends AppCompatActivity{
                                 break;
                             case R.id.feedback_navigation_menu_item:
                                 Intent feddBackIntent = new Intent(ToursActivity.this,FeedBackActivity.class);
-                                startActivity(feddBackIntent);
+                                startActivityForResult(feddBackIntent,FeedBackActivity.REQUEST_SEND_FEEDBACK);
                                 break;
                             default:
                                 break;

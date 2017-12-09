@@ -252,6 +252,16 @@ public class ToursFragment extends Fragment implements ToursContract.View {
     }
 
     @Override
+    public void showSuccessfullyPostedOrderMessage() {
+        showMessage(getString(R.string.posting_success));
+    }
+
+    @Override
+    public void showSuccesfullyPostedFeedBackMessage() {
+        showMessage(getString(R.string.posting_feedback_success));
+    }
+
+    @Override
     public void showUpdatingMessage() {
         showMessage(getString(R.string.started_updating));
     }

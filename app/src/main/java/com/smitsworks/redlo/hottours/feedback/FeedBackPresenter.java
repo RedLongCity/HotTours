@@ -73,7 +73,6 @@ public class FeedBackPresenter implements FeedBackContract.Presenter{
                     if(!feedBackView.isActive()){
                         return;
                     }
-                    feedBackView.showSuccessfullPosting();
                     feedBackView.showToursList();
                 }
 
