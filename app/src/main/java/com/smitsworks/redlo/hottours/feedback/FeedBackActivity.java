@@ -10,7 +10,10 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.view.DragEvent;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 
 import com.smitsworks.redlo.hottours.Injection;
@@ -26,7 +29,7 @@ import com.smitsworks.redlo.hottours.utils.ActivityUtils;
  * Displays screen for sending feedback
  */
 
-public class FeedBackActivity extends AppCompatActivity{
+public class FeedBackActivity extends AppCompatActivity {
 
     public static final int REQUEST_SEND_FEEDBACK = 3;
 

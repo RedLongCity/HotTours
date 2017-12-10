@@ -21,10 +21,7 @@ public class ToursRepository implements ToursDataSource {
 
     private final ToursDataSource remoteDataSource;
 
-
     TourResponse cachedTours;
-
-    Tour cachedTour;
 
     boolean cacheIsDirty = false;
 
@@ -32,7 +29,7 @@ public class ToursRepository implements ToursDataSource {
         this.remoteDataSource = checkNotNull(remoteDataSource);
     }
 
-    public static ToursRepository getInstance(ToursDataSource remoteDataSource){
+    public static ToursRepository getInstance(ToursDataSource remoteDataSource) {
         if (INSTANCE == null) {
             INSTANCE = new ToursRepository(remoteDataSource);
         }
@@ -43,12 +40,12 @@ public class ToursRepository implements ToursDataSource {
     public void getTours(@NonNull LoadToursCallback callback) {
         checkNotNull(callback);
 
-        if(cachedTours !=null && !cacheIsDirty){
+        if (cachedTours != null && !cacheIsDirty) {
             callback.onToursLoaded(cachedTours);
             return;
         }
 
-        if(cacheIsDirty){
+        if (cacheIsDirty) {
             getToursFromRemoteDataSource(callback);
         }
     }
@@ -58,13 +55,13 @@ public class ToursRepository implements ToursDataSource {
         checkNotNull(callback);
         checkNotNull(request);
 
-        if(cachedTours!=null && !cacheIsDirty){
+        if (cachedTours != null && !cacheIsDirty) {
             callback.onToursLoaded(cachedTours);
             return;
         }
 
-        if(cacheIsDirty){
-            getToursByRequestFromRemoteDataSource(request,callback);
+        if (cacheIsDirty) {
+            getToursByRequestFromRemoteDataSource(request, callback);
         }
     }
 
@@ -73,7 +70,7 @@ public class ToursRepository implements ToursDataSource {
         checkNotNull(tourId);
         checkNotNull(callback);
 
-        getTourWithId(tourId,callback);
+        getTourWithId(tourId, callback);
     }
 
     @Override
@@ -83,10 +80,10 @@ public class ToursRepository implements ToursDataSource {
 
     @Override
     public void deleteAllTours() {
-        cachedTours=null;
+        cachedTours = null;
     }
 
-    private void getToursFromRemoteDataSource(@NonNull final LoadToursCallback callback){
+    private void getToursFromRemoteDataSource(@NonNull final LoadToursCallback callback) {
         remoteDataSource.getTours(new LoadToursCallback() {
             @Override
             public void onToursLoaded(TourResponse tourResponse) {
@@ -107,7 +104,7 @@ public class ToursRepository implements ToursDataSource {
     }
 
     private void getToursByRequestFromRemoteDataSource(@NonNull Request request,
-            @NonNull final LoadToursCallback callback){
+                                                       @NonNull final LoadToursCallback callback) {
         remoteDataSource.getToursByRequest(request, new LoadToursCallback() {
             @Override
             public void onToursLoaded(TourResponse tourResponse) {
@@ -127,7 +124,7 @@ public class ToursRepository implements ToursDataSource {
         });
     }
 
-    private void refreshCache(TourResponse tourResponse){
+    private void refreshCache(TourResponse tourResponse) {
         if (cachedTours == null) {
             cachedTours = new TourResponse();
         }
@@ -137,11 +134,11 @@ public class ToursRepository implements ToursDataSource {
     }
 
     @Nullable
-    private void getTourWithId(@NonNull Integer id,@NonNull final GetTourCallback callback){
+    private void getTourWithId(@NonNull Integer id, @NonNull final GetTourCallback callback) {
         checkNotNull(id);
-       remoteDataSource.getTour(id, new GetTourCallback() {
+        remoteDataSource.getTour(id, new GetTourCallback() {
             @Override
-            public void onTourLoaded(Tour tour){
+            public void onTourLoaded(Tour tour) {
                 callback.onTourLoaded(tour);
             }
 
@@ -150,10 +147,10 @@ public class ToursRepository implements ToursDataSource {
                 callback.onDataNotAvailable();
             }
 
-           @Override
-           public void onNotAvailableConnection() {
-               callback.onNotAvailableConnection();
-           }
+            @Override
+            public void onNotAvailableConnection() {
+                callback.onNotAvailableConnection();
+            }
 
         });
     }

@@ -85,6 +85,7 @@ public class ToursFragment extends Fragment implements ToursContract.View {
         presenter.stopBackgroundLoading();
     }
 
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         presenter.result(requestCode, resultCode, data);

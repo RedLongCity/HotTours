@@ -76,10 +76,10 @@
     <string name="tramspot_type">Тип транспорта:</string>
     <string name="loading">Загрузка</string>
     <string name="no_data">Тур не найден</string>
-    <string name="name_hint">Имя</string>
-    <string name="phone_hint">Номер тел.</string>
-    <string name="email_hint">Email</string>
-    <string name="city_hint">Город</string>
+    <string name="name_hint">Введите Ваше имя</string>
+    <string name="phone_hint">Введите Ваш номер</string>
+    <string name="email_hint">Введите Ваш email</string>
+    <string name="city_hint">Введите Ваш город</string>
     <string name="empty_data_message">Некоторые поля незаполнены</string>
     <string name="posting_success">Заказ отправлен</string>
     <string name="posting_failed">Сервер недоступен</string>
@@ -138,13 +138,13 @@
     <string name="tours_succesfully_updated">Туры обновлены успешно</string>
     <string name="started_updating">Туры обновляются</string>
     <string name="dialog_not_awailable_connection">Соединение с сервером не может быть установлено. Проверьте  интернет соединениe.</string>
-    <string name="no_connection_dialog_message">dialog for no connection</string>
-    <string name="device_hint">Device / Android version</string>
-    <string name="feedback_hint">Leave your feedback here</string>
-    <string name="posting_feedback_success">Your feedback was sent</string>
-    <string name="posting_feedback_fail">No connection to the server</string>
-    <string name="tours_load_fail">Error loading tours</string>
-    <string name="feedback">Feedback</string>
+    <string name="no_connection_dialog_message">Нет связи с сервером</string>
+    <string name="device_hint">Устройство / Android версия</string>
+    <string name="feedback_hint">Оставьте Ваш отзыв здесь</string>
+    <string name="posting_feedback_success">Ваш отзыв был отправлен</string>
+    <string name="posting_feedback_fail">Нет связи с серврером</string>
+    <string name="tours_load_fail">Отсутствует связь с сервером</string>
+    <string name="feedback">Отзыв</string>
     <string name="hot_tours_title">Горящие туры</string>
     <string name="searching_title">Поиск туров</string>
     <string name="feedback_title">Отзыв</string>
@@ -155,4 +155,7 @@
     <string name="device">Устройство:</string>
     <string name="no_connecion">Нет связи с сервером</string>
     <string name="no_connection_indicator">Нет связи</string>
+    <string name="beta_test">Beta Test</string>
+    <string name="dialog_beta_test">Dialog_Beta_Test</string>
+    <string name="beta_test_message">Приложение находится в Beta тестировании. Для отправки сообщения команде разработки перейдите во вкладку \"Отзыв\".</string>
 </resources>
