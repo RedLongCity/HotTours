@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.smitsworks.redlo.hottours">
+    package="com.smitsworks.redlo.hottours"
+    android:versionCode="@string/versioncode"
+    android:versionName="@string/versionname">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -16,23 +18,35 @@
         android:name=".App">
 
         <activity android:name=".tours.ToursActivity"
-            android:theme="@style/AppTheme.OverlapSystemBar">
+            android:theme="@style/AppTheme.OverlapSystemBar"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".tourdetails.TourDetailActivity"/>
-        <activity android:name=".calendar.CalendarActivity"/>
-        <activity android:name=".lists.adults.AdultsActivity"/>
-        <activity android:name=".lists.children.ChildrenActivity"/>
-        <activity android:name=".lists.cities.CitiesActivity"/>
-        <activity android:name=".lists.countries.CountriesActivity"/>
-        <activity android:name=".lists.hotelratings.HotelRatingsActivity"/>
-        <activity android:name=".lists.mealtypes.MealTypesActivity"/>
-        <activity android:name=".tourfiltering.TourFilteringActivity"/>
-        <activity android:name=".tourorder.TourOrderActivity"/>
-        <activity android:name=".feedback.FeedBackActivity"/>
+        <activity android:name=".tourdetails.TourDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".calendar.CalendarActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".lists.adults.AdultsActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".lists.children.ChildrenActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".lists.cities.CitiesActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".lists.countries.CountriesActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".lists.hotelratings.HotelRatingsActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".lists.mealtypes.MealTypesActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".tourfiltering.TourFilteringActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".tourorder.TourOrderActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".feedback.FeedBackActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
