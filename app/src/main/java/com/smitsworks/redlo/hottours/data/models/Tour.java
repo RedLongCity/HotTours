@@ -274,32 +274,20 @@ public class Tour {
     public void setRequestSet(Set<Request> requestSet) {
         this.requestSet = requestSet;
     }
-    
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+
     @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 13 * hash + Objects.hashCode(this.id);
-        return hash;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Tour tour = (Tour) o;
+
+        return id != null ? id.equals(tour.id) : tour.id == null;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Tour other = (Tour) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        return true;
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
     }
 
     @Override

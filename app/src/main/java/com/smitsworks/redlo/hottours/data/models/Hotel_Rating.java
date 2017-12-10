@@ -43,35 +43,19 @@ public class Hotel_Rating {
         this.tours = tours;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 67 * hash + Objects.hashCode(this.id);
-        hash = 67 * hash + Objects.hashCode(this.name);
-        return hash;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Hotel_Rating that = (Hotel_Rating) o;
+
+        return id != null ? id.equals(that.id) : that.id == null;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Hotel_Rating other = (Hotel_Rating) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        return true;
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
     }
 
     @Override

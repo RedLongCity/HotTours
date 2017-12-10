@@ -46,17 +46,20 @@
                 />
 
         </android.support.design.widget.CollapsingToolbarLayout>
-    </android.support.design.widget.AppBarLayout>
+<!--TODO change this fuc*ing button-->
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/order_but"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:clickable="true"
+            app:fabSize="normal"
+            android:src="@drawable/ic_shopping_cart_black_24dp"
+            app:layout_anchor="@id/content_frame"
+            app:layout_anchorGravity="bottom|right|end"
+            />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/order_but"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:src="@drawable/ic_shopping_cart_black_24dp"
-        app:layout_anchor="@id/main_appbar"
-        app:layout_anchorGravity="bottom|right|end"
-        />
+    </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -67,6 +70,8 @@
             android:id="@+id/content_frame"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+
+
 
     </android.support.v4.widget.NestedScrollView>
 

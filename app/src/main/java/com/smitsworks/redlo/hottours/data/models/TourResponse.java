@@ -53,39 +53,26 @@ public class TourResponse {
         this.request = request;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 59 * hash + Objects.hashCode(this.comeBackDelay);
-        hash = 59 * hash + Objects.hashCode(this.tourList);
-        hash = 59 * hash + Objects.hashCode(this.request);
-        return hash;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        TourResponse that = (TourResponse) o;
+
+        if (comeBackDelay != null ? !comeBackDelay.equals(that.comeBackDelay) : that.comeBackDelay != null)
+            return false;
+        if (tourList != null ? !tourList.equals(that.tourList) : that.tourList != null)
+            return false;
+        return request != null ? request.equals(that.request) : that.request == null;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final TourResponse other = (TourResponse) obj;
-        if (!Objects.equals(this.comeBackDelay, other.comeBackDelay)) {
-            return false;
-        }
-        if (!Objects.equals(this.tourList, other.tourList)) {
-            return false;
-        }
-        if (!Objects.equals(this.request, other.request)) {
-            return false;
-        }
-        return true;
+    public int hashCode() {
+        int result = comeBackDelay != null ? comeBackDelay.hashCode() : 0;
+        result = 31 * result + (tourList != null ? tourList.hashCode() : 0);
+        result = 31 * result + (request != null ? request.hashCode() : 0);
+        return result;
     }
 
     @Override

@@ -74,51 +74,34 @@ public class FiltersResponse {
         this.delay = delay;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.delay);
-        hash = 97 * hash + Objects.hashCode(this.countriesList);
-        hash = 97 * hash + Objects.hashCode(this.from_CititesList);
-        hash = 97 * hash + Objects.hashCode(this.hotel_RatingList);
-        hash = 97 * hash + Objects.hashCode(this.meal_TypeList);
-        hash = 97 * hash + Objects.hashCode(this.currencyList);
-        return hash;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        FiltersResponse that = (FiltersResponse) o;
+
+        if (delay != null ? !delay.equals(that.delay) : that.delay != null) return false;
+        if (countriesList != null ? !countriesList.equals(that.countriesList) : that.countriesList != null)
+            return false;
+        if (from_CititesList != null ? !from_CititesList.equals(that.from_CititesList) : that.from_CititesList != null)
+            return false;
+        if (hotel_RatingList != null ? !hotel_RatingList.equals(that.hotel_RatingList) : that.hotel_RatingList != null)
+            return false;
+        if (meal_TypeList != null ? !meal_TypeList.equals(that.meal_TypeList) : that.meal_TypeList != null)
+            return false;
+        return currencyList != null ? currencyList.equals(that.currencyList) : that.currencyList == null;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final FiltersResponse other = (FiltersResponse) obj;
-        if (!Objects.equals(this.delay, other.delay)) {
-            return false;
-        }
-        if (!Objects.equals(this.countriesList, other.countriesList)) {
-            return false;
-        }
-        if (!Objects.equals(this.from_CititesList, other.from_CititesList)) {
-            return false;
-        }
-        if (!Objects.equals(this.hotel_RatingList, other.hotel_RatingList)) {
-            return false;
-        }
-        if (!Objects.equals(this.meal_TypeList, other.meal_TypeList)) {
-            return false;
-        }
-        if (!Objects.equals(this.currencyList, other.currencyList)) {
-            return false;
-        }
-        return true;
+    public int hashCode() {
+        int result = delay != null ? delay.hashCode() : 0;
+        result = 31 * result + (countriesList != null ? countriesList.hashCode() : 0);
+        result = 31 * result + (from_CititesList != null ? from_CititesList.hashCode() : 0);
+        result = 31 * result + (hotel_RatingList != null ? hotel_RatingList.hashCode() : 0);
+        result = 31 * result + (meal_TypeList != null ? meal_TypeList.hashCode() : 0);
+        result = 31 * result + (currencyList != null ? currencyList.hashCode() : 0);
+        return result;
     }
 
     @Override
