@@ -132,7 +132,7 @@ public class CountriesFragment extends Fragment implements CountriesContract.Vie
 
     @Override
     public void showLoadingCountriesError() {
-        showMessage(getString(R.string.load_countries_error));
+        showMessage(getString(R.string.posting_failed));
         setLoadingIndicator(false);
         showNoCountries();
     }

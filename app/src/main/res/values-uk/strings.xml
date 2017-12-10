@@ -87,7 +87,7 @@
     <string name="to_country">В страну</string>
     <string name="to_country_placeholder">Страна</string>
     <string name="night_amount">Количество ночей:</string>
-    <string name="load_countries_error">Ошибка при загрузке стран</string>
+    <string name="load_countries_error"></string>
     <string name="no_countries_found">Страны не найдены</string>
     <string name="load_cities_error">Города не загружены</string>
     <string name="no_cities_founded">Города не найдены</string>
