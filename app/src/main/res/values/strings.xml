@@ -158,6 +158,4 @@
     <string name="beta_test">Beta Test</string>
     <string name="dialog_beta_test">Dialog_Beta_Test</string>
     <string name="beta_test_message">Приложение находится в Beta тестировании. Для отправки сообщения команде разработки перейдите во вкладку \"Отзыв\".</string>
-    <string name="versioncode">1</string>
-    <string name="versionname">1.0.1</string>
 </resources>
