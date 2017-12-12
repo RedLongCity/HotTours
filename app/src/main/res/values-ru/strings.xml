@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Hot Tours</string>
+    <string name="app_name">Горящие туры</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -158,4 +158,8 @@
     <string name="beta_test">Beta Test</string>
     <string name="dialog_beta_test">Dialog_Beta_Test</string>
     <string name="beta_test_message">Приложение находится в Beta тестировании. Для отправки сообщения команде разработки перейдите во вкладку \"Отзыв\".</string>
+    <string name="tour_order">Забронировать тур</string>
+    <string name="safe">Мы используем Ваши данные только для оформления заказа, и экстренной связи без передачи их третьим лицам.</string>
+    <string name="from">Начало: </string>
+    <string name="nights">Ночей: </string>
 </resources>

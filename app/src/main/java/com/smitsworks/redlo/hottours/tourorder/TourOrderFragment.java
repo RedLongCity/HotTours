@@ -64,7 +64,7 @@ public class TourOrderFragment extends Fragment implements TourOrderContract.Vie
 
         FloatingActionButton fab =
                 (FloatingActionButton) getActivity().findViewById(R.id.fab_do_order);
-        fab.setImageResource(R.drawable.ic_done_black_24dp);
+        fab.setImageResource(R.drawable.ic_done_white_24dp);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

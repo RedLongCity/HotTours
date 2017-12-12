@@ -95,6 +95,8 @@ public class ToursAdapter extends BaseAdapter {
         TextView hotelName = (TextView) rowView.findViewById(R.id.hotel_name);
         TextView currency = (TextView) rowView.findViewById(R.id.currency);
         TextView dateFrom = (TextView) rowView.findViewById(R.id.date_from);
+        TextView duration = (TextView) rowView.findViewById(R.id.duration);
+        final ImageView imageView = (ImageView) rowView.findViewById(R.id.tours_item_image) ;
         ImageView star_1=(ImageView) rowView.findViewById(R.id.star_1);
         ImageView star_2=(ImageView) rowView.findViewById(R.id.star_2);
         ImageView star_3=(ImageView) rowView.findViewById(R.id.star_3);
@@ -111,43 +113,12 @@ public class ToursAdapter extends BaseAdapter {
                 Picasso.with(parent.getContext()).
                         load(hotelImage.getFull()).
                         placeholder(R.drawable.tour_placeholder).
-                        into(new Target() {
-                            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-                            @Override
-                            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                                mainLayout.setBackground(new BitmapDrawable(
-                                        parent.getContext().getResources(),bitmap));
-                            }
-
-                            @Override
-                            public void onBitmapFailed(Drawable errorDrawable) {
-                                Log.d("TAG","Loading picture finished by fail");
-                            }
-
-                            @Override
-                            public void onPrepareLoad(Drawable placeHolderDrawable) {
-                            }
-                        });
+                        into(imageView);
             }
         }else{
-            Picasso.with(parent.getContext()).load(R.drawable.tour_placeholder).into(new Target() {
-                @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-                @Override
-                public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                    mainLayout.setBackground(new BitmapDrawable(
-                            parent.getContext().getResources(),bitmap));
-                }
-
-                @Override
-                public void onBitmapFailed(Drawable errorDrawable) {
-                    Log.d("TAG","Loading picture finished by fail");
-                }
-
-                @Override
-                public void onPrepareLoad(Drawable placeHolderDrawable) {
-
-                }
-            });
+            Picasso.with(parent.getContext()).
+                    load(R.drawable.tour_placeholder).
+                    into(imageView);
         }
 
         countryCity.setText(tour.getCountry().getName()+", "+tour.getRegion());
@@ -178,6 +149,10 @@ public class ToursAdapter extends BaseAdapter {
 
         hotelName.setText(tour.getHotel());
         dateFrom.setText(tour.getDate_From().toString());
+
+        if (tour.getDuration() != null) {
+            duration.setText(tour.getDuration().toString());
+        }
 
         switch(tour.getHotel_Rating().getId()){
             case "78":

@@ -13,6 +13,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,7 +47,9 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
 
     private ImageView detailImage;
 
-    private FloatingActionButton orderButton;
+//    private FloatingActionButton orderButton;
+
+    private Button button;
 
     private TextView fromCity;
 
@@ -92,6 +95,14 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
 
         mainCollapsing = (CollapsingToolbarLayout) getActivity().findViewById(R.id.main_collapsing);
         detailImage = (ImageView) getActivity().findViewById(R.id.detail_image);
+        button = (Button) getActivity().findViewById(R.id.detail_but_order);
+        button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                presenter.orderTour();
+            }
+        });
     }
 
     @Nullable
@@ -114,15 +125,17 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
 
         dialogFragment = new Dialog();
 
-        orderButton = (FloatingActionButton) getActivity().findViewById(R.id.order_but);
+//        orderButton = (FloatingActionButton) getActivity().findViewById(R.id.order_but);
+//
+//        orderButton.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                presenter.orderTour();
+//            }
+//        });
 
-        orderButton.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                presenter.orderTour();
-            }
-        });
         return root;
     }
 
@@ -343,7 +356,7 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
     private void showMessage(String message) {
         Snackbar.make(getView(), message, Snackbar.LENGTH_LONG).show();
     }
-    
+
     private void setNoConnectionIndicator(){
         mainCollapsing.setTitle("");
         fromCity.setText(R.string.no_connection_indicator);

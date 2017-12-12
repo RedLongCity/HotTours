@@ -88,6 +88,30 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:inputType="text"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="16dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_lock_outline_black_40dp"
+                android:padding="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/safe"
+                android:maxLines="4"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:inputType="textMultiLine"/>
+
+
+        </LinearLayout>
+
 
     </LinearLayout>
 

@@ -502,5 +502,22 @@
         </HorizontalScrollView>
     </LinearLayout>
 
+    <Button
+        android:id="@+id/detail_but_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/tour_order"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_2"
+        />
+
 </LinearLayout>
 

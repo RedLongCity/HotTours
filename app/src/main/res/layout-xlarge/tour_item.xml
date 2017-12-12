@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tours_item_main"
+    android:layout_width="match_parent"
+    android:layout_height="170dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/tours_item_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/tour_placeholder" />
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_shape">
+
+    <TextView
+        android:id="@+id/country_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:text="Country, City"
+        android:textColor="@color/country_city_color"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:text="250"
+        android:textColor="@color/price_color"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/hotel_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Hotel Name"
+        android:textColor="@color/hotel_name"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/date_linear_layout"
+        app:layout_constraintStart_toStartOf="@+id/price"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/currency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:text="$"
+        android:textColor="@color/currency"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/price"
+        app:layout_constraintLeft_toRightOf="@+id/price" />
+
+        <LinearLayout
+            android:id="@+id/date_linear_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/price"
+            app:layout_constraintStart_toStartOf="@+id/price">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:layout_marginRight="2dp"
+                android:text="@string/from"
+                android:textColor="@color/hotel_name"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/date_from"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:layout_marginRight="10dp"
+                android:text="12.12.2017"
+                android:textColor="@color/date_from"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/nights"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:layout_marginRight="2dp"
+                android:text="@string/nights"
+                android:textColor="@color/hotel_name"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:text="2"
+                android:textColor="@color/date_from"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/starsLL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/price"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="8dp">
+
+        <ImageView
+            android:id="@+id/star_1"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:paddingRight="5dp"
+            android:src="@drawable/star_icon"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/star_2"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:paddingRight="5dp"
+            android:src="@drawable/star_icon"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/star_3"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:paddingRight="5dp"
+            android:src="@drawable/star_icon"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/star_4"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:paddingRight="5dp"
+            android:src="@drawable/star_icon"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/star_5"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:paddingRight="5dp"
+            android:src="@drawable/star_icon"
+            android:visibility="visible" />
+    </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>

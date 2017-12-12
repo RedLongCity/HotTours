@@ -23,4 +23,5 @@
     <color name="header_start">#1398dd</color>
     <color name="header_end">#05aaf4</color>
     <color name="background_black">#000000</color>
+    <color name="green">#218b32</color>
 </resources>

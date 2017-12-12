@@ -158,4 +158,8 @@
     <string name="beta_test">Beta Test</string>
     <string name="dialog_beta_test">Dialog_Beta_Test</string>
     <string name="beta_test_message">Приложение находится в Beta тестировании. Для отправки сообщения команде разработки перейдите во вкладку \"Отзыв\".</string>
+    <string name="tour_order">Book tour</string>
+    <string name="safe">We use your data only for making an order, and emergency communication without transferring them to third parties.</string>
+    <string name="from">From: </string>
+    <string name="nights">Nights: </string>
 </resources>

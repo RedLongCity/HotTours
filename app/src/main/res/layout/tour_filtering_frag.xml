@@ -328,8 +328,10 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:text="@string/find_button"
+            android:textSize="24dp"
+            android:textStyle="bold"
             android:textColor="#ffffff"
-            android:background="@drawable/button"
+            android:background="@drawable/button_2"
             />
 
     </LinearLayout>

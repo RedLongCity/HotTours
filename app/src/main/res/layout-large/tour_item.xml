@@ -11,9 +11,8 @@
         android:id="@+id/tours_item_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         android:src="@drawable/tour_placeholder" />
-
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -127,7 +126,6 @@
                 android:textStyle="bold" />
 
         </LinearLayout>
-
 
         <LinearLayout
             android:id="@+id/starsLL"
