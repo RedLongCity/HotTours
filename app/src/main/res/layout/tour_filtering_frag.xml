@@ -12,9 +12,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary">
+            android:background="@color/colorPrimary"
+            >
 
             <LinearLayout
+                android:id="@+id/from_city_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -22,7 +24,7 @@
                 android:background="@color/background_white"
                 android:orientation="vertical"
                 android:padding="5dp"
-                android:clickable="true">
+                >
 
                 <TextView
                     android:layout_width="match_parent"
@@ -31,29 +33,38 @@
                     android:padding="2dp"
                     android:text="@string/from_city"
                     android:textColor="@color/details_text_head"
-                    android:textSize="16dp" />
+                    android:textSize="16dp"
+                    />
 
-                <TextView
-                    android:id="@+id/from_city_tv"
+                <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:lineSpacingExtra="4dp"
-                    android:padding="2dp"
-                    android:text="@string/from_city_placeholder"
-                    android:textColor="@color/details_text_head"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    >
+
+                    <TextView
+                        android:id="@+id/from_city_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="4dp"
+                        android:padding="2dp"
+                        android:text="@string/anyCity"
+                        android:textColor="@color/details_text_head"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        />
+                </HorizontalScrollView>
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/to_country_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="1dp"
                 android:layout_weight="3"
                 android:background="@color/background_white"
+                android:clickable="true"
                 android:orientation="vertical"
-                android:padding="5dp"
-                android:clickable="true">
+                android:padding="5dp">
 
 
                 <TextView
@@ -65,16 +76,21 @@
                     android:textColor="@color/details_text_head"
                     android:textSize="16dp" />
 
-                <TextView
-                    android:id="@+id/to_country_tv"
+                <HorizontalScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:lineSpacingExtra="4dp"
-                    android:padding="2dp"
-                    android:text="@string/to_country_placeholder"
-                    android:textColor="@color/details_text_head"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/to_country_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="4dp"
+                        android:padding="2dp"
+                        android:text="@string/anyCountry"
+                        android:textColor="@color/details_text_head"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+                </HorizontalScrollView>
             </LinearLayout>
 
         </LinearLayout>
@@ -86,14 +102,15 @@
             android:background="@color/background_white">
 
             <LinearLayout
+                android:id="@+id/hotel_rating_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
                 android:layout_weight="4"
                 android:background="@color/colorPrimary"
+                android:clickable="true"
                 android:orientation="vertical"
-                android:padding="5dp"
-                android:clickable="true">
+                android:padding="5dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -104,28 +121,33 @@
                     android:textColor="@color/text_color_white"
                     android:textSize="16dp" />
 
-                <TextView
-                    android:id="@+id/hotel_rating_filters_tv"
+                <HorizontalScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:lineSpacingExtra="4dp"
-                    android:padding="2dp"
-                    android:text="@string/hotel_rating_placeholder"
-                    android:textColor="@color/text_color_white"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/hotel_rating_filters_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="4dp"
+                        android:padding="2dp"
+                        android:text="@string/anyRating"
+                        android:textColor="@color/text_color_white"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+                </HorizontalScrollView>
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/meal_type_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="1dp"
                 android:layout_weight="3"
                 android:background="@color/colorPrimary"
+                android:clickable="true"
                 android:orientation="vertical"
-                android:padding="5dp"
-                android:clickable="true">
-
+                android:padding="5dp">
 
 
                 <TextView
@@ -140,180 +162,178 @@
                 <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/meal_type_filters_tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:lineSpacingExtra="4dp"
-                    android:padding="2dp"
-                    android:text="@string/meal_type_placeholder"
-                    android:scrollHorizontally="true"
-                    android:textColor="@color/text_color_white"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-            </HorizontalScrollView>
+
+                    <TextView
+                        android:id="@+id/meal_type_filters_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="4dp"
+                        android:padding="2dp"
+                        android:scrollHorizontally="true"
+                        android:text="@string/anyType"
+                        android:textColor="@color/text_color_white"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+                </HorizontalScrollView>
 
             </LinearLayout>
 
         </LinearLayout>
 
 
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/background_white"-->
+        <!--android:orientation="vertical"-->
+        <!--android:padding="5dp"-->
+        <!--android:clickable="true">-->
 
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:background="@color/background_white"-->
-                <!--android:orientation="vertical"-->
-                <!--android:padding="5dp"-->
-                <!--android:clickable="true">-->
+        <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:lineSpacingExtra="4dp"-->
+        <!--android:padding="2dp"-->
+        <!--android:text="@string/date_from"-->
+        <!--android:textColor="@color/details_text_head"-->
+        <!--android:textSize="16dp"-->
+        <!--android:gravity="center"/>-->
 
-                <!--<TextView-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:lineSpacingExtra="4dp"-->
-                    <!--android:padding="2dp"-->
-                    <!--android:text="@string/date_from"-->
-                    <!--android:textColor="@color/details_text_head"-->
-                    <!--android:textSize="16dp"-->
-                    <!--android:gravity="center"/>-->
-
-                <!--<TextView-->
-                    <!--android:id="@+id/date_filters_tv"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:lineSpacingExtra="4dp"-->
-                    <!--android:padding="2dp"-->
-                    <!--android:text="@string/date_from_placeholder"-->
-                    <!--android:textColor="@color/details_text_content"-->
-                    <!--android:textSize="18dp"-->
-                    <!--android:textStyle="bold"-->
-                    <!--android:gravity="center"/>-->
-            <!--</LinearLayout>-->
-
+        <!--<TextView-->
+        <!--android:id="@+id/date_filters_tv"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:lineSpacingExtra="4dp"-->
+        <!--android:padding="2dp"-->
+        <!--android:text="@string/date_from_placeholder"-->
+        <!--android:textColor="@color/details_text_content"-->
+        <!--android:textSize="18dp"-->
+        <!--android:textStyle="bold"-->
+        <!--android:gravity="center"/>-->
+        <!--</LinearLayout>-->
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/background_white">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:lineSpacingExtra="4dp"
-            android:layout_marginTop="20dp"
-            android:padding="2dp"
-            android:text="@string/night_amount"
-            android:textColor="@color/details_text_head"
-            android:textSize="14dp"
-            android:textStyle="bold" />
+            android:background="@color/background_white"
+            android:orientation="vertical">
 
-        <com.appyvet.rangebar.RangeBar
-            xmlns:custom="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/rangebar"
-            android:layout_width="match_parent"
-            android:layout_height="90dp"
-            custom:rangeBarColor="@color/details_text_content"
-            custom:connectingLineColor="@color/pin_color"
-            custom:pinColor="@color/colorPrimary"
-            custom:pinRadius="20dp"
-            custom:pinMaxFont="25dp"
-            custom:tickColor="@color/colorPrimary"
-            custom:tickHeight="2dp"
-            custom:tickStart="1"
-            custom:tickInterval="1"
-            custom:tickEnd="9"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            custom:temporaryPins="false"
-            custom:pinMinFont="10dp"
-            />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="2dp"
+                android:text="@string/night_amount"
+                android:textColor="@color/details_text_head"
+                android:textSize="24dp"
+                android:textStyle="bold" />
 
-            </LinearLayout>
+            <com.appyvet.rangebar.RangeBar xmlns:custom="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/rangebar"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                custom:connectingLineColor="@color/pin_color"
+                custom:pinColor="@color/colorPrimary"
+                custom:pinMaxFont="25dp"
+                custom:pinMinFont="10dp"
+                custom:pinRadius="20dp"
+                custom:rangeBarColor="@color/details_text_content"
+                custom:temporaryPins="false"
+                custom:tickColor="@color/colorPrimary"
+                custom:tickEnd="9"
+                custom:tickHeight="2dp"
+                custom:tickInterval="1"
+                custom:tickStart="1" />
+
+        </LinearLayout>
 
 
         <!--<TextView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:gravity="center"-->
-            <!--android:lineSpacingExtra="4dp"-->
-            <!--android:layout_marginTop="10dp"-->
-            <!--android:layout_marginBottom="10dp"-->
-            <!--android:padding="2dp"-->
-            <!--android:text="@string/travelers"-->
-            <!--android:textColor="@color/details_text_head"-->
-            <!--android:textSize="14dp"-->
-            <!--android:textStyle="bold" />-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:gravity="center"-->
+        <!--android:lineSpacingExtra="4dp"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:padding="2dp"-->
+        <!--android:text="@string/travelers"-->
+        <!--android:textColor="@color/details_text_head"-->
+        <!--android:textSize="14dp"-->
+        <!--android:textStyle="bold" />-->
 
         <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:background="@color/background_grey"-->
-            <!--android:clickable="true">-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/background_grey"-->
+        <!--android:clickable="true">-->
 
 
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginRight="1dp"-->
-                <!--android:layout_weight="4"-->
-                <!--android:background="@color/background_white"-->
-                <!--android:orientation="vertical"-->
-                <!--android:padding="5dp">-->
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginRight="1dp"-->
+        <!--android:layout_weight="4"-->
+        <!--android:background="@color/background_white"-->
+        <!--android:orientation="vertical"-->
+        <!--android:padding="5dp">-->
 
-                <!--<TextView-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:lineSpacingExtra="4dp"-->
-                    <!--android:padding="2dp"-->
-                    <!--android:text="@string/adults"-->
-                    <!--android:textColor="@color/details_text_head"-->
-                    <!--android:textSize="16dp" />-->
+        <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:lineSpacingExtra="4dp"-->
+        <!--android:padding="2dp"-->
+        <!--android:text="@string/adults"-->
+        <!--android:textColor="@color/details_text_head"-->
+        <!--android:textSize="16dp" />-->
 
-                <!--<TextView-->
-                    <!--android:id="@+id/adult_amount_filters_tv"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:lineSpacingExtra="4dp"-->
-                    <!--android:padding="2dp"-->
-                    <!--android:text="@string/adults_placeholder"-->
-                    <!--android:textColor="@color/details_text_content"-->
-                    <!--android:textSize="20dp"-->
-                    <!--android:textStyle="bold" />-->
-            <!--</LinearLayout>-->
+        <!--<TextView-->
+        <!--android:id="@+id/adult_amount_filters_tv"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:lineSpacingExtra="4dp"-->
+        <!--android:padding="2dp"-->
+        <!--android:text="@string/adults_placeholder"-->
+        <!--android:textColor="@color/details_text_content"-->
+        <!--android:textSize="20dp"-->
+        <!--android:textStyle="bold" />-->
+        <!--</LinearLayout>-->
 
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="1dp"-->
-                <!--android:layout_weight="3"-->
-                <!--android:background="@color/background_white"-->
-                <!--android:orientation="vertical"-->
-                <!--android:padding="5dp"-->
-                <!--android:clickable="true">-->
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="1dp"-->
+        <!--android:layout_weight="3"-->
+        <!--android:background="@color/background_white"-->
+        <!--android:orientation="vertical"-->
+        <!--android:padding="5dp"-->
+        <!--android:clickable="true">-->
 
 
-                <!--<TextView-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:lineSpacingExtra="4dp"-->
-                    <!--android:padding="2dp"-->
-                    <!--android:text="@string/children"-->
-                    <!--android:textColor="@color/details_text_head"-->
-                    <!--android:textSize="16dp" />-->
+        <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:lineSpacingExtra="4dp"-->
+        <!--android:padding="2dp"-->
+        <!--android:text="@string/children"-->
+        <!--android:textColor="@color/details_text_head"-->
+        <!--android:textSize="16dp" />-->
 
-                <!--<TextView-->
-                    <!--android:id="@+id/children_amount_filters_tv"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:lineSpacingExtra="4dp"-->
-                    <!--android:padding="2dp"-->
-                    <!--android:text="@string/children_placeholder"-->
-                    <!--android:textColor="@color/details_text_head"-->
-                    <!--android:textSize="20dp"-->
-                    <!--android:textStyle="bold" />-->
-            <!--</LinearLayout>-->
+        <!--<TextView-->
+        <!--android:id="@+id/children_amount_filters_tv"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:lineSpacingExtra="4dp"-->
+        <!--android:padding="2dp"-->
+        <!--android:text="@string/children_placeholder"-->
+        <!--android:textColor="@color/details_text_head"-->
+        <!--android:textSize="20dp"-->
+        <!--android:textStyle="bold" />-->
+        <!--</LinearLayout>-->
 
         <!--</LinearLayout>-->
 
@@ -321,18 +341,17 @@
             android:id="@+id/but_find"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:text="@string/find_button"
-            android:textSize="24dp"
-            android:textStyle="bold"
-            android:textColor="#ffffff"
             android:background="@drawable/button_2"
-            />
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="@string/find_button"
+            android:textColor="#ffffff"
+            android:textSize="24dp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

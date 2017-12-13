@@ -44,4 +44,8 @@
     <string name="safe">Мы используем Ваши данные только для оформления заказа, и экстренной связи без передачи их третьим лицам.</string>
     <string name="from">From: </string>
     <string name="nights">Nights: </string>
+    <string name="anyCountry">Any country</string>
+    <string name="anyRating">Any rating</string>
+    <string name="anyCity">Any city</string>
+    <string name="anyType">Any meal type</string>
 </resources>

@@ -140,6 +140,9 @@ public class MealTypesFragment extends Fragment implements MealTypesContract.Vie
 
     @Override
     public void showMealTypes(List<Meal_Type> types) {
+        if (types != null) {
+            types.add(0,getAnyType());
+        }
         adapter.replaceData(types);
 
         elementsView.setVisibility(View.VISIBLE);
@@ -198,6 +201,13 @@ public class MealTypesFragment extends Fragment implements MealTypesContract.Vie
 
         noElementsMainView.setText(mainText);
         noElementsIcon.setImageDrawable(getResources().getDrawable(iconRes));
+    }
+
+    private Meal_Type getAnyType(){
+        Meal_Type type = new Meal_Type();
+        type.setId("0");
+        type.setName_full(getString(R.string.anyType));
+        return type;
     }
 
     public interface MealTypesItemListener{

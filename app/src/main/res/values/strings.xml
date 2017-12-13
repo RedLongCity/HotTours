@@ -56,7 +56,7 @@
     <string name="from_city_placeholder">Some City</string>
     <string name="hotel_name">Hotel Title:</string>
     <string name="hotel_title_placeholder">Some hotel title</string>
-    <string name="hotel_rating">Hotel Rating:</string>
+    <string name="hotel_rating">Amount of Stars:</string>
     <string name="hotel_rating_placeholder">Hotel Rating</string>
     <string name="meal_type">Meal Type:</string>
     <string name="meal_type_placeholder">Meal type</string>
@@ -162,4 +162,8 @@
     <string name="safe">We use your data only for making an order, and emergency communication without transferring them to third parties.</string>
     <string name="from">From: </string>
     <string name="nights">Nights: </string>
+    <string name="anyCountry">Any country</string>
+    <string name="anyRating">Any rating</string>
+    <string name="anyCity">Any city</string>
+    <string name="anyType">Any meal type</string>
 </resources>

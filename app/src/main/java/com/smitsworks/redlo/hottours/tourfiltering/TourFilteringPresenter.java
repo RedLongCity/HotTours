@@ -261,7 +261,7 @@ public class TourFilteringPresenter implements TourFilteringContract.Presenter {
     public void createRequest() {
         Request request = new Request();
 
-        if (countryId != null) {
+        if (countryId != null && !countryId.equals("0")) {
             Country country= new Country();
             country.setId(countryId);
             request.setCountry(country);
@@ -269,7 +269,7 @@ public class TourFilteringPresenter implements TourFilteringContract.Presenter {
             request.setCountry(null);
         }
 
-        if (cityId != null) {
+        if (cityId != null && !cityId.equals("0")) {
             From_Cities city = new From_Cities();
             city.setId(cityId);
             request.setFrom_Cities(city);
@@ -277,7 +277,7 @@ public class TourFilteringPresenter implements TourFilteringContract.Presenter {
             request.setFrom_Cities(null);
         }
 
-        if (mealTypeId != null) {
+        if (mealTypeId != null && !mealTypeId.equals("0")) {
             Meal_Type type = new Meal_Type();
             type.setId(mealTypeId);
             request.setMeal_Type(type);
@@ -285,7 +285,7 @@ public class TourFilteringPresenter implements TourFilteringContract.Presenter {
             request.setMeal_Type(null);
         }
 
-        if (hotelRatingId != null) {
+        if (hotelRatingId != null && !hotelRatingId.equals("0")) {
             request.setHotel_Rating(hotelRatingId);
         }else{
             request.setHotel_Rating("3:78");

@@ -139,6 +139,9 @@ public class CountriesFragment extends Fragment implements CountriesContract.Vie
 
     @Override
     public void showCountries(List<Country> countries) {
+        if (countries != null) {
+            countries.add(0,getAnyCountry());
+        }
         adapter.replaceData(countries);
 
         elementsView.setVisibility(View.VISIBLE);
@@ -197,6 +200,13 @@ public class CountriesFragment extends Fragment implements CountriesContract.Vie
 
         noElementsMainView.setText(mainText);
         noElementsIcon.setImageDrawable(getResources().getDrawable(iconRes));
+    }
+
+    private Country getAnyCountry(){
+        Country country = new Country();
+        country.setId("0");
+        country.setName(getString(R.string.anyCountry));
+        return country;
     }
 
     public interface CountriesItemListener{

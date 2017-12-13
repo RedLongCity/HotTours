@@ -140,6 +140,9 @@ public class HotelRatingsFragment extends Fragment implements HotelRatingsContra
 
     @Override
     public void showHotelRatings(List<Hotel_Rating> ratings) {
+        if (ratings != null) {
+            ratings.add(0,getAnyHotelRating());
+        }
         adapter.replaceData(ratings);
 
         elementsView.setVisibility(View.VISIBLE);
@@ -198,6 +201,13 @@ public class HotelRatingsFragment extends Fragment implements HotelRatingsContra
 
         noElementsMainView.setText(mainText);
         noElementsIcon.setImageDrawable(getResources().getDrawable(iconRes));
+    }
+
+    private Hotel_Rating getAnyHotelRating(){
+        Hotel_Rating anyRating = new Hotel_Rating();
+        anyRating.setId("0");
+        anyRating.setName(getString(R.string.anyRating));
+        return anyRating;
     }
 
     public interface HotelRatingsItemListener{

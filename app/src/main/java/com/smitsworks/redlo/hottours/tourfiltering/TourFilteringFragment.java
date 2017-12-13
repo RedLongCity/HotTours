@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.appyvet.rangebar.RangeBar;
@@ -41,6 +42,14 @@ public class TourFilteringFragment extends Fragment implements TourFilteringCont
     private TextView hotelRating;
 
     private TextView mealType;
+
+    private LinearLayout fromCityLayout;
+
+    private LinearLayout toCountryLayout;
+
+    private LinearLayout hotelRatingLayout;
+
+    private LinearLayout mealTypeLayout;
 
 //    private TextView date;
 
@@ -91,10 +100,23 @@ public class TourFilteringFragment extends Fragment implements TourFilteringCont
         find = (Button) root.findViewById(R.id.but_find);
         range = (RangeBar) root.findViewById(R.id.rangebar);
 
+        fromCityLayout = (LinearLayout) root.findViewById(R.id.from_city_layout);
+        fromCityLayout.setOnClickListener(clickListener);
+
+        toCountryLayout = (LinearLayout) root.findViewById(R.id.to_country_layout);
+        toCountryLayout.setOnClickListener(clickListener);
+
+        hotelRatingLayout = (LinearLayout) root.findViewById(R.id.hotel_rating_layout);
+        hotelRatingLayout.setOnClickListener(clickListener);
+
+        mealTypeLayout = (LinearLayout) root.findViewById(R.id.meal_type_layout);
+        mealTypeLayout.setOnClickListener(clickListener);
+
         fromCity.setOnClickListener(clickListener);
         toCountry.setOnClickListener(clickListener);
         hotelRating.setOnClickListener(clickListener);
         mealType.setOnClickListener(clickListener);
+
 //        date.setOnClickListener(clickListener);
 //        adults.setOnClickListener(clickListener);
 //        children.setOnClickListener(clickListener);
@@ -213,13 +235,25 @@ public class TourFilteringFragment extends Fragment implements TourFilteringCont
                 case R.id.from_city_tv:
                     presenter.openCitites();
                     break;
+                case R.id.from_city_layout:
+                    presenter.openCitites();
+                    break;
                 case R.id.to_country_tv:
+                    presenter.openCountries();
+                    break;
+                case R.id.to_country_layout:
                     presenter.openCountries();
                     break;
                 case R.id.hotel_rating_filters_tv:
                     presenter.openHotelRatings();
                     break;
+                case R.id.hotel_rating_layout:
+                    presenter.openHotelRatings();
+                    break;
                 case R.id.meal_type_filters_tv:
+                    presenter.openMealTypes();
+                    break;
+                case R.id.meal_type_layout:
                     presenter.openMealTypes();
                     break;
 //                case R.id.date_filters_tv:

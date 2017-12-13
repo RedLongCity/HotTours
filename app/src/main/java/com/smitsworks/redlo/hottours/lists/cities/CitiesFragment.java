@@ -139,6 +139,9 @@ public class CitiesFragment extends Fragment implements CitiesContract.View {
 
     @Override
     public void showCitites(List<From_Cities> cities) {
+        if (cities != null) {
+            cities.add(0,getAnyCity());
+        }
         adapter.replaceData(cities);
 
         elementsView.setVisibility(View.VISIBLE);
@@ -197,6 +200,13 @@ public class CitiesFragment extends Fragment implements CitiesContract.View {
 
         noElementsMainView.setText(mainText);
         noElementsIcon.setImageDrawable(getResources().getDrawable(iconRes));
+    }
+
+    private From_Cities getAnyCity(){
+        From_Cities city = new From_Cities();
+        city.setId("0");
+        city.setName(getString(R.string.anyCity));
+        return city;
     }
 
     public interface CitiesItemListener{

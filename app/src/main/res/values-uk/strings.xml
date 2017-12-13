@@ -56,7 +56,7 @@
     <string name="from_city_placeholder">Город</string>
     <string name="hotel_name">Название отеля:</string>
     <string name="hotel_title_placeholder">Название отеля</string>
-    <string name="hotel_rating">Рейтинг отеля:</string>
+    <string name="hotel_rating">Кол-во звезд:</string>
     <string name="hotel_rating_placeholder">Рейтинг</string>
     <string name="meal_type">Тип питания:</string>
     <string name="meal_type_placeholder">Тип питания</string>
@@ -162,4 +162,8 @@
     <string name="safe">Мы используем Ваши данные только для оформления заказа, и экстренной связи без передачи их третьим лицам.</string>
     <string name="from">Начало: </string>
     <string name="nights">Ночей: </string>
+    <string name="anyCountry">Любая страна</string>
+    <string name="anyRating">Любой рейтинг</string>
+    <string name="anyCity">Любой город</string>
+    <string name="anyType">Любой тип питания</string>
 </resources>
