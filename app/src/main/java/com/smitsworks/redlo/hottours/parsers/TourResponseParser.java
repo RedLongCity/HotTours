@@ -3,7 +3,6 @@ package com.smitsworks.redlo.hottours.parsers;
 import android.util.Log;
 
 import com.smitsworks.redlo.hottours.keys.TourResponseKeys;
-import com.smitsworks.redlo.hottours.data.models.Request;
 import com.smitsworks.redlo.hottours.data.models.TourResponse;
 import com.smitsworks.redlo.hottours.data.models.Tour;
 

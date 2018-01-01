@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.smitsworks.redlo.hottours.App;
-import com.smitsworks.redlo.hottours.data.models.Request;
+import com.smitsworks.redlo.hottours.data.models.HotToursRequest;
 import com.smitsworks.redlo.hottours.data.models.Tour;
 import com.smitsworks.redlo.hottours.data.models.TourResponse;
 import com.smitsworks.redlo.hottours.data.source.datasource.ToursDataSource;
@@ -124,7 +124,7 @@ public class ToursRemoteDataSource implements ToursDataSource{
     }
 
     @Override
-    public void getToursByRequest(@NonNull final Request request, @NonNull final LoadToursCallback callback) {
+    public void getToursByRequest(@NonNull final HotToursRequest request, @NonNull final LoadToursCallback callback) {
 
         if(!InternetConnection.checkConnection(App.getAppContext())){
             callback.onNotAvailableConnection();

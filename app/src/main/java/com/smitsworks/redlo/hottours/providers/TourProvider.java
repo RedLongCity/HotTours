@@ -2,7 +2,7 @@ package com.smitsworks.redlo.hottours.providers;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.smitsworks.redlo.hottours.data.models.Request;
+import com.smitsworks.redlo.hottours.data.models.HotToursRequest;
 import com.smitsworks.redlo.hottours.utils.HttpUtils;
 import com.smitsworks.redlo.hottours.utils.Urls;
 
@@ -25,7 +25,7 @@ public class TourProvider implements Provider,Urls {
         return HttpUtils.getDataByURL(TOUR_URL+"/"+id);
     }
 
-    public Response provide(Request request){
+    public Response provide(HotToursRequest request){
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
         return HttpUtils.postData(REQUEST_TOUR_URL,gson.toJson(request));

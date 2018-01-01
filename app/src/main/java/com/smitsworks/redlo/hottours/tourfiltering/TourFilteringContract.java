@@ -4,7 +4,7 @@ import android.content.Intent;
 
 import com.smitsworks.redlo.hottours.BasePresenter;
 import com.smitsworks.redlo.hottours.BaseView;
-import com.smitsworks.redlo.hottours.data.models.Request;
+import com.smitsworks.redlo.hottours.data.models.HotToursRequest;
 
 import java.util.Date;
 
@@ -47,7 +47,7 @@ public interface TourFilteringContract {
 
         void openChildrenUI();
 
-        void showTours(Request request);
+        void showTours(HotToursRequest request);
 
         boolean isActive();
 

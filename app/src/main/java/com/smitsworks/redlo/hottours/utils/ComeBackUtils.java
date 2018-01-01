@@ -1,7 +1,6 @@
 package com.smitsworks.redlo.hottours.utils;
 
 import com.smitsworks.redlo.hottours.data.models.HotToursRequest;
-import com.smitsworks.redlo.hottours.data.models.Request;
 import com.smitsworks.redlo.hottours.data.models.TourResponse;
 import com.smitsworks.redlo.hottours.data.source.datasource.ToursDataSource;
 

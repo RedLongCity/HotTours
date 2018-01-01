@@ -11,7 +11,6 @@ import com.smitsworks.redlo.hottours.data.models.From_Cities;
 import com.smitsworks.redlo.hottours.data.models.HotToursRequest;
 import com.smitsworks.redlo.hottours.data.models.Hotel_Rating;
 import com.smitsworks.redlo.hottours.data.models.Meal_Type;
-import com.smitsworks.redlo.hottours.data.models.Request;
 import com.smitsworks.redlo.hottours.data.source.repositories.FiltersRepository;
 import com.smitsworks.redlo.hottours.lists.adults.AdultsActivity;
 import com.smitsworks.redlo.hottours.lists.children.ChildrenActivity;
@@ -260,7 +259,7 @@ public class TourFilteringPresenter implements TourFilteringContract.Presenter {
 
     @Override
     public void createRequest() {
-        Request request = new Request();
+        HotToursRequest request = new HotToursRequest();
 
         if (countryId != null && !countryId.equals("0")) {
             Country country= new Country();

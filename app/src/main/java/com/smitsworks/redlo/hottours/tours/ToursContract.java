@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import com.smitsworks.redlo.hottours.BasePresenter;
 import com.smitsworks.redlo.hottours.BaseView;
 import com.smitsworks.redlo.hottours.data.models.HotToursRequest;
-import com.smitsworks.redlo.hottours.data.models.Request;
 import com.smitsworks.redlo.hottours.data.models.Tour;
 
 import java.util.List;

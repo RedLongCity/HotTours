@@ -15,8 +15,8 @@ import android.widget.TextView;
 import com.appyvet.rangebar.RangeBar;
 import com.smitsworks.redlo.hottours.R;
 import com.smitsworks.redlo.hottours.calendar.CalendarActivity;
+import com.smitsworks.redlo.hottours.data.models.HotToursRequest;
 import com.smitsworks.redlo.hottours.data.models.Meal_Type;
-import com.smitsworks.redlo.hottours.data.models.Request;
 import com.smitsworks.redlo.hottours.lists.adults.AdultsActivity;
 import com.smitsworks.redlo.hottours.lists.children.ChildrenActivity;
 import com.smitsworks.redlo.hottours.lists.cities.CitiesActivity;
@@ -209,7 +209,7 @@ public class TourFilteringFragment extends Fragment implements TourFilteringCont
     }
 
     @Override
-    public void showTours(Request request) {
+    public void showTours(HotToursRequest request) {
         Intent intent = new Intent();
         intent.putExtra(TourFilteringActivity.ON_REQUEST,request);
         getActivity().setResult(Activity.RESULT_OK,intent);

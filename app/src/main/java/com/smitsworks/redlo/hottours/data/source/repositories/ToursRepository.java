@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import com.smitsworks.redlo.hottours.data.models.Request;
+import com.smitsworks.redlo.hottours.data.models.HotToursRequest;
 import com.smitsworks.redlo.hottours.data.models.Tour;
 import com.smitsworks.redlo.hottours.data.models.TourResponse;
 import com.smitsworks.redlo.hottours.data.source.datasource.ToursDataSource;
@@ -51,7 +51,7 @@ public class ToursRepository implements ToursDataSource {
     }
 
     @Override
-    public void getToursByRequest(@NonNull Request request, @NonNull LoadToursCallback callback) {
+    public void getToursByRequest(@NonNull HotToursRequest request, @NonNull LoadToursCallback callback) {
         checkNotNull(callback);
         checkNotNull(request);
 
@@ -103,7 +103,7 @@ public class ToursRepository implements ToursDataSource {
         });
     }
 
-    private void getToursByRequestFromRemoteDataSource(@NonNull Request request,
+    private void getToursByRequestFromRemoteDataSource(@NonNull HotToursRequest request,
                                                        @NonNull final LoadToursCallback callback) {
         remoteDataSource.getToursByRequest(request, new LoadToursCallback() {
             @Override

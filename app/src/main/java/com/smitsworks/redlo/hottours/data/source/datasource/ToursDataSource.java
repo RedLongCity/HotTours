@@ -3,11 +3,8 @@ package com.smitsworks.redlo.hottours.data.source.datasource;
 import android.support.annotation.NonNull;
 
 import com.smitsworks.redlo.hottours.data.models.HotToursRequest;
-import com.smitsworks.redlo.hottours.data.models.Request;
 import com.smitsworks.redlo.hottours.data.models.Tour;
 import com.smitsworks.redlo.hottours.data.models.TourResponse;
-
-import java.util.List;
 
 /**
  * Created by redlongcity on 04.10.2017.
