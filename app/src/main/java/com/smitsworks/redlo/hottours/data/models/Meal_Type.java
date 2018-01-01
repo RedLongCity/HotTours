@@ -21,8 +21,6 @@ public class Meal_Type {
     
     private Set<Tour> tours = new HashSet<Tour>();
 
-    private Set<Request> requests = new HashSet<Request>();
-    
     public String getId() {
         return id;
     }
@@ -55,14 +53,6 @@ public class Meal_Type {
         this.tours = tours;
     }
 
-    public Set<Request> getRequests() {
-        return requests;
-    }
-
-    public void setRequests(Set<Request> requests) {
-        this.requests = requests;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -80,7 +70,11 @@ public class Meal_Type {
 
     @Override
     public String toString() {
-        return "Meal_Type{" + "id=" + id + ", name=" + name + ", name_full=" + name_full + ", tours=" + tours + ", requests=" + requests + '}';
+        return "Meal_Type{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", name_full='" + name_full + '\'' +
+                ", tours=" + tours +
+                '}';
     }
-
 }

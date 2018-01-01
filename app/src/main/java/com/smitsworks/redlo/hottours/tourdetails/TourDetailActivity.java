@@ -18,7 +18,7 @@ import com.smitsworks.redlo.hottours.utils.ActivityUtils;
 
 public class TourDetailActivity extends AppCompatActivity {
 
-    public static final String EXTRA_TOUR_ID = "TOUR_ID";
+    public static final String EXTRA_TOUR_KEY = "TOUR_KEY";
 
     public static final String EXTRA_CURRENCY_TYPE = "CURRENCY_TYPE";
 
@@ -34,7 +34,7 @@ public class TourDetailActivity extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
         ab.setDisplayShowHomeEnabled(true);
 
-        Integer tourId = getIntent().getIntExtra(EXTRA_TOUR_ID,1);
+        Integer tourId = getIntent().getIntExtra(EXTRA_TOUR_KEY,1);
 
         TourCurrencyType currencyType = (TourCurrencyType) getIntent().getSerializableExtra(EXTRA_CURRENCY_TYPE);
 

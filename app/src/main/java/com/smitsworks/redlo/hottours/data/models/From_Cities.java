@@ -21,8 +21,6 @@ public class From_Cities {
     
     private Set<Tour> tours = new HashSet<Tour>();
     
-    private Set<Request> requests = new HashSet<Request>();
-    
     public String getId() {
         return id;
     }
@@ -55,14 +53,6 @@ public class From_Cities {
         this.tours = tours;
     }
 
-    public Set<Request> getRequests() {
-        return requests;
-    }
-
-    public void setRequests(Set<Request> requests) {
-        this.requests = requests;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -80,7 +70,12 @@ public class From_Cities {
 
     @Override
     public String toString() {
-        return "From_Cities{" + "id=" + id + ", name=" + name + ", countrySet=" + countrySet + ", tours=" + tours + ", requests=" + requests + '}';
+        return "From_Cities{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", countrySet=" + countrySet +
+                ", tours=" + tours +
+                '}';
     }
 
 }
