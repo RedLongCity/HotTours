@@ -1,5 +1,6 @@
 package com.smitsworks.redlo.hottours.utils;
 
+import com.smitsworks.redlo.hottours.data.models.HotToursRequest;
 import com.smitsworks.redlo.hottours.data.models.Request;
 import com.smitsworks.redlo.hottours.data.models.TourResponse;
 import com.smitsworks.redlo.hottours.data.source.datasource.ToursDataSource;
@@ -34,7 +35,7 @@ public class ComeBackUtils {
     }
 
     public void start(final long delay,
-                      final Request request,
+                      final HotToursRequest request,
                       final ToursDataSource remoteDataSource,
                       final ComeBackCallBack callBack){
         checkNotNull(request);

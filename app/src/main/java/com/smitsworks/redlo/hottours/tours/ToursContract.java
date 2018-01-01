@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 
 import com.smitsworks.redlo.hottours.BasePresenter;
 import com.smitsworks.redlo.hottours.BaseView;
+import com.smitsworks.redlo.hottours.data.models.HotToursRequest;
 import com.smitsworks.redlo.hottours.data.models.Request;
 import com.smitsworks.redlo.hottours.data.models.Tour;
 
@@ -23,7 +24,7 @@ public interface ToursContract {
 
         void showTours(List<Tour> tours);
 
-        void showTourDetailsUi(Integer tourId);
+        void showTourDetailsUi(String key);
 
         void showNoTours();
 
@@ -63,7 +64,7 @@ public interface ToursContract {
 
         void loadTours(boolean forceUpdate);
 
-        void loadToursByRequest(Request request, boolean forceUpdate);
+        void loadToursByRequest(HotToursRequest request, boolean forceUpdate);
 
         void showFilterLabel();
 

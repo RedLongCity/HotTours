@@ -2,6 +2,7 @@ package com.smitsworks.redlo.hottours.data.source.datasource;
 
 import android.support.annotation.NonNull;
 
+import com.smitsworks.redlo.hottours.data.models.HotToursRequest;
 import com.smitsworks.redlo.hottours.data.models.Request;
 import com.smitsworks.redlo.hottours.data.models.Tour;
 import com.smitsworks.redlo.hottours.data.models.TourResponse;
@@ -37,7 +38,7 @@ public interface ToursDataSource {
 
     void getTours(@NonNull LoadToursCallback callback);
 
-    void getToursByRequest(@NonNull Request request, @NonNull LoadToursCallback callback);
+    void getToursByRequest(@NonNull HotToursRequest request, @NonNull LoadToursCallback callback);
 
     void getTour(@NonNull Integer tourId,@NonNull GetTourCallback callback);
 

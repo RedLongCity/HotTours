@@ -19,7 +19,7 @@ public class TourResponse {
 
     private List<Tour> tourList;
 
-    private Request request;
+    private Object request;
 
     public TourResponse() {
     }
@@ -45,11 +45,11 @@ public class TourResponse {
         this.tourList = tourList;
     }
 
-    public Request getRequest() {
+    public Object getRequest() {
         return request;
     }
 
-    public void setRequest(Request request) {
+    public void setRequest(Object request) {
         this.request = request;
     }
 

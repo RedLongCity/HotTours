@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import com.smitsworks.redlo.hottours.calendar.CalendarActivity;
 import com.smitsworks.redlo.hottours.data.models.Country;
 import com.smitsworks.redlo.hottours.data.models.From_Cities;
+import com.smitsworks.redlo.hottours.data.models.HotToursRequest;
 import com.smitsworks.redlo.hottours.data.models.Hotel_Rating;
 import com.smitsworks.redlo.hottours.data.models.Meal_Type;
 import com.smitsworks.redlo.hottours.data.models.Request;
@@ -66,7 +67,7 @@ public class TourFilteringPresenter implements TourFilteringContract.Presenter {
     private Integer nightTill;
 
     @Nullable
-    private Request request;
+    private HotToursRequest request;
 
     @Nullable
     private String countryName;

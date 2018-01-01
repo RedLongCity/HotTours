@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 
+import com.smitsworks.redlo.hottours.data.models.HotToursRequest;
 import com.smitsworks.redlo.hottours.data.models.Price;
 import com.smitsworks.redlo.hottours.data.models.Request;
 import com.smitsworks.redlo.hottours.data.models.Tour;
@@ -32,7 +33,7 @@ public class ToursPresenter implements ToursContract.Presenter {
 
     private final ToursContract.View toursView;
 
-    private Request request;
+    private HotToursRequest request;
 
     private ToursSortType sortType = ToursSortType.ALL_TOURS;
 
@@ -58,7 +59,7 @@ public class ToursPresenter implements ToursContract.Presenter {
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
                 case TourFilteringActivity.RESULT_REQUEST:
-                    Request entity =
+                    HotToursRequest entity =
                             data.getParcelableExtra(TourFilteringActivity.ON_REQUEST);
                     if (entity != null) {
                         request = entity;
@@ -75,7 +76,7 @@ public class ToursPresenter implements ToursContract.Presenter {
     @Override
     public void loadTours(boolean forceUpdate) {
         if (firstLoad) {
-            request = new Request();
+            request = new HotToursRequest();
             request.setHotel_Rating("3:78");
             request.setNight_From(2);
             request.setNight_Till(7);
@@ -86,11 +87,11 @@ public class ToursPresenter implements ToursContract.Presenter {
 
 
     @Override
-    public void loadToursByRequest(Request request, boolean forceUpdate) {
+    public void loadToursByRequest(HotToursRequest request, boolean forceUpdate) {
         loadTours(request, forceUpdate || firstLoad, true);
     }
 
-    private void loadTours(final Request request,
+    private void loadTours(final HotToursRequest request,
                            boolean forceUpdate,
                            final boolean showLoadingUI) {
         if (showLoadingUI) {
@@ -215,7 +216,7 @@ public class ToursPresenter implements ToursContract.Presenter {
     public void openTourDetails(@NonNull Tour requestedTour) {
         checkNotNull(requestedTour);
         stopBackgroundLoading();
-        toursView.showTourDetailsUi(requestedTour.getId());
+        toursView.showTourDetailsUi(requestedTour.getKey());
     }
 
     @Override

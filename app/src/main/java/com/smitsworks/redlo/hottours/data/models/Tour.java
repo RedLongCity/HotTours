@@ -14,66 +14,54 @@ import java.util.Set;
  * @author redlongcity
  */
 public class Tour {
-    
-    private Integer id;
-    
+
     private String key;
-    
+
     private Integer type;
-    
+
     private Country country;
-    
+
     private String region;
-    
+
     private Integer hotel_id;
-    
+
     private String hotel;
-    
+
     private Hotel_Rating hotel_Rating;
-    
+
     private Meal_Type meal_Type;
-    
+
     private String room_Type;
-    
+
     private Integer adult_Amount;
-    
+
     private Integer child_Amount;
-    
+
     private String accomodation;
-    
+
     private Integer duration;
-    
+
     private Date date_From;
-    
+
     private Integer date_From_Unix;
-    
+
     private Integer currency_id;
-    
+
     private String currency_Symbol;
-    
+
     private Set<Price> prices = new HashSet<Price>();
-    
+
     private Integer price_Old;
-    
+
     private Float price_Change_Percent;
-    
+
     private From_Cities from_Cities;
-    
+
     private String from_City_Gen;
-    
+
     private String transport_Type;
-    
+
     private Set<Hotel_Image> hotel_ImageSet = new HashSet<Hotel_Image>();
-
-    private Set<Request> requestSet = new HashSet<Request>();
-    
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getKey() {
         return key;
@@ -267,14 +255,6 @@ public class Tour {
         this.from_Cities = from_Cities;
     }
 
-    public Set<Request> getRequestSet() {
-        return requestSet;
-    }
-
-    public void setRequestSet(Set<Request> requestSet) {
-        this.requestSet = requestSet;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -282,17 +262,42 @@ public class Tour {
 
         Tour tour = (Tour) o;
 
-        return id != null ? id.equals(tour.id) : tour.id == null;
+        return key != null ? key.equals(tour.key) : tour.key == null;
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        return key != null ? key.hashCode() : 0;
     }
 
     @Override
     public String toString() {
-        return "Tour{" + "id=" + id + ", key=" + key + ", type=" + type + ", country=" + country + ", region=" + region + ", hotel_id=" + hotel_id + ", hotel=" + hotel + ", hotel_Rating=" + hotel_Rating + ", meal_Type=" + meal_Type + ", room_Type=" + room_Type + ", adult_Amount=" + adult_Amount + ", child_Amount=" + child_Amount + ", accomodation=" + accomodation + ", duration=" + duration + ", date_From=" + date_From + ", date_From_Unix=" + date_From_Unix + ", currency_id=" + currency_id + ", currency_Symbol=" + currency_Symbol + ", prices=" + prices + ", price_Old=" + price_Old + ", price_Change_Percent=" + price_Change_Percent + ", from_Cities=" + from_Cities + ", from_City_Gen=" + from_City_Gen + ", transport_Type=" + transport_Type + ", hotel_ImageSet=" + hotel_ImageSet + '}';
+        return "Tour{" +
+                "key='" + key + '\'' +
+                ", type=" + type +
+                ", country=" + country +
+                ", region='" + region + '\'' +
+                ", hotel_id=" + hotel_id +
+                ", hotel='" + hotel + '\'' +
+                ", hotel_Rating=" + hotel_Rating +
+                ", meal_Type=" + meal_Type +
+                ", room_Type='" + room_Type + '\'' +
+                ", adult_Amount=" + adult_Amount +
+                ", child_Amount=" + child_Amount +
+                ", accomodation='" + accomodation + '\'' +
+                ", duration=" + duration +
+                ", date_From=" + date_From +
+                ", date_From_Unix=" + date_From_Unix +
+                ", currency_id=" + currency_id +
+                ", currency_Symbol='" + currency_Symbol + '\'' +
+                ", prices=" + prices +
+                ", price_Old=" + price_Old +
+                ", price_Change_Percent=" + price_Change_Percent +
+                ", from_Cities=" + from_Cities +
+                ", from_City_Gen='" + from_City_Gen + '\'' +
+                ", transport_Type='" + transport_Type + '\'' +
+                ", hotel_ImageSet=" + hotel_ImageSet +
+                '}';
     }
-    
+
 }

@@ -8,6 +8,7 @@ package com.smitsworks.redlo.hottours.keys;
 public class TourKeys {
 
     public static final String KEY_ID = "id";
+    public static final String KEY_KEY = "key";
     public static final String KEY_TYPE = "type";
     public static final String KEY_COUNTRY = "country";
     public static final String KEY_REGION = "region";
