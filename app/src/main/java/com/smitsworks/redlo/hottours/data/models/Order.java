@@ -9,7 +9,7 @@ public class Order {
 
     private UserData data;
 
-    private Integer tourId;
+    private Tour tour;
 
     public Order() {
     }
@@ -22,19 +22,19 @@ public class Order {
         this.data = data;
     }
 
-    public Integer getTourId() {
-        return tourId;
-    }
-
-    public void setTourId(Integer tourId) {
-        this.tourId = tourId;
-    }
-
     public boolean isEmpty(){
         if (data != null) {
             return data.isEmpty();
         }
         return false;
+    }
+
+    public Tour getTour() {
+        return tour;
+    }
+
+    public void setTour(Tour tour) {
+        this.tour = tour;
     }
 
     @Override
@@ -45,14 +45,13 @@ public class Order {
         Order order = (Order) o;
 
         if (data != null ? !data.equals(order.data) : order.data != null) return false;
-        return tourId != null ? tourId.equals(order.tourId) : order.tourId == null;
-
+        return tour != null ? tour.equals(order.tour) : order.tour == null;
     }
 
     @Override
     public int hashCode() {
         int result = data != null ? data.hashCode() : 0;
-        result = 31 * result + (tourId != null ? tourId.hashCode() : 0);
+        result = 31 * result + (tour != null ? tour.hashCode() : 0);
         return result;
     }
 
@@ -60,7 +59,7 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "data=" + data +
-                ", tourId=" + tourId +
+                ", tour=" + tour +
                 '}';
     }
 }

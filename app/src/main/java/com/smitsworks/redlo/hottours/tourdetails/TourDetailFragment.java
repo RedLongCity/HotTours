@@ -36,7 +36,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class TourDetailFragment extends Fragment implements TourDetailsContract.View {
 
     @NonNull
-    private static final String ARGUMENT_TOUR_ID = "TOUR_ID";
+    private static final String ARGUMENT_TOUR_KEY = "TOUR_KEY";
 
     @NonNull
     private static final int REQUEST_EDIT_TOUR = 1;
@@ -75,9 +75,9 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
 
     private DialogFragment dialogFragment;
 
-    public static TourDetailFragment newInstance(@Nullable Integer tourId) {
+    public static TourDetailFragment newInstance(@Nullable String tourKey) {
         Bundle arguments = new Bundle();
-        arguments.putInt(ARGUMENT_TOUR_ID, tourId);
+        arguments.putString(ARGUMENT_TOUR_KEY, tourKey);
         TourDetailFragment fragment = new TourDetailFragment();
         fragment.setArguments(arguments);
         return fragment;
@@ -140,9 +140,9 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
     }
 
     @Override
-    public void orderTour(Integer tourId) {
+    public void orderTour(String tourKey) {
         Intent intent = new Intent(getContext(), TourOrderActivity.class);
-        intent.putExtra(TourOrderFragment.ARGUMENT_ORDER_TOUR_ID, tourId);
+        intent.putExtra(TourOrderFragment.ARGUMENT_ORDER_TOUR_ID, tourKey);
         startActivityForResult(intent, REQUEST_EDIT_TOUR);
     }
 

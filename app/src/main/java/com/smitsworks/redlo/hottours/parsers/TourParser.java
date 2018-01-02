@@ -135,10 +135,14 @@ public class TourParser implements Parser<Tour>{
                                 TourKeys.KEY_PRICE_CHANGE_PERCENT);
                         model.setPrice_Change_Percent(priceChangePercent);
                     }
-                    CityParser cityParser = new CityParser();
-                    From_Cities from_cities = cityParser.parse(
-                            json.getJSONObject(TourKeys.KEY_FROM_CITIES)
-                    );
+
+                    if(json.has(TourKeys.KEY_FROM_CITIES)){
+                        CityParser cityParser = new CityParser();
+                        model.setFrom_Cities(cityParser.parse(
+                                json.getJSONObject(TourKeys.KEY_FROM_CITIES))
+                        );
+                    }
+
 
                     if(json.has(TourKeys.KEY_FROM_CITY_GEN)){
                         model.setFrom_City_Gen(json.getString(TourKeys.KEY_FROM_CITY_GEN));

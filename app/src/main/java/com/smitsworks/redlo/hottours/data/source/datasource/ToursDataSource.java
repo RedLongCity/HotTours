@@ -37,7 +37,7 @@ public interface ToursDataSource {
 
     void getToursByRequest(@NonNull HotToursRequest request, @NonNull LoadToursCallback callback);
 
-    void getTour(@NonNull Integer tourId,@NonNull GetTourCallback callback);
+    void getTour(@NonNull String tourKey,@NonNull GetTourCallback callback);
 
     void refreshTours();
 

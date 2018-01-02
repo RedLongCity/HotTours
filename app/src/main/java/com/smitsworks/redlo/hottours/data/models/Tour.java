@@ -1,6 +1,8 @@
 package com.smitsworks.redlo.hottours.data.models;
 
 import android.os.Build;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.annotation.RequiresApi;
 
 import java.sql.Date;
@@ -13,7 +15,7 @@ import java.util.Set;
  *
  * @author redlongcity
  */
-public class Tour {
+public class Tour{
 
     private String key;
 
@@ -62,6 +64,9 @@ public class Tour {
     private String transport_Type;
 
     private Set<Hotel_Image> hotel_ImageSet = new HashSet<Hotel_Image>();
+
+    public Tour() {
+    }
 
     public String getKey() {
         return key;

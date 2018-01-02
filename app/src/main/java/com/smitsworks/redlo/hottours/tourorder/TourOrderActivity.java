@@ -46,7 +46,7 @@ public class TourOrderActivity extends AppCompatActivity{
         TourOrderFragment orderFragment = (TourOrderFragment) getSupportFragmentManager().
                 findFragmentById(R.id.contentFrame);
 
-        Integer tourId = getIntent().getIntExtra(TourOrderFragment.ARGUMENT_ORDER_TOUR_ID,0);
+        String tourKey = getIntent().getStringExtra(TourOrderFragment.ARGUMENT_ORDER_TOUR_ID);
 
         actionBar.setTitle(R.string.create_order);
 
@@ -55,7 +55,7 @@ public class TourOrderActivity extends AppCompatActivity{
 
             if(getIntent().hasExtra(TourOrderFragment.ARGUMENT_ORDER_TOUR_ID)){
                 Bundle bundle = new Bundle();
-                bundle.putInt(TourOrderFragment.ARGUMENT_ORDER_TOUR_ID,tourId);
+                bundle.putString(TourOrderFragment.ARGUMENT_ORDER_TOUR_ID,tourKey);
                 orderFragment.setArguments(bundle);
             }
 
@@ -65,8 +65,9 @@ public class TourOrderActivity extends AppCompatActivity{
 
             presenter = new TourOrderPresenter(
                     Injection.provideOrderRepository(getApplicationContext()),
+                    Injection.provideToursRepository(getApplicationContext()),
                     orderFragment,
-                    tourId
+                    tourKey
             );
 
 

@@ -31,14 +31,14 @@ public class TourDetailPresenter implements TourDetailsContract.Presenter {
     private TourCurrencyType currencyType;
 
     @Nullable
-    private Integer tourId;
+    private String tourKey;
 
-    public TourDetailPresenter(@NonNull Integer tourId,
+    public TourDetailPresenter(@NonNull String tourKey,
                                @NonNull TourCurrencyType requestType,
                                @NonNull ToursRepository toursRepository,
                                @NonNull TourDetailsContract.View tourView) {
         this.currencyType = checkNotNull(requestType);
-        this.tourId=tourId;
+        this.tourKey=tourKey;
         this.toursRepository = checkNotNull(toursRepository);
         this.tourDetailsView = checkNotNull(tourView);
 
@@ -47,11 +47,11 @@ public class TourDetailPresenter implements TourDetailsContract.Presenter {
 
     @Override
     public void orderTour() {
-        if (tourId == null) {
+        if (tourKey == null) {
             tourDetailsView.showMissingTour();
             return;
         }
-        tourDetailsView.orderTour(tourId);
+        tourDetailsView.orderTour(tourKey);
     }
 
     @Override
@@ -60,13 +60,13 @@ public class TourDetailPresenter implements TourDetailsContract.Presenter {
     }
 
     private void openTour(){
-        if(tourId==null){
+        if(tourKey==null){
             tourDetailsView.showMissingTour();
             return;
         }
 
         tourDetailsView.setLoadingIndicator(true);
-        toursRepository.getTour(tourId,new ToursDataSource.GetTourCallback(){
+        toursRepository.getTour(tourKey,new ToursDataSource.GetTourCallback(){
 
             @Override
             public void onTourLoaded(Tour tour) {

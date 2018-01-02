@@ -76,7 +76,7 @@ public interface TourDetailsContract {
 
         void hideImage();
 
-        void orderTour(Integer tourId);
+        void orderTour(String tourKey);
 
         boolean isActive();
 

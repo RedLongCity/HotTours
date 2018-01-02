@@ -33,7 +33,7 @@ public class TourResponseParser implements Parser<TourResponse>{
                             model.setComeBackDelay((long) json.getInt(TourResponseKeys.KEY_COMEBACK_DELAY));
                         }
 
-                        if(json.has(TourResponseKeys.KEY_TOUR_LIST)){
+                        if(json.has(TourResponseKeys.KEY_TOUR_LIST) && !json.isNull(TourResponseKeys.KEY_TOUR_LIST)){
 
                             JSONArray array = json.getJSONArray(TourResponseKeys.KEY_TOUR_LIST);
 

@@ -3,9 +3,12 @@ package com.smitsworks.redlo.hottours.tourorder;
 import android.support.annotation.NonNull;
 
 import com.smitsworks.redlo.hottours.data.models.Order;
+import com.smitsworks.redlo.hottours.data.models.Tour;
 import com.smitsworks.redlo.hottours.data.models.UserData;
 import com.smitsworks.redlo.hottours.data.source.datasource.OrderDataPoster;
+import com.smitsworks.redlo.hottours.data.source.datasource.ToursDataSource;
 import com.smitsworks.redlo.hottours.data.source.repositories.OrderRepository;
+import com.smitsworks.redlo.hottours.data.source.repositories.ToursRepository;
 
 /**
  * Created by redlongcity on 14.10.2017.
@@ -16,16 +19,20 @@ public class TourOrderPresenter implements TourOrderContract.Presenter {
 
     private final OrderRepository orderRepository;
 
+    private final ToursRepository toursRepository;
+
     private final TourOrderContract.View tourOrderView;
 
-    private Integer tourId;
+    private String tourKey;
 
     public TourOrderPresenter(@NonNull OrderRepository orderRepository,
+                              @NonNull ToursRepository toursRepository,
                               @NonNull TourOrderContract.View tourOrderView,
-                              @NonNull Integer tourId) {
+                              @NonNull String tourKey) {
         this.orderRepository = orderRepository;
         this.tourOrderView = tourOrderView;
-        this.tourId = tourId;
+        this.toursRepository = toursRepository;
+        this.tourKey = tourKey;
 
         tourOrderView.setPresenter(this);
     }
@@ -37,14 +44,31 @@ public class TourOrderPresenter implements TourOrderContract.Presenter {
 
     @Override
     public void createOrder(String name, String phoneNumber, String email, String city) {
-        Order order = new Order();
+        final Order order = new Order();
         UserData data = new UserData();
         data.setName(name);
         data.setEmail(email);
         data.setCity(city);
         data.setMobileNumber(phoneNumber);
         order.setData(data);
-        order.setTourId(tourId);
+
+        toursRepository.getTour(tourKey, new ToursDataSource.GetTourCallback() {
+            @Override
+            public void onTourLoaded(Tour tour) {
+                order.setTour(tour);
+            }
+
+            @Override
+            public void onDataNotAvailable() {
+                order.setTour(null);
+            }
+
+            @Override
+            public void onNotAvailableConnection() {
+                order.setTour(null);
+            }
+        });
+
         if (order.isEmpty()) {
             tourOrderView.showEmptyDataError();
         } else {
@@ -135,4 +159,5 @@ public class TourOrderPresenter implements TourOrderContract.Presenter {
         }
         orderRepository.cachePhone(phone);
     }
+
 }

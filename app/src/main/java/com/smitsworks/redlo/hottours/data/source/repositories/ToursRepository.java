@@ -66,11 +66,11 @@ public class ToursRepository implements ToursDataSource {
     }
 
     @Override
-    public void getTour(@NonNull Integer tourId, @NonNull GetTourCallback callback) {
-        checkNotNull(tourId);
+    public void getTour(@NonNull String tourKey, @NonNull GetTourCallback callback) {
+        checkNotNull(tourKey);
         checkNotNull(callback);
 
-        getTourWithId(tourId, callback);
+        getTourByKey(tourKey, callback);
     }
 
     @Override
@@ -134,24 +134,15 @@ public class ToursRepository implements ToursDataSource {
     }
 
     @Nullable
-    private void getTourWithId(@NonNull Integer id, @NonNull final GetTourCallback callback) {
-        checkNotNull(id);
-        remoteDataSource.getTour(id, new GetTourCallback() {
-            @Override
-            public void onTourLoaded(Tour tour) {
+    private void getTourByKey(@NonNull String key, @NonNull final GetTourCallback callback) {
+        checkNotNull(key);
+        checkNotNull(cachedTours);
+        for (Tour tour : cachedTours.getTourList()) {
+            if (tour.getKey().equals(key)) {
                 callback.onTourLoaded(tour);
+                return;
             }
-
-            @Override
-            public void onDataNotAvailable() {
-                callback.onDataNotAvailable();
-            }
-
-            @Override
-            public void onNotAvailableConnection() {
-                callback.onNotAvailableConnection();
-            }
-
-        });
+        }
+        callback.onDataNotAvailable();
     }
 }

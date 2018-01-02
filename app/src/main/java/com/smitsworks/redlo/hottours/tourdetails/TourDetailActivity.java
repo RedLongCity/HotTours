@@ -34,7 +34,7 @@ public class TourDetailActivity extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
         ab.setDisplayShowHomeEnabled(true);
 
-        Integer tourId = getIntent().getIntExtra(EXTRA_TOUR_KEY,1);
+        String tourKey = getIntent().getStringExtra(EXTRA_TOUR_KEY);
 
         TourCurrencyType currencyType = (TourCurrencyType) getIntent().getSerializableExtra(EXTRA_CURRENCY_TYPE);
 
@@ -42,13 +42,13 @@ public class TourDetailActivity extends AppCompatActivity {
                 findFragmentById(R.id.content_frame);
 
         if (tourDetailFragment == null) {
-            tourDetailFragment = TourDetailFragment.newInstance(tourId);
+            tourDetailFragment = TourDetailFragment.newInstance(tourKey);
 
             ActivityUtils.addFragmentToActivity(getSupportFragmentManager(),
                     tourDetailFragment,R.id.content_frame);
 
 
-            new TourDetailPresenter(tourId,
+            new TourDetailPresenter(tourKey,
                     currencyType,
                     Injection.provideToursRepository(getApplicationContext()),
                     tourDetailFragment);

@@ -83,44 +83,50 @@ public class ToursRemoteDataSource implements ToursDataSource{
                 }.execute();
     }
 
+//    @Override
+//    public void getTour(@NonNull final Integer tourId, @NonNull final GetTourCallback callback) {
+//
+//        if(!InternetConnection.checkConnection(App.getAppContext())){
+//            callback.onNotAvailableConnection();
+//            return;
+//        }
+//        new AsyncTask<Void, Void, Tour>() {
+//            @Override
+//            protected Tour doInBackground(Void... voids) {
+//                TourProvider provider = new TourProvider();
+//                Response response = provider.provide(tourId);
+//                if (response == null) {
+//                    return null;
+//                }
+//                if(response.isSuccessful()){
+//                    try{
+//                        TourParser parser = new TourParser();
+//                        return parser.parse(
+//                                new JSONObject(response.body().string())
+//                        );
+//                    }catch(@NonNull IOException | JSONException e){
+//                        Log.e(TAG,e.getLocalizedMessage());
+//                    }
+//                }
+//                return null;
+//            }
+//
+//            @Override
+//            protected void onPostExecute(Tour tour) {
+//                if(tour==null){
+//                    callback.onDataNotAvailable();
+//                    return;
+//                }else{
+//                    callback.onTourLoaded(tour);
+//                }
+//            }
+//        }.execute();
+//    }
+
+
     @Override
-    public void getTour(@NonNull final Integer tourId, @NonNull final GetTourCallback callback) {
+    public void getTour(@NonNull String tourKey, @NonNull GetTourCallback callback) {
 
-        if(!InternetConnection.checkConnection(App.getAppContext())){
-            callback.onNotAvailableConnection();
-            return;
-        }
-        new AsyncTask<Void, Void, Tour>() {
-            @Override
-            protected Tour doInBackground(Void... voids) {
-                TourProvider provider = new TourProvider();
-                Response response = provider.provide(tourId);
-                if (response == null) {
-                    return null;
-                }
-                if(response.isSuccessful()){
-                    try{
-                        TourParser parser = new TourParser();
-                        return parser.parse(
-                                new JSONObject(response.body().string())
-                        );
-                    }catch(@NonNull IOException | JSONException e){
-                        Log.e(TAG,e.getLocalizedMessage());
-                    }
-                }
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Tour tour) {
-                if(tour==null){
-                    callback.onDataNotAvailable();
-                    return;
-                }else{
-                    callback.onTourLoaded(tour);
-                }
-            }
-        }.execute();
     }
 
     @Override
