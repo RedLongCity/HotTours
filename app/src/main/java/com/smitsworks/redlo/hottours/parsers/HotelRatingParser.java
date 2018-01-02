@@ -24,11 +24,13 @@ public class HotelRatingParser implements Parser<Hotel_Rating> {
                 if(json.length()>0){
                     Hotel_Rating model = new Hotel_Rating();
 
-                    String id = json.getString(HotelRatingKeys.KEY_ID);
-                    String name = json.getString(HotelRatingKeys.KEY_NAME);
+                    if(json.has(HotelRatingKeys.KEY_ID)){
+                        model.setId(json.getString(HotelRatingKeys.KEY_ID));
+                    }
 
-                    model.setId(id);
-                    model.setName(name);
+                    if(json.has(HotelRatingKeys.KEY_NAME)){
+                        model.setName(json.getString(HotelRatingKeys.KEY_NAME));
+                    }
 
                     return model;
                 }

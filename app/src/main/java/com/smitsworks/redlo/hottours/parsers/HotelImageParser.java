@@ -19,23 +19,27 @@ public class HotelImageParser implements Parser<Hotel_Image> {
 
     @Override
     public Hotel_Image parse(JSONObject json) {
-        try{
-            if(json!=null){
-                if(json.length()>0){
+        try {
+            if (json != null) {
+                if (json.length() > 0) {
                     Hotel_Image model = new Hotel_Image();
 
-                    Integer id = json.getInt(HotelImageKeys.KEY_ID);
-                    String full = json.getString(HotelImageKeys.KEY_FULL);
-                    String thumb = json.getString(HotelImageKeys.KEY_THUMB);
+                    if (json.has(HotelImageKeys.KEY_ID)) {
+                        model.setId(json.getInt(HotelImageKeys.KEY_ID));
+                    }
 
-                    model.setId(id);
-                    model.setFull(full);
-                    model.setThumb(thumb);
+                    if (json.has(HotelImageKeys.KEY_FULL)) {
+                        model.setFull(json.getString(HotelImageKeys.KEY_FULL));
+                    }
+
+                    if (json.has(HotelImageKeys.KEY_THUMB)) {
+                        model.setThumb(json.getString(HotelImageKeys.KEY_THUMB));
+                    }
 
                     return model;
                 }
             }
-        }catch (JSONException je){
+        } catch (JSONException je) {
             Log.i(TAG, "" + je.getLocalizedMessage());
         }
         return null;

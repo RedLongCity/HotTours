@@ -19,23 +19,27 @@ public class MealTypeParser implements Parser<Meal_Type> {
 
     @Override
     public Meal_Type parse(JSONObject json) {
-        try{
-            if(json!=null){
-                if(json.length()>0){
+        try {
+            if (json != null) {
+                if (json.length() > 0) {
                     Meal_Type model = new Meal_Type();
 
-                    String id = json.getString(MealTypeKeys.KEY_ID);
-                    String name = json.getString(MealTypeKeys.KEY_NAME);
-                    String nameFull = json.getString(MealTypeKeys.KEY_NAME_FULL);
+                    if (json.has(MealTypeKeys.KEY_ID)) {
+                        model.setId(json.getString(MealTypeKeys.KEY_ID));
+                    }
 
-                    model.setId(id);
-                    model.setName(name);
-                    model.setName_full(nameFull);
+                    if (json.has(MealTypeKeys.KEY_NAME)) {
+                        model.setName(json.getString(MealTypeKeys.KEY_NAME));
+                    }
+
+                    if (json.has(MealTypeKeys.KEY_NAME_FULL)){
+                        model.setName_full(json.getString(MealTypeKeys.KEY_NAME_FULL));
+                    }
 
                     return model;
                 }
             }
-        }catch (JSONException je){
+        } catch (JSONException je) {
             Log.i(TAG, "" + je.getLocalizedMessage());
         }
         return null;

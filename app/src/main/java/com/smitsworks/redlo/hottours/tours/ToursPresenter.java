@@ -173,7 +173,7 @@ public class ToursPresenter implements ToursContract.Presenter {
     private void showTours(List<Tour> tourList, boolean hasComeBackDelay, boolean firstLoad) {
         if (hasComeBackDelay) {
             if (firstLoad) {
-                if (tourList.isEmpty()) {
+                if (tourList == null || tourList.isEmpty()) {
                     toursView.showUpdatingTours();
                     toursView.showUpdatingMessage();
                     return;
@@ -184,7 +184,7 @@ public class ToursPresenter implements ToursContract.Presenter {
                 return;
             }
         } else {
-            if (tourList.isEmpty()) {
+            if (tourList == null || tourList.isEmpty()) {
                 processEmptyTours();
                 return;
             }

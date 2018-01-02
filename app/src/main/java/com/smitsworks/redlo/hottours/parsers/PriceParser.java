@@ -25,16 +25,19 @@ public class PriceParser implements Parser<Price> {
                 if(json.length()>0){
                     Price model = new Price();
 
-                    Integer id = json.getInt(PriceKeys.KEY_ID);
-                    Integer cost = json.getInt(PriceKeys.KEY_COST);
+                    if(json.has(PriceKeys.KEY_ID)) {
+                        model.setId(json.getInt(PriceKeys.KEY_ID));
+                    }
 
-                    CurrencyParser parser = new CurrencyParser();
-                    Currency currency = parser.parse(json.getJSONObject(PriceKeys.KEY_CURRENCY));
+                    if(json.has(PriceKeys.KEY_COST)){
+                        model.setCost(json.getInt(PriceKeys.KEY_COST));
+                    }
 
-                    model.setId(id);
-                    model.setCost(cost);
-                    model.setCurrency(currency);
-
+                    if(json.has(PriceKeys.KEY_CURRENCY)){
+                        CurrencyParser parser = new CurrencyParser();
+                        model.setCurrency(parser.parse(
+                                json.getJSONObject(PriceKeys.KEY_CURRENCY)));
+                    }
                     return model;
                 }
             }

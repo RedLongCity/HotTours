@@ -28,10 +28,15 @@ public class CityParser implements Parser<From_Cities>{
         try{
             if(json!=null){
                 if(json.length()>0){
-                    String id = json.getString(CityKeys.KEY_ID);
-                    model.setId(id);
-                    String name = json.getString(CityKeys.KEY_NAME);
-                    model.setName(name);
+
+                    if(json.has(CityKeys.KEY_ID)){
+                        model.setId(json.getString(CityKeys.KEY_ID));
+                    }
+
+                    if(json.has(CityKeys.KEY_NAME)){
+                        model.setName(json.getString(CityKeys.KEY_NAME));
+                    }
+
                     if(json.has(CityKeys.KEY_COUNTRY_SET)) {
                         JSONArray array = json.getJSONArray(CityKeys.KEY_COUNTRY_SET);
                         Set<Country> countrySet = new HashSet<Country>();

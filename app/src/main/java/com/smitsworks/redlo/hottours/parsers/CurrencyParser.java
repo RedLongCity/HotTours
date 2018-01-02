@@ -24,11 +24,13 @@ public class CurrencyParser implements Parser<Currency> {
                 if(json.length()>0){
                     Currency model = new Currency();
 
-                    String id = json.getString(CurrencyKeys.KEY_ID);
-                    String name = json.getString(CurrencyKeys.KEY_NAME);
+                    if(json.has(CurrencyKeys.KEY_ID)){
+                        model.setId(json.getString(CurrencyKeys.KEY_ID));
+                    }
 
-                    model.setId(id);
-                    model.setName(name);
+                    if(json.has(CurrencyKeys.KEY_NAME)){
+                        model.setName(json.getString(CurrencyKeys.KEY_NAME));
+                    }
 
                     return model;
                 }

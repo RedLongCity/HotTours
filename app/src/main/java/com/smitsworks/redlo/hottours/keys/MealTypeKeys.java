@@ -9,5 +9,5 @@ public class MealTypeKeys {
 
     public static final String KEY_ID="id";
     public static final String KEY_NAME="name";
-    public static final String KEY_NAME_FULL="name_full";
+    public static final String KEY_NAME_FULL="name_Full";
 }

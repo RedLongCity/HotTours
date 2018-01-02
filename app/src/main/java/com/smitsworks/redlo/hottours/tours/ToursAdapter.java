@@ -139,11 +139,13 @@ public class ToursAdapter extends BaseAdapter {
         }
 
         HashSet<Price> pricesSet = (HashSet<Price>) tour.getPrices();
-        Iterator<Price> iterator = pricesSet.iterator();
-        while(iterator.hasNext()){
-            Price priceIt = iterator.next();
-            if(priceIt.getCurrency().getId().equals(currencyId)){
-                price.setText(priceIt.getCost().toString());
+        if(pricesSet!=null && !pricesSet.isEmpty()) {
+            Iterator<Price> iterator = pricesSet.iterator();
+            while (iterator.hasNext()) {
+                Price priceIt = iterator.next();
+                if (priceIt.getCurrency().getId().equals(currencyId)) {
+                    price.setText(priceIt.getCost().toString());
+                }
             }
         }
 

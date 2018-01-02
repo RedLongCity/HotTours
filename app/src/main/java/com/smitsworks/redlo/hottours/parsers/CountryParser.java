@@ -23,34 +23,39 @@ public class CountryParser implements Parser<Country> {
     public static final String TAG = "TAG";
 
     @Override
-    public Country parse(JSONObject json){
+    public Country parse(JSONObject json) {
         Country model = new Country();
         try {
             if (json != null) {
                 if (json.length() > 0) {
-                    String id = json.getString(CountryKeys.KEY_ID);
-                    model.setId(id);
-                    String name = json.getString((CountryKeys.KEY_NAME));
-                    model.setName(name);
-                    if (json.has(CountryKeys.KEY_FROM_CITIES_SET)) {
-                    Set<From_Cities> citiesSet = new HashSet<From_Cities>();
-                    JSONArray array = json.getJSONArray(CountryKeys.KEY_FROM_CITIES_SET);
 
-                    int lengthArray = array.length();
-                    if (lengthArray > 0) {
-                        CityParser parser = new CityParser();
-                        for (int i = 0; i < lengthArray; i++) {
-                            From_Cities city = new From_Cities();
-                            JSONObject innerObject = array.getJSONObject(i);
-                            city = parser.parse(innerObject);
-                            citiesSet.add(city);
-                        }
+                    if (json.has(CountryKeys.KEY_ID)) {
+                        model.setId(json.getString(CountryKeys.KEY_ID));
                     }
-                    model.setFrom_CitiesSet(citiesSet);
+
+                    if (json.has(CountryKeys.KEY_NAME)) {
+                        model.setName(json.getString((CountryKeys.KEY_NAME)));
+                    }
+
+                    if (json.has(CountryKeys.KEY_FROM_CITIES_SET)) {
+                        Set<From_Cities> citiesSet = new HashSet<From_Cities>();
+                        JSONArray array = json.getJSONArray(CountryKeys.KEY_FROM_CITIES_SET);
+
+                        int lengthArray = array.length();
+                        if (lengthArray > 0) {
+                            CityParser parser = new CityParser();
+                            for (int i = 0; i < lengthArray; i++) {
+                                From_Cities city = new From_Cities();
+                                JSONObject innerObject = array.getJSONObject(i);
+                                city = parser.parse(innerObject);
+                                citiesSet.add(city);
+                            }
+                        }
+                        model.setFrom_CitiesSet(citiesSet);
                     }
                 }
             }
-        }catch (JSONException je){
+        } catch (JSONException je) {
             Log.i(TAG, "" + je.getLocalizedMessage());
         }
         return model;
