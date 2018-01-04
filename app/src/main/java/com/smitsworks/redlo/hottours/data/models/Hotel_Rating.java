@@ -17,8 +17,6 @@ public class Hotel_Rating {
     
     private String name;
     
-    private Set<Tour> tours = new HashSet<Tour>();
-
     public String getId() {
         return id;
     }
@@ -35,13 +33,6 @@ public class Hotel_Rating {
         this.name = name;
     }
 
-    public Set<Tour> getTours() {
-        return tours;
-    }
-
-    public void setTours(Set<Tour> tours) {
-        this.tours = tours;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -60,8 +51,9 @@ public class Hotel_Rating {
 
     @Override
     public String toString() {
-        return "Hotel_Rating{" + "id=" + id + ", name=" + name + ", tours=" + tours + '}';
+        return "Hotel_Rating{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
-
-
 }

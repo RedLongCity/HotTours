@@ -20,7 +20,7 @@ import java.util.Set;
 
 public class CountryParser implements Parser<Country> {
 
-    public static final String TAG = "TAG";
+    public static final String TAG = "TAG_COUNTRY_PARSER";
 
     @Override
     public Country parse(JSONObject json) {
@@ -35,23 +35,6 @@ public class CountryParser implements Parser<Country> {
 
                     if (json.has(CountryKeys.KEY_NAME)) {
                         model.setName(json.getString((CountryKeys.KEY_NAME)));
-                    }
-
-                    if (json.has(CountryKeys.KEY_FROM_CITIES_SET)) {
-                        Set<From_Cities> citiesSet = new HashSet<From_Cities>();
-                        JSONArray array = json.getJSONArray(CountryKeys.KEY_FROM_CITIES_SET);
-
-                        int lengthArray = array.length();
-                        if (lengthArray > 0) {
-                            CityParser parser = new CityParser();
-                            for (int i = 0; i < lengthArray; i++) {
-                                From_Cities city = new From_Cities();
-                                JSONObject innerObject = array.getJSONObject(i);
-                                city = parser.parse(innerObject);
-                                citiesSet.add(city);
-                            }
-                        }
-                        model.setFrom_CitiesSet(citiesSet);
                     }
                 }
             }

@@ -15,29 +15,28 @@ import org.json.JSONObject;
 
 public class CurrencyParser implements Parser<Currency> {
 
-    public static final String TAG = "TAG";
+    public static final String TAG = "TAG_CURRENCY_PARSER";
 
     @Override
     public Currency parse(JSONObject json) {
-        try{
-            if(json!=null){
-                if(json.length()>0){
-                    Currency model = new Currency();
-
-                    if(json.has(CurrencyKeys.KEY_ID)){
+        Currency model = new Currency();
+        try {
+            if (json != null) {
+                if (json.length() > 0) {
+                    if (json.has(CurrencyKeys.KEY_ID)) {
                         model.setId(json.getString(CurrencyKeys.KEY_ID));
                     }
 
-                    if(json.has(CurrencyKeys.KEY_NAME)){
+                    if (json.has(CurrencyKeys.KEY_NAME)) {
                         model.setName(json.getString(CurrencyKeys.KEY_NAME));
                     }
 
                     return model;
                 }
             }
-        }catch (JSONException je){
+        } catch (JSONException je) {
             Log.i(TAG, "" + je.getLocalizedMessage());
         }
-        return null;
+        return model;
     }
 }

@@ -24,15 +24,14 @@ import java.util.List;
 
 public class FilterResponseParser implements Parser<FiltersResponse> {
 
-    public static final String TAG = "TAG";
+    public static final String TAG = "TAG_FILTER_RESP_PARSER";
 
     @Override
     public FiltersResponse parse(JSONObject json) {
+        FiltersResponse model = new FiltersResponse();
         try {
             if (json != null) {
-                if(json.length()>0){
-                    FiltersResponse model = new FiltersResponse();
-
+                if (json.length() > 0) {
                     Long delay = (long) json.getInt(FilterResponseKeys.KEY_DELAY);
                     List<Country> countryList = new ArrayList<Country>();
                     JSONArray countryArray = json.getJSONArray(
@@ -40,8 +39,8 @@ public class FilterResponseParser implements Parser<FiltersResponse> {
 
                     int countryArrayLength = countryArray.length();
                     CountryParser countryParser = new CountryParser();
-                    if(countryArrayLength>0){
-                        for(int i=0;i<countryArrayLength;i++){
+                    if (countryArrayLength > 0) {
+                        for (int i = 0; i < countryArrayLength; i++) {
                             Country country = new Country();
                             JSONObject innerOnject = countryArray.getJSONObject(i);
                             country = countryParser.parse(innerOnject);
@@ -54,9 +53,9 @@ public class FilterResponseParser implements Parser<FiltersResponse> {
                             FilterResponseKeys.KEY_FROM_CITIES_LIST);
 
                     int citiesArrayLength = citiesArray.length();
-                    if(citiesArrayLength>0){
+                    if (citiesArrayLength > 0) {
                         CityParser cityParser = new CityParser();
-                        for(int i=0;i<citiesArrayLength;i++){
+                        for (int i = 0; i < citiesArrayLength; i++) {
                             From_Cities city = new From_Cities();
                             JSONObject innerObject = citiesArray.getJSONObject(i);
                             city = cityParser.parse(innerObject);
@@ -69,9 +68,9 @@ public class FilterResponseParser implements Parser<FiltersResponse> {
                             FilterResponseKeys.KEY_HOTEL_RATING_LIST);
 
                     int ratingArrayLength = ratingArray.length();
-                    if(ratingArrayLength>0){
+                    if (ratingArrayLength > 0) {
                         HotelRatingParser hotelRatingParser = new HotelRatingParser();
-                        for(int i=0;i<ratingArrayLength;i++){
+                        for (int i = 0; i < ratingArrayLength; i++) {
                             Hotel_Rating rating = new Hotel_Rating();
                             JSONObject innerOnbject = ratingArray.getJSONObject(i);
                             rating = hotelRatingParser.parse(innerOnbject);
@@ -84,9 +83,9 @@ public class FilterResponseParser implements Parser<FiltersResponse> {
                             FilterResponseKeys.KEY_MEAL_TYPE_LIST);
 
                     int mealTypeArrayLength = mealTypeArray.length();
-                    if(mealTypeArrayLength>0){
+                    if (mealTypeArrayLength > 0) {
                         MealTypeParser mealTypeParser = new MealTypeParser();
-                        for(int i=0;i<mealTypeArrayLength;i++){
+                        for (int i = 0; i < mealTypeArrayLength; i++) {
                             Meal_Type mealType = new Meal_Type();
                             JSONObject innerObject = mealTypeArray.getJSONObject(i);
                             mealType = mealTypeParser.parse(innerObject);
@@ -99,9 +98,9 @@ public class FilterResponseParser implements Parser<FiltersResponse> {
                             FilterResponseKeys.KEY_CURRENCY_LIST);
 
                     int currencyArrayLength = currencyArray.length();
-                    if(currencyArrayLength>0){
+                    if (currencyArrayLength > 0) {
                         CurrencyParser currencyParser = new CurrencyParser();
-                        for (int i = 0; i <currencyArrayLength ; i++) {
+                        for (int i = 0; i < currencyArrayLength; i++) {
                             Currency currency = new Currency();
                             JSONObject innerObject = currencyArray.getJSONObject(i);
                             currency = currencyParser.parse(innerObject);
@@ -119,9 +118,9 @@ public class FilterResponseParser implements Parser<FiltersResponse> {
                     return model;
                 }
             }
-        }catch (JSONException je){
+        } catch (JSONException je) {
             Log.i(TAG, "" + je.getLocalizedMessage());
         }
-        return null;
+        return model;
     }
 }

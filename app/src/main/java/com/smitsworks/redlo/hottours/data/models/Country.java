@@ -18,10 +18,6 @@ public class Country {
 
     private String name;
 
-    private Set<From_Cities> from_CitiesSet = new HashSet<From_Cities>();
-
-    private Set<Tour> tours = new HashSet<Tour>();
-
     public String getId() {
         return id;
     }
@@ -38,20 +34,12 @@ public class Country {
         this.name = name;
     }
 
-    public Set<From_Cities> getFrom_CitiesSet() {
-        return from_CitiesSet;
-    }
-
-    public void setFrom_CitiesSet(Set<From_Cities> from_CitiesSet) {
-        this.from_CitiesSet = from_CitiesSet;
-    }
-
-    public Set<Tour> getTours() {
-        return tours;
-    }
-
-    public void setTours(Set<Tour> tours) {
-        this.tours = tours;
+    @Override
+    public String toString() {
+        return "Country{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
 
     @Override
@@ -69,13 +57,4 @@ public class Country {
         return id != null ? id.hashCode() : 0;
     }
 
-    @Override
-    public String toString() {
-        return "Country{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", from_CitiesSet=" + from_CitiesSet +
-                ", tours=" + tours +
-                '}';
-    }
 }

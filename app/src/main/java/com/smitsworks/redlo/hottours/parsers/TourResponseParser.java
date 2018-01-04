@@ -18,50 +18,50 @@ import java.util.List;
  * class for parsing TourResponse object from JSONObject
  */
 
-public class TourResponseParser implements Parser<TourResponse>{
+public class TourResponseParser implements Parser<TourResponse> {
 
-    public static final String TAG = "TAG";
+    public static final String TAG = "TAG_TOUR_RESPONSE";
 
     @Override
     public TourResponse parse(JSONObject json) {
         TourResponse model = new TourResponse();
-            if (json != null) {
-                try {
-                    if (json.length() > 0) {
+        if (json != null) {
+            try {
+                if (json.length() > 0) {
 
-                        if(json.has(TourResponseKeys.KEY_COMEBACK_DELAY)) {
-                            model.setComeBackDelay((long) json.getInt(TourResponseKeys.KEY_COMEBACK_DELAY));
-                        }
+                    if (json.has(TourResponseKeys.KEY_COMEBACK_DELAY) && !json.isNull(TourResponseKeys.KEY_COMEBACK_DELAY)) {
+                        model.setComeBackDelay((long) json.getInt(TourResponseKeys.KEY_COMEBACK_DELAY));
+                    }
 
-                        if(json.has(TourResponseKeys.KEY_TOUR_LIST) && !json.isNull(TourResponseKeys.KEY_TOUR_LIST)){
+                    if (json.has(TourResponseKeys.KEY_TOUR_LIST) && !json.isNull(TourResponseKeys.KEY_TOUR_LIST)) {
 
-                            JSONArray array = json.getJSONArray(TourResponseKeys.KEY_TOUR_LIST);
+                        JSONArray array = json.getJSONArray(TourResponseKeys.KEY_TOUR_LIST);
 
-                            int arrayLength = array.length();
-                            if (arrayLength > 0) {
-                                List<Tour> tourList = new ArrayList<Tour>();
-                                TourParser parser = new TourParser();
-                                for (int i = 0; i < arrayLength; i++) {
-                                    Tour tour = new Tour();
-                                    JSONObject innerObject = array.getJSONObject(i);
-                                    tour = parser.parse(innerObject);
-                                    tourList.add(tour);
-                                }
-                                model.setTourList(tourList);
+                        int arrayLength = array.length();
+                        if (arrayLength > 0) {
+                            List<Tour> tourList = new ArrayList<Tour>();
+                            TourParser parser = new TourParser();
+                            for (int i = 0; i < arrayLength; i++) {
+                                Tour tour = new Tour();
+                                JSONObject innerObject = array.getJSONObject(i);
+                                tour = parser.parse(innerObject);
+                                tourList.add(tour);
                             }
+                            model.setTourList(tourList);
                         }
+                    }
 
-                        if(json.has(TourResponseKeys.KEY_REQUEST)){
-                            HotToursRequestParser parser = new HotToursRequestParser();
-                            model.setRequest(
-                                    parser.parse(json.getJSONObject(TourResponseKeys.KEY_REQUEST))
-                            );
-                        }
+                    if (json.has(TourResponseKeys.KEY_REQUEST) && !json.isNull(TourResponseKeys.KEY_REQUEST)) {
+                        HotToursRequestParser parser = new HotToursRequestParser();
+                        model.setRequest(
+                                parser.parse(json.getJSONObject(TourResponseKeys.KEY_REQUEST))
+                        );
+                    }
                 }
-        } catch (JSONException je) {
-            Log.i(TAG, "" + je.getLocalizedMessage());
+            } catch (JSONException je) {
+                Log.i(TAG, "" + je.getLocalizedMessage());
+            }
         }
-    }
         return model;
     }
 }

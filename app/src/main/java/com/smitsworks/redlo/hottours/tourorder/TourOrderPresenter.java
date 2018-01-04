@@ -19,19 +19,15 @@ public class TourOrderPresenter implements TourOrderContract.Presenter {
 
     private final OrderRepository orderRepository;
 
-    private final ToursRepository toursRepository;
-
     private final TourOrderContract.View tourOrderView;
 
     private String tourKey;
 
     public TourOrderPresenter(@NonNull OrderRepository orderRepository,
-                              @NonNull ToursRepository toursRepository,
                               @NonNull TourOrderContract.View tourOrderView,
                               @NonNull String tourKey) {
         this.orderRepository = orderRepository;
         this.tourOrderView = tourOrderView;
-        this.toursRepository = toursRepository;
         this.tourKey = tourKey;
 
         tourOrderView.setPresenter(this);
@@ -51,23 +47,7 @@ public class TourOrderPresenter implements TourOrderContract.Presenter {
         data.setCity(city);
         data.setMobileNumber(phoneNumber);
         order.setData(data);
-
-        toursRepository.getTour(tourKey, new ToursDataSource.GetTourCallback() {
-            @Override
-            public void onTourLoaded(Tour tour) {
-                order.setTour(tour);
-            }
-
-            @Override
-            public void onDataNotAvailable() {
-                order.setTour(null);
-            }
-
-            @Override
-            public void onNotAvailableConnection() {
-                order.setTour(null);
-            }
-        });
+        order.setKey(tourKey);
 
         if (order.isEmpty()) {
             tourOrderView.showEmptyDataError();

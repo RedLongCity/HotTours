@@ -15,15 +15,14 @@ import org.json.JSONObject;
 
 public class MealTypeParser implements Parser<Meal_Type> {
 
-    public static final String TAG = "TAG";
+    public static final String TAG = "TAG_MEAL_TYPE_PARSER";
 
     @Override
     public Meal_Type parse(JSONObject json) {
+        Meal_Type model = new Meal_Type();
         try {
             if (json != null) {
                 if (json.length() > 0) {
-                    Meal_Type model = new Meal_Type();
-
                     if (json.has(MealTypeKeys.KEY_ID)) {
                         model.setId(json.getString(MealTypeKeys.KEY_ID));
                     }
@@ -32,7 +31,7 @@ public class MealTypeParser implements Parser<Meal_Type> {
                         model.setName(json.getString(MealTypeKeys.KEY_NAME));
                     }
 
-                    if (json.has(MealTypeKeys.KEY_NAME_FULL)){
+                    if (json.has(MealTypeKeys.KEY_NAME_FULL)) {
                         model.setName_full(json.getString(MealTypeKeys.KEY_NAME_FULL));
                     }
 
@@ -42,6 +41,6 @@ public class MealTypeParser implements Parser<Meal_Type> {
         } catch (JSONException je) {
             Log.i(TAG, "" + je.getLocalizedMessage());
         }
-        return null;
+        return model;
     }
 }

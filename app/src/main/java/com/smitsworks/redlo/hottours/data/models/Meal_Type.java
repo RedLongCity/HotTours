@@ -19,8 +19,6 @@ public class Meal_Type {
     
     private String name_full;
     
-    private Set<Tour> tours = new HashSet<Tour>();
-
     public String getId() {
         return id;
     }
@@ -45,14 +43,6 @@ public class Meal_Type {
         this.name_full = name_full;
     }
 
-    public Set<Tour> getTours() {
-        return tours;
-    }
-
-    public void setTours(Set<Tour> tours) {
-        this.tours = tours;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -74,7 +64,6 @@ public class Meal_Type {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", name_full='" + name_full + '\'' +
-                ", tours=" + tours +
                 '}';
     }
 }

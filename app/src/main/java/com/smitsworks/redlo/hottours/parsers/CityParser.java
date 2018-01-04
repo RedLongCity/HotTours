@@ -18,43 +18,27 @@ import java.util.Set;
  * class for parsing From_Cities object from JSONObject
  */
 
-public class CityParser implements Parser<From_Cities>{
+public class CityParser implements Parser<From_Cities> {
 
-    public static final String TAG = "TAG";
+    public static final String TAG = "TAG_CITY_PARSER";
 
     @Override
     public From_Cities parse(JSONObject json) {
         From_Cities model = new From_Cities();
-        try{
-            if(json!=null){
-                if(json.length()>0){
+        try {
+            if (json != null) {
+                if (json.length() > 0) {
 
-                    if(json.has(CityKeys.KEY_ID)){
+                    if (json.has(CityKeys.KEY_ID)) {
                         model.setId(json.getString(CityKeys.KEY_ID));
                     }
 
-                    if(json.has(CityKeys.KEY_NAME)){
+                    if (json.has(CityKeys.KEY_NAME)) {
                         model.setName(json.getString(CityKeys.KEY_NAME));
-                    }
-
-                    if(json.has(CityKeys.KEY_COUNTRY_SET)) {
-                        JSONArray array = json.getJSONArray(CityKeys.KEY_COUNTRY_SET);
-                        Set<Country> countrySet = new HashSet<Country>();
-                        int lengthArray = array.length();
-                        if (lengthArray > 0) {
-                            CountryParser parser = new CountryParser();
-                            for (int i = 0; i < lengthArray; i++) {
-                                Country country = new Country();
-                                JSONObject innerObject = array.getJSONObject(i);
-                                country = parser.parse(innerObject);
-                                countrySet.add(country);
-                            }
-                        }
-                        model.setCountrySet(countrySet);
                     }
                 }
             }
-        }catch (JSONException je){
+        } catch (JSONException je) {
             Log.i(TAG, "" + je.getLocalizedMessage());
         }
         return model;

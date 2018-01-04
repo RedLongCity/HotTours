@@ -16,15 +16,14 @@ import org.json.JSONObject;
 
 public class PriceParser implements Parser<Price> {
 
-    public static final String TAG = "TAG";
+    public static final String TAG = "TAG_PRICE_PARSER";
 
     @Override
     public Price parse(JSONObject json) {
+        Price model = new Price();
         try {
             if (json != null) {
                 if (json.length() > 0) {
-                    Price model = new Price();
-
                     if (json.has(PriceKeys.KEY_ID) && !json.isNull(PriceKeys.KEY_ID)) {
                         model.setId(json.getInt(PriceKeys.KEY_ID));
                     }
@@ -44,6 +43,6 @@ public class PriceParser implements Parser<Price> {
         } catch (JSONException je) {
             Log.i(TAG, "" + je.getLocalizedMessage());
         }
-        return null;
+        return model;
     }
 }

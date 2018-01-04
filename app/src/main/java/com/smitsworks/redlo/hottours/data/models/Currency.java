@@ -17,8 +17,6 @@ public class Currency {
 
     private String name;
     
-    private Set<Price> prices = new HashSet<Price>();
-
     public String getId() {
         return id;
     }
@@ -35,13 +33,6 @@ public class Currency {
         this.name = name;
     }
 
-    public Set<Price> getPrices() {
-        return prices;
-    }
-
-    public void setPrices(Set<Price> prices) {
-        this.prices = prices;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -60,7 +51,9 @@ public class Currency {
 
     @Override
     public String toString() {
-        return "Currency{" + "id=" + id + ", name=" + name + ", prices=" + prices + '}';
+        return "Currency{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
-
 }

@@ -65,7 +65,6 @@ public class TourOrderActivity extends AppCompatActivity{
 
             presenter = new TourOrderPresenter(
                     Injection.provideOrderRepository(getApplicationContext()),
-                    Injection.provideToursRepository(getApplicationContext()),
                     orderFragment,
                     tourKey
             );

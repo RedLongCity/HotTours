@@ -17,10 +17,6 @@ public class From_Cities {
     
     private String name;
     
-    private Set<Country> countrySet = new HashSet<Country>();
-    
-    private Set<Tour> tours = new HashSet<Tour>();
-    
     public String getId() {
         return id;
     }
@@ -37,20 +33,12 @@ public class From_Cities {
         this.name = name;
     }
 
-    public Set<Country> getCountrySet() {
-        return countrySet;
-    }
-
-    public void setCountrySet(Set<Country> countrySet) {
-        this.countrySet = countrySet;
-    }
-
-    public Set<Tour> getTours() {
-        return tours;
-    }
-
-    public void setTours(Set<Tour> tours) {
-        this.tours = tours;
+    @Override
+    public String toString() {
+        return "From_Cities{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
 
     @Override
@@ -66,16 +54,6 @@ public class From_Cities {
     @Override
     public int hashCode() {
         return id != null ? id.hashCode() : 0;
-    }
-
-    @Override
-    public String toString() {
-        return "From_Cities{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", countrySet=" + countrySet +
-                ", tours=" + tours +
-                '}';
     }
 
 }

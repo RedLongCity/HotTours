@@ -9,7 +9,7 @@ public class Order {
 
     private UserData data;
 
-    private Tour tour;
+    private String key;
 
     public Order() {
     }
@@ -29,12 +29,12 @@ public class Order {
         return false;
     }
 
-    public Tour getTour() {
-        return tour;
+    public String getKey() {
+        return key;
     }
 
-    public void setTour(Tour tour) {
-        this.tour = tour;
+    public void setKey(String key) {
+        this.key = key;
     }
 
     @Override
@@ -45,13 +45,13 @@ public class Order {
         Order order = (Order) o;
 
         if (data != null ? !data.equals(order.data) : order.data != null) return false;
-        return tour != null ? tour.equals(order.tour) : order.tour == null;
+        return key != null ? key.equals(order.key) : order.key == null;
     }
 
     @Override
     public int hashCode() {
         int result = data != null ? data.hashCode() : 0;
-        result = 31 * result + (tour != null ? tour.hashCode() : 0);
+        result = 31 * result + (key != null ? key.hashCode() : 0);
         return result;
     }
 
@@ -59,7 +59,7 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "data=" + data +
-                ", tour=" + tour +
+                ", key='" + key + '\'' +
                 '}';
     }
 }
