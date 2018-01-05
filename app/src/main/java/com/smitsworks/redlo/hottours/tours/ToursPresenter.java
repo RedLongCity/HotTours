@@ -307,15 +307,33 @@ public class ToursPresenter implements ToursContract.Presenter {
                 Collections.sort(tourList, new Comparator<Tour>() {
                     @Override
                     public int compare(Tour o1, Tour o2) {
-                        int o1Costs = 0;
-                        int o2Costs = 0;
+                        String currencyId = "1";
+                        switch(currencyType){
+                            case EURO:
+                                currencyId = "10";
+                                break;
+                            case DOLLAR:
+                                currencyId = "1";
+                                break;
+                            case HRYVNA:
+                                currencyId = "2";
+                                break;
+                        }
+                        int o1Cost = 0;
+                        int o2Cost = 0;
                         for (Price price : o1.getPrices()) {
-                            o1Costs += price.getCost();
+                            if(price != null && price.getCurrency() != null){
+                                if(price.getCurrency().getId().equals(currencyId)){
+                                    o1Cost = price.getCost();
+                                }
+                            }
                         }
                         for (Price price : o2.getPrices()) {
-                            o2Costs += price.getCost();
+                            if(price.getCurrency().getId().equals(currencyId)){
+                                o2Cost = price.getCost();
+                            }
                         }
-                        return o1Costs - o2Costs;
+                        return o1Cost - o2Cost;
                     }
                 });
                 break;
