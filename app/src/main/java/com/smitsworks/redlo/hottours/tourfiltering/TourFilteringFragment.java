@@ -84,6 +84,14 @@ public class TourFilteringFragment extends Fragment implements TourFilteringCont
         presenter.result(requestCode,resultCode,data);
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        find = (Button) getActivity().findViewById(R.id.but_find);
+        find.setOnClickListener(clickListener);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -97,7 +105,6 @@ public class TourFilteringFragment extends Fragment implements TourFilteringCont
 //        date = (TextView) root.findViewById(R.id.date_filters_tv);
 //        adults = (TextView) root.findViewById(R.id.adult_amount_filters_tv);
 //        children = (TextView) root.findViewById(R.id.children_amount_filters_tv);
-        find = (Button) root.findViewById(R.id.but_find);
         range = (RangeBar) root.findViewById(R.id.rangebar);
 
         fromCityLayout = (LinearLayout) root.findViewById(R.id.from_city_layout);
@@ -120,7 +127,6 @@ public class TourFilteringFragment extends Fragment implements TourFilteringCont
 //        date.setOnClickListener(clickListener);
 //        adults.setOnClickListener(clickListener);
 //        children.setOnClickListener(clickListener);
-        find.setOnClickListener(clickListener);
         range.setOnRangeBarChangeListener(rangeListener);
 
         return root;

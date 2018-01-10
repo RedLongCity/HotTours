@@ -178,7 +178,7 @@ public class ToursAdapter extends BaseAdapter {
                 star_2.setVisibility(View.VISIBLE);
                 star_1.setVisibility(View.VISIBLE);
                 break;
-            case "2":
+            case "7":
                 star_5.setVisibility(View.GONE);
                 star_4.setVisibility(View.GONE);
                 star_3.setVisibility(View.GONE);

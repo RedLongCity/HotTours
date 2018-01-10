@@ -61,7 +61,7 @@ public class FeedBackFragment extends Fragment implements FeedBackContract.View 
 
         FloatingActionButton fab =
                 (FloatingActionButton) getActivity().findViewById(R.id.fab_do_feedback);
-        fab.setImageResource(R.drawable.ic_email_black_24dp);
+        fab.setImageResource(R.drawable.ic_email_white_24dp);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -41,14 +41,12 @@
             android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
             android:text="250"
             android:textColor="@color/price_color"
             android:textSize="25dp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/starsLL"
             app:layout_constraintLeft_toLeftOf="parent" />
 
         <TextView
@@ -131,13 +129,13 @@
 
         <LinearLayout
             android:id="@+id/starsLL"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
+            android:background="@drawable/gradient_shape_2"
+            android:gravity="end"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="@+id/price"
-            app:layout_constraintRight_toRightOf="parent"
-            tools:layout_editor_absoluteY="8dp">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
 
             <ImageView
                 android:id="@+id/star_1"
@@ -145,7 +143,7 @@
                 android:layout_height="24dp"
                 android:paddingRight="5dp"
                 android:src="@drawable/star_icon"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
             <ImageView
                 android:id="@+id/star_2"
@@ -153,7 +151,7 @@
                 android:layout_height="24dp"
                 android:paddingRight="5dp"
                 android:src="@drawable/star_icon"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
             <ImageView
                 android:id="@+id/star_3"
@@ -161,7 +159,7 @@
                 android:layout_height="24dp"
                 android:paddingRight="5dp"
                 android:src="@drawable/star_icon"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
             <ImageView
                 android:id="@+id/star_4"
@@ -169,15 +167,16 @@
                 android:layout_height="24dp"
                 android:paddingRight="5dp"
                 android:src="@drawable/star_icon"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
             <ImageView
                 android:id="@+id/star_5"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
+                android:layout_gravity="end"
                 android:paddingRight="5dp"
                 android:src="@drawable/star_icon"
-                android:visibility="gone" />
+                android:visibility="visible" />
         </LinearLayout>
 
     </android.support.constraint.ConstraintLayout>

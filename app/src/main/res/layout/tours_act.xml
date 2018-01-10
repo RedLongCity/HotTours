@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/fab_margin"
             android:src="@drawable/ic_search_white_24dp"
-            app:backgroundTint="@color/green"
+            app:backgroundTint="@color/color_pro_1"
             android:clickable="true"
             app:fabSize="normal"
             app:layout_anchor="@id/contentFrame"

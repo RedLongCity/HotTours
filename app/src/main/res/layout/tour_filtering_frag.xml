@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -12,7 +17,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
+            android:background="@color/color_pro_2"
             >
 
             <LinearLayout
@@ -107,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
                 android:layout_weight="4"
-                android:background="@color/colorPrimary"
+                android:background="@color/color_pro_2"
                 android:clickable="true"
                 android:orientation="vertical"
                 android:padding="5dp">
@@ -144,7 +149,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="1dp"
                 android:layout_weight="3"
-                android:background="@color/colorPrimary"
+                android:background="@color/color_pro_2"
                 android:clickable="true"
                 android:orientation="vertical"
                 android:padding="5dp">
@@ -238,13 +243,13 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 custom:connectingLineColor="@color/pin_color"
-                custom:pinColor="@color/colorPrimary"
+                custom:pinColor="@color/color_pro_2"
                 custom:pinMaxFont="25dp"
                 custom:pinMinFont="10dp"
                 custom:pinRadius="20dp"
                 custom:rangeBarColor="@color/details_text_content"
                 custom:temporaryPins="false"
-                custom:tickColor="@color/colorPrimary"
+                custom:tickColor="@color/color_pro_2"
                 custom:tickEnd="9"
                 custom:tickHeight="2dp"
                 custom:tickInterval="1"
@@ -337,23 +342,21 @@
 
         <!--</LinearLayout>-->
 
-        <Button
-            android:id="@+id/but_find"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/button_2"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:text="@string/find_button"
-            android:textColor="#ffffff"
-            android:textSize="24dp"
-            android:textStyle="bold" />
-
     </LinearLayout>
 
 
 </ScrollView>
+
+    <Button
+        android:id="@+id/but_find"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/find_button"
+        android:textColor="#ffffff"
+        android:background="@color/color_pro_1"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:clickable="true"
+        android:layout_gravity="bottom"
+        />
+</android.support.design.widget.CoordinatorLayout>

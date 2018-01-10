@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#479bf9</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="country_city_color">#ffffff</color>
@@ -24,4 +24,8 @@
     <color name="header_end">#05aaf4</color>
     <color name="background_black">#000000</color>
     <color name="green">#218b32</color>
+    <color name="color_pro_1">#479bf9</color>
+    <color name="color_pro_2">#2863a5</color>
+    <color name="color_pro_3">#c4c4c4</color>
+    <color name="color_blackout">#a0000000</color>
 </resources>
