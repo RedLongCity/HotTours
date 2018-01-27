@@ -40,7 +40,7 @@
     <string name="beta_test">Beta Test</string>
     <string name="dialog_beta_test">Dialog_Beta_Test</string>
     <string name="beta_test_message">Приложение находится в Beta тестировании. Для отправки сообщения команде разработки перейдите во вкладку \"Отзыв\".</string>
-    <string name="tour_order">Забронировать тур</string>
+    <string name="tour_order">Забронировать</string>
     <string name="safe">Мы используем Ваши данные только для оформления заказа, и экстренной связи без передачи их третьим лицам.</string>
     <string name="from">From: </string>
     <string name="nights">Nights: </string>
@@ -48,4 +48,5 @@
     <string name="anyRating">Any rating</string>
     <string name="anyCity">Any city</string>
     <string name="anyType">Any meal type</string>
+    <string name="call_operator">Позвонить</string>
 </resources>

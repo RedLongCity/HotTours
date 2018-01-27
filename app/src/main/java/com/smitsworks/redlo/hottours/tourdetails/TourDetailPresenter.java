@@ -2,6 +2,7 @@ package com.smitsworks.redlo.hottours.tourdetails;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.smitsworks.redlo.hottours.data.models.Hotel_Image;
 import com.smitsworks.redlo.hottours.data.models.Price;
@@ -52,6 +53,15 @@ public class TourDetailPresenter implements TourDetailsContract.Presenter {
             return;
         }
         tourDetailsView.orderTour(tourKey);
+    }
+
+    @Override
+    public void call(String number) {
+        if (number == null) {
+            Log.e("CALL","Call number is null");
+            return;
+        }
+        tourDetailsView.call(number);
     }
 
     @Override

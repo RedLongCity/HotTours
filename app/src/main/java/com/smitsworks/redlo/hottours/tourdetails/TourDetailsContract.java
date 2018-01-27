@@ -78,6 +78,8 @@ public interface TourDetailsContract {
 
         void orderTour(String tourKey);
 
+        void call(String number);
+
         boolean isActive();
 
         void showNotAwailableConnection();
@@ -87,6 +89,8 @@ public interface TourDetailsContract {
     interface Presenter extends BasePresenter{
 
         void orderTour();
+
+        void call(String number);
 
         void setCurrencyType(TourCurrencyType requestType);
 

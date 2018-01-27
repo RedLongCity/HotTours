@@ -2,6 +2,7 @@ package com.smitsworks.redlo.hottours.tourdetails;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -50,6 +51,8 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
 //    private FloatingActionButton orderButton;
 
     private Button button;
+
+    private Button callButton;
 
     private TextView fromCity;
 
@@ -103,6 +106,13 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
                 presenter.orderTour();
             }
         });
+        callButton = (Button) getActivity().findViewById(R.id.detail_but_call);
+        callButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.call("tel:+380988452631");
+            }
+        });
     }
 
     @Nullable
@@ -125,17 +135,6 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
 
         dialogFragment = new Dialog();
 
-//        orderButton = (FloatingActionButton) getActivity().findViewById(R.id.order_but);
-//
-//        orderButton.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                presenter.orderTour();
-//            }
-//        });
-
-
         return root;
     }
 
@@ -144,6 +143,13 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
         Intent intent = new Intent(getContext(), TourOrderActivity.class);
         intent.putExtra(TourOrderFragment.ARGUMENT_ORDER_TOUR_ID, tourKey);
         startActivityForResult(intent, REQUEST_EDIT_TOUR);
+    }
+
+    @Override
+    public void call(String number) {
+        Intent intent = new Intent(Intent.ACTION_CALL);
+        intent.setData(Uri.parse(number));
+        startActivity(intent);
     }
 
     public void showTours() {
