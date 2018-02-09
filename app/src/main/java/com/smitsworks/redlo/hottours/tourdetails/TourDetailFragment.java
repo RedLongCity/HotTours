@@ -1,7 +1,9 @@
 package com.smitsworks.redlo.hottours.tourdetails;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,8 +11,10 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,8 +43,12 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
     @NonNull
     private static final String ARGUMENT_TOUR_KEY = "TOUR_KEY";
 
+    public static final int PERMISSION_CALL_PHONE = 1;
+
     @NonNull
     private static final int REQUEST_EDIT_TOUR = 1;
+
+    private String number;
 
     private TourDetailsContract.Presenter presenter;
 
@@ -78,7 +86,8 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
 
     private DialogFragment dialogFragment;
 
-    public static TourDetailFragment newInstance(@Nullable String tourKey) {
+    public static TourDetailFragment newInstance(
+            @Nullable String tourKey) {
         Bundle arguments = new Bundle();
         arguments.putString(ARGUMENT_TOUR_KEY, tourKey);
         TourDetailFragment fragment = new TourDetailFragment();
@@ -147,9 +156,20 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
 
     @Override
     public void call(String number) {
-        Intent intent = new Intent(Intent.ACTION_CALL);
-        intent.setData(Uri.parse(number));
-        startActivity(intent);
+        if (number == null) {
+            return;
+        }
+
+        this.number = number;
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE) ==
+                PackageManager.PERMISSION_GRANTED) {
+            startPhoneEvent();
+        } else {
+            this.number = number;
+            ActivityCompat.requestPermissions(getActivity(),
+                    new String[]{Manifest.permission.CALL_PHONE},
+                    PERMISSION_CALL_PHONE);
+        }
     }
 
     public void showTours() {
@@ -363,7 +383,7 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
         Snackbar.make(getView(), message, Snackbar.LENGTH_LONG).show();
     }
 
-    private void setNoConnectionIndicator(){
+    private void setNoConnectionIndicator() {
         mainCollapsing.setTitle("");
         fromCity.setText(R.string.no_connection_indicator);
         hotelTitle.setText(R.string.no_connection_indicator);
@@ -376,5 +396,14 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
         price.setText(R.string.no_connection_indicator);
         currencySymbol.setText(R.string.no_connection_indicator);
         transportType.setText(R.string.no_connection_indicator);
+    }
+
+    private void startPhoneEvent() {
+        if (number == null) {
+            return;
+        }
+        Intent intent = new Intent(Intent.ACTION_CALL);
+        intent.setData(Uri.parse(number));
+        startActivity(intent);
     }
 }

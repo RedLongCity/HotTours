@@ -167,4 +167,5 @@
     <string name="anyCity">Любой город</string>
     <string name="anyType">Любой тип питания</string>
     <string name="call_operator">Позвонить</string>
+    <string name="calling_failed">Вызов запрещен</string>
 </resources>

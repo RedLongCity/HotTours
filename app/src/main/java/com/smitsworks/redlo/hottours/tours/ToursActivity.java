@@ -92,8 +92,7 @@ public class ToursActivity extends AppCompatActivity{
                             case R.id.list_navigation_menu_item:
                                 break;//we're already on that screen
                             case R.id.settings_navigation_menu_item:
-                                Intent settingIntent = new Intent(ToursActivity.this,TourFilteringActivity.class);
-                                startActivity(settingIntent);
+                                toursPresenter.findTours();
                                 break;
                             case R.id.feedback_navigation_menu_item:
                                 Intent feddBackIntent = new Intent(ToursActivity.this,FeedBackActivity.class);

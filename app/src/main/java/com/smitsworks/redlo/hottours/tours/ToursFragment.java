@@ -40,7 +40,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 public class ToursFragment extends Fragment implements ToursContract.View {
 
-    private static final int REQUEST_FIND_TOURS = 1;
+    public static final int REQUEST_FIND_TOURS = 1;
 
     private ToursContract.Presenter presenter;
 

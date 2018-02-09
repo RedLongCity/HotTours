@@ -1,6 +1,8 @@
 package com.smitsworks.redlo.hottours.tourdetails;
 
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +23,8 @@ public class TourDetailActivity extends AppCompatActivity {
     public static final String EXTRA_TOUR_KEY = "TOUR_KEY";
 
     public static final String EXTRA_CURRENCY_TYPE = "CURRENCY_TYPE";
+
+    private TourDetailPresenter tourDetailPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,10 +49,10 @@ public class TourDetailActivity extends AppCompatActivity {
             tourDetailFragment = TourDetailFragment.newInstance(tourKey);
 
             ActivityUtils.addFragmentToActivity(getSupportFragmentManager(),
-                    tourDetailFragment,R.id.content_frame);
+                    tourDetailFragment, R.id.content_frame);
 
 
-            new TourDetailPresenter(tourKey,
+            tourDetailPresenter = new TourDetailPresenter(tourKey,
                     currencyType,
                     Injection.provideToursRepository(getApplicationContext()),
                     tourDetailFragment);
@@ -59,5 +63,14 @@ public class TourDetailActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == TourDetailFragment.PERMISSION_CALL_PHONE && grantResults.length > 0) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                tourDetailPresenter.call("tel:+380988452631");
+            }
+        }
     }
 }
