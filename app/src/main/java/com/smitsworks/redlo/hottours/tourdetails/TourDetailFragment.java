@@ -27,6 +27,7 @@ import com.smitsworks.redlo.hottours.R;
 import com.smitsworks.redlo.hottours.tourorder.TourOrderActivity;
 import com.smitsworks.redlo.hottours.tourorder.TourOrderFragment;
 import com.smitsworks.redlo.hottours.tours.ToursActivity;
+import com.smitsworks.redlo.hottours.utils.DateUtils;
 import com.squareup.picasso.Picasso;
 
 import java.sql.Date;
@@ -289,7 +290,7 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
     @Override
     public void showDateFrom(@NonNull Date dateFrom) {
         fromDate.setVisibility(View.VISIBLE);
-        fromDate.setText(dateFrom.toString());
+        fromDate.setText(DateUtils.formatDate(dateFrom));
     }
 
     @Override

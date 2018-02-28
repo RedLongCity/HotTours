@@ -3,9 +3,12 @@ package com.smitsworks.redlo.hottours.lists.mealtypes;
 import android.support.annotation.NonNull;
 
 import com.smitsworks.redlo.hottours.data.models.Meal_Type;
+import com.smitsworks.redlo.hottours.data.models.Tour;
 import com.smitsworks.redlo.hottours.data.source.datasource.FilterDataSource;
 import com.smitsworks.redlo.hottours.data.source.repositories.FiltersRepository;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -38,26 +41,26 @@ public class MealTypesPresenter implements MealTypesContract.Presenter {
 
     @Override
     public void loadMealTypes(boolean forceUpdate) {
-        loadMealTypes(forceUpdate || firstLoad,true);
+        loadMealTypes(forceUpdate || firstLoad, true);
         firstLoad = false;
     }
 
-    private void loadMealTypes(boolean forceUpdate, final boolean showLoadingUI){
-        if(showLoadingUI){
+    private void loadMealTypes(boolean forceUpdate, final boolean showLoadingUI) {
+        if (showLoadingUI) {
             mealTypesView.setLoadingIndicator(true);
         }
 
-        if(forceUpdate){
+        if (forceUpdate) {
             filtersRepository.refreshFilters();
         }
 
-        filtersRepository.getMealTypes(new FilterDataSource.LoadMealTypesCallback(){
+        filtersRepository.getMealTypes(new FilterDataSource.LoadMealTypesCallback() {
             @Override
             public void onMealTypesLoaded(List<Meal_Type> types) {
-                if(!mealTypesView.isActive()){
+                if (!mealTypesView.isActive()) {
                     return;
                 }
-                if(showLoadingUI){
+                if (showLoadingUI) {
                     mealTypesView.setLoadingIndicator(false);
                 }
                 processMealTypes(types);
@@ -66,7 +69,7 @@ public class MealTypesPresenter implements MealTypesContract.Presenter {
 
             @Override
             public void onDataNotAvailable() {
-                if(!mealTypesView.isActive()){
+                if (!mealTypesView.isActive()) {
                     return;
                 }
                 mealTypesView.showLoadingMealTypesError();
@@ -74,7 +77,7 @@ public class MealTypesPresenter implements MealTypesContract.Presenter {
 
             @Override
             public void onNotAvailableConnection() {
-                if(!mealTypesView.isActive()){
+                if (!mealTypesView.isActive()) {
                     return;
                 }
                 mealTypesView.showNotAwailableConnection();
@@ -82,16 +85,26 @@ public class MealTypesPresenter implements MealTypesContract.Presenter {
         });
     }
 
-    private void processMealTypes(List<Meal_Type> types){
-        if(types.isEmpty()){
+    private void processMealTypes(List<Meal_Type> types) {
+        if (types.isEmpty()) {
             processEmptyMealTypes();
-        }else{
+        } else {
+            sortMealTypes(types);
             mealTypesView.showMealTypes(types);
         }
     }
 
-    private void processEmptyMealTypes(){
+    private void processEmptyMealTypes() {
         mealTypesView.showNoMealTypes();
+    }
+
+    private void sortMealTypes(List<Meal_Type> types) {
+        Collections.sort(types, new Comparator<Meal_Type>() {
+            @Override
+            public int compare(Meal_Type o1, Meal_Type o2) {
+                return o1.getId().compareTo(o2.getId());
+            }
+        });
     }
 
     @Override

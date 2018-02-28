@@ -34,7 +34,7 @@ public class ToursPresenter implements ToursContract.Presenter {
 
     private HotToursRequest request;
 
-    private ToursSortType sortType = ToursSortType.ALL_TOURS;
+    private ToursSortType sortType = ToursSortType.TOURS_BY_PRICE;
 
     private TourCurrencyType currencyType = TourCurrencyType.DOLLAR;
 
@@ -252,49 +252,49 @@ public class ToursPresenter implements ToursContract.Presenter {
     }
 
     private void sortTours(List<Tour> tourList) {
-        switch (sortType) {
-            case ALL_TOURS:
-                break;
-            case TOURS_BY_COUNTRY:
-                Collections.sort(tourList, new Comparator<Tour>() {
-                    @Override
-                    public int compare(Tour o1, Tour o2) {
-                        return o1.getCountry().getName().compareTo(o2.getCountry().getName());
-                    }
-                });
-                break;
-            case TOURS_BY_CITY:
-                Collections.sort(tourList, new Comparator<Tour>() {
-                    @Override
-                    public int compare(Tour o1, Tour o2) {
-                        return o1.getFrom_Cities().getName().compareTo(o2.getFrom_Cities().getName());
-                    }
-                });
-                break;
-            case TOURS_BY_DURATION:
-                Collections.sort(tourList, new Comparator<Tour>() {
-                    @Override
-                    public int compare(Tour o1, Tour o2) {
-                        return o1.getDuration() - o2.getDuration();
-                    }
-                });
-                break;
-            case TOURS_BY_ADULT:
-                Collections.sort(tourList, new Comparator<Tour>() {
-                    @Override
-                    public int compare(Tour o1, Tour o2) {
-                        return o1.getAdult_Amount() - o2.getAdult_Amount();
-                    }
-                });
-                break;
-            case TOURS_BY_CHILDREN:
-                Collections.sort(tourList, new Comparator<Tour>() {
-                    @Override
-                    public int compare(Tour o1, Tour o2) {
-                        return o1.getChild_Amount() - o2.getChild_Amount();
-                    }
-                });
-                break;
+        switch (sortType) {//TODO clear Comparators
+//            case ALL_TOURS:
+//                break;
+//            case TOURS_BY_COUNTRY:
+//                Collections.sort(tourList, new Comparator<Tour>() {
+//                    @Override
+//                    public int compare(Tour o1, Tour o2) {
+//                        return o1.getCountry().getName().compareTo(o2.getCountry().getName());
+//                    }
+//                });
+//                break;
+//            case TOURS_BY_CITY:
+//                Collections.sort(tourList, new Comparator<Tour>() {
+//                    @Override
+//                    public int compare(Tour o1, Tour o2) {
+//                        return o1.getFrom_Cities().getName().compareTo(o2.getFrom_Cities().getName());
+//                    }
+//                });
+//                break;
+//            case TOURS_BY_DURATION:
+//                Collections.sort(tourList, new Comparator<Tour>() {
+//                    @Override
+//                    public int compare(Tour o1, Tour o2) {
+//                        return o1.getDuration() - o2.getDuration();
+//                    }
+//                });
+//                break;
+//            case TOURS_BY_ADULT:
+//                Collections.sort(tourList, new Comparator<Tour>() {
+//                    @Override
+//                    public int compare(Tour o1, Tour o2) {
+//                        return o1.getAdult_Amount() - o2.getAdult_Amount();
+//                    }
+//                });
+//                break;
+//            case TOURS_BY_CHILDREN:
+//                Collections.sort(tourList, new Comparator<Tour>() {
+//                    @Override
+//                    public int compare(Tour o1, Tour o2) {
+//                        return o1.getChild_Amount() - o2.getChild_Amount();
+//                    }
+//                });
+//                break;
             case TOURS_BY_DATEFROM:
                 Collections.sort(tourList, new Comparator<Tour>() {
                     @Override
@@ -308,7 +308,7 @@ public class ToursPresenter implements ToursContract.Presenter {
                     @Override
                     public int compare(Tour o1, Tour o2) {
                         String currencyId = "1";
-                        switch(currencyType){
+                        switch (currencyType) {
                             case EURO:
                                 currencyId = "10";
                                 break;
@@ -322,14 +322,14 @@ public class ToursPresenter implements ToursContract.Presenter {
                         int o1Cost = 0;
                         int o2Cost = 0;
                         for (Price price : o1.getPrices()) {
-                            if(price != null && price.getCurrency() != null){
-                                if(price.getCurrency().getId().equals(currencyId)){
+                            if (price != null && price.getCurrency() != null) {
+                                if (price.getCurrency().getId().equals(currencyId)) {
                                     o1Cost = price.getCost();
                                 }
                             }
                         }
                         for (Price price : o2.getPrices()) {
-                            if(price.getCurrency().getId().equals(currencyId)){
+                            if (price.getCurrency().getId().equals(currencyId)) {
                                 o2Cost = price.getCost();
                             }
                         }

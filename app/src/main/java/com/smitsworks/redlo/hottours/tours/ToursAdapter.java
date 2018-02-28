@@ -18,9 +18,11 @@ import com.smitsworks.redlo.hottours.R;
 import com.smitsworks.redlo.hottours.data.models.Hotel_Image;
 import com.smitsworks.redlo.hottours.data.models.Price;
 import com.smitsworks.redlo.hottours.data.models.Tour;
+import com.smitsworks.redlo.hottours.utils.DateUtils;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
+import java.text.SimpleDateFormat;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -150,7 +152,7 @@ public class ToursAdapter extends BaseAdapter {
         }
 
         hotelName.setText(tour.getHotel());
-        dateFrom.setText(tour.getDate_From().toString());
+        dateFrom.setText(DateUtils.formatDate(tour.getDate_From()));
 
         if (tour.getDuration() != null) {
             duration.setText(tour.getDuration().toString());

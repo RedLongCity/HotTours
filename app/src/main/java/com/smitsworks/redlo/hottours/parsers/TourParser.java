@@ -3,6 +3,8 @@ package com.smitsworks.redlo.hottours.parsers;
 import android.util.Log;
 
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -150,7 +152,17 @@ public class TourParser implements Parser<Tour> {
                     }
 
                     if (json.has(TourKeys.KEY_TRANSPORT_TYPE)) {
-                        model.setTransport_Type(json.getString(TourKeys.KEY_TRANSPORT_TYPE));
+                        switch (json.getString(TourKeys.KEY_TRANSPORT_TYPE)) {
+                            case "flight":
+                                model.setTransport_Type("авиа");
+                                break;
+                            case "bus":
+                                model.setTransport_Type("автобус");
+                                break;
+                            default:
+                                model.setTransport_Type("авиа");
+
+                        }
                     }
                     if (json.has(TourKeys.KEY_HOTEL_IMAGES)) {
                         Set<Hotel_Image> hotelImageSet = new HashSet<Hotel_Image>();

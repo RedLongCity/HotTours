@@ -283,18 +283,18 @@ public class ToursFragment extends Fragment implements ToursContract.View {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.all:
-                        presenter.setSotring(ToursSortType.ALL_TOURS);
-                        break;
-                    case R.id.by_country:
-                        presenter.setSotring(ToursSortType.TOURS_BY_COUNTRY);
-                        break;
-                    case R.id.by_city:
-                        presenter.setSotring(ToursSortType.TOURS_BY_CITY);
-                        break;
-                    case R.id.by_duration:
-                        presenter.setSotring(ToursSortType.TOURS_BY_DURATION);
-                        break;
+//                    case R.id.all://TODO clear
+//                        presenter.setSotring(ToursSortType.ALL_TOURS);
+//                        break;
+//                    case R.id.by_country:
+//                        presenter.setSotring(ToursSortType.TOURS_BY_COUNTRY);
+//                        break;
+//                    case R.id.by_city:
+//                        presenter.setSotring(ToursSortType.TOURS_BY_CITY);
+//                        break;
+//                    case R.id.by_duration:
+//                        presenter.setSotring(ToursSortType.TOURS_BY_DURATION);
+//                        break;
 //                    case R.id.by_adult:
 //                        presenter.setSotring(ToursSortType.TOURS_BY_ADULT);
 //                        break;

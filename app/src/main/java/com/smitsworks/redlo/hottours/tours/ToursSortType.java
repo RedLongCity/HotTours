@@ -6,13 +6,13 @@ package com.smitsworks.redlo.hottours.tours;
  */
 
 public enum ToursSortType {
-
-    ALL_TOURS,
-    TOURS_BY_COUNTRY,
-    TOURS_BY_CITY,
-    TOURS_BY_DURATION,
-    TOURS_BY_ADULT,
-    TOURS_BY_CHILDREN,
+    //TODO clear types
+    //ALL_TOURS,
+    //TOURS_BY_COUNTRY,
+    //TOURS_BY_CITY,
+    //TOURS_BY_DURATION,
+    //TOURS_BY_ADULT,
+    //TOURS_BY_CHILDREN,
     TOURS_BY_DATEFROM,
     TOURS_BY_PRICE
 }

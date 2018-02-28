@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/all"
-        android:title="@string/filter_all"/>
+    <!-- TODO clear menu-->
+    <!--<item-->
+        <!--android:id="@+id/all"-->
+        <!--android:title="@string/filter_all"/>-->
 
-    <item
-        android:id="@+id/by_country"
-        android:title="@string/filter_country"
-        />
+    <!--<item-->
+        <!--android:id="@+id/by_country"-->
+        <!--android:title="@string/filter_country"-->
+        <!--/>-->
 
-    <item
-        android:id="@+id/by_city"
-        android:title="@string/filter_city"
-        />
+    <!--<item-->
+        <!--android:id="@+id/by_city"-->
+        <!--android:title="@string/filter_city"-->
+        <!--/>-->
 
-    <item
-        android:id="@+id/by_duration"
-        android:title="@string/filter_duration"
-        />
+    <!--<item-->
+        <!--android:id="@+id/by_duration"-->
+        <!--android:title="@string/filter_duration"-->
+        <!--/>-->
 
     <!--<item-->
         <!--android:id="@+id/by_adult"-->
