@@ -13,12 +13,11 @@ import org.json.JSONObject;
  * class for parsing Hotel_Image object from JSONObject
  */
 
-public class HotelImageParser implements Parser<Hotel_Image> {
+public class HotelImageParser {
 
     public static final String TAG = "TAG_HOTEL_IMAGE_PARSER";
 
-    @Override
-    public Hotel_Image parse(JSONObject json) {
+    public static Hotel_Image parse(JSONObject json) {
         Hotel_Image model = new Hotel_Image();
         try {
             if (json != null) {

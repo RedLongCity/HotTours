@@ -13,12 +13,11 @@ import org.json.JSONObject;
  * class for parsing Meal_Type object from JSONObject
  */
 
-public class MealTypeParser implements Parser<Meal_Type> {
+public class MealTypeParser {
 
     public static final String TAG = "TAG_MEAL_TYPE_PARSER";
 
-    @Override
-    public Meal_Type parse(JSONObject json) {
+    public static Meal_Type parse(JSONObject json) {
         Meal_Type model = new Meal_Type();
         try {
             if (json != null) {

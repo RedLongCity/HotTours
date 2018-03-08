@@ -13,12 +13,11 @@ import org.json.JSONObject;
  * class for parsing Currency object from JSONObject
  */
 
-public class CurrencyParser implements Parser<Currency> {
+public class CurrencyParser {
 
     public static final String TAG = "TAG_CURRENCY_PARSER";
 
-    @Override
-    public Currency parse(JSONObject json) {
+    public static Currency parse(JSONObject json) {
         Currency model = new Currency();
         try {
             if (json != null) {

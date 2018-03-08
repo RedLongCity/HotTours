@@ -38,7 +38,7 @@ public class FilterRemoteDataSource implements FilterDataSource {
 
     private static FilterRemoteDataSource instance;
 
-    private static final String TAG="TAG";
+    private static final String TAG = "TAG";
 
     public static FilterRemoteDataSource getInstance() {
         if (instance == null) {
@@ -53,7 +53,7 @@ public class FilterRemoteDataSource implements FilterDataSource {
     @Override
     public void getCountries(@NonNull final LoadCountriesCallback callback) {
 
-        if(!InternetConnection.checkConnection(App.getAppContext())){
+        if (!InternetConnection.checkConnection(App.getAppContext())) {
             callback.onNotAvailableConnection();
             return;
         }
@@ -68,19 +68,18 @@ public class FilterRemoteDataSource implements FilterDataSource {
                 }
                 if (response.isSuccessful()) {
                     try {
-                        CountryParser parser = new CountryParser();
                         JSONArray array = new JSONArray(response.body().string());
                         int length = array.length();
                         if (length > 0) {
                             List<Country> countryList = new ArrayList<Country>();
                             for (int i = 0; i < length; i++) {
-                                Country country = parser.parse(array.getJSONObject(i));
-                                countryList.add(country);
+                                countryList.add(CountryParser.parse(
+                                        array.getJSONObject(i)));
                             }
                             return countryList;
                         }
-                    }catch(@NonNull IOException | JSONException e){
-                        Log.e(TAG,e.getLocalizedMessage());
+                    } catch (@NonNull IOException | JSONException e) {
+                        Log.e(TAG, e.getLocalizedMessage());
                     }
                 }
                 return null;
@@ -100,7 +99,7 @@ public class FilterRemoteDataSource implements FilterDataSource {
     @Override
     public void getCities(@NonNull final LoadCititesCallback callback) {
 
-        if(!InternetConnection.checkConnection(App.getAppContext())){
+        if (!InternetConnection.checkConnection(App.getAppContext())) {
             callback.onNotAvailableConnection();
             return;
         }
@@ -113,21 +112,20 @@ public class FilterRemoteDataSource implements FilterDataSource {
                 if (response == null) {
                     return null;
                 }
-                if(response.isSuccessful()){
-                    try{
-                        CityParser parser = new CityParser();
+                if (response.isSuccessful()) {
+                    try {
                         JSONArray array = new JSONArray(response.body().string());
                         int length = array.length();
-                        if(length>0){
+                        if (length > 0) {
                             List<From_Cities> cityList = new ArrayList<From_Cities>();
-                            for(int i=0;i<length;i++){
-                                From_Cities city = parser.parse(array.getJSONObject(i));
-                                cityList.add(city);
+                            for (int i = 0; i < length; i++) {
+                                cityList.add(CityParser.parse(
+                                        array.getJSONObject(i)));
                             }
                             return cityList;
                         }
-                    }catch(@NonNull IOException | JSONException e){
-                        Log.e(TAG,e.getLocalizedMessage());
+                    } catch (@NonNull IOException | JSONException e) {
+                        Log.e(TAG, e.getLocalizedMessage());
                     }
                 }
                 return null;
@@ -147,7 +145,7 @@ public class FilterRemoteDataSource implements FilterDataSource {
     @Override
     public void getHotelRatings(@NonNull final LoadHotelRatingsCallback callback) {
 
-        if(!InternetConnection.checkConnection(App.getAppContext())){
+        if (!InternetConnection.checkConnection(App.getAppContext())) {
             callback.onNotAvailableConnection();
             return;
         }
@@ -160,21 +158,19 @@ public class FilterRemoteDataSource implements FilterDataSource {
                 if (response == null) {
                     return null;
                 }
-                if(response.isSuccessful()){
-                    try{
-                        HotelRatingParser parser = new HotelRatingParser();
+                if (response.isSuccessful()) {
+                    try {
                         JSONArray array = new JSONArray(response.body().string());
                         int length = array.length();
-                        if(length>0){
+                        if (length > 0) {
                             List<Hotel_Rating> list = new ArrayList<Hotel_Rating>();
-                            for(int i=0;i<length;i++){
-                                Hotel_Rating rating = parser.parse(array.getJSONObject(i));
-                                list.add(rating);
+                            for (int i = 0; i < length; i++) {
+                                list.add(HotelRatingParser.parse(array.getJSONObject(i)));
                             }
                             return list;
                         }
-                    }catch(@NonNull IOException | JSONException e){
-                        Log.e(TAG,e.getLocalizedMessage());
+                    } catch (@NonNull IOException | JSONException e) {
+                        Log.e(TAG, e.getLocalizedMessage());
                     }
                 }
                 return null;
@@ -194,7 +190,7 @@ public class FilterRemoteDataSource implements FilterDataSource {
     @Override
     public void getMealTypes(@NonNull final LoadMealTypesCallback callback) {
 
-        if(!InternetConnection.checkConnection(App.getAppContext())){
+        if (!InternetConnection.checkConnection(App.getAppContext())) {
             callback.onNotAvailableConnection();
             return;
         }
@@ -207,21 +203,19 @@ public class FilterRemoteDataSource implements FilterDataSource {
                 if (response == null) {
                     return null;
                 }
-                if(response.isSuccessful()){
-                    try{
-                        MealTypeParser parser = new MealTypeParser();
+                if (response.isSuccessful()) {
+                    try {
                         JSONArray array = new JSONArray(response.body().string());
                         int length = array.length();
-                        if(length>0){
+                        if (length > 0) {
                             List<Meal_Type> list = new ArrayList<Meal_Type>();
-                            for(int i=0;i<length;i++){
-                                Meal_Type type = parser.parse(array.getJSONObject(i));
-                                list.add(type);
+                            for (int i = 0; i < length; i++) {
+                                list.add(MealTypeParser.parse(array.getJSONObject(i)));
                             }
                             return list;
                         }
-                    }catch(@NonNull IOException | JSONException e){
-                        Log.e(TAG,e.getLocalizedMessage());
+                    } catch (@NonNull IOException | JSONException e) {
+                        Log.e(TAG, e.getLocalizedMessage());
                     }
                 }
                 return null;

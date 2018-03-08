@@ -38,13 +38,10 @@ public class FilterResponseParser implements Parser<FiltersResponse> {
                             FilterResponseKeys.KEY_COUNTRY_LIST);
 
                     int countryArrayLength = countryArray.length();
-                    CountryParser countryParser = new CountryParser();
                     if (countryArrayLength > 0) {
                         for (int i = 0; i < countryArrayLength; i++) {
-                            Country country = new Country();
-                            JSONObject innerOnject = countryArray.getJSONObject(i);
-                            country = countryParser.parse(innerOnject);
-                            countryList.add(country);
+                            countryList.add(CountryParser.parse(
+                                    countryArray.getJSONObject(i)));
                         }
                     }
 
@@ -54,12 +51,9 @@ public class FilterResponseParser implements Parser<FiltersResponse> {
 
                     int citiesArrayLength = citiesArray.length();
                     if (citiesArrayLength > 0) {
-                        CityParser cityParser = new CityParser();
                         for (int i = 0; i < citiesArrayLength; i++) {
-                            From_Cities city = new From_Cities();
-                            JSONObject innerObject = citiesArray.getJSONObject(i);
-                            city = cityParser.parse(innerObject);
-                            citiesList.add(city);
+                            citiesList.add(CityParser.parse(
+                                    citiesArray.getJSONObject(i)));
                         }
                     }
 
@@ -71,10 +65,8 @@ public class FilterResponseParser implements Parser<FiltersResponse> {
                     if (ratingArrayLength > 0) {
                         HotelRatingParser hotelRatingParser = new HotelRatingParser();
                         for (int i = 0; i < ratingArrayLength; i++) {
-                            Hotel_Rating rating = new Hotel_Rating();
-                            JSONObject innerOnbject = ratingArray.getJSONObject(i);
-                            rating = hotelRatingParser.parse(innerOnbject);
-                            ratingList.add(rating);
+                            ratingList.add(HotelRatingParser.parse(
+                                    ratingArray.getJSONObject(i)));
                         }
                     }
 
@@ -84,12 +76,9 @@ public class FilterResponseParser implements Parser<FiltersResponse> {
 
                     int mealTypeArrayLength = mealTypeArray.length();
                     if (mealTypeArrayLength > 0) {
-                        MealTypeParser mealTypeParser = new MealTypeParser();
                         for (int i = 0; i < mealTypeArrayLength; i++) {
-                            Meal_Type mealType = new Meal_Type();
-                            JSONObject innerObject = mealTypeArray.getJSONObject(i);
-                            mealType = mealTypeParser.parse(innerObject);
-                            mealTypeList.add(mealType);
+                            mealTypeList.add(MealTypeParser.parse(
+                                    mealTypeArray.getJSONObject(i)));
                         }
                     }
 
@@ -99,12 +88,9 @@ public class FilterResponseParser implements Parser<FiltersResponse> {
 
                     int currencyArrayLength = currencyArray.length();
                     if (currencyArrayLength > 0) {
-                        CurrencyParser currencyParser = new CurrencyParser();
                         for (int i = 0; i < currencyArrayLength; i++) {
-                            Currency currency = new Currency();
-                            JSONObject innerObject = currencyArray.getJSONObject(i);
-                            currency = currencyParser.parse(innerObject);
-                            currencyList.add(currency);
+                            currencyList.add(CurrencyParser.parse(
+                                    currencyArray.getJSONObject(i)));
                         }
                     }
 

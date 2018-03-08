@@ -14,12 +14,11 @@ import org.json.JSONObject;
  * class for parsing Country object from JSONObject
  */
 
-public class PriceParser implements Parser<Price> {
+public class PriceParser {
 
     public static final String TAG = "TAG_PRICE_PARSER";
 
-    @Override
-    public Price parse(JSONObject json) {
+    public static Price parse(JSONObject json) {
         Price model = new Price();
         try {
             if (json != null) {
@@ -33,8 +32,7 @@ public class PriceParser implements Parser<Price> {
                     }
 
                     if (json.has(PriceKeys.KEY_CURRENCY)) {
-                        CurrencyParser parser = new CurrencyParser();
-                        model.setCurrency(parser.parse(
+                        model.setCurrency(CurrencyParser.parse(
                                 json.getJSONObject(PriceKeys.KEY_CURRENCY)));
                     }
                     return model;

@@ -2,26 +2,18 @@ package com.smitsworks.redlo.hottours.parsers;
 
 import android.util.Log;
 
-import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.HashSet;
-import java.util.Set;
-
-
-import com.smitsworks.redlo.hottours.keys.TourKeys;
-import com.smitsworks.redlo.hottours.data.models.Country;
-import com.smitsworks.redlo.hottours.data.models.Currency;
-import com.smitsworks.redlo.hottours.data.models.From_Cities;
 import com.smitsworks.redlo.hottours.data.models.Hotel_Image;
-import com.smitsworks.redlo.hottours.data.models.Hotel_Rating;
-import com.smitsworks.redlo.hottours.data.models.Meal_Type;
 import com.smitsworks.redlo.hottours.data.models.Price;
 import com.smitsworks.redlo.hottours.data.models.Tour;
+import com.smitsworks.redlo.hottours.keys.TourKeys;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by redlongcity on 03.10.2017.
@@ -48,8 +40,7 @@ public class TourParser implements Parser<Tour> {
                     }
 
                     if (json.has(TourKeys.KEY_COUNTRY)) {
-                        CountryParser countryParser = new CountryParser();
-                        model.setCountry(countryParser.parse(
+                        model.setCountry(CountryParser.parse(
                                 json.getJSONObject(TourKeys.KEY_COUNTRY)));
                     }
 
@@ -66,15 +57,13 @@ public class TourParser implements Parser<Tour> {
                     }
 
                     if (json.has(TourKeys.KEY_HOTEL_RATING)) {
-                        HotelRatingParser parser = new HotelRatingParser();
-                        model.setHotel_Rating(parser.parse(
+                        model.setHotel_Rating(HotelRatingParser.parse(
                                 json.getJSONObject(TourKeys.KEY_HOTEL_RATING)
                         ));
                     }
 
                     if (json.has(TourKeys.KEY_MEAL_TYPE)) {
-                        MealTypeParser mealTypeParser = new MealTypeParser();
-                        model.setMeal_Type(mealTypeParser.parse(
+                        model.setMeal_Type(MealTypeParser.parse(
                                 json.getJSONObject(TourKeys.KEY_MEAL_TYPE)));
                     }
 
@@ -112,20 +101,13 @@ public class TourParser implements Parser<Tour> {
                     }
 
                     if (json.has(TourKeys.KEY_PRICES)) {
-                        Set<Price> priceSet = new HashSet<Price>();
-
                         JSONArray array = json.getJSONArray(TourKeys.KEY_PRICES);
 
                         int arrayLength = array.length();
                         if (arrayLength > 0) {
-                            PriceParser priceParser = new PriceParser();
                             for (int i = 0; i < arrayLength; i++) {
-                                Price price = new Price();
-                                JSONObject innerObject = array.getJSONObject(i);
-                                price = priceParser.parse(innerObject);
-                                priceSet.add(price);
+                                model.getPrices().add(PriceParser.parse(array.getJSONObject(i)));
                             }
-                            model.setPrices(priceSet);
                         }
                     }
 
@@ -140,8 +122,7 @@ public class TourParser implements Parser<Tour> {
                     }
 
                     if (json.has(TourKeys.KEY_FROM_CITIES)) {
-                        CityParser cityParser = new CityParser();
-                        model.setFrom_Cities(cityParser.parse(
+                        model.setFrom_Cities(CityParser.parse(
                                 json.getJSONObject(TourKeys.KEY_FROM_CITIES))
                         );
                     }
@@ -169,12 +150,9 @@ public class TourParser implements Parser<Tour> {
                         JSONArray jsonArray = json.getJSONArray(TourKeys.KEY_HOTEL_IMAGES);
                         int jsonArrayLength = jsonArray.length();
                         if (jsonArrayLength > 0) {
-                            HotelImageParser hotelImageParser = new HotelImageParser();
                             for (int i = 0; i < jsonArrayLength; i++) {
-                                Hotel_Image image = new Hotel_Image();
                                 JSONObject innerObject = jsonArray.getJSONObject(i);
-                                image = hotelImageParser.parse(innerObject);
-                                hotelImageSet.add(image);
+                                hotelImageSet.add(HotelImageParser.parse(innerObject));
                             }
                         }
                         model.setHotel_ImageSet(hotelImageSet);

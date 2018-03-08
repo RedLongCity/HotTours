@@ -28,14 +28,12 @@ public class HotToursRequestParser implements Parser<HotToursRequest> {
                     }
 
                     if (json.has(RequestKeys.KEY_COUNTRY) && !json.isNull(RequestKeys.KEY_COUNTRY)) {
-                        CountryParser parser = new CountryParser();
-                        request.setCountry(parser.parse(
+                        request.setCountry(CountryParser.parse(
                                 json.getJSONObject(RequestKeys.KEY_COUNTRY)));
                     }
 
-                    if (json.has(RequestKeys.KEY_FROM_CITIES) && !json.isNull(RequestKeys.KEY_FROM_CITIES) ) {
-                        CityParser parser = new CityParser();
-                        request.setFrom_Cities(parser.parse(
+                    if (json.has(RequestKeys.KEY_FROM_CITIES) && !json.isNull(RequestKeys.KEY_FROM_CITIES)) {
+                        request.setFrom_Cities(CityParser.parse(
                                 json.getJSONObject(RequestKeys.KEY_FROM_CITIES)
                         ));
                     }
@@ -57,8 +55,7 @@ public class HotToursRequestParser implements Parser<HotToursRequest> {
                     }
 
                     if (json.has(RequestKeys.KEY_MEAL_TYPE) && !json.isNull(RequestKeys.KEY_MEAL_TYPE)) {
-                        MealTypeParser parser = new MealTypeParser();
-                        request.setMeal_Type(parser.parse(
+                        request.setMeal_Type(MealTypeParser.parse(
                                 json.getJSONObject(RequestKeys.KEY_MEAL_TYPE)
                         ));
                     }

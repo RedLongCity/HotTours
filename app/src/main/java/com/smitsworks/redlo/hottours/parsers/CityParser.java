@@ -18,12 +18,11 @@ import java.util.Set;
  * class for parsing From_Cities object from JSONObject
  */
 
-public class CityParser implements Parser<From_Cities> {
+public class CityParser {
 
     public static final String TAG = "TAG_CITY_PARSER";
 
-    @Override
-    public From_Cities parse(JSONObject json) {
+    public static From_Cities parse(JSONObject json) {
         From_Cities model = new From_Cities();
         try {
             if (json != null) {

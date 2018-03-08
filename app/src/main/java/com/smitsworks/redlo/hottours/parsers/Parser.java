@@ -1,5 +1,8 @@
 package com.smitsworks.redlo.hottours.parsers;
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+
 import org.json.JSONObject;
 
 /**

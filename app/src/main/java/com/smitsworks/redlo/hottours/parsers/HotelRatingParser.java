@@ -12,12 +12,11 @@ import org.json.JSONObject;
  * Created by redlongcity on 03.10.2017.
  */
 
-public class HotelRatingParser implements Parser<Hotel_Rating> {
+public class HotelRatingParser {
 
     public static final String TAG = "TAG_HOTEL_RATING_PARSER";
 
-    @Override
-    public Hotel_Rating parse(JSONObject json) {
+    public static Hotel_Rating parse(JSONObject json) {
         Hotel_Rating model = new Hotel_Rating();
         try {
             if (json != null) {

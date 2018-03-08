@@ -18,12 +18,11 @@ import java.util.Set;
  * class for parsing Country object from JSONObject
  */
 
-public class CountryParser implements Parser<Country> {
+public class CountryParser {
 
     public static final String TAG = "TAG_COUNTRY_PARSER";
 
-    @Override
-    public Country parse(JSONObject json) {
+    public static Country parse(JSONObject json) {
         Country model = new Country();
         try {
             if (json != null) {

@@ -12,7 +12,7 @@ public class SearchingRequest {
 
     private Integer id;
 
-    private Integer type;
+    private Integer type;//TODO TYPE
 
     private Integer kind;
 
@@ -48,7 +48,7 @@ public class SearchingRequest {
 
     private Currency currency;
 
-    private Integer onlyStandart;
+    private Integer onlyStandart;//TODO Boolean
 
     public Integer getId() {
         return id;

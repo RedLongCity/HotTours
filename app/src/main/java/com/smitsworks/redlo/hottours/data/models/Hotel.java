@@ -1,7 +1,5 @@
 package com.smitsworks.redlo.hottours.data.models;
 
-import android.graphics.Region;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -207,4 +205,5 @@ public class Hotel {
                 ", tours=" + tours +
                 '}';
     }
+
 }
