@@ -1,7 +1,6 @@
 package com.smitsworks.redlo.hottours.utils;
 
 import com.smitsworks.redlo.hottours.data.models.SearchingRequest;
-import com.smitsworks.redlo.hottours.data.models.TourAdvanced;
 import com.smitsworks.redlo.hottours.data.models.TourAdvancedResponse;
 import com.smitsworks.redlo.hottours.data.source.datasource.TourAdvancedDataSource;
 import com.smitsworks.redlo.hottours.data.source.remote.TourAdvancedRemoteDataSource;
@@ -18,6 +17,8 @@ public class ComeBackLite {
     private static ComeBackLite INSTANCE = null;
 
     private Timer timer;
+
+    private TimerTask task;
 
     private ComeBackLite() {
 
@@ -44,33 +45,66 @@ public class ComeBackLite {
         }
     }
 
-    public void processAdvance(final TourAdvancedResponse response,
-                               final TourAdvancedRemoteDataSource source,
-                               TourAdvancedDataSource.GetTourCallback callback) {
-        new TimerTask() {
-            @Override
-            public void run() {
-                source.refreshTours();
-                source.getToursByRequest((SearchingRequest) response.getRequest(),
-                        new TourAdvancedDataSource.LoadToursCallback() {
-                    @Override
-                    public void onToursLoaded(TourAdvancedResponse tourResponse) {
-                        if(tourResponse.getComeBackDelay() > 0){
+    private TimerTask getAdvancedTask(final SearchingRequest request,
+                                      final TourAdvancedDataSource source,
+                                      final TourAdvancedDataSource.LoadToursCallback callback) {
+        if (task != null) {
+            return task;
+        } else {
+            task = new TimerTask() {
+                @Override
+                public void run() {
+                    source.refreshTours();
+                    source.getToursByRequest(request,
+                            new TourAdvancedDataSource.LoadToursCallback() {
+                                @Override
+                                public void onToursLoaded(TourAdvancedResponse tourResponse) {
+                                    callback.onToursLoaded(tourResponse);
+                                }
 
-                        }
-                    }
+                                @Override
+                                public void onDataNotAvailable() {
+                                    callback.onDataNotAvailable();
+                                }
 
-                    @Override
-                    public void onDataNotAvailable() {
-
-                    }
-
-                    @Override
-                    public void onNotAvailableConnection() {
-
-                    }
-                });
-            }
+                                @Override
+                                public void onNotAvailableConnection() {
+                                    callback.onNotAvailableConnection();
+                                }
+                            });
+                }
+            };
+            return task;
         }
+    }
+
+    public void processSearchingRequest(final SearchingRequest request,
+                                        final TourAdvancedDataSource source,
+                                        final TourAdvancedDataSource.LoadToursCallback callback) {
+
+        TourAdvancedDataSource.LoadToursCallback inside = new TourAdvancedDataSource.LoadToursCallback() {
+            @Override
+            public void onToursLoaded(TourAdvancedResponse tourResponse) {
+                if (tourResponse.getComeBackDelay() > 0) {
+                    start(getAdvancedTask(request,
+                            source,
+                            this
+                    ), tourResponse.getComeBackDelay());
+                } else {
+                    callback.onToursLoaded(tourResponse);
+                }
+            }
+
+            @Override
+            public void onDataNotAvailable() {
+                callback.onDataNotAvailable();
+            }
+
+            @Override
+            public void onNotAvailableConnection() {
+                callback.onNotAvailableConnection();
+            }
+        };
+        start(getAdvancedTask(request, source, inside), 0);
     }
 }

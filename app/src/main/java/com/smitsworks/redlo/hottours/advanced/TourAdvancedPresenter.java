@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import com.smitsworks.redlo.hottours.data.models.Country;
 import com.smitsworks.redlo.hottours.data.models.From_Cities;
 import com.smitsworks.redlo.hottours.data.models.Hotel_Rating;
+import com.smitsworks.redlo.hottours.data.models.Price;
 import com.smitsworks.redlo.hottours.data.models.SearchingRequest;
 import com.smitsworks.redlo.hottours.data.models.TourAdvanced;
 import com.smitsworks.redlo.hottours.data.models.TourAdvancedResponse;
@@ -16,7 +17,12 @@ import com.smitsworks.redlo.hottours.feedback.FeedBackActivity;
 import com.smitsworks.redlo.hottours.tourfiltering.TourFilteringActivity;
 import com.smitsworks.redlo.hottours.tours.TourCurrencyType;
 import com.smitsworks.redlo.hottours.tours.ToursSortType;
+import com.smitsworks.redlo.hottours.utils.ComeBackLite;
 import com.smitsworks.redlo.hottours.utils.DateUtils;
+
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * Created by redlongcity on 10.03.2018.
@@ -88,47 +94,52 @@ public class TourAdvancedPresenter implements ToursAdvancedContract.Presenter {
 
     @Override
     public void loadToursByRequest(SearchingRequest request, boolean forceUpdate) {
-
+        loadTours(request, forceUpdate, true);
     }
 
     @Override
     public void showFilterLabel() {
-
+        view.showFilteringPopUpMenu();
     }
 
     @Override
     public void openTourDetails(@NonNull TourAdvanced requestedTour) {
-
+        if (requestedTour != null) {
+            stopBackgroundLoading();
+            view.showTourDetailsUi(requestedTour.getKey());
+        }
     }
 
     @Override
     public void setSotring(ToursSortType requestType) {
-
+        this.sortType = requestType;
     }
 
     @Override
     public void setCurrencyType(TourCurrencyType requestType) {
-
+        this.currencyType = requestType;
     }
 
     @Override
     public ToursSortType getSorting() {
-        return null;
+        return sortType;
     }
 
     @Override
     public TourCurrencyType getCurrencyType() {
-        return null;
+        return currencyType;
     }
 
     @Override
     public void findTours() {
-
+        stopBackgroundLoading();
+        view.findToursUI();
     }
 
     @Override
     public void stopBackgroundLoading() {
-
+        ComeBackLite.getINSTANCE().stop();
+        view.setLoadingIndicator(false);
     }
 
     private void loadTours(final SearchingRequest request,
@@ -142,32 +153,90 @@ public class TourAdvancedPresenter implements ToursAdvancedContract.Presenter {
             repository.refreshTours();
         }
 
-        repository.getToursByRequest(request, new TourAdvancedDataSource.LoadToursCallback() {
-            @Override
-            public void onToursLoaded(TourAdvancedResponse tourResponse) {
-                if (!view.isActive()) {
-                    return;
-                }
+        ComeBackLite.getINSTANCE().processSearchingRequest(
+                request,
+                repository,
+                new TourAdvancedDataSource.LoadToursCallback() {
+                    @Override
+                    public void onToursLoaded(TourAdvancedResponse tourResponse) {
+                        if (!view.isActive()) {
+                            return;
+                        }
+                        showTours(tourResponse.getTourList());
+                    }
 
-                if(showLoadingUI){
-                    view.setLoadingIndicator(false);
-                }
-                processTours(tourResponse, true);
-            }
+                    @Override
+                    public void onDataNotAvailable() {
+                        if (!view.isActive()) {
+                            return;
+                        }
+                        view.setLoadingIndicator(false);
+                        view.showLoadingTourError();
+                    }
 
-            @Override
-            public void onDataNotAvailable() {
-
-            }
-
-            @Override
-            public void onNotAvailableConnection() {
-
-            }
-        });
+                    @Override
+                    public void onNotAvailableConnection() {
+                        if (!view.isActive()) {
+                            return;
+                        }
+                        view.setLoadingIndicator(false);
+                        view.showNotAvailableConnection();
+                    }
+                });
     }
 
-    private void processTours(TourAdvancedResponse response, boolean firstProcess){
-
+    private void showTours(List<TourAdvanced> tours) {
+        sortTours(tours);
+        view.setLoadingIndicator(false);
+        view.showTours(tours);
     }
+
+    private void sortTours(List<TourAdvanced> tours) {
+        switch (sortType) {
+            case TOURS_BY_DATEFROM:
+                Collections.sort(tours, new Comparator<TourAdvanced>() {
+                    @Override
+                    public int compare(TourAdvanced o1, TourAdvanced o2) {
+                        return o1.getDateFrom().compareTo(o2.getDateFrom());
+                    }
+                });
+                break;
+            case TOURS_BY_PRICE:
+                Collections.sort(tours, new Comparator<TourAdvanced>() {
+                    @Override
+                    public int compare(TourAdvanced o1, TourAdvanced o2) {
+                        String currencyId = "1";
+                        switch (currencyType) {
+                            case EURO:
+                                currencyId = "10";
+                                break;
+                            case DOLLAR:
+                                currencyId = "1";
+                                break;
+                            case HRYVNA:
+                                currencyId = "2";
+                                break;
+                        }
+                        int o1Cost = 0;
+                        int o2Cost = 0;
+                        for (Price price : o1.getPrices()) {
+                            if (price != null && price.getCurrency() != null) {
+                                if (price.getCurrency().getId().equals(currencyId)) {
+                                    o1Cost = price.getCost();
+                                }
+                            }
+                        }
+                        for (Price price : o2.getPrices()) {
+                            if (price.getCurrency().getId().equals(currencyId)) {
+                                o2Cost = price.getCost();
+                            }
+                        }
+                        return o1Cost - o2Cost;
+                    }
+                });
+                break;
+        }
+    }
+
+
 }
