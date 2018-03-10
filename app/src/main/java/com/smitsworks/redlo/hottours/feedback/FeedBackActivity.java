@@ -73,18 +73,18 @@ public class FeedBackActivity extends AppCompatActivity {
             feedBackFragment = FeedBackFragment.newInstance();
 
             ActivityUtils.addFragmentToActivity(getSupportFragmentManager(),
-                    feedBackFragment,R.id.contentFrame);
+                    feedBackFragment, R.id.contentFrame);
         }
 
         presenter = new FeedBackPresenter(
-                Injection.provideFeedBackRepository(getApplicationContext()),
+                Injection.provideFeedBackRepository(),
                 feedBackFragment
         );
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 drawerLayout.openDrawer(GravityCompat.START);
                 return true;
@@ -92,18 +92,18 @@ public class FeedBackActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void setupDrawerContent(NavigationView navigationView){
+    private void setupDrawerContent(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        switch (item.getItemId()){
+                        switch (item.getItemId()) {
                             case R.id.list_navigation_menu_item:
-                                Intent intent = new Intent(FeedBackActivity.this,ToursActivity.class);
+                                Intent intent = new Intent(FeedBackActivity.this, ToursActivity.class);
                                 startActivity(intent);
                                 break;
                             case R.id.settings_navigation_menu_item:
-                                Intent feddBackIntent = new Intent(FeedBackActivity.this,TourFilteringActivity.class);
+                                Intent feddBackIntent = new Intent(FeedBackActivity.this, TourFilteringActivity.class);
                                 startActivity(feddBackIntent);
                                 break;
                             case R.id.feedback_navigation_menu_item:

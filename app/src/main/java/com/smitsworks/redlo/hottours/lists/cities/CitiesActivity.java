@@ -34,7 +34,7 @@ public class CitiesActivity extends AppCompatActivity {
         }
 
         presenter = new CitiesPresenter(
-                Injection.provideFilterRepository(getApplicationContext()),citiesFragment
+                Injection.provideFilterRepository(),citiesFragment
         );
     }
 }

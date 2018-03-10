@@ -58,7 +58,7 @@ public class ToursActivity extends AppCompatActivity{
         }
 
         toursPresenter = new ToursPresenter(
-                Injection.provideToursRepository(getApplicationContext()),toursFragment);
+                Injection.provideToursRepository(),toursFragment);
 
         if (savedInstanceState != null) {
             ToursSortType currentSortType = (ToursSortType) savedInstanceState.

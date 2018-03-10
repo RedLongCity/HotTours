@@ -33,7 +33,7 @@ public class MealTypesActivity extends AppCompatActivity{
         }
 
         presenter = new MealTypesPresenter(
-                Injection.provideFilterRepository(getApplicationContext()),mealTypesFragment
+                Injection.provideFilterRepository(),mealTypesFragment
         );
     }
 }

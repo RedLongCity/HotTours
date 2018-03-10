@@ -18,7 +18,7 @@ public class TourAdvancedResponseParser {
 
     public static final String TAG = "TOUR_A_RESP_PARSER";
 
-    public static TourAdvancedResponse parser(JSONObject json) {
+    public static TourAdvancedResponse parse(JSONObject json) {
         TourAdvancedResponse model = new TourAdvancedResponse();
         if (json != null) {
             try {

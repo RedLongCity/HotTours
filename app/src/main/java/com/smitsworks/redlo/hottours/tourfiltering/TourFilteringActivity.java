@@ -60,7 +60,7 @@ public class TourFilteringActivity extends AppCompatActivity{
                     fragment,R.id.contentFrame);
 
             presenter = new TourFilteringPresenter(
-                    Injection.provideFilterRepository(getApplicationContext()),fragment);
+                    Injection.provideFilterRepository(),fragment);
 
         }
     }

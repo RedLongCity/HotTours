@@ -29,12 +29,12 @@ public class HotelRatingsActivity extends AppCompatActivity {
         if (hotelRatingsFragment == null) {
             hotelRatingsFragment = HotelRatingsFragment.newInstance();
             ActivityUtils.addFragmentToActivity(
-                    getSupportFragmentManager(),hotelRatingsFragment,R.id.contentFrame
+                    getSupportFragmentManager(), hotelRatingsFragment, R.id.contentFrame
             );
         }
 
         presenter = new HotelRatingsPresenter(
-                Injection.provideFilterRepository(getApplicationContext()),hotelRatingsFragment
+                Injection.provideFilterRepository(), hotelRatingsFragment
         );
     }
 }

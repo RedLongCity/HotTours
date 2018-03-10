@@ -34,7 +34,7 @@ public class CountriesActivity extends AppCompatActivity {
         }
 
         presenter = new CountriesPresenter(
-                Injection.provideFilterRepository(getApplicationContext()),countriesFragment
+                Injection.provideFilterRepository(),countriesFragment
         );
     }
 }

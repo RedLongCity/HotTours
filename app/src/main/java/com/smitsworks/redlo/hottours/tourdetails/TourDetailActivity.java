@@ -54,7 +54,7 @@ public class TourDetailActivity extends AppCompatActivity {
 
             tourDetailPresenter = new TourDetailPresenter(tourKey,
                     currencyType,
-                    Injection.provideToursRepository(getApplicationContext()),
+                    Injection.provideToursRepository(),
                     tourDetailFragment);
         }
     }
