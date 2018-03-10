@@ -7,24 +7,26 @@ package com.smitsworks.redlo.hottours.utils;
 
 public interface Urls {
 
-//    static final String URL="http://192.168.0.100:8084/EasyTourLite";
-    static final String URL="http://rest-easytour.193b.starter-ca-central-1.openshiftapps.com";
-    static final String URL_JSON=URL+"/json";
-    static final String FILTERS_URL=URL_JSON+"/getfilters";
-    static final String BASE_REQUEST_URL=URL_JSON+"/gettours?hotel_rating=3:78"+
+    //    static final String URL="http://192.168.0.100:8084/EasyTourLite";
+    static final String URL = "http://rest-easytour.193b.starter-ca-central-1.openshiftapps.com";
+    static final String URL_JSON = URL + "/json";
+    static final String FILTERS_URL = URL_JSON + "/getfilters";
+    static final String BASE_REQUEST_URL = URL_JSON + "/gettours?hotel_rating=3:78" +
             "&night_from=2&night_till=7";
 
-                            //GET
+    //GET
 
-    static final String TOUR_URL=URL_JSON+"/tour";
-    static final String COUNTRIES_URL=URL_JSON+"/country";
-    static final String CITIES_URL=URL_JSON+"/city";
-    static final String HOTEL_RATINGS_URL=URL_JSON+"/hotelrating";
-    static final String MEAL_TYPES_URL=URL_JSON+"/mealtype";
+    static final String TOUR_URL = URL_JSON + "/tour";
+    static final String COUNTRIES_URL = URL_JSON + "/country";
+    static final String CITIES_URL = URL_JSON + "/city";
+    static final String HOTEL_RATINGS_URL = URL_JSON + "/hotelrating";
+    static final String MEAL_TYPES_URL = URL_JSON + "/mealtype";
+    static final String TOUR_ADVANCED_URL = URL_JSON + "/advanced";
 
-                            //POST
-    static final String REQUEST_TOUR_URL=URL_JSON+"/gettoursbyrequest";
-    static final String REQUEST_URL=URL_JSON+"/request";
-    static final String ORDER_URL=URL_JSON+"/order";
-    static final String FEEDBACK_URL=URL_JSON+"/feedback";
+    //POST
+    static final String REQUEST_TOUR_URL = URL_JSON + "/gettoursbyrequest";
+    static final String REQUEST_URL = URL_JSON + "/request";
+    static final String ORDER_URL = URL_JSON + "/order";
+    static final String FEEDBACK_URL = URL_JSON + "/feedback";
+    static final String TOUR_ADV_BY_REQ = URL_JSON + "/getadvancedbyrequest";
 }

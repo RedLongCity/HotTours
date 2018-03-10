@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- *
  * @author redlongcity
- * 14/09/2017
- * class for incapsulating ItTours Hot Search response to client
+ *         14/09/2017
+ *         class for incapsulating ItTours Hot Search response to client
  */
 public class TourResponse {
-    
-    
+
     private Long comeBackDelay;
 
     private List<Tour> tourList;
@@ -79,7 +77,6 @@ public class TourResponse {
     public String toString() {
         return "TourResponse{" + "comeBackDelay=" + comeBackDelay + ", tourList=" + tourList + ", request=" + request + '}';
     }
-    
-    
-    
+
+
 }
