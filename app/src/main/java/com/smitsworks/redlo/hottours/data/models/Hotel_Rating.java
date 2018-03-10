@@ -16,7 +16,11 @@ public class Hotel_Rating {
     private String id;
     
     private String name;
-    
+
+    public Hotel_Rating(String id) {
+        this.id = id;
+    }
+
     public String getId() {
         return id;
     }

@@ -16,7 +16,11 @@ public class From_Cities {
     private String id;
     
     private String name;
-    
+
+    public From_Cities(String id) {
+        this.id = id;
+    }
+
     public String getId() {
         return id;
     }
