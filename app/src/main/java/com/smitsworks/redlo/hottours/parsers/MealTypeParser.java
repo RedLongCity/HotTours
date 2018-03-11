@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.smitsworks.redlo.hottours.keys.MealTypeKeys;
 import com.smitsworks.redlo.hottours.data.models.Meal_Type;
+import com.smitsworks.redlo.hottours.utils.MealTypeIdWrapper;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,28 +25,9 @@ public class MealTypeParser implements Parser<Meal_Type> {
             if (json != null) {
                 if (json.length() > 0) {
                     if (json.has(MealTypeKeys.KEY_ID)) {
-                        switch (json.getString(MealTypeKeys.KEY_ID)) {
-                            case "1956":
-                                model.setId("6");
-                                break;
-                            case "388":
-                                model.setId("5");
-                                break;
-                            case "496":
-                                model.setId("4");
-                                break;
-                            case "498":
-                                model.setId("3");
-                                break;
-                            case "512":
-                                model.setId("2");
-                                break;
-                            case "560":
-                                model.setId("1");
-                                break;
-                            default:
-                                model.setId("7");
-                        }
+                        model.setId(MealTypeIdWrapper.wrapId(
+                                json.getString(MealTypeKeys.KEY_ID)
+                        ));
                     }
 
                     if (json.has(MealTypeKeys.KEY_NAME)) {

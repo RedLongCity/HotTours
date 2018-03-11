@@ -49,7 +49,7 @@ public class ToursAdapter extends BaseAdapter {
         setCurrencyType(requestType);
     }
 
-    public void replaceData(List<Tour> tours){
+    public void replaceData(List<Tour> tours) {
         setTourList(tours);
         notifyDataSetChanged();
     }
@@ -86,7 +86,7 @@ public class ToursAdapter extends BaseAdapter {
         View rowView = convertView;
         if (rowView == null) {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-            rowView = inflater.inflate(R.layout.tour_item,parent,false);
+            rowView = inflater.inflate(R.layout.tour_item, parent, false);
         }
 
         final Tour tour = getItem(position);
@@ -98,50 +98,46 @@ public class ToursAdapter extends BaseAdapter {
         TextView currency = (TextView) rowView.findViewById(R.id.currency);
         TextView dateFrom = (TextView) rowView.findViewById(R.id.date_from);
         TextView duration = (TextView) rowView.findViewById(R.id.duration);
-        final ImageView imageView = (ImageView) rowView.findViewById(R.id.tours_item_image) ;
-        ImageView star_1=(ImageView) rowView.findViewById(R.id.star_1);
-        ImageView star_2=(ImageView) rowView.findViewById(R.id.star_2);
-        ImageView star_3=(ImageView) rowView.findViewById(R.id.star_3);
-        ImageView star_4=(ImageView) rowView.findViewById(R.id.star_4);
-        ImageView star_5=(ImageView) rowView.findViewById(R.id.star_5);
+        final ImageView imageView = (ImageView) rowView.findViewById(R.id.tours_item_image);
+        ImageView star_1 = (ImageView) rowView.findViewById(R.id.star_1);
+        ImageView star_2 = (ImageView) rowView.findViewById(R.id.star_2);
+        ImageView star_3 = (ImageView) rowView.findViewById(R.id.star_3);
+        ImageView star_4 = (ImageView) rowView.findViewById(R.id.star_4);
+        ImageView star_5 = (ImageView) rowView.findViewById(R.id.star_5);
 
-        HashSet<Hotel_Image> hotelImageSet = (HashSet<Hotel_Image>) tour.getHotel_ImageSet();
-        if (hotelImageSet != null&&!hotelImageSet.isEmpty()) {
-            Hotel_Image hotelImage=null;
-            for(Hotel_Image image:hotelImageSet){
-                hotelImage=image;
-            }
-            if (hotelImage != null) {
+        if (tour.getHotel_ImageSet() != null && !tour.getHotel_ImageSet().isEmpty()) {
+            for (Hotel_Image image : tour.getHotel_ImageSet()) {
                 Picasso.with(parent.getContext()).
-                        load(hotelImage.getFull()).
+                        load(image.getFull()).
                         placeholder(R.drawable.tour_placeholder).
                         into(imageView);
+                break;
             }
-        }else{
+        } else {
             Picasso.with(parent.getContext()).
                     load(R.drawable.tour_placeholder).
                     into(imageView);
         }
 
-        countryCity.setText(tour.getCountry().getName()+", "+tour.getRegion());
+        countryCity.setText(tour.getCountry().getName() + ", " + tour.getRegion());
 
-        switch(getCurrencyType()){
+        switch (getCurrencyType()) {
             case EURO:
-                currencyId="10";
+                currencyId = "10";
                 currency.setText("€");
                 break;
             case DOLLAR:
-                currencyId="1";
+                currencyId = "1";
                 currency.setText("$");
                 break;
             case HRYVNA:
-                currencyId="2";
+                currencyId = "2";
                 currency.setText("грн");
                 break;
         }
 
         HashSet<Price> pricesSet = (HashSet<Price>) tour.getPrices();
-        if(pricesSet!=null && !pricesSet.isEmpty()) {
+        if (pricesSet != null && !pricesSet.isEmpty()) {
             Iterator<Price> iterator = pricesSet.iterator();
             while (iterator.hasNext()) {
                 Price priceIt = iterator.next();
@@ -158,7 +154,7 @@ public class ToursAdapter extends BaseAdapter {
             duration.setText(tour.getDuration().toString());
         }
 
-        switch(tour.getHotel_Rating().getId()){
+        switch (tour.getHotel_Rating().getId()) {
             case "78":
                 star_5.setVisibility(View.VISIBLE);
                 star_4.setVisibility(View.VISIBLE);

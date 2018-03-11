@@ -11,11 +11,12 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 public class DateUtils {
 
+    private static SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+
     public static String formatDate(Date date){
         if (date == null) {
             return "";
         }
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         return formatter.format(date);
     }
 }

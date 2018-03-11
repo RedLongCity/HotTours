@@ -3,6 +3,8 @@ package com.smitsworks.redlo.hottours.data.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.smitsworks.redlo.hottours.utils.MealTypeIdWrapper;
+
 import java.sql.Timestamp;
 import java.util.logging.Logger;
 
@@ -162,7 +164,7 @@ public class HotToursRequest implements Parcelable {
                 country!=null?country.getId():"null",
                 from_Cities!=null?from_Cities.getId():"null",
                 hotel_Rating!=null?hotel_Rating:"3:78",
-                meal_Type!=null?meal_Type.getId():"null"});
+                meal_Type!=null? MealTypeIdWrapper.unwrapId(meal_Type.getId()):"null"});
 
         dest.writeIntArray(new int[]{
                 night_From!=null?night_From:2,
