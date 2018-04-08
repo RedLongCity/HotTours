@@ -15,6 +15,9 @@ public class Country {
         this.id = id;
     }
 
+    public Country() {
+    }
+
     public String getId() {
         return id;
     }

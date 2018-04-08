@@ -21,6 +21,9 @@ public class From_Cities {
         this.id = id;
     }
 
+    public From_Cities() {
+    }
+
     public String getId() {
         return id;
     }
