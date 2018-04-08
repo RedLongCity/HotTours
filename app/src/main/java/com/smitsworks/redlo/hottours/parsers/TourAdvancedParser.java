@@ -56,6 +56,11 @@ public class TourAdvancedParser {
                     ));
                 }
 
+                if(json.has(TourAdvancedKeys.KEY_RATING)){
+                    model.setRating(HotelRatingParser.parse(
+                            json.getJSONObject(TourAdvancedKeys.KEY_RATING)));
+                }
+
                 if (json.has(TourAdvancedKeys.KEY_MEALTYPE)) {
                     model.setMealType(MealTypeParser.parse(
                             json.getJSONObject(TourAdvancedKeys.KEY_MEALTYPE)

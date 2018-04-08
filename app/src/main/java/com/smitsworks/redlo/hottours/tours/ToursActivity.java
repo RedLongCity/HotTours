@@ -52,7 +52,7 @@ public class ToursActivity extends AppCompatActivity{
         ToursFragment toursFragment = (ToursFragment) getSupportFragmentManager().
                 findFragmentById(R.id.contentFrame);
         if (toursFragment == null) {
-            toursFragment = ToursFragment.newInstance();
+            toursFragment = new ToursFragment();
             ActivityUtils.addFragmentToActivity(
                     getSupportFragmentManager(),toursFragment,R.id.contentFrame);
         }

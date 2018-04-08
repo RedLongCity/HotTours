@@ -24,6 +24,8 @@ public class TourDetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_CURRENCY_TYPE = "CURRENCY_TYPE";
 
+    public static final String EXTRA_TOUR_TYPE = "TOUR_TYPE";
+
     private TourDetailPresenter tourDetailPresenter;
 
     @Override

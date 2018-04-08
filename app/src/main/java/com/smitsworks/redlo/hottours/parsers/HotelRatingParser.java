@@ -17,10 +17,13 @@ public class HotelRatingParser {
     public static final String TAG = "TAG_HOTEL_RATING_PARSER";
 
     public static Hotel_Rating parse(JSONObject json) {
-        Hotel_Rating model = new Hotel_Rating();
+        Hotel_Rating model = null;
         try {
             if (json != null) {
                 if (json.length() > 0) {
+
+                    model = new Hotel_Rating();
+
                     if (json.has(HotelRatingKeys.KEY_ID)) {
                         model.setId(json.getString(HotelRatingKeys.KEY_ID));
                     }

@@ -12,6 +12,7 @@ public class TourAdvancedKeys {
     public static final String KEY_REGION = "region";
     public static final String KEY_HOTELID = "hotelId";
     public static final String KEY_HOTELNAME = "hotelName";
+    public static final String KEY_RATING = "rating";
     public static final String KEY_MEALTYPE = "mealType";
     public static final String KEY_ADULTAMOUNT = "adultAmount";
     public static final String KEY_CHILDAMOUNT = "childAmount";

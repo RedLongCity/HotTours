@@ -22,6 +22,8 @@ public class TourAdvanced {
 
     private String hotelName;
 
+    private Hotel_Rating rating;
+
     private Meal_Type mealType;
 
     private Integer adultAmount;
@@ -230,6 +232,14 @@ public class TourAdvanced {
         this.facilities = facilities;
     }
 
+    public Hotel_Rating getRating() {
+        return rating;
+    }
+
+    public void setRating(Hotel_Rating rating) {
+        this.rating = rating;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -254,6 +264,7 @@ public class TourAdvanced {
                 ", region=" + region +
                 ", hotelId=" + hotelId +
                 ", hotelName='" + hotelName + '\'' +
+                ", rating=" + rating +
                 ", mealType=" + mealType +
                 ", adultAmount=" + adultAmount +
                 ", childAmount=" + childAmount +

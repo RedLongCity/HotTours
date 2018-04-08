@@ -21,6 +21,9 @@ public class Hotel_Rating {
         this.id = id;
     }
 
+    public Hotel_Rating() {
+    }
+
     public String getId() {
         return id;
     }
