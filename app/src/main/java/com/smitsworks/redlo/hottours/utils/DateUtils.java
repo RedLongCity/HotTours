@@ -2,7 +2,8 @@ package com.smitsworks.redlo.hottours.utils;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
+
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * Created by redlongcity on 28.02.2018.
@@ -10,23 +11,12 @@ import java.util.Calendar;
 
 public class DateUtils {
 
-    private static final SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+    private static SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 
-    private static final Calendar calendar = Calendar.getInstance();
-
-    public static String formatDate(Date date) {
+    public static String formatDate(Date date){
         if (date == null) {
             return "";
         }
         return formatter.format(date);
-    }
-
-    public static Date getCurrentDate() {
-        return new Date(calendar.getTimeInMillis());
-    }
-
-    public static Date getDateAfterWeek() {
-        calendar.add(Calendar.DATE, 7);
-        return new Date(calendar.getTimeInMillis());
     }
 }
