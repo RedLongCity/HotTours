@@ -1,0 +1,271 @@
+package com.smitsworks.redlo.hottours.tourdetails;
+
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.util.Log;
+
+import com.smitsworks.redlo.hottours.data.models.Tour;
+import com.smitsworks.redlo.hottours.data.source.datasource.ToursDataSource;
+import com.smitsworks.redlo.hottours.data.source.repositories.ToursRepository;
+import com.smitsworks.redlo.hottours.tours.TourCurrencyType;
+
+import java.util.List;
+
+import static com.google.common.base.Preconditions.checkNotNull;
+
+/**
+ * Created by redlongcity on 08.04.2018.
+ */
+
+public class TourDetailPresenterNew implements TourDetailsContract.Presenter {
+
+    private final ToursRepository toursRepository;
+
+    private final TourDetailsContract.View tourDetailsView;
+
+    private TourCurrencyType currencyType;
+
+    @Nullable
+    private String tourKey;
+
+    public TourDetailPresenterNew(@NonNull String tourKey,
+                               @NonNull TourCurrencyType requestType,
+                               @NonNull ToursRepository toursRepository,
+                               @NonNull TourDetailsContract.View tourView) {
+        this.currencyType = checkNotNull(requestType);
+        this.tourKey=tourKey;
+        this.toursRepository = checkNotNull(toursRepository);
+        this.tourDetailsView = checkNotNull(tourView);
+
+        tourView.setPresenter(this);
+    }
+
+    @Override
+    public void orderTour() {
+        if (tourKey == null) {
+            tourDetailsView.showMissingTour();
+            return;
+        }
+        tourDetailsView.orderTour(tourKey);
+    }
+
+    @Override
+    public void call(String number) {
+        if (number == null) {
+            Log.e("CALL","Call number is null");
+            return;
+        }
+        tourDetailsView.call(number);
+    }
+
+    @Override
+    public void start() {
+        openTour();
+    }
+
+    private void openTour(){
+        if(tourKey==null){
+            tourDetailsView.showMissingTour();
+            return;
+        }
+
+        tourDetailsView.setLoadingIndicator(true);
+        toursRepository.getTour(tourKey,new ToursDataSource.GetTourCallback(){
+
+            @Override
+            public void onTourLoaded(Tour tour) {
+                if(!tourDetailsView.isActive()){
+                    return;
+                }
+                tourDetailsView.setLoadingIndicator(false);
+                if (tour == null) {
+                    tourDetailsView.showMissingTour();
+                }else{
+                    showTour(tour);
+                }
+            }
+
+            @Override
+            public void onDataNotAvailable() {
+                if(!tourDetailsView.isActive()){
+                    return;
+                }
+                tourDetailsView.showMissingTour();
+            }
+
+            @Override
+            public void onNotAvailableConnection() {
+                if(!tourDetailsView.isActive()){
+                    return;
+                }
+                tourDetailsView.showNotAwailableConnection();
+            }
+        });
+    }
+
+    @Override
+    public void setCurrencyType(TourCurrencyType requestType) {
+        currencyType=requestType;
+    }
+
+    @Override
+    public TourCurrencyType getCurrencyType() {
+        return currencyType;
+    }
+
+    private void showTour(@NonNull Tour tour){
+
+        tourDetailsView.showTourDescription(tour);
+
+//        String countryName=null;
+//
+//        if (tour.getCountry() != null) {
+//            countryName = tour.getCountry().getName();
+//        }
+//
+//        String region = tour.getRegion();
+//        String hotelName = tour.getHotel();
+//        String hotelRating=null;
+//
+//        if (tour.getHotel_Rating() != null) {
+//            hotelRating = tour.getHotel_Rating().getName();
+//        }
+//
+//        String mealType=null;
+//
+//        if (tour.getMeal_Type() != null) {
+//            mealType=tour.getMeal_Type().getName_full();
+//        }
+//
+//        Integer adultAmount = tour.getAdult_Amount();
+//        Integer childrenAmount = tour.getChild_Amount();
+//        Integer duration = tour.getDuration();
+//        Date dateFrom = tour.getDate_From();
+//        Integer priceValue=null;
+//        String currencySymbol = null;
+//        String currencyId=null;
+//        switch (getCurrencyType()){
+//            case DOLLAR:
+//                currencyId = "1";
+//                currencySymbol = "$";
+//                break;
+//            case HRYVNA:
+//                currencyId="2";
+//                currencySymbol="грн";
+//                break;
+//            case EURO:
+//                currencyId = "10";
+//                currencySymbol="€";
+//                break;
+//        }
+//        HashSet<Price> priceHashSet = (HashSet<Price>) tour.getPrices();
+//        Iterator<Price> it = priceHashSet.iterator();
+//        while(it.hasNext()){
+//            Price price = it.next();
+//            if(price.getCurrency().getId().equals(currencyId)){
+//                priceValue=price.getCost();
+//            }
+//        }
+//        String fromCity = tour.getFrom_Cities().getName();
+//        String transportType = tour.getTransport_Type();
+//        String hotelImageURL = null;
+//        HashSet<Hotel_Image> imageSet = (HashSet<Hotel_Image>) tour.getHotel_ImageSet();
+//        if(imageSet!=null){
+//            Iterator<Hotel_Image> iterator = imageSet.iterator();
+//            while (iterator.hasNext()){
+//                Hotel_Image image = iterator.next();
+//                hotelImageURL = image.getFull();
+//            }
+//        }
+//
+//        if (countryName != null) {
+//            tourDetailsView.showCountryName(countryName);
+//        }else{
+//            tourDetailsView.hideCountryName();
+//        }
+//
+//        if (region != null) {
+//            tourDetailsView.showRegion(region);
+//        }else{
+//            tourDetailsView.hideRegion();
+//        }
+//
+//        if(hotelName!=null){
+//            tourDetailsView.showHotelName(hotelName);
+//        }else{
+//            tourDetailsView.hideHotelName();
+//        }
+//
+//        if (hotelRating != null) {
+//            tourDetailsView.showHotelRating(hotelRating);
+//        }else{
+//            tourDetailsView.hideHotelRating();
+//        }
+//
+//        if (mealType != null) {
+//            tourDetailsView.showMealType(mealType);
+//        }else{
+//            tourDetailsView.hideMealType();
+//        }
+//
+//        if (adultAmount != null) {
+//            tourDetailsView.showAdultAmount(adultAmount);
+//        }else{
+//            tourDetailsView.hideAdultAmount();
+//        }
+//
+//        if (childrenAmount != null) {
+//            tourDetailsView.showChildrenAmount(childrenAmount);
+//        }else{
+//            tourDetailsView.hideChildrenAmount();
+//        }
+//
+//        if (duration != null) {
+//            tourDetailsView.showDuration(duration);
+//        }else{
+//            tourDetailsView.hideDuration();
+//        }
+//
+//        if (dateFrom != null) {
+//            tourDetailsView.showDateFrom(dateFrom);
+//        }else{
+//            tourDetailsView.hideDateFrom();
+//        }
+//
+//        if (priceValue != null) {
+//            tourDetailsView.showPriceValue(priceValue);
+//        }else{
+//            tourDetailsView.hidePriceValue();
+//        }
+//
+//        if (currencySymbol != null) {
+//            tourDetailsView.showCurrencySymbol(currencySymbol);
+//        }else{
+//            tourDetailsView.hideCurrencySymbol();
+//        }
+//
+//        if (fromCity != null) {
+//            tourDetailsView.showFromCity(fromCity);
+//        }else{
+//            tourDetailsView.hideFromCity();
+//        }
+//
+//        if (transportType != null) {
+//            tourDetailsView.showTransportType(transportType);
+//        }else{
+//            tourDetailsView.hideTransportType();
+//        }
+//
+//        if (hotelImageURL != null) {
+//            tourDetailsView.showImage(hotelImageURL);
+//        }else{
+//            tourDetailsView.hideImage();
+//        }
+
+    }
+
+    @Override
+    public List<TourDetailItem> getItems() {
+        return null;
+    }
+}

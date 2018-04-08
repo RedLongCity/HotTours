@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
@@ -31,6 +30,7 @@ import com.smitsworks.redlo.hottours.utils.DateUtils;
 import com.squareup.picasso.Picasso;
 
 import java.sql.Date;
+import java.util.List;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -364,6 +364,11 @@ public class TourDetailFragment extends Fragment implements TourDetailsContract.
         dialogFragment.show(getFragmentManager(), getString(R.string.no_connection_dialog_message));
         showMessage(getString(R.string.no_connecion));
         setNoConnectionIndicator();
+    }
+
+    @Override
+    public void showTourDescription(Object object) {
+
     }
 
     @Override

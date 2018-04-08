@@ -26,7 +26,9 @@ public class TourDetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_TOUR_TYPE = "TOUR_TYPE";
 
-    private TourDetailPresenter tourDetailPresenter;
+//    private TourDetailPresenter tourDetailPresenter;
+
+    private TourDetailPresenterNew presenterNew;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,20 +46,37 @@ public class TourDetailActivity extends AppCompatActivity {
 
         TourCurrencyType currencyType = (TourCurrencyType) getIntent().getSerializableExtra(EXTRA_CURRENCY_TYPE);
 
-        TourDetailFragment tourDetailFragment = (TourDetailFragment) getSupportFragmentManager().
+//        TourDetailFragment tourDetailFragment = (TourDetailFragment) getSupportFragmentManager().
+//                findFragmentById(R.id.content_frame);
+//
+//        if (tourDetailFragment == null) {
+//            tourDetailFragment = TourDetailFragment.newInstance(tourKey);
+//
+//            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(),
+//                    tourDetailFragment, R.id.content_frame);
+//
+//
+//            tourDetailPresenter = new TourDetailPresenter(tourKey,
+//                    currencyType,
+//                    Injection.provideToursRepository(),
+//                    tourDetailFragment);
+//        }
+
+        TourDetailFragmentList tourDetailFragment = (TourDetailFragmentList) getSupportFragmentManager().
                 findFragmentById(R.id.content_frame);
 
         if (tourDetailFragment == null) {
-            tourDetailFragment = TourDetailFragment.newInstance(tourKey);
+            tourDetailFragment = new TourDetailFragmentList();
 
             ActivityUtils.addFragmentToActivity(getSupportFragmentManager(),
                     tourDetailFragment, R.id.content_frame);
 
-
-            tourDetailPresenter = new TourDetailPresenter(tourKey,
+            presenterNew = new TourDetailPresenterNew(
+                    tourKey,
                     currencyType,
                     Injection.provideToursRepository(),
-                    tourDetailFragment);
+                    tourDetailFragment
+            );
         }
     }
 
@@ -71,7 +90,7 @@ public class TourDetailActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == TourDetailFragment.PERMISSION_CALL_PHONE && grantResults.length > 0) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                tourDetailPresenter.call("tel:+380988452631");
+                presenterNew.call("tel:+380988452631");
             }
         }
     }

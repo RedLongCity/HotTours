@@ -295,7 +295,6 @@ public class ToursFragment extends Fragment implements ToursContract.View {
             });
         }
 
-
         popUp.show();
     }
 

@@ -9,11 +9,13 @@ import com.smitsworks.redlo.hottours.data.models.Price;
 import com.smitsworks.redlo.hottours.data.models.Tour;
 import com.smitsworks.redlo.hottours.data.source.datasource.ToursDataSource;
 import com.smitsworks.redlo.hottours.data.source.repositories.ToursRepository;
+import com.smitsworks.redlo.hottours.tourdetails.convertor.HotToursConvertor;
 import com.smitsworks.redlo.hottours.tours.TourCurrencyType;
 
 import java.sql.Date;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -120,6 +122,7 @@ public class TourDetailPresenter implements TourDetailsContract.Presenter {
     }
 
     private void showTour(@NonNull Tour tour){
+
         String countryName=null;
 
         if (tour.getCountry() != null) {
@@ -265,5 +268,10 @@ public class TourDetailPresenter implements TourDetailsContract.Presenter {
             tourDetailsView.hideImage();
         }
 
+    }
+
+    @Override
+    public List<TourDetailItem> getItems() {
+        return null;
     }
 }

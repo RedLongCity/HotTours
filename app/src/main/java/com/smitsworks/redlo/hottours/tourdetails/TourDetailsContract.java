@@ -6,6 +6,7 @@ import com.smitsworks.redlo.hottours.BaseView;
 import com.smitsworks.redlo.hottours.tours.TourCurrencyType;
 
 import java.sql.Date;
+import java.util.List;
 
 /**
  * Created by redlongcity on 08.10.2017.
@@ -84,6 +85,8 @@ public interface TourDetailsContract {
 
         void showNotAwailableConnection();
 
+        void showTourDescription(Object tour);
+
     }
 
     interface Presenter extends BasePresenter{
@@ -95,6 +98,8 @@ public interface TourDetailsContract {
         void setCurrencyType(TourCurrencyType requestType);
 
         TourCurrencyType getCurrencyType();
+
+        List<TourDetailItem> getItems();
 
     }
 
