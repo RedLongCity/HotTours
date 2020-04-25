@@ -1,7 +1,5 @@
 package com.smitsworks.redlo.hottours.providers;
 
-import android.os.AsyncTask;
-
 import com.smitsworks.redlo.hottours.utils.HttpUtils;
 import com.smitsworks.redlo.hottours.utils.Urls;
 

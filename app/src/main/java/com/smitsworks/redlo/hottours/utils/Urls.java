@@ -7,8 +7,9 @@ package com.smitsworks.redlo.hottours.utils;
 
 public interface Urls {
 
-//    static final String URL="http://192.168.0.100:8084/EasyTourLite";
-    static final String URL="http://rest-easytour.193b.starter-ca-central-1.openshiftapps.com";
+    static final String URL="http://10.0.2.2:8080/EasyTourLite";
+//    static final String URL="http://localhost:8080/EasyTourLite";
+//    static final String URL="http://rest-easytour.193b.starter-ca-central-1.openshiftapps.com";
     static final String URL_JSON=URL+"/json";
     static final String FILTERS_URL=URL_JSON+"/getfilters";
     static final String BASE_REQUEST_URL=URL_JSON+"/gettours?hotel_rating=3:78"+

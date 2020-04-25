@@ -8,7 +8,7 @@ package com.smitsworks.redlo.hottours.keys;
 public class TourResponseKeys {
 
     public static final String KEY_COMEBACK_DELAY="comeBackDelay";
-    public static final String KEY_TOUR_LIST="tourList";
+    public static final String KEY_TOUR_LIST="tours";
     public static final String KEY_REQUEST="request";
 
 }
