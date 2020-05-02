@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AndroidStudioProjects.iml" filepath="$PROJECT_DIR$/AndroidStudioProjects.iml" group="AndroidStudioProjects" />
+      <module fileurl="file://$PROJECT_DIR$/app/AndroidStudioProjects-app.iml" filepath="$PROJECT_DIR$/app/AndroidStudioProjects-app.iml" group="AndroidStudioProjects/app" />
       <module fileurl="file://$PROJECT_DIR$/HotTours.iml" filepath="$PROJECT_DIR$/HotTours.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/HotTours-app.iml" filepath="$PROJECT_DIR$/app/HotTours-app.iml" group="HotTours/app" />
       <module fileurl="file://$PROJECT_DIR$/StudioProjects-HotTours.iml" filepath="$PROJECT_DIR$/StudioProjects-HotTours.iml" group="HotTours" />

@@ -67,31 +67,32 @@ public class FeedBackPresenter implements FeedBackContract.Presenter{
         if(feedBack.isEmpty()){
             feedBackView.showEmptyDataError();
         }else{
-            feedBackRepository.postFeedBack(entity, new FeedBackDataSource.PostFeedBackCallback() {
-                @Override
-                public void onFeedBackPosted() {
-                    if(!feedBackView.isActive()){
-                        return;
-                    }
-                    feedBackView.showToursList();
-                }
-
-                @Override
-                public void onPostFailed() {
-                    if(!feedBackView.isActive()){
-                        return;
-                    }
-                    feedBackView.showFailedPosting();
-                }
-
-                @Override
-                public void onNotAvailableConnection() {
-                    if(!feedBackView.isActive()){
-                        return;
-                    }
-                    feedBackView.showNotAvailableConnection();
-                }
-            });
+            feedBackView.showToursList();
+//            feedBackRepository.postFeedBack(entity, new FeedBackDataSource.PostFeedBackCallback() {todo only for test
+//                @Override
+//                public void onFeedBackPosted() {
+//                    if(!feedBackView.isActive()){
+//                        return;
+//                    }
+//                    feedBackView.showToursList();
+//                }
+//
+//                @Override
+//                public void onPostFailed() {
+//                    if(!feedBackView.isActive()){
+//                        return;
+//                    }
+//                    feedBackView.showFailedPosting();
+//                }
+//
+//                @Override
+//                public void onNotAvailableConnection() {
+//                    if(!feedBackView.isActive()){
+//                        return;
+//                    }
+//                    feedBackView.showNotAvailableConnection();
+//                }
+//            });
         }
     }
 

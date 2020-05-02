@@ -13,7 +13,7 @@ import okhttp3.Response;
  * class for providing Tour from server
  */
 
-public class TourProvider implements Provider,Urls {
+public class TourProvider implements Provider, Urls {
 
 
     @Override
@@ -21,13 +21,13 @@ public class TourProvider implements Provider,Urls {
         return null;
     }
 
-    public Response provide(Integer id){
-        return HttpUtils.getDataByURL(TOUR_URL+"/"+id);
+    public Response provide(Integer id) {
+        return HttpUtils.getDataByURL(TOUR_URL + "/" + id);
     }
 
-    public Response provide(HotToursRequest request){
+    public Response provide(HotToursRequest request) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
-        return HttpUtils.postData(REQUEST_TOUR_URL,gson.toJson(request));
+        return HttpUtils.postData(REQUEST_TOUR_URL, gson.toJson(request));
     }
 }

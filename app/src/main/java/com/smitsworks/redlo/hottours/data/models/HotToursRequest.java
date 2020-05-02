@@ -3,9 +3,9 @@ package com.smitsworks.redlo.hottours.data.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.smitsworks.redlo.hottours.utils.MealTypeIdWrapper;
-
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Logger;
 
 /**
@@ -22,7 +22,7 @@ public class HotToursRequest implements Parcelable {
 
     private From_Cities from_Cities;
 
-    private String hotel_Rating;
+    private Set<Hotel_Rating> ratings;
 
     private Integer night_From;
 
@@ -35,19 +35,24 @@ public class HotToursRequest implements Parcelable {
     public HotToursRequest() {
     }
 
-    public HotToursRequest(Parcel in){
+    public HotToursRequest(Parcel in) {
         String[] data = new String[4];
         in.readStringArray(data);
-        if(!data[0].equals("null")){
+        if (!data[0].equals("null")) {
             country = new Country();
             country.setId(data[0]);
         }
-        if(!data[1].equals("null")) {
+        if (!data[1].equals("null")) {
             from_Cities = new From_Cities();
             from_Cities.setId(data[1]);
         }
-        hotel_Rating = data[2];
-        if(!data[3].equals("null")) {
+        if (!data[2].equals("null")) {
+            ratings = new HashSet<>();
+            Hotel_Rating rating = new Hotel_Rating();
+            rating.setId(data[2]);
+            ratings.add(rating);
+        }
+        if (!data[3].equals("null")) {
             meal_Type = new Meal_Type();
             meal_Type.setId(data[3]);
         }
@@ -57,8 +62,6 @@ public class HotToursRequest implements Parcelable {
         night_From = intData[0];
         night_Till = intData[1];
     }
-
-
 
     public Integer getId() {
         return id;
@@ -84,12 +87,12 @@ public class HotToursRequest implements Parcelable {
         this.from_Cities = from_Cities;
     }
 
-    public String getHotel_Rating() {
-        return hotel_Rating;
+    public Set<Hotel_Rating> getHotel_Rating() {
+        return ratings;
     }
 
-    public void setHotel_Rating(String hotel_Rating) {
-        this.hotel_Rating = hotel_Rating;
+    public void setHotel_Rating(Set<Hotel_Rating> hotel_Rating) {
+        this.ratings = hotel_Rating;
     }
 
     public Integer getNight_From() {
@@ -145,7 +148,7 @@ public class HotToursRequest implements Parcelable {
                 "id=" + id +
                 ", country=" + country +
                 ", from_Cities=" + from_Cities +
-                ", hotel_Rating='" + hotel_Rating + '\'' +
+                ", ratings='" + ratings + '\'' +
                 ", night_From=" + night_From +
                 ", night_Till=" + night_Till +
                 ", meal_Type=" + meal_Type +
@@ -161,14 +164,18 @@ public class HotToursRequest implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeStringArray(new String[]{
-                country!=null?country.getId():"null",
-                from_Cities!=null?from_Cities.getId():"null",
-                hotel_Rating!=null?hotel_Rating:"3:78",
-                meal_Type!=null? MealTypeIdWrapper.unwrapId(meal_Type.getId()):"null"});
+                country != null ? country.getId() : "null",
+                from_Cities != null ? from_Cities.getId() : "null",
+                ratings != null && !ratings.isEmpty()
+                        ? ratings.iterator().next().getId()
+                        : "null",
+                meal_Type != null ? meal_Type.getId() : "null"
+        });
 
         dest.writeIntArray(new int[]{
-                night_From!=null?night_From:2,
-                night_Till!=null?night_Till:7,});
+                night_From != null ? night_From : 2,
+                night_Till != null ? night_Till : 7,
+        });
     }
 
     public static final Parcelable.Creator<HotToursRequest> CREATOR =

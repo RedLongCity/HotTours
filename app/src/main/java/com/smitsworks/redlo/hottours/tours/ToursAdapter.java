@@ -155,7 +155,7 @@ public class ToursAdapter extends BaseAdapter {
         }
 
         switch (tour.getHotel_Rating().getId()) {
-            case "78":
+            case "5":
                 star_5.setVisibility(View.VISIBLE);
                 star_4.setVisibility(View.VISIBLE);
                 star_3.setVisibility(View.VISIBLE);

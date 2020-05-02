@@ -42,7 +42,7 @@ public class TourResponseParser implements Parser<TourResponse> {
                             List<Tour> tourList = new ArrayList<Tour>();
                             TourParser parser = new TourParser();
                             for (int i = 0; i < arrayLength; i++) {
-                                Tour tour = new Tour();
+                                Tour tour;
                                 JSONObject innerObject = array.getJSONObject(i);
                                 tour = parser.parse(innerObject);
                                 tourList.add(tour);

@@ -76,7 +76,6 @@ public class ToursPresenter implements ToursContract.Presenter {
     public void loadTours(boolean forceUpdate) {
         if (firstLoad) {
             request = new HotToursRequest();
-            request.setHotel_Rating("3:78");
             request.setNight_From(2);
             request.setNight_Till(7);
         }

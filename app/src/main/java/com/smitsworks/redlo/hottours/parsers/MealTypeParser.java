@@ -25,9 +25,7 @@ public class MealTypeParser implements Parser<Meal_Type> {
             if (json != null) {
                 if (json.length() > 0) {
                     if (json.has(MealTypeKeys.KEY_ID)) {
-                        model.setId(MealTypeIdWrapper.wrapId(
-                                json.getString(MealTypeKeys.KEY_ID)
-                        ));
+                        model.setId(json.getString(MealTypeKeys.KEY_ID));
                     }
 
                     if (json.has(MealTypeKeys.KEY_NAME)) {

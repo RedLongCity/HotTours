@@ -13,7 +13,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * Concrete implementation for posting feedback to server
  */
 
-public class FeedBackRepository implements FeedBackDataSource{
+public class FeedBackRepository implements FeedBackDataSource {
 
     private static FeedBackRepository instance = null;
 
@@ -31,7 +31,7 @@ public class FeedBackRepository implements FeedBackDataSource{
         this.remoteDataSource = remoteDataSource;
     }
 
-    public static FeedBackRepository getInstance(@NonNull FeedBackRemoteDataSource dataSource){
+    public static FeedBackRepository getInstance(@NonNull FeedBackRemoteDataSource dataSource) {
         if (instance == null) {
             instance = new FeedBackRepository(dataSource);
         }
@@ -41,11 +41,11 @@ public class FeedBackRepository implements FeedBackDataSource{
     @Override
     public void postFeedBack(@NonNull FeedBack feedBack, @NonNull PostFeedBackCallback callback) {
         checkNotNull(callback);
-        postFeedBackToRemoteDataSource(callback,feedBack);
+        postFeedBackToRemoteDataSource(callback, feedBack);
     }
 
     private void postFeedBackToRemoteDataSource(@NonNull final PostFeedBackCallback callback,
-                                                @NonNull FeedBack feedBack){
+                                                @NonNull FeedBack feedBack) {
         remoteDataSource.postFeedBack(feedBack, new PostFeedBackCallback() {
             @Override
             public void onFeedBackPosted() {

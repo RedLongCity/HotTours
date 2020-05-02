@@ -3,10 +3,14 @@ package com.smitsworks.redlo.hottours.parsers;
 import android.util.Log;
 
 import com.smitsworks.redlo.hottours.data.models.HotToursRequest;
+import com.smitsworks.redlo.hottours.data.models.Hotel_Rating;
 import com.smitsworks.redlo.hottours.keys.RequestKeys;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by redlongcity on 01.01.2018.
@@ -41,8 +45,12 @@ public class HotToursRequestParser implements Parser<HotToursRequest> {
                     }
 
                     if (json.has(RequestKeys.KEY_HOTEL_RARING) && !json.isNull(RequestKeys.KEY_HOTEL_RARING)) {
-                        request.setHotel_Rating(json.getString(
+                        Set<Hotel_Rating> ratings = new HashSet<>();
+                        Hotel_Rating rating = new Hotel_Rating();
+                        rating.setId(json.getString(
                                 RequestKeys.KEY_HOTEL_RARING));
+                        ratings.add(rating);
+                        request.setHotel_Rating(ratings);
                     }
 
                     if (json.has(RequestKeys.KEY_NIGHT_FROM) && !json.isNull(RequestKeys.KEY_NIGHT_FROM)) {
